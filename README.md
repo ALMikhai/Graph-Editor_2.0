@@ -1,2 +1,2 @@
-# Graph-Editor_2.0
-Graph-Editor(Reborn)
+# Graph-Editor
+Visualization of algoritms with graph.
