@@ -65,14 +65,14 @@ namespace Graph_Editor
                     double X = to.X - from.X;
                     double Y = to.Y - from.Y;
 
-                    center_second.X = center.X - (X / d) * 10;
-                    center_second.Y = center.Y - (Y / d) * 10;
+                    center_second.X = center.X - (X / d) * 15;
+                    center_second.Y = center.Y - (Y / d) * 15;
 
                     double Xp = to.Y - from.Y;
                     double Yp = from.X - to.X;
 
-                    Point left = new Point((center_second.X + (Xp / d) * 5), (center_second.Y + (Yp / d) * 5));
-                    Point right = new Point((center_second.X - (Xp / d) * 5), (center_second.Y - (Yp / d) * 5));
+                    Point left = new Point((center_second.X + (Xp / d) * 6), (center_second.Y + (Yp / d) * 6));
+                    Point right = new Point((center_second.X - (Xp / d) * 6), (center_second.Y - (Yp / d) * 6));
 
                     drawingContext.DrawLine(pen, center, left);
                     drawingContext.DrawLine(pen, center, right);
