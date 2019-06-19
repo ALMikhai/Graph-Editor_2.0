@@ -17,7 +17,7 @@ namespace Graph_Editor.Objects
 {
     public class Edge
     {
-        private Vertex from, to;
+        private readonly Vertex from, to;
         private int weight;
         private bool directed;
 
@@ -41,12 +41,20 @@ namespace Graph_Editor.Objects
             {
                 return weight;
             }
+            set
+            {
+                weight = value;
+            }
         }
         public bool Directed
         {
             get
             {
                 return directed;
+            }
+            set
+            {
+                directed = value;
             }
         }
 
