@@ -30,7 +30,7 @@
             Content="Algoritms"
             HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top"
             Width="167" Height="56"
-            FontSize="20" FontWeight="500"
+            FontSize="20" FontWeight="500" Click="Button_Click"
         />
     </Grid>
 </Window>

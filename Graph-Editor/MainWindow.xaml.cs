@@ -114,5 +114,10 @@ namespace Graph_Editor
             WaitPanel.Background = Brushes.LightGray;
             window1.Show();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("y");
+        }
     }
 }
