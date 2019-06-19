@@ -27,7 +27,6 @@ namespace Graph_Editor
     public partial class MainWindow : Window
     { 
         int globalIndex = 0;
-        int dsgdgbg = -1;
 
         public static FigureHost graphHost = new FigureHost();
 
