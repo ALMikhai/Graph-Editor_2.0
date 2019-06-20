@@ -36,7 +36,7 @@ namespace Graph_Editor
                 algoritms.Algoritm_Ready();
                 // Запускаем dfs; 
                 MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
-                this.Close();
+                Close();
             }
             else
             {
