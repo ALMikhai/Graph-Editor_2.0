@@ -28,7 +28,7 @@ namespace Graph_Editor
     {
         int globalIndex = 0;
 
-        int someuseless_variable = -1;
+        char c = 'c';
 
         public static FigureHost graphHost = new FigureHost();
 
