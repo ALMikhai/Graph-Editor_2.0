@@ -1,3 +1,25 @@
+<<<<<<< HEAD
+﻿Graph-Editor
+
+
+winexe
+C#
+.cs
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\
+Graph_Editor
+none
+false
+DEBUG;TRACE
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\App.xaml
+4-113909625
+
+121098012105
+151984215308
+Algoritms.xaml;DFS.xaml;MainWindow.xaml;ConnectVertices.xaml;
+
+False
+
+=======
 ﻿Graph-Editor
 
 
@@ -22,3 +44,4 @@ MainWindow.xaml;Window1.xaml;
 
 False
 
+>>>>>>> master
