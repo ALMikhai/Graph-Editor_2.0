@@ -40,13 +40,6 @@ namespace Graph_Editor.Objects
                 coordinates = value;
             }
         }
-
-        public bool IsBe(int value)
-        {
-            if (value > Globals.vertexData.Count)
-                return false;
-            return true;
-        }
         
 
         public Vertex(int number, Point place) { index = number; coordinates = place; }

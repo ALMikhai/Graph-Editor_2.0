@@ -29,9 +29,7 @@
         <!-- Background="LightGray" (to Down)-->
         <Grid
             x:Name="WaitPanel"
-            Opacity="0.4"
-            Grid.ColumnSpan="20" Grid.RowSpan="20">
-        </Grid>
+            Opacity="0.4" Grid.RowSpan="2"/>
         <Label Content=".TXT"
                    HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"       
                    Width="150" Height="56"
@@ -42,6 +40,6 @@
                 HorizontalAlignment="Left" Height="60"
                 Margin="10,278,0,0" VerticalAlignment="Top" Width="74"
                 Source="..\images\logo.png" Grid.Row="1"
-        />    
+        />
     </Grid>
 </Window>
