@@ -28,57 +28,67 @@
                VerticalAlignment="Top" Width="117"
                FontSize="20" FontWeight="DemiBold" BorderBrush="Black" BorderThickness="1"
                VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="0,282,0,-4"
+               
         />
         <Button x:Name="BFS_Button" Content="Поиск в ширину"
                 HorizontalAlignment="Left" Margin="143,43,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="BSF_Button_Click"       
+                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"
+                Tag="0"
         />
         <Button x:Name="DFS_Button" Content="Поиск в глубину"
                 HorizontalAlignment="Left" Margin="400,43,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="DSF_Button_Click"       
+                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
+                Tag="1"     
         />
         <Button Content="Алгоритм Дейкстры"
                 HorizontalAlignment="Left" Margin="654,43,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold"       
+                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
+                Tag="2"           
         />
         <Button Content="Эйлеров цикл"
                 HorizontalAlignment="Left" Margin="654,184,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold"    
+                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
+                Tag="3"    
         />
         <Button Content="Гамильтонов цикл"
                 HorizontalAlignment="Left" Margin="400,184,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold"       
+                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
+                Tag="4"       
         />
         <Button Content="Раскрасить граф"
                 HorizontalAlignment="Left" Margin="143,184,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold"       
+                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
+                Tag="5"       
         />
         <Button Content="Радиус и диаметр графа"
                 HorizontalAlignment="Left" Margin="400,325,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold"       
+                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
+                Tag="6"       
         />
         <Button Content="Максимальный поток"
                 HorizontalAlignment="Left" Margin="654,325,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold"       
+                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
+                Tag="7"       
         />
         <Button Content="Флойд-Уоршелл"
                 HorizontalAlignment="Left" Margin="143,325,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold"       
+                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
+                Tag="8"       
         />
         <Button
             IsCancel="True"
             FontSize="20" Content="Отмена"
             HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
-            Width="112" Height="42"
+            Width="112" Height="42" Click="Cancel_Click"
         />
         <Grid
             x:Name="LockPanel"
@@ -90,12 +100,12 @@
             x:Name="BFS"
             Background="WhiteSmoke" Margin="224,162,259,139" Visibility="Hidden">
             <Border BorderBrush="Black" BorderThickness="2" />
-            <Button x:Name="BFS_Ready"
+            <Button x:Name="FS_Ready"
             IsDefault="True"
             FontSize="20" Content="Выполнить" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
-            Width="127" Height="42" Click="BFS_Ready_Click"
+            Width="127" Height="42" Click="Button_ReadyExitAlgoritm_Click"
         />
-            <Button x:Name="BFS_Cancle"
+            <Button x:Name="FS_Cancel"
             IsCancel="True"
             FontSize="20" Content="Отмена"
             HorizontalAlignment="Left" Margin="137,0,0,10" VerticalAlignment="Bottom"
@@ -107,7 +117,7 @@
                VerticalAlignment="Top" Width="290" 
                FontSize="25"
         />
-            <TextBox x:Name="startVertex"
+            <TextBox x:Name="FSstartVertex"
             FontSize="20" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"
             Height="38" Margin="271,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
             Background="WhiteSmoke" BorderThickness="1" BorderBrush="black" RenderTransformOrigin="0.494,-0.553"

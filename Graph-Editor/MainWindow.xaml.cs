@@ -96,17 +96,11 @@ namespace Graph_Editor
             graphHost.Children.Add(drawingVisual);
         }
 
-        private void GraphCanvas_MouseDown(object sender, MouseButtonEventArgs e)
-        { 
-            globals.toolNow.Mouse_Down(e.GetPosition(graphCanvas));
-            Invalidate();
-        }
-
         private void Connect_Click(object sender, RoutedEventArgs e)
         {
             ConnectVertices connectVertices = new ConnectVertices();
             WaitPanel.Visibility = Visibility.Visible;
-            WaitPanel.Background = Brushes.LightGray;
+            WaitPanel.Background = Brushes.Gray;
             connectVertices.Show();
         }
 
@@ -114,13 +108,37 @@ namespace Graph_Editor
         {
             Algoritms algoritms = new Algoritms();
             WaitPanel.Visibility = Visibility.Visible;
-            WaitPanel.Background = Brushes.LightGray;
+            WaitPanel.Background = Brushes.Gray;
             algoritms.Show();
         }
 
         private void Change_Tool_Button(object sender, RoutedEventArgs e)
         {
             globals.toolNow = globals.toolList[Convert.ToInt32((sender as Button).Tag)];
+        }
+
+        private void GraphCanvas_MouseDown(object sender, MouseEventArgs e)
+        {
+            globals.toolNow.Mouse_Down(e.GetPosition(graphCanvas));
+            Invalidate();
+        }
+
+        private void GraphCanvas_MouseMove(object sender, MouseEventArgs e)
+        {
+            globals.toolNow.Mouse_Move(e.GetPosition(graphCanvas));
+            Invalidate();
+        }
+
+        private void GraphCanvas_MouseLeave(object sender, MouseEventArgs e)
+        {
+            globals.toolNow.Mouse_Leave();
+            Invalidate();
+        }
+
+        private void GraphCanvas_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            globals.toolNow.Mouse_Up();
+            Invalidate();
         }
     }
 }
