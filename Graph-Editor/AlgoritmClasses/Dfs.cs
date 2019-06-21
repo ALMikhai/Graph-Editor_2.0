@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Globalization;
+using System.Threading;
 
 namespace Graph_Editor.AlgoritmClasses
 {
@@ -24,6 +25,22 @@ namespace Graph_Editor.AlgoritmClasses
         public static void Start(int v)
         {
             visited[v] = true;
+            for (int i = 0; i < globals.Size; i++)
+            {
+                if (globals.matrix[v,i] != 0 && !visited[i])
+                {
+                    foreach(var edge in globals.edgesData)
+                    {
+                        if(edge.From.Index == v && edge.To.Index == i)
+                        {                            
+                            MainWindow.Invalidate();
+                            Thread.Sleep(100);
+                            break;
+                        }
+                    }
+                    Start(i);
+                }
+            }
         }
     }
 }
