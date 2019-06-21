@@ -29,50 +29,50 @@
                FontSize="20" FontWeight="DemiBold" BorderBrush="Black" BorderThickness="1"
                VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="0,282,0,-4"
         />
-        <Button x:Name="DFS_Button" Content="Поиск в ширину"
+        <Button x:Name="BFS_Button" Content="Поиск в ширину"
                 HorizontalAlignment="Left" Margin="143,43,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Click"       
+                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="BSF_Button_Click"       
         />
-        <Button Content="Поиск в глубину"
+        <Button x:Name="DFS_Button" Content="Поиск в глубину"
                 HorizontalAlignment="Left" Margin="400,43,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Click"       
+                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="BSF_Button_Click"       
         />
         <Button Content="Алгоритм Дейкстры"
                 HorizontalAlignment="Left" Margin="654,43,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Click"       
+                FontSize="17" FontFamily="serif" FontWeight="DemiBold"       
         />
         <Button Content="Эйлеров цикл"
                 HorizontalAlignment="Left" Margin="654,184,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Click"       
+                FontSize="17" FontFamily="serif" FontWeight="DemiBold"    
         />
         <Button Content="Гамильтонов цикл"
                 HorizontalAlignment="Left" Margin="400,184,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Click"       
+                FontSize="17" FontFamily="serif" FontWeight="DemiBold"       
         />
         <Button Content="Раскрасить граф"
                 HorizontalAlignment="Left" Margin="143,184,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Click"       
+                FontSize="17" FontFamily="serif" FontWeight="DemiBold"       
         />
         <Button Content="Радиус и диаметр графа"
                 HorizontalAlignment="Left" Margin="400,325,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Click"       
+                FontSize="17" FontFamily="serif" FontWeight="DemiBold"       
         />
         <Button Content="Максимальный поток"
                 HorizontalAlignment="Left" Margin="654,325,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Click"       
+                FontSize="17" FontFamily="serif" FontWeight="DemiBold"       
         />
         <Button Content="Флойд-Уоршелл"
                 HorizontalAlignment="Left" Margin="143,325,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Click"       
+                FontSize="17" FontFamily="serif" FontWeight="DemiBold"       
         />
         <Button
             IsCancel="True"
@@ -87,30 +87,32 @@
         </Grid>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="0" Margin="117,0,0,0" VerticalAlignment="Top" Width="755"/>
         <Grid
-            x:Name="DFS" Height="260" Width="459.532"
-            Background="WhiteSmoke" Margin="224,103,190,127">
-
-            <Button
-                IsDefault="True"
-                FontSize="20" Content="Выполнить" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
-                Width="127" Height="42"
-            />
-            <Button
-                IsCancel="True"
-                FontSize="20" Content="Отмена"
-                HorizontalAlignment="Left" Margin="137,0,0,10" VerticalAlignment="Bottom"
-                Width="112" Height="42"
-            />
-            <TextBox x:Name="startVertex"
-                FontSize="20" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"
-                Height="38" Margin="296,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
-                Background="WhiteSmoke" BorderThickness="1" BorderBrush="black"
-            />
+            x:Name="BFS"
+            Background="WhiteSmoke" Margin="224,162,259,139" Visibility="Hidden">
+            <Border BorderBrush="Black" BorderThickness="2" />
+            <Button x:Name="BFS_Ready"
+            IsDefault="True"
+            FontSize="20" Content="Выполнить" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
+            Width="127" Height="42" Click="BFS_Ready_Click"
+        />
+            <Button x:Name="BFS_Cancle"
+            IsCancel="True"
+            FontSize="20" Content="Отмена"
+            HorizontalAlignment="Left" Margin="137,0,0,10" VerticalAlignment="Bottom"
+            Width="112" Height="42"
+            Click="BFS_Cancle_Click"
+        />
             <Label Content="Начальная вершина:" 
-               HorizontalAlignment="Left" Height="54" Margin="26,44,0,0" 
+               HorizontalAlignment="Left" Height="38" Margin="10,42,0,0" 
                VerticalAlignment="Top" Width="290" 
-               FontSize="25"/>
-
+               FontSize="25"
+        />
+            <TextBox x:Name="startVertex"
+            FontSize="20" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"
+            Height="38" Margin="271,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
+            Background="WhiteSmoke" BorderThickness="1" BorderBrush="black" RenderTransformOrigin="0.494,-0.553"
+        />
+            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="2" Margin="0,116,0,0" VerticalAlignment="Top" Width="391"/>
         </Grid>
     </Grid>
 </Window>

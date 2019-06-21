@@ -45,5 +45,7 @@ namespace Graph_Editor.Objects
         public Vertex(int number, Point place) { index = number; coordinates = place; }
 
         public Vertex() { }
+
+
     }
 }

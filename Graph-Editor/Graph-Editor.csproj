@@ -60,9 +60,6 @@
     <Compile Include="Algoritms.xaml.cs">
       <DependentUpon>Algoritms.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DFS.xaml.cs">
-      <DependentUpon>DFS.xaml</DependentUpon>
-    </Compile>
     <Compile Include="globals.cs" />
     <Compile Include="Objects\Edge.cs" />
     <Compile Include="Objects\Vertex.cs" />
@@ -70,10 +67,6 @@
       <DependentUpon>ConnectVertices.xaml</DependentUpon>
     </Compile>
     <Page Include="Algoritms.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="DFS.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
