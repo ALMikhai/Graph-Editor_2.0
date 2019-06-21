@@ -41,11 +41,9 @@ namespace Graph_Editor
         static public void Invalidate()
         {
 
-            Pen pen = new Pen
-            {
-                Brush = Brushes.Black,
-                Thickness = 3
-            };
+            Pen pen = new Pen();
+            pen.Brush = Brushes.Black;
+            pen.Thickness = 3;
 
             graphHost.Children.Clear();
             var drawingVisual = new DrawingVisual();
@@ -53,7 +51,6 @@ namespace Graph_Editor
 
             foreach (var edge in Globals.edgesData)
             {
-
                 if (edge.Directed)
                 {
                     Point from = edge.From.Coordinates;
@@ -109,7 +106,7 @@ namespace Graph_Editor
             Invalidate();
         }
 
-        private void Connect_Click_1(object sender, RoutedEventArgs e)
+        private void Connect_Click(object sender, RoutedEventArgs e)
         {
             ConnectVertices connectVertices = new ConnectVertices();
             WaitPanel.Visibility = Visibility.Visible;
@@ -117,7 +114,7 @@ namespace Graph_Editor
             connectVertices.Show();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Algoritm_Button(object sender, RoutedEventArgs e)
         {
             Algoritms algoritms = new Algoritms();
             WaitPanel.Visibility = Visibility.Visible;
