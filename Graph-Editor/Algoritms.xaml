@@ -52,7 +52,7 @@
                 HorizontalAlignment="Left" Margin="654,184,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
                 FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
-                Tag="3"    
+                Tag="5"    
         />
         <Button Content="Гамильтонов цикл"
                 HorizontalAlignment="Left" Margin="400,184,0,0" VerticalAlignment="Top"
@@ -64,31 +64,31 @@
                 HorizontalAlignment="Left" Margin="143,184,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
                 FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
-                Tag="5"       
+                Tag="3"       
         />
         <Button Content="Радиус и диаметр графа"
                 HorizontalAlignment="Left" Margin="400,325,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
                 FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
-                Tag="6"       
+                Tag="7"       
         />
         <Button Content="Максимальный поток"
                 HorizontalAlignment="Left" Margin="654,325,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
                 FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
-                Tag="7"       
+                Tag="8"       
         />
         <Button Content="Флойд-Уоршелл"
                 HorizontalAlignment="Left" Margin="143,325,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
                 FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
-                Tag="8"       
+                Tag="6"       
         />
         <Button
             IsCancel="True"
             FontSize="20" Content="Отмена"
             HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
-            Width="112" Height="42" Click="Cancel_Click"
+            Width="112" Height="42" Click="main_Cancel_Click"
         />
         <Grid
             x:Name="LockPanel"
@@ -97,9 +97,9 @@
         </Grid>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="0" Margin="117,0,0,0" VerticalAlignment="Top" Width="755"/>
         <Grid
-            x:Name="BFS"
+            x:Name="BFS_DFS"
             Background="WhiteSmoke" Margin="224,162,259,139" Visibility="Hidden">
-            <Border BorderBrush="Black" BorderThickness="2" />
+            <Border BorderBrush="Black" BorderThickness="2"/>
             <Button x:Name="FS_Ready"
             IsDefault="True"
             FontSize="20" Content="Выполнить" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
@@ -110,7 +110,7 @@
             FontSize="20" Content="Отмена"
             HorizontalAlignment="Left" Margin="137,0,0,10" VerticalAlignment="Bottom"
             Width="112" Height="42"
-            Click="BFS_Cancle_Click"
+            Click="Button_ExitAlgoritm_Click"
         />
             <Label Content="Начальная вершина:" 
                HorizontalAlignment="Left" Height="38" Margin="10,42,0,0" 
@@ -123,6 +123,44 @@
             Background="WhiteSmoke" BorderThickness="1" BorderBrush="black" RenderTransformOrigin="0.494,-0.553"
         />
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="2" Margin="0,116,0,0" VerticalAlignment="Top" Width="391"/>
+        </Grid>
+        <Grid
+            x:Name="Dijkstra"
+            Background="WhiteSmoke" Margin="224,78,259,170" Visibility="Hidden">
+            <Border BorderBrush="Black" BorderThickness="2"/>
+            <Button x:Name="Dijkstra_Ready"
+            IsDefault="True"
+            FontSize="20" Content="Выполнить" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
+            Width="127" Height="42" Click="Button_ReadyExitAlgoritm_Click"
+            />
+            <Button x:Name="Dijkstra_Cancel"
+            IsCancel="True"
+            FontSize="20" Content="Отмена"
+            HorizontalAlignment="Left" Margin="137,0,0,10" VerticalAlignment="Bottom"
+            Width="112" Height="42"
+            Click="Button_ExitAlgoritm_Click"
+            />
+            <Label Content="Начальная вершина:" 
+               HorizontalAlignment="Left" Height="50" Margin="10,42,0,0" 
+               VerticalAlignment="Top" Width="290" 
+               FontSize="25"
+            />
+            <TextBox x:Name="DijkstrastartVertex"
+            FontSize="20" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"
+            Height="38" Margin="271,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
+            Background="WhiteSmoke" BorderThickness="1" BorderBrush="black"
+            />
+            <Label Content="Конечная вершина:" 
+               HorizontalAlignment="Left" Height="50" Margin="10,102,0,0" 
+               VerticalAlignment="Top" Width="290" 
+               FontSize="25"
+            />
+            <TextBox x:Name="DijkstrafinalVertex"
+            FontSize="20" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"
+            Height="38" Margin="271,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
+            Background="WhiteSmoke" BorderThickness="1" BorderBrush="black"
+            />
+            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="1" Margin="0,174,0,0" VerticalAlignment="Top" Width="391" RenderTransformOrigin="0.5,0.5"/>
         </Grid>
     </Grid>
 </Window>
