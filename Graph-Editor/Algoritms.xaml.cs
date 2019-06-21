@@ -31,9 +31,9 @@ namespace Graph_Editor
         public void Algoritm_Ready()
         {
             // TODO: Доработать разблокировку окна (Algoritms)
-            LockPanel.Background = null;
-            LockPanel.Opacity = 0;
-            LockPanel.Visibility = Visibility.Hidden;
+            // LockPanel.Background = null;
+            // LockPanel.Opacity = 0;
+            // LockPanel.Visibility = Visibility.Hidden;
 
             mainWindow.WaitPanel.Background = null;
             mainWindow.WaitPanel.Opacity = 0;
