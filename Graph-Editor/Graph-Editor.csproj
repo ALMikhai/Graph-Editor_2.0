@@ -57,10 +57,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AlgoritmClasses\Dfs.cs" />
     <Compile Include="Algoritms.xaml.cs">
       <DependentUpon>Algoritms.xaml</DependentUpon>
     </Compile>
+<<<<<<< HEAD
+    <Compile Include="DFS.xaml.cs">
+      <DependentUpon>DFS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Globals.cs" />
+=======
     <Compile Include="globals.cs" />
+>>>>>>> master
     <Compile Include="Objects\Edge.cs" />
     <Compile Include="Objects\Vertex.cs" />
     <Compile Include="ConnectVertices.xaml.cs">

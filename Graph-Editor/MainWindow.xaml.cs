@@ -41,15 +41,17 @@ namespace Graph_Editor
         static public void Invalidate()
         {
 
-            Pen pen = new Pen();
-            pen.Brush = Brushes.Black;
-            pen.Thickness = 3;
+            Pen pen = new Pen
+            {
+                Brush = Brushes.Black,
+                Thickness = 3
+            };
 
             graphHost.Children.Clear();
             var drawingVisual = new DrawingVisual();
             var drawingContext = drawingVisual.RenderOpen();
 
-            foreach (var edge in globals.edgesData)
+            foreach (var edge in Globals.edgesData)
             {
                 if (edge.Directed)
                 {
@@ -81,7 +83,7 @@ namespace Graph_Editor
 
             }
 
-            foreach (Vertex vertex in globals.vertexData)
+            foreach (Vertex vertex in Globals.vertexData)
             {
                 int radius = 20;
                 drawingContext.DrawEllipse(Brushes.DarkGray, pen, vertex.Coordinates, radius, radius);
@@ -102,7 +104,7 @@ namespace Graph_Editor
         private void GraphCanvas_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Vertex vertexNow = new Vertex(globalIndex++, e.GetPosition(graphCanvas));
-            globals.vertexData.Add(vertexNow);
+            Globals.vertexData.Add(vertexNow);
             Invalidate();
         }
 
