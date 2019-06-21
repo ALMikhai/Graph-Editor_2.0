@@ -19,7 +19,7 @@ namespace Graph_Editor.AlgoritmClasses
 {
     public static class Dfs
     {
-        static bool[] visited = new bool[Globals.Size];
+        static bool[] visited = new bool[globals.Size];
 
         public static void Start(int v)
         {
