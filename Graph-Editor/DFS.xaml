@@ -22,7 +22,8 @@
         <Label Content="Начальная вершина:" 
                HorizontalAlignment="Left" Height="54" Margin="26,44,0,0" 
                VerticalAlignment="Top" Width="290" 
-               FontSize="25"/>
+               FontSize="25"
+        />
         <TextBox x:Name="startVertex"
             FontSize="20" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"
             Height="38" Margin="296,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"

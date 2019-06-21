@@ -34,7 +34,8 @@ namespace Graph_Editor
         void DataWindow_Closing(object sender, CancelEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
-            mainWindow.WaitPanel.Background = null;
+            if (mainWindow.WaitPanel != null)
+                mainWindow.WaitPanel.Background = null;
             mainWindow.WaitPanel.Opacity = 0;
         }
 

@@ -88,9 +88,12 @@ C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\o
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.exe
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.pdb
 >>>>>>> master
+<<<<<<< HEAD
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Algoritms.g.cs
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\DFS.g.cs
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ConnectVertices.g.cs
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Algoritms.baml
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\DFS.baml
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ConnectVertices.baml
+=======
+>>>>>>> master

@@ -12,6 +12,12 @@
             <RowDefinition Height="348*"/>
         </Grid.RowDefinitions>
         <Canvas x:Name="graphCanvas" Margin="192,10,10,10" Background="LightGray" Grid.RowSpan="2" MouseDown="GraphCanvas_MouseDown"/>
+        <Button x:Name="Algorimts_Window"
+            Content="Algoritms"
+            HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top"
+            Width="167" Height="56"
+            FontSize="20" FontWeight="DemiBold" Click="Button_Click"
+        />
         <Button x:Name="Connect"
                 Content="Connect vertexes"
                 HorizontalAlignment="Left" Margin="10,275,0,0" VerticalAlignment="Top"
@@ -26,17 +32,15 @@
             Opacity="0.4"
             Grid.ColumnSpan="20" Grid.RowSpan="20">
         </Grid>
-        <Button
-            Content="Algoritms"
-            HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top"
-            Width="167" Height="56"
-            FontSize="20" FontWeight="DemiBold" Click="Button_Click"
-        />
         <Label Content=".TXT"
                    HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"       
                    Width="150" Height="56"
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                    FontSize="30" FontWeight="bold" BorderBrush="black" BorderThickness="1" 
         />
-    </Grid>
+        <Image 
+                HorizontalAlignment="Left" Height="60"
+                Margin="10,278,0,0" VerticalAlignment="Top" Width="74"
+                Source="..\images\logo.png" Grid.Row="1"
+        />    </Grid>
 </Window>

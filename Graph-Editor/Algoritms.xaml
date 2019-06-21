@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Graph_Editor"
         mc:Ignorable="d"
         Closing="DataWindow_Closing"
-        Title="Window2" Height="519.231" Width="880" ResizeMode="NoResize">
+        Title="Выбери" Height="519.231" Width="880" ResizeMode="NoResize">
     <Grid>
         <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="1" Margin="0,140,0,0" VerticalAlignment="Top" Width="872"/>
         <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="1" Margin="0,281,0,0" VerticalAlignment="Top" Width="872"/>
@@ -84,6 +84,33 @@
             x:Name="LockPanel"
             Opacity="0.4"
             Grid.ColumnSpan="20" Grid.RowSpan="20">
+        </Grid>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="0" Margin="117,0,0,0" VerticalAlignment="Top" Width="755"/>
+        <Grid
+            x:Name="DFS" Height="260" Width="459.532"
+            Background="WhiteSmoke" Margin="224,103,190,127">
+
+            <Button
+                IsDefault="True"
+                FontSize="20" Content="Выполнить" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
+                Width="127" Height="42"
+            />
+            <Button
+                IsCancel="True"
+                FontSize="20" Content="Отмена"
+                HorizontalAlignment="Left" Margin="137,0,0,10" VerticalAlignment="Bottom"
+                Width="112" Height="42"
+            />
+            <TextBox x:Name="startVertex"
+                FontSize="20" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"
+                Height="38" Margin="296,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
+                Background="WhiteSmoke" BorderThickness="1" BorderBrush="black"
+            />
+            <Label Content="Начальная вершина:" 
+               HorizontalAlignment="Left" Height="54" Margin="26,44,0,0" 
+               VerticalAlignment="Top" Width="290" 
+               FontSize="25"/>
+
         </Grid>
     </Grid>
 </Window>
