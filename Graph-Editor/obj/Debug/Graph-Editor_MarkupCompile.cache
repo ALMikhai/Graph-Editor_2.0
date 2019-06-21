@@ -9,8 +9,8 @@ Graph_Editor
 none
 false
 DEBUG;TRACE
-<<<<<<< HEAD
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\App.xaml
+<<<<<<< Updated upstream
 4-113909625
 
 13827818740
@@ -24,6 +24,11 @@ C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Gra
 =======
 121098012105
 >>>>>>> parent of d8ee046... Merge branch 'Dmitry's_branch'
+=======
+3-196420989
+
+12495899187
+>>>>>>> Stashed changes
 151984215308
 Algoritms.xaml;DFS.xaml;MainWindow.xaml;ConnectVertices.xaml;
 
