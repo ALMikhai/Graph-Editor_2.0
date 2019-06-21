@@ -46,12 +46,31 @@ namespace Graph_Editor
             mainWindow.WaitPanel.Opacity = 0;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BSF_Button_Click(object sender, RoutedEventArgs e)
         {
-            DFS dfs = new DFS();
-            LockPanel.Visibility = Visibility.Visible;
-            LockPanel.Background = Brushes.LightGray;
-            dfs.Show();
+            LockPanel.Background = Brushes.Gray;
+            BFS.Visibility = Visibility.Visible;
+        }
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            LockPanel.Background = null;
+            BFS.Visibility = Visibility.Hidden;
+        }
+
+        private void BFS_Ready_Click(object sender, RoutedEventArgs e)
+        {
+            if (startVertex.Text != "")
+            {
+               // foreach()
+                //{
+
+                //
+            }
+        }
+        
+        private void BFS_Cancle_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
