@@ -26,7 +26,7 @@
             Opacity="0.4"
             Grid.ColumnSpan="20" Grid.RowSpan="20">
         </Grid>
-        <Button
+        <Button x:Name="Algorimts_Window"
             Content="Algoritms"
             HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top"
             Width="167" Height="56"
@@ -37,6 +37,11 @@
                    Width="150" Height="56"
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                    FontSize="30" FontWeight="bold" BorderBrush="black" BorderThickness="1" 
+        />
+        <Image 
+                HorizontalAlignment="Left" Height="60"
+                Margin="10,278,0,0" VerticalAlignment="Top" Width="74"
+                Source="C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\images\logo.png" Grid.Row="1"
         />
     </Grid>
 </Window>

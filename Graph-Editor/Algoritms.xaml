@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Graph_Editor"
         mc:Ignorable="d"
         Closing="DataWindow_Closing"
-        Title="Window2" Height="519.231" Width="880" ResizeMode="NoResize">
+        Title="Выбери" Height="519.231" Width="880" ResizeMode="NoResize">
     <Grid>
         <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="1" Margin="0,140,0,0" VerticalAlignment="Top" Width="872"/>
         <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" Height="1" Margin="0,281,0,0" VerticalAlignment="Top" Width="872"/>
@@ -85,5 +85,6 @@
             Opacity="0.4"
             Grid.ColumnSpan="20" Grid.RowSpan="20">
         </Grid>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="0" Margin="117,0,0,0" VerticalAlignment="Top" Width="755"/>
     </Grid>
 </Window>

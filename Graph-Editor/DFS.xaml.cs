@@ -33,10 +33,9 @@ namespace Graph_Editor
             if (startVertex.Text != "")
             {
                 Algoritms algoritms = new Algoritms();
-                algoritms.Algoritm_Ready();
-                // Запускаем dfs; 
-                MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
+                // Запускаем dfs;
                 this.Close();
+                algoritms.Algoritm_Ready();
             }
             else
             {
