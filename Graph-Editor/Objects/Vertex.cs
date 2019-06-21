@@ -18,7 +18,7 @@ namespace Graph_Editor.Objects
 {
     public class Vertex
     {
-        private int index;
+        private readonly int index;
         private Point coordinates;
 
         public int Index
@@ -26,10 +26,6 @@ namespace Graph_Editor.Objects
             get
             {
                 return index;
-            }
-            set
-            {
-                index = value;
             }
         }
 
@@ -39,6 +35,17 @@ namespace Graph_Editor.Objects
             {
                 return coordinates;
             }
+            set
+            {
+                coordinates = value;
+            }
+        }
+
+        public bool IsBe(int value)
+        {
+            if (value > Globals.vertexData.Count)
+                return false;
+            return true;
         }
         
 
