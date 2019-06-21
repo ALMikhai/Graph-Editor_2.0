@@ -11,7 +11,14 @@
             <RowDefinition Height="341*"/>
             <RowDefinition Height="348*"/>
         </Grid.RowDefinitions>
-        <Canvas x:Name="graphCanvas" Margin="192,10,10,10" Background="LightGray" Grid.RowSpan="2" MouseDown="GraphCanvas_MouseDown"/>
+        <Canvas x:Name="graphCanvas" 
+                Margin="192,10,10,10" 
+                Background="LightGray" 
+                Grid.RowSpan="2" 
+                MouseDown="GraphCanvas_MouseDown"
+                MouseMove="GraphCanvas_MouseMove"
+                MouseLeave="GraphCanvas_MouseLeave"
+                MouseUp="GraphCanvas_MouseUp"/>
         <Button x:Name="Algorimts_Window"
             Content="Algoritms"
             HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top"
@@ -57,7 +64,6 @@
         <Image 
                 HorizontalAlignment="Left" Height="60"
                 Margin="10,278,0,0" VerticalAlignment="Top" Width="74"
-                Source="..\images\logo.png" Grid.Row="1"
-        />    
+                />    
     </Grid>
 </Window>

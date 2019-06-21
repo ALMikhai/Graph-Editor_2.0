@@ -21,7 +21,12 @@ namespace Graph_Editor
 
         }
 
-        public virtual void Mouse_Up(Point pntNow)
+        public virtual void Mouse_Up()
+        {
+
+        }
+
+        public virtual void Mouse_Leave()
         {
 
         }
