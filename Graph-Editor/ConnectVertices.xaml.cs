@@ -39,7 +39,7 @@ namespace Graph_Editor
             mainWindow.WaitPanel.Opacity = 0;
         }
 
-        private void Create_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             Vertex from = new Vertex(), to = new Vertex();
 
@@ -89,9 +89,8 @@ namespace Graph_Editor
             MainWindow.Invalidate();
 
             //TODO Сделать выделение доп. память для матрицы
-            FirstVertex.Text = "";
-            SecondVertex.Text = "";
-            WeightSlider.Value = 0;
+
+            this.Close();
         }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -101,16 +100,16 @@ namespace Graph_Editor
             if (TextBox_Weight != null)
                 TextBox_Weight.Text = Math.Round(num).ToString();
         }
-        private void Directed_Button_Choose(object sender, RoutedEventArgs e)
+        private void RadioButton_Checked_2(object sender, RoutedEventArgs e)
         {
             route = true;
         }
-        private void Undirected_Button_Choose(object sender, RoutedEventArgs e)
+        private void RadioButton_Checked_3(object sender, RoutedEventArgs e)
         {
             route = false;
         }
 
-        private void Cancel_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

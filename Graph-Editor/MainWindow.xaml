@@ -16,14 +16,14 @@
             Content="Algoritms"
             HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top"
             Width="167" Height="56"
-            FontSize="20" FontWeight="DemiBold" Click="Algoritm_Button"
+            FontSize="20" FontWeight="DemiBold" Click="Button_Click"
         />
         <Button x:Name="Connect"
                 Content="Connect vertexes"
                 HorizontalAlignment="Left" Margin="10,275,0,0" VerticalAlignment="Top"
                 Width="167" Height="56"
                 FontSize="20" FontWeight="DemiBold"
-                Click="Connect_Click"
+                Click="Connect_Click_1"
         />
 
         <!-- Background="LightGray" (to Down)-->
