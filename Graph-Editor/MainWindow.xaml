@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Graph_Editor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="1080">
+        Title="GraphEditor" Height="720" Width="1080">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="341*"/>
@@ -16,7 +16,7 @@
                 Content="Connect vertexes"
                 HorizontalAlignment="Left" Margin="10,275,0,0" VerticalAlignment="Top"
                 Width="167" Height="56"
-                FontSize="20" FontWeight="500"
+                FontSize="20" FontWeight="DemiBold"
                 Click="Connect_Click_1"
         />
 
@@ -26,11 +26,22 @@
             Opacity="0.4"
             Grid.ColumnSpan="20" Grid.RowSpan="20">
         </Grid>
-        <Button
+        <Button x:Name="Algorimts_Window"
             Content="Algoritms"
             HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top"
             Width="167" Height="56"
-            FontSize="20" FontWeight="500"
+            FontSize="20" FontWeight="DemiBold" Click="Button_Click"
+        />
+        <Label Content=".TXT"
+                   HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"       
+                   Width="150" Height="56"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                   FontSize="30" FontWeight="bold" BorderBrush="black" BorderThickness="1" 
+        />
+        <Image 
+                HorizontalAlignment="Left" Height="60"
+                Margin="10,278,0,0" VerticalAlignment="Top" Width="74"
+                Source="C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\images\logo.png" Grid.Row="1"
         />
     </Grid>
 </Window>

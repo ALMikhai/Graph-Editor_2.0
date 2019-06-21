@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Владислав\Source\Repos\Graph-Editor\Graph-Editor\obj\Debug\
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\
 Graph_Editor
 none
 false
 DEBUG;TRACE
-C:\Users\Владислав\Source\Repos\Graph-Editor\Graph-Editor\App.xaml
-2462529049
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\App.xaml
+4-113909625
 
-111003170880
+13-814537247
 151984215308
-MainWindow.xaml;Window1.xaml;
+Algoritms.xaml;DFS.xaml;MainWindow.xaml;ConnectVertices.xaml;
 
-False
+True
 

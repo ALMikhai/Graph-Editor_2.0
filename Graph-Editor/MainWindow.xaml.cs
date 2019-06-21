@@ -22,10 +22,10 @@ namespace Graph_Editor
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     ///
-    
+
 
     public partial class MainWindow : Window
-    { 
+    {
         int globalIndex = 0;
 
         public static FigureHost graphHost = new FigureHost();
@@ -109,10 +109,18 @@ namespace Graph_Editor
 
         private void Connect_Click_1(object sender, RoutedEventArgs e)
         {
-            Window1 window1 = new Window1();
+            ConnectVertices connectVertices = new ConnectVertices();
             WaitPanel.Visibility = Visibility.Visible;
             WaitPanel.Background = Brushes.LightGray;
-            window1.Show();
+            connectVertices.Show();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Algoritms algoritms = new Algoritms();
+            WaitPanel.Visibility = Visibility.Visible;
+            WaitPanel.Background = Brushes.LightGray;
+            algoritms.Show();
         }
     }
 }
