@@ -47,7 +47,7 @@ namespace Graph_Editor
             var drawingVisual = new DrawingVisual();
             var drawingContext = drawingVisual.RenderOpen();
 
-            foreach (var edge in Globals.edgesData)
+            foreach (var edge in globals.edgesData)
             {
                 if (edge.Directed)
                 {
@@ -79,7 +79,7 @@ namespace Graph_Editor
 
             }
 
-            foreach (Vertex vertex in Globals.vertexData)
+            foreach (Vertex vertex in globals.vertexData)
             {
                 drawingContext.DrawEllipse(Brushes.DarkGray, pen, vertex.Coordinates, globals.vertRadius, globals.vertRadius);
 
@@ -94,12 +94,6 @@ namespace Graph_Editor
 
             drawingContext.Close();
             graphHost.Children.Add(drawingVisual);
-        }
-
-        private void GraphCanvas_MouseDown(object sender, MouseButtonEventArgs e)
-        { 
-            globals.toolNow.Mouse_Down(e.GetPosition(graphCanvas));
-            Invalidate();
         }
 
         private void Connect_Click(object sender, RoutedEventArgs e)
@@ -121,6 +115,30 @@ namespace Graph_Editor
         private void Change_Tool_Button(object sender, RoutedEventArgs e)
         {
             globals.toolNow = globals.toolList[Convert.ToInt32((sender as Button).Tag)];
+        }
+
+        private void GraphCanvas_MouseDown(object sender, MouseEventArgs e)
+        {
+            globals.toolNow.Mouse_Down(e.GetPosition(graphCanvas));
+            Invalidate();
+        }
+
+        private void GraphCanvas_MouseMove(object sender, MouseEventArgs e)
+        {
+            globals.toolNow.Mouse_Move(e.GetPosition(graphCanvas));
+            Invalidate();
+        }
+
+        private void GraphCanvas_MouseLeave(object sender, MouseEventArgs e)
+        {
+            globals.toolNow.Mouse_Leave();
+            Invalidate();
+        }
+
+        private void GraphCanvas_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            globals.toolNow.Mouse_Up();
+            Invalidate();
         }
     }
 }
