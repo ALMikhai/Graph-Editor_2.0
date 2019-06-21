@@ -47,9 +47,8 @@ namespace Graph_Editor
             var drawingVisual = new DrawingVisual();
             var drawingContext = drawingVisual.RenderOpen();
 
-            foreach (var edge in globals.edgesData)
+            foreach (var edge in Globals.edgesData)
             {
-
                 if (edge.Directed)
                 {
                     Point from = edge.From.Coordinates;
@@ -80,7 +79,7 @@ namespace Graph_Editor
 
             }
 
-            foreach (Vertex vertex in globals.vertexData)
+            foreach (Vertex vertex in Globals.vertexData)
             {
                 drawingContext.DrawEllipse(Brushes.DarkGray, pen, vertex.Coordinates, globals.vertRadius, globals.vertRadius);
 
@@ -103,7 +102,7 @@ namespace Graph_Editor
             Invalidate();
         }
 
-        private void Connect_Click_1(object sender, RoutedEventArgs e)
+        private void Connect_Click(object sender, RoutedEventArgs e)
         {
             ConnectVertices connectVertices = new ConnectVertices();
             WaitPanel.Visibility = Visibility.Visible;
@@ -111,7 +110,7 @@ namespace Graph_Editor
             connectVertices.Show();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Algoritm_Button(object sender, RoutedEventArgs e)
         {
             Algoritms algoritms = new Algoritms();
             WaitPanel.Visibility = Visibility.Visible;

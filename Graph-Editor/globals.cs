@@ -10,10 +10,11 @@ using System.Windows.Media;
 
 namespace Graph_Editor
 {
-    public static class globals
+    public static class Globals
     {
         public static int globalIndex = 0;
-        public static int[,] matrix = new int[100, 100];
+        public static int Size = 100;
+        public static int[,] matrix = new int[Size, Size];
         public static List<Vertex> vertexData = new List<Vertex>();
         public static List<Edge> edgesData = new List<Edge>();
 

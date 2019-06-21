@@ -16,7 +16,7 @@
             Content="Algoritms"
             HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top"
             Width="167" Height="56"
-            FontSize="20" FontWeight="DemiBold" Click="Button_Click"
+            FontSize="20" FontWeight="DemiBold" Click="Algoritm_Button"
         />
         <Button x:Name="AddVertex" 
                 Content="AddVertex" 
@@ -39,7 +39,7 @@
                 HorizontalAlignment="Left" Margin="10,275,0,0" VerticalAlignment="Top"
                 Width="167" Height="56"
                 FontSize="20" FontWeight="DemiBold"
-                Click="Connect_Click_1"
+                Click="Connect_Click"
         />
 
         <!-- Background="LightGray" (to Down)-->
@@ -54,5 +54,10 @@
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                    FontSize="30" FontWeight="bold" BorderBrush="black" BorderThickness="1" 
         />
-        </Grid>
+        <Image 
+                HorizontalAlignment="Left" Height="60"
+                Margin="10,278,0,0" VerticalAlignment="Top" Width="74"
+                Source="..\images\logo.png" Grid.Row="1"
+        />    
+    </Grid>
 </Window>

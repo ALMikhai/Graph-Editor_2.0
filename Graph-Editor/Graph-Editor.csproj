@@ -57,11 +57,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AlgoritmClasses\Dfs.cs" />
     <Compile Include="Algoritms.xaml.cs">
       <DependentUpon>Algoritms.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="DFS.xaml.cs">
-      <DependentUpon>DFS.xaml</DependentUpon>
     </Compile>
     <Compile Include="globals.cs" />
     <Compile Include="Objects\Edge.cs" />
@@ -73,10 +71,6 @@
     <Compile Include="Tools\MoveVertex.cs" />
     <Compile Include="Tools\Tool.cs" />
     <Page Include="Algoritms.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="DFS.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
