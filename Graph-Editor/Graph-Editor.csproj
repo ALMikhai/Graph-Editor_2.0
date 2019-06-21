@@ -65,7 +65,6 @@
       <DependentUpon>DFS.xaml</DependentUpon>
     </Compile>
     <Compile Include="globals.cs" />
->>>>>>> master
     <Compile Include="Objects\Edge.cs" />
     <Compile Include="Objects\Vertex.cs" />
     <Compile Include="ConnectVertices.xaml.cs">
