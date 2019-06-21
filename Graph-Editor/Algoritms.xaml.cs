@@ -23,147 +23,118 @@ namespace Graph_Editor
     /// </summary>
     public partial class Algoritms : Window
     {
-        MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
+        int chooseAlg;
         public Algoritms()
         {
             InitializeComponent();
         }
 
-        /*static Dictionary<int, Grid> gridAlg = new Dictionary<int, Grid>
+        private void DataWindow_Closing(object sender, CancelEventArgs e)
         {
-            {0, BFS},
-        };*/
-
-        public void Algoritm_Ready()
-        {
-            mainWindow.WaitPanel.Background = null;
-            mainWindow.WaitPanel.Opacity = 0;
-
-            mainWindow.Activate();
-        }
-        void DataWindow_Closing(object sender, CancelEventArgs e)
-        {
+            MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
             mainWindow.WaitPanel.Background = null;
             mainWindow.WaitPanel.Opacity = 0;
         }
-
-        private void Cancel_Click(object sender, RoutedEventArgs e)
+        private void main_Cancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private void BFS_Cancle_Click(object sender, RoutedEventArgs e)
+        private void Button_Alg_Click(object sender, RoutedEventArgs e)
         {
-            BFS.Visibility = Visibility.Hidden;
-            LockPanel.Background = null;
+            chooseAlg = Convert.ToInt32((sender as Button).Tag.ToString());
+
+            LockPanel.Background = Brushes.Gray;
+            if (chooseAlg == 0 || chooseAlg == 1)
+            {
+                BFS_DFS.Visibility = Visibility.Visible;
+                FSstartVertex.Text = "0";
+            }
+            else if (chooseAlg == 2)
+            {
+                Dijkstra.Visibility = Visibility.Visible;
+                DijkstrastartVertex.Text = "0";
+                DijkstrafinalVertex.Text = "0";
+            }
+            else
+            {
+                this.Close();
+                switch (chooseAlg)
+                {
+                    case 3:
+                        // Раскрашиваем граф ();
+                        break;
+                    case 4:
+                        // Гамильтонов цикл();
+                        break;
+                    case 5:
+                        // Эйлеров цикл();
+                        break;
+                    case 6:
+                        // Флойд-Уоршелл();
+                        break;
+                    case 7:
+                        // Радиус и диаметр графа();
+                        break;
+                    case 8:
+                        // Максимальный поток();
+                        break;
+                }
+            }
         }
 
         private void Button_ReadyExitAlgoritm_Click(object sender, RoutedEventArgs e)
         {
-            if (FSstartVertex.Text != "")
+            if ((chooseAlg == 0 || chooseAlg == 1) && globals.IsBe(Convert.ToInt32(FSstartVertex.Text)) && FSstartVertex.Text != "")
             {
-                if (globals.IsBe(Convert.ToInt32(FSstartVertex.Text)))
+                BFS_DFS.Visibility = Visibility.Hidden;
+                this.Close();
+                if (chooseAlg == 0)
                 {
-                    this.Close();
-                    BFS.Visibility = Visibility.Hidden;
-                    switch (Convert.ToInt32((sender as Button).Tag.ToString()))
-                    {
-                        case 0:
-                            {
-                                break;
-                            }
-                        case 1:
-                            {
-                                break;
-                            }
-                        case 2:
-                            {
-                                break;
-                            }
-                        case 3:
-                            {
-                                break;
-                            }
-                        case 4:
-                            {
-                                break;
-                            }
-                        case 5:
-                            {
-                                break;
-                            }
-                        case 6:
-                            {
-                                break;
-                            }
-                        case 7:
-                            {
-                                break;
-                            }
-                        case 8:
-                            {
-                                break;
-                            }
-                    }
-                }
-                else
+                    //bfs();
+                } else
                 {
-                    MessageBox.Show("This vertex doesn't exist");
+                    //dfs();
                 }
             }
-            else
+            else if (globals.IsBe(Convert.ToInt32(DijkstrastartVertex.Text)) && globals.IsBe(Convert.ToInt32(DijkstrafinalVertex.Text)) && chooseAlg == 2
+                     && DijkstrastartVertex.Text != "" && DijkstrafinalVertex.Text != "")
             {
-                MessageBox.Show("Input a vertex");
+                if (Convert.ToInt32(DijkstrastartVertex.Text) != Convert.ToInt32(DijkstrafinalVertex.Text))
+                {
+                    this.Close();
+                    Dijkstra.Visibility = Visibility.Hidden;
+                    // Dijkstra();
+                }
+                else
+                    MessageBox.Show("Enter different vertices");
+            }
+            else
+                MessageBox.Show("Invalid input data");
+        }
+
+        private void Button_ExitAlgoritm_Click(object sender, RoutedEventArgs e)
+        {
+            if (chooseAlg == 0 || chooseAlg == 1)
+            {
+                BFS_DFS.Visibility = Visibility.Hidden;
+                LockPanel.Background = null;
+            }
+            else if (chooseAlg == 2)
+            {
+                Dijkstra.Visibility = Visibility.Hidden;
+                LockPanel.Background = null;
             }
         }
 
-        private void Button_Alg_Click(object sender, RoutedEventArgs e)
+        private void Button_MouseMove(object sender, MouseEventArgs e)
         {
-            LockPanel.Background = Brushes.Gray;
-            switch (Convert.ToInt32((sender as Button).Tag.ToString()))
-            {
-                case 0:
-                    {
-                        BFS.Visibility = Visibility.Visible;
-                        FSstartVertex.Text = "0";
-                        break;
-                    }
-                case 1:
-                    {
-                        BFS.Visibility = Visibility.Visible;
-                        FSstartVertex.Text = "0";
-                        break;
-                    }
-                case 2:
-                    {
-                        break;
-                    }
-                case 3:
-                    {
-                        break;
-                    }
-                case 4:
-                    {
-                        break;
-                    }
-                case 5:
-                    {
-                        break;
-                    }
-                case 6:
-                    {
-                        break;
-                    }
-                case 7:
-                    {
-                        break;
-                    }
-                case 8:
-                    {
-                        break;
-                    }
-            }
+            (sender as Button).Background = Brushes.SkyBlue;
+        }
 
+        private void Button_MouseLeave(object sender, MouseEventArgs e)
+        {
+            (sender as Button).Background = Brushes.CadetBlue;
         }
     }
 }

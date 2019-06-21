@@ -104,10 +104,14 @@ namespace Graph_Editor
         private void Directed_Button_Choose(object sender, RoutedEventArgs e)
         {
             route = true;
+            Undirected.Background = (Brush)new BrushConverter().ConvertFrom("#98B0B0");
+            Directed.Background = (Brush)new BrushConverter().ConvertFrom("#789778");
         }
         private void Undirected_Button_Choose(object sender, RoutedEventArgs e)
         {
             route = false;
+            Undirected.Background = (Brush)new BrushConverter().ConvertFrom("#789778");
+            Directed.Background = (Brush)new BrushConverter().ConvertFrom("#98B0B0");
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

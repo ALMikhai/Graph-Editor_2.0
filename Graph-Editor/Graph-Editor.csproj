@@ -118,6 +118,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="images\deleteVertexIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\edgeIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\handTool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\vertexIcon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

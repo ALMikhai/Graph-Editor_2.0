@@ -5,63 +5,70 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Graph_Editor"
         mc:Ignorable="d"
-        Title="GraphEditor" Height="720" Width="1080">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="341*"/>
-            <RowDefinition Height="348*"/>
-        </Grid.RowDefinitions>
+        Title="GraphEditor" Height="720" Width="1080" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style x:Key="MyButtonStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}" Width="64" Height="64" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Border BorderThickness="0"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#0a3f4c">
         <Canvas x:Name="graphCanvas" 
                 Margin="192,10,10,10" 
-                Background="LightGray" 
-                Grid.RowSpan="2" 
+                Background="#b7e1e1"
+                Grid.RowSpan="2"
                 MouseDown="GraphCanvas_MouseDown"
                 MouseMove="GraphCanvas_MouseMove"
                 MouseLeave="GraphCanvas_MouseLeave"
                 MouseUp="GraphCanvas_MouseUp"/>
         <Button x:Name="Algorimts_Window"
-            Content="Algoritms"
+            Content="Algoritms" BorderThickness="0"
             HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top"
-            Width="167" Height="56"
+            Width="167" Height="56" Background="#345160"
             FontSize="20" FontWeight="DemiBold" Click="Algoritm_Button"
         />
-        <Button x:Name="AddVertex" 
-                Content="AddVertex" 
-                Tag="0"
+        <Button Style="{StaticResource MyButtonStyle}" x:Name="AddVertex"
+                Tag="0" Background="#345160"
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Top"
-                Width="74" 
-                Margin="56,163,0,0"
-                Click="Change_Tool_Button"/>
-        <Button x:Name="MoveVertex" 
-                Content="MoveVertex" 
-                Tag="1"
-                HorizontalAlignment="Left" 
+                Margin="56,283,0,0"
+                Click="Change_Tool_Button" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove">
+            <Image Source="images/vertexIcon.png"/>
+        </Button>
+        <Button Style="{StaticResource MyButtonStyle}" x:Name="MoveVertex"
+                Tag="1" Background="#345160"
+                HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Width="74" 
-                Margin="56,138,0,0"
-                Click="Change_Tool_Button"/>
-        <Button x:Name="Connect"
-                Content="Connect vertexes"
-                HorizontalAlignment="Left" Margin="10,275,0,0" VerticalAlignment="Top"
-                Width="167" Height="56"
+                Margin="56,387,0,0"
+                Click="Change_Tool_Button"  MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove">
+            <Image Source="images\handTool.png"/>
+        </Button>
+        <Button Style="{StaticResource MyButtonStyle}" x:Name="Connect" Background="#345160"
+                HorizontalAlignment="Left" Margin="56,491,0,0" VerticalAlignment="Top"
                 FontSize="20" FontWeight="DemiBold"
-                Click="Connect_Click"
-        />
+                Click="Connect_Click"  MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove">
+            <Image Source="images\edgeIcon.png"/>
+        </Button>
 
         <!-- Background="LightGray" (to Down)-->
         <Grid
             x:Name="WaitPanel"
-            Opacity="0.4" Grid.RowSpan="2"/>
-        <Label Content=".TXT"
+            Opacity="0.4" Grid.RowSpan="2"
+        />
+        <Label Content=".TXT" Background="#b7e1e1"
                    HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"       
                    Width="150" Height="56"
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                    FontSize="30" FontWeight="bold" BorderBrush="black" BorderThickness="1" 
         />
-        <Image 
-                HorizontalAlignment="Left" Height="60"
-                Margin="10,278,0,0" VerticalAlignment="Top" Width="74"
-                />    
+        <Image Source="images/logo.png" Margin="10,584,954,10"/>
     </Grid>
 </Window>

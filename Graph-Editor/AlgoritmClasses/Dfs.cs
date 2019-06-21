@@ -24,7 +24,6 @@ namespace Graph_Editor.AlgoritmClasses
         public static void Start(int v)
         {
             visited[v] = true;
-            //for(int i = 0; i < )
         }
     }
 }

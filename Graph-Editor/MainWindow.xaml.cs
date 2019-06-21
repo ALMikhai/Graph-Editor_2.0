@@ -39,9 +39,10 @@ namespace Graph_Editor
         static public void Invalidate()
         {
 
-            Pen pen = new Pen();
-            pen.Brush = Brushes.Black;
-            pen.Thickness = 3;
+            Pen pen = new Pen
+            {
+                Thickness = 1
+            };
 
             graphHost.Children.Clear();
             var drawingVisual = new DrawingVisual();
@@ -49,6 +50,7 @@ namespace Graph_Editor
 
             foreach (var edge in globals.edgesData)
             {
+                pen.Brush = edge.Color;
                 if (edge.Directed)
                 {
                     Point from = edge.From.Coordinates;
@@ -75,19 +77,21 @@ namespace Graph_Editor
                     drawingContext.DrawLine(pen, center, right);
 
                 }
+                
                 drawingContext.DrawLine(pen, edge.From.Coordinates, edge.To.Coordinates);
 
             }
 
             foreach (Vertex vertex in globals.vertexData)
             {
-                drawingContext.DrawEllipse(Brushes.DarkGray, pen, vertex.Coordinates, globals.vertRadius, globals.vertRadius);
+                pen.Brush = vertex.Color;
+                drawingContext.DrawEllipse(globals.colorInsideVertex, pen, vertex.Coordinates, globals.vertRadius, globals.vertRadius);
 
                 FormattedText txt = new FormattedText(vertex.Index.ToString(),
                                  CultureInfo.GetCultureInfo("en-us"),
                                  FlowDirection.LeftToRight,
                                  new Typeface("Romanic"),
-                                 20, Brushes.Black);
+                                 20, (Brush)new BrushConverter().ConvertFrom("#305F5F"));
 
                 drawingContext.DrawText(txt, new Point(vertex.Coordinates.X + (vertex.Index.ToString().Length * (-5)), vertex.Coordinates.Y - 10));
             }
@@ -103,7 +107,6 @@ namespace Graph_Editor
             WaitPanel.Background = Brushes.Gray;
             connectVertices.Show();
         }
-
         private void Algoritm_Button(object sender, RoutedEventArgs e)
         {
             Algoritms algoritms = new Algoritms();
@@ -139,6 +142,15 @@ namespace Graph_Editor
         {
             globals.toolNow.Mouse_Up();
             Invalidate();
+        }
+        private void Button_MouseMove(object sender, MouseEventArgs e)
+        {
+            (sender as Button).Background = Brushes.CadetBlue;
+        }
+
+        private void Button_MouseLeave(object sender, MouseEventArgs e)
+        {
+            (sender as Button).Background = (Brush)new BrushConverter().ConvertFrom("#345160");
         }
     }
 }
