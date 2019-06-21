@@ -11,7 +11,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Grid Background="{TemplateBinding Background}" Width="64" Height="64" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Grid Background="{TemplateBinding Background}" Width="70" Height="70" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             <Border BorderThickness="0"/>
                         </Grid>
@@ -28,9 +28,8 @@
                 MouseMove="GraphCanvas_MouseMove"
                 MouseLeave="GraphCanvas_MouseLeave"
                 MouseUp="GraphCanvas_MouseUp"
-                Panel.ZIndex="0"
-                ClipToBounds="True"
-                />
+                ClipToBounds="True">
+        </Canvas>
         <Button x:Name="Algorimts_Window"
             Content="Algoritms" BorderThickness="0"
             HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top"
@@ -57,7 +56,7 @@
                 HorizontalAlignment="Left" Margin="56,491,0,0" VerticalAlignment="Top"
                 FontSize="20" FontWeight="DemiBold"
                 Click="Connect_Click"  MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove">
-            <Image Source="images\edgeIcon.png"/>
+            <Image Source="images\edgeIcon.png" Width="64" Height="64"/>
         </Button>
 
         <!-- Background="LightGray" (to Down)-->
