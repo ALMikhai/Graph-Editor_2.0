@@ -94,7 +94,7 @@
         />
         <Grid
             x:Name="BFS_DFS"
-            Background="WhiteSmoke" Margin="225,160,33.2,86.2" Visibility="Visible">
+            Background="WhiteSmoke" Margin="225,160,33.2,86.2" Visibility="Hidden">
             <Border BorderBrush="Black" BorderThickness="2"/>
             <Button x:Name="FS_Ready"
             IsDefault="True"
