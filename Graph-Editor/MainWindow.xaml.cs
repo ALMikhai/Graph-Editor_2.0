@@ -26,8 +26,6 @@ namespace Graph_Editor
 
     public partial class MainWindow : Window
     {
-        int globalIndex = 0;
-
         public static FigureHost graphHost = new FigureHost();
 
         public MainWindow()
@@ -84,8 +82,7 @@ namespace Graph_Editor
 
             foreach (Vertex vertex in globals.vertexData)
             {
-                int radius = 20;
-                drawingContext.DrawEllipse(Brushes.DarkGray, pen, vertex.Coordinates, radius, radius);
+                drawingContext.DrawEllipse(Brushes.DarkGray, pen, vertex.Coordinates, globals.vertRadius, globals.vertRadius);
 
                 FormattedText txt = new FormattedText(vertex.Index.ToString(),
                                  CultureInfo.GetCultureInfo("en-us"),
@@ -101,9 +98,8 @@ namespace Graph_Editor
         }
 
         private void GraphCanvas_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            Vertex vertexNow = new Vertex(globalIndex++, e.GetPosition(graphCanvas));
-            globals.vertexData.Add(vertexNow);
+        { 
+            globals.toolNow.Mouse_Down(e.GetPosition(graphCanvas));
             Invalidate();
         }
 
@@ -121,6 +117,11 @@ namespace Graph_Editor
             WaitPanel.Visibility = Visibility.Visible;
             WaitPanel.Background = Brushes.LightGray;
             algoritms.Show();
+        }
+
+        private void Change_Tool_Button(object sender, RoutedEventArgs e)
+        {
+            globals.toolNow = globals.toolList[Convert.ToInt32((sender as Button).Tag)];
         }
     }
 }

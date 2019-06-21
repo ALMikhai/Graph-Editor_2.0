@@ -18,6 +18,22 @@
             Width="167" Height="56"
             FontSize="20" FontWeight="DemiBold" Click="Button_Click"
         />
+        <Button x:Name="AddVertex" 
+                Content="AddVertex" 
+                Tag="0"
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top"
+                Width="74" 
+                Margin="56,163,0,0"
+                Click="Change_Tool_Button"/>
+        <Button x:Name="MoveVertex" 
+                Content="MoveVertex" 
+                Tag="1"
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top"
+                Width="74" 
+                Margin="56,138,0,0"
+                Click="Change_Tool_Button"/>
         <Button x:Name="Connect"
                 Content="Connect vertexes"
                 HorizontalAlignment="Left" Margin="10,275,0,0" VerticalAlignment="Top"
@@ -38,9 +54,5 @@
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                    FontSize="30" FontWeight="bold" BorderBrush="black" BorderThickness="1" 
         />
-        <Image 
-                HorizontalAlignment="Left" Height="60"
-                Margin="10,278,0,0" VerticalAlignment="Top" Width="74"
-                Source="..\images\logo.png" Grid.Row="1"
-        />    </Grid>
+        </Grid>
 </Window>
