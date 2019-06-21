@@ -51,7 +51,7 @@ namespace Graph_Editor
                 return;
             }
 
-            foreach (Vertex vertex in Globals.vertexData)
+            foreach (Vertex vertex in globals.vertexData)
             {
                 if (findF && findS)
                     break;
@@ -75,16 +75,16 @@ namespace Graph_Editor
 
             Edge newEdge = new Edge(from, to, Convert.ToInt32(TextBox_Weight.Text), route);
 
-            Globals.edgesData.Add(newEdge);
-            if (Globals.matrix[newEdge.To.Index, newEdge.From.Index] == 1 && route)
+            globals.edgesData.Add(newEdge);
+            if (globals.matrix[newEdge.To.Index, newEdge.From.Index] == 1 && route)
             {
                 // TODO: Сделать красивый вывод рёбер.
             }
 
-            Globals.matrix[newEdge.From.Index, newEdge.To.Index] = 1;
+            globals.matrix[newEdge.From.Index, newEdge.To.Index] = 1;
             // TODO: Удалять нарисованное ребро (ориентированное) и добавлять обычное (неориентированное)
             if (!route)
-                Globals.matrix[newEdge.To.Index, newEdge.From.Index] = 1;
+                globals.matrix[newEdge.To.Index, newEdge.From.Index] = 1;
 
             MainWindow.Invalidate();
 

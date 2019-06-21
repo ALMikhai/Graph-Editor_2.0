@@ -19,7 +19,7 @@ using System.ComponentModel;
 
 namespace Graph_Editor
 {
-    public static class Globals
+    public static class globals
     {
         public static int Size = 100;
         public static int[,] matrix = new int[Size, Size];

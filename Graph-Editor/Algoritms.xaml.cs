@@ -62,7 +62,7 @@ namespace Graph_Editor
         {
             if (FSstartVertex.Text != "")
             {
-                if (Globals.IsBe(Convert.ToInt32(FSstartVertex.Text)))
+                if (globals.IsBe(Convert.ToInt32(FSstartVertex.Text)))
                 {
                     this.Close();
                     BFS.Visibility = Visibility.Hidden;
