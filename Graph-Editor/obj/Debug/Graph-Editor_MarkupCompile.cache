@@ -16,12 +16,16 @@ C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\A
 13827818740
 =======
 C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\App.xaml
-3-196420989
+4-113909625
 
+<<<<<<< HEAD
 11766092552
 >>>>>>> master
+=======
+121098012105
+>>>>>>> parent of d8ee046... Merge branch 'Dmitry's_branch'
 151984215308
-Algoritms.xaml;MainWindow.xaml;ConnectVertices.xaml;
+Algoritms.xaml;DFS.xaml;MainWindow.xaml;ConnectVertices.xaml;
 
 False
 

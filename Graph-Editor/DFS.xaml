@@ -1,0 +1,34 @@
+﻿<Window x:Class="Graph_Editor.DFS" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:local="clr-namespace:Graph_Editor" 
+        mc:Ignorable="d" 
+        Title="DFS" Height="260" Width="459.532" ResizeMode="NoResize">
+    <Grid Margin="0,0,2,3">
+        <Button
+            IsDefault="True"
+            FontSize="20" Content="Выполнить" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
+            Width="127" Height="42"
+            Click="Button_Click"
+        />
+        <Button
+            IsCancel="True"
+            FontSize="20" Content="Отмена"
+            HorizontalAlignment="Left" Margin="137,0,0,10" VerticalAlignment="Bottom"
+            Width="112" Height="42" Click="Button_Click_1"
+        />
+        <Label Content="Начальная вершина:" 
+               HorizontalAlignment="Left" Height="54" Margin="26,44,0,0" 
+               VerticalAlignment="Top" Width="290" 
+               FontSize="25"
+        />
+        <TextBox x:Name="startVertex"
+            FontSize="20" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"
+            Height="38" Margin="296,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
+            Background="WhiteSmoke" BorderThickness="1" BorderBrush="black"
+        />
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="2" Margin="0,147,0,0" VerticalAlignment="Top" Width="452"/>
+    </Grid>
+</Window> 
