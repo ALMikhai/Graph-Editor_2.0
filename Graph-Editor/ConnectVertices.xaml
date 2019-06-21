@@ -39,25 +39,25 @@
             IsDefault="True"
             FontSize="20" Content="Создать" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
             Width="112" Height="42"
-            Click="Button_Click"
+            Click="Create_Click"
         />
         <Button
             IsCancel="True"
             FontSize="20" Content="Отмена"
             HorizontalAlignment="Left" Margin="117,0,0,10" VerticalAlignment="Bottom"
-            Width="112" Height="42" Click="Button_Click_1"
+            Width="112" Height="42" Click="Cancel_Click"
         />
         <RadioButton x:Name="Directed"
             HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
             FontSize="22"
             Content="Directed" HorizontalAlignment="Left" Margin="35,175,0,0" VerticalAlignment="Top"
-            Height="52" Width="258" Checked="RadioButton_Checked_2"
+            Height="52" Width="258" Checked="Directed_Button_Choose"
         />
         <RadioButton x:Name="Undirected" 
             HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
             FontSize="22"
             Content="Undirected" HorizontalAlignment="Left" Margin="298,175,0,0" VerticalAlignment="Top"
-            Height="52" Width="258" Checked="RadioButton_Checked_3" IsChecked="True"
+            Height="52" Width="258" Checked="Undirected_Button_Choose" IsChecked="True"
         />
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="52" Margin="35,175,0,0" VerticalAlignment="Top" Width="263" CornerRadius="10"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="52" Margin="298,175,0,0" VerticalAlignment="Top" Width="258" CornerRadius="10"/>
