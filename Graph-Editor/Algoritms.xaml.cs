@@ -56,5 +56,21 @@ namespace Graph_Editor
             LockPanel.Background = null;
             BFS.Visibility = Visibility.Hidden;
         }
+
+        private void BFS_Ready_Click(object sender, RoutedEventArgs e)
+        {
+            if (startVertex.Text != "")
+            {
+               // foreach()
+                //{
+
+                //
+            }
+        }
+        
+        private void BFS_Cancle_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

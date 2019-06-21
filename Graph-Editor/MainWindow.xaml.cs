@@ -51,7 +51,6 @@ namespace Graph_Editor
 
             foreach (var edge in globals.edgesData)
             {
-
                 if (edge.Directed)
                 {
                     Point from = edge.From.Coordinates;

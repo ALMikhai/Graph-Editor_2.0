@@ -12,7 +12,7 @@
         <Label Content="В вершину: " HorizontalAlignment="Left" Margin="331,26,0,0" VerticalAlignment="Top" Height="41" Width="133" FontSize="20"/>
         <TextBox x:Name="FirstVertex"
             FontSize="20" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"
-            Height="38" Margin="143,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
+            Height="38" Margin="143,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
             Background="WhiteSmoke" BorderThickness="1" BorderBrush="black"
         />
         <TextBox x:Name="SecondVertex"
@@ -22,7 +22,7 @@
         />
         <Label Content="Вес ребра: " FontSize="20" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top"/>
         <Slider x:Name="WeightSlider"
-            Maximum="100" Minimum="1" SmallChange="1" LargeChange="10"
+            Maximum="100" Minimum="0" SmallChange="1" LargeChange="10"
             TickPlacement="BottomRight" TickFrequency="10"
             IsSelectionRangeEnabled="True" SelectionStart="1" ValueChanged="Slider_ValueChanged"
             HorizontalAlignment="Left"
@@ -43,7 +43,7 @@
         />
         <Button
             IsCancel="True"
-            FontSize="20" Content="Отмена"
+            FontSize="20" Content="Закрыть"
             HorizontalAlignment="Left" Margin="117,0,0,10" VerticalAlignment="Bottom"
             Width="112" Height="42" Click="Cancel_Click"
         />

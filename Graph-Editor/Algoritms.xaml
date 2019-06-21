@@ -90,17 +90,17 @@
             x:Name="BFS"
             Background="WhiteSmoke" Margin="224,162,259,139" Visibility="Hidden">
             <Border BorderBrush="Black" BorderThickness="2" />
-            <Button
+            <Button x:Name="BFS_Ready"
             IsDefault="True"
             FontSize="20" Content="Выполнить" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
-            Width="127" Height="42"
+            Width="127" Height="42" Click="BFS_Ready_Click"
         />
-            <Button
+            <Button x:Name="BFS_Cancle"
             IsCancel="True"
             FontSize="20" Content="Отмена"
             HorizontalAlignment="Left" Margin="137,0,0,10" VerticalAlignment="Bottom"
             Width="112" Height="42"
-            Click="Cancel_Click"
+            Click="BFS_Cancle_Click"
         />
             <Label Content="Начальная вершина:" 
                HorizontalAlignment="Left" Height="38" Margin="10,42,0,0" 

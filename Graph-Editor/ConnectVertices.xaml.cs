@@ -89,8 +89,9 @@ namespace Graph_Editor
             MainWindow.Invalidate();
 
             //TODO Сделать выделение доп. память для матрицы
-
-            this.Close();
+            FirstVertex.Text = "";
+            SecondVertex.Text = "";
+            WeightSlider.Value = 0;
         }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
