@@ -27,6 +27,7 @@ namespace Graph_Editor
     public partial class MainWindow : Window
     {
         public static FigureHost graphHost = new FigureHost();
+        bool mouseDown = false;
 
         public MainWindow()
         {
@@ -122,26 +123,32 @@ namespace Graph_Editor
 
         private void GraphCanvas_MouseDown(object sender, MouseEventArgs e)
         {
+            mouseDown = true;
             globals.toolNow.Mouse_Down(e.GetPosition(graphCanvas));
             Invalidate();
         }
 
         private void GraphCanvas_MouseMove(object sender, MouseEventArgs e)
         {
-            globals.toolNow.Mouse_Move(e.GetPosition(graphCanvas));
-            Invalidate();
+            if (mouseDown)
+            {
+                globals.toolNow.Mouse_Move(e.GetPosition(graphCanvas));
+                Invalidate();
+            }
         }
 
         private void GraphCanvas_MouseLeave(object sender, MouseEventArgs e)
         {
             globals.toolNow.Mouse_Leave();
             Invalidate();
+            mouseDown = false;
         }
 
         private void GraphCanvas_MouseUp(object sender, MouseEventArgs e)
         {
             globals.toolNow.Mouse_Up();
             Invalidate();
+            mouseDown = false;
         }
         private void Button_MouseMove(object sender, MouseEventArgs e)
         {
