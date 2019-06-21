@@ -10,7 +10,7 @@ using System.Windows.Media;
 
 namespace Graph_Editor
 {
-    public static class Globals
+    public static class globals
     {
         public static int globalIndex = 0;
         public static int Size = 100;

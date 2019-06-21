@@ -43,7 +43,7 @@ namespace Graph_Editor.Objects
 
         public bool IsBe(int value)
         {
-            if (value > Globals.vertexData.Count)
+            if (value > globals.vertexData.Count)
                 return false;
             return true;
         }

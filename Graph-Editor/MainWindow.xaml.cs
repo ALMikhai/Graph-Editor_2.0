@@ -47,7 +47,7 @@ namespace Graph_Editor
             var drawingVisual = new DrawingVisual();
             var drawingContext = drawingVisual.RenderOpen();
 
-            foreach (var edge in Globals.edgesData)
+            foreach (var edge in globals.edgesData)
             {
                 if (edge.Directed)
                 {
@@ -79,7 +79,7 @@ namespace Graph_Editor
 
             }
 
-            foreach (Vertex vertex in Globals.vertexData)
+            foreach (Vertex vertex in globals.vertexData)
             {
                 drawingContext.DrawEllipse(Brushes.DarkGray, pen, vertex.Coordinates, globals.vertRadius, globals.vertRadius);
 
