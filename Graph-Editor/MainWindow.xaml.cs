@@ -41,7 +41,7 @@ namespace Graph_Editor
 
             Pen pen = new Pen();
             pen.Brush = Brushes.Black;
-            pen.Thickness = 3;
+            pen.Thickness = 1;
 
             graphHost.Children.Clear();
             var drawingVisual = new DrawingVisual();
@@ -81,13 +81,13 @@ namespace Graph_Editor
 
             foreach (Vertex vertex in globals.vertexData)
             {
-                drawingContext.DrawEllipse(Brushes.DarkGray, pen, vertex.Coordinates, globals.vertRadius, globals.vertRadius);
+                drawingContext.DrawEllipse((Brush)new BrushConverter().ConvertFrom("#80FFFF"), pen, vertex.Coordinates, globals.vertRadius, globals.vertRadius);
 
                 FormattedText txt = new FormattedText(vertex.Index.ToString(),
                                  CultureInfo.GetCultureInfo("en-us"),
                                  FlowDirection.LeftToRight,
                                  new Typeface("Romanic"),
-                                 20, Brushes.Black);
+                                 20, (Brush)new BrushConverter().ConvertFrom("#305F5F"));
 
                 drawingContext.DrawText(txt, new Point(vertex.Coordinates.X + (vertex.Index.ToString().Length * (-5)), vertex.Coordinates.Y - 10));
             }

@@ -127,5 +127,10 @@ namespace Graph_Editor
                 LockPanel.Background = null;
             }
         }
+
+        private void Button_IsMouseCapturedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
     }
 }
