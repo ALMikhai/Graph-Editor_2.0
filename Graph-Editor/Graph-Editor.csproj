@@ -69,6 +69,7 @@
     <Compile Include="ConnectVertices.xaml.cs">
       <DependentUpon>ConnectVertices.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tools.cs" />
     <Page Include="Algoritms.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
