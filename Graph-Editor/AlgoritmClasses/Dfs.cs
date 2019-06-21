@@ -19,7 +19,7 @@ namespace Graph_Editor.AlgoritmClasses
 {
     public static class Dfs
     {
-        static ArrayList visited = new ArrayList(Globals.Size);
+        //s visited = new bool[2,false];
 
     }
 }

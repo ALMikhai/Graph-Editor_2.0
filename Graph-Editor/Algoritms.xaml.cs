@@ -61,16 +61,22 @@ namespace Graph_Editor
         {
             if (startVertex.Text != "")
             {
-               // foreach()
+                BFS.Visibility = Visibility.Hidden;
+                // foreach()
                 //{
 
                 //
             }
         }
-        
+
         private void BFS_Cancle_Click(object sender, RoutedEventArgs e)
         {
+            BFS.Visibility = Visibility.Hidden;
+        }
 
+        private void DSF_Button_Click(object sender, RoutedEventArgs e)
+        {
+            ;
         }
     }
 }

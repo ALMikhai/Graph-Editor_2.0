@@ -41,11 +41,9 @@ namespace Graph_Editor
         static public void Invalidate()
         {
 
-            Pen pen = new Pen
-            {
-                Brush = Brushes.Black,
-                Thickness = 3
-            };
+            Pen pen = new Pen();
+            pen.Brush = Brushes.Black;
+            pen.Thickness = 3;
 
             graphHost.Children.Clear();
             var drawingVisual = new DrawingVisual();
