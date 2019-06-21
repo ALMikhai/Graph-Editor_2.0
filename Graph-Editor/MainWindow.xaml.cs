@@ -100,7 +100,7 @@ namespace Graph_Editor
         {
             ConnectVertices connectVertices = new ConnectVertices();
             WaitPanel.Visibility = Visibility.Visible;
-            WaitPanel.Background = Brushes.LightGray;
+            WaitPanel.Background = Brushes.Gray;
             connectVertices.Show();
         }
 
@@ -108,7 +108,7 @@ namespace Graph_Editor
         {
             Algoritms algoritms = new Algoritms();
             WaitPanel.Visibility = Visibility.Visible;
-            WaitPanel.Background = Brushes.LightGray;
+            WaitPanel.Background = Brushes.Gray;
             algoritms.Show();
         }
 

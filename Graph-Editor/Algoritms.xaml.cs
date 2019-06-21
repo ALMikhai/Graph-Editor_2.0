@@ -28,13 +28,14 @@ namespace Graph_Editor
         {
             InitializeComponent();
         }
+
+        /*static Dictionary<int, Grid> gridAlg = new Dictionary<int, Grid>
+        {
+            {0, BFS},
+        };*/
+
         public void Algoritm_Ready()
         {
-            // TODO: Доработать разблокировку окна (Algoritms)
-            // LockPanel.Background = null;
-            // LockPanel.Opacity = 0;
-            // LockPanel.Visibility = Visibility.Hidden;
-
             mainWindow.WaitPanel.Background = null;
             mainWindow.WaitPanel.Opacity = 0;
 
@@ -46,37 +47,123 @@ namespace Graph_Editor
             mainWindow.WaitPanel.Opacity = 0;
         }
 
-        private void BSF_Button_Click(object sender, RoutedEventArgs e)
-        {
-            LockPanel.Background = Brushes.Gray;
-            BFS.Visibility = Visibility.Visible;
-        }
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            LockPanel.Background = null;
-            BFS.Visibility = Visibility.Hidden;
-        }
-
-        private void BFS_Ready_Click(object sender, RoutedEventArgs e)
-        {
-            if (startVertex.Text != "")
-            {
-                BFS.Visibility = Visibility.Hidden;
-                // foreach()
-                //{
-
-                //
-            }
+            this.Close();
         }
 
         private void BFS_Cancle_Click(object sender, RoutedEventArgs e)
         {
             BFS.Visibility = Visibility.Hidden;
+            LockPanel.Background = null;
         }
 
-        private void DSF_Button_Click(object sender, RoutedEventArgs e)
+        private void Button_ReadyExitAlgoritm_Click(object sender, RoutedEventArgs e)
         {
-            ;
+            if (FSstartVertex.Text != "")
+            {
+                if (globals.IsBe(Convert.ToInt32(FSstartVertex.Text)))
+                {
+                    this.Close();
+                    BFS.Visibility = Visibility.Hidden;
+                    switch (Convert.ToInt32((sender as Button).Tag.ToString()))
+                    {
+                        case 0:
+                            {
+                                break;
+                            }
+                        case 1:
+                            {
+                                break;
+                            }
+                        case 2:
+                            {
+                                break;
+                            }
+                        case 3:
+                            {
+                                break;
+                            }
+                        case 4:
+                            {
+                                break;
+                            }
+                        case 5:
+                            {
+                                break;
+                            }
+                        case 6:
+                            {
+                                break;
+                            }
+                        case 7:
+                            {
+                                break;
+                            }
+                        case 8:
+                            {
+                                break;
+                            }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("This vertex doesn't exist");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Input a vertex");
+            }
+        }
+
+        private void Button_Alg_Click(object sender, RoutedEventArgs e)
+        {
+            LockPanel.Background = Brushes.Gray;
+            switch (Convert.ToInt32((sender as Button).Tag.ToString()))
+            {
+                case 0:
+                    {
+                        BFS.Visibility = Visibility.Visible;
+                        FSstartVertex.Text = "0";
+                        break;
+                    }
+                case 1:
+                    {
+                        BFS.Visibility = Visibility.Visible;
+                        FSstartVertex.Text = "0";
+                        break;
+                    }
+                case 2:
+                    {
+                        break;
+                    }
+                case 3:
+                    {
+                        break;
+                    }
+                case 4:
+                    {
+                        break;
+                    }
+                case 5:
+                    {
+                        break;
+                    }
+                case 6:
+                    {
+                        break;
+                    }
+                case 7:
+                    {
+                        break;
+                    }
+                case 8:
+                    {
+                        break;
+                    }
+            }
+
         }
     }
 }
