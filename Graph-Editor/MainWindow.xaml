@@ -22,13 +22,15 @@
     </Window.Resources>
     <Grid Background="#0a3f4c">
         <Canvas x:Name="graphCanvas" 
-                Margin="192,10,10,10" 
+                Margin="182,10,10,10" 
                 Background="#b7e1e1"
-                Grid.RowSpan="2"
                 MouseDown="GraphCanvas_MouseDown"
                 MouseMove="GraphCanvas_MouseMove"
                 MouseLeave="GraphCanvas_MouseLeave"
-                MouseUp="GraphCanvas_MouseUp"/>
+                MouseUp="GraphCanvas_MouseUp"
+                Panel.ZIndex="0"
+                ClipToBounds="True"
+                />
         <Button x:Name="Algorimts_Window"
             Content="Algoritms" BorderThickness="0"
             HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top"
@@ -61,7 +63,7 @@
         <!-- Background="LightGray" (to Down)-->
         <Grid
             x:Name="WaitPanel"
-            Opacity="0.4" Grid.RowSpan="2"
+            Opacity="0.4"
         />
         <Label Content=".TXT" Background="#b7e1e1"
                    HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"       

@@ -24,6 +24,7 @@ namespace Graph_Editor.Objects
 
         public Brush Color
         { get { return color; } set { color = value; } }
+
         public int Index
         { get { return index; } }
 

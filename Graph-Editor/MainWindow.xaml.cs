@@ -138,7 +138,7 @@ namespace Graph_Editor
             Invalidate();
         }
 
-        private void GraphCanvas_MouseUp(object sender, MouseButtonEventArgs e)
+        private void GraphCanvas_MouseUp(object sender, MouseEventArgs e)
         {
             globals.toolNow.Mouse_Up();
             Invalidate();
