@@ -67,6 +67,9 @@
     <Compile Include="ConnectVertices.xaml.cs">
       <DependentUpon>ConnectVertices.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tools\AddVertex.cs" />
+    <Compile Include="Tools\MoveVertex.cs" />
+    <Compile Include="Tools\Tool.cs" />
     <Page Include="Algoritms.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -115,5 +118,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
