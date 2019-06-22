@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Globalization;
 using Graph_Editor.Objects;
 using System.ComponentModel;
+using Graph_Editor.AlgoritmClasses;
 
 namespace Graph_Editor
 {
@@ -35,7 +36,6 @@ namespace Graph_Editor
             mainWindow.WaitPanel.Background = null;
             mainWindow.WaitPanel.Opacity = 0;
         }
-
         private void main_Cancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -95,7 +95,7 @@ namespace Graph_Editor
                     //bfs();
                 } else
                 {
-                    //dfs();
+                    Dfs.Start(0);
                 }
             }
             else if (globals.IsBe(Convert.ToInt32(DijkstrastartVertex.Text)) && globals.IsBe(Convert.ToInt32(DijkstrafinalVertex.Text)) && chooseAlg == 2
@@ -128,9 +128,14 @@ namespace Graph_Editor
             }
         }
 
-        private void Button_IsMouseCapturedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        private void Button_MouseMove(object sender, MouseEventArgs e)
         {
+            (sender as Button).Background = Brushes.SkyBlue;
+        }
 
+        private void Button_MouseLeave(object sender, MouseEventArgs e)
+        {
+            (sender as Button).Background = Brushes.CadetBlue;
         }
     }
 }
