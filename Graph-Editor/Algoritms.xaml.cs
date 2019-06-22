@@ -35,7 +35,6 @@ namespace Graph_Editor
             mainWindow.WaitPanel.Background = null;
             mainWindow.WaitPanel.Opacity = 0;
         }
-
         private void main_Cancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -128,9 +127,14 @@ namespace Graph_Editor
             }
         }
 
-        private void Button_IsMouseCapturedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        private void Button_MouseMove(object sender, MouseEventArgs e)
         {
+            (sender as Button).Background = Brushes.SkyBlue;
+        }
 
+        private void Button_MouseLeave(object sender, MouseEventArgs e)
+        {
+            (sender as Button).Background = Brushes.CadetBlue;
         }
     }
 }
