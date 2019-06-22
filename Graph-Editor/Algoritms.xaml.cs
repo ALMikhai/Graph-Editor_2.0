@@ -1,21 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Graph_Editor.AlgoritmClasses;
+using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Globalization;
-using Graph_Editor.Objects;
-using System.ComponentModel;
-using Graph_Editor.AlgoritmClasses;
 
 namespace Graph_Editor
 {
@@ -50,12 +39,14 @@ namespace Graph_Editor
             {
                 BFS_DFS.Visibility = Visibility.Visible;
                 FSstartVertex.Text = "0";
+                BFS_DFS_label.Content = chooseAlg == 0 ? "BFS" : "DFS";
             }
             else if (chooseAlg == 2)
             {
                 Dijkstra.Visibility = Visibility.Visible;
                 DijkstrastartVertex.Text = "0";
                 DijkstrafinalVertex.Text = "0";
+                Dijkstra_Label.Content = "Dijkstra";
             }
             else
             {
@@ -94,7 +85,8 @@ namespace Graph_Editor
                 if (chooseAlg == 0)
                 {
                     //bfs();
-                } else
+                }
+                else
                 {
                     Dfs.Start(Convert.ToInt32(FSstartVertex.Text));
                 }
@@ -137,7 +129,10 @@ namespace Graph_Editor
 
         private void Button_MouseLeave(object sender, MouseEventArgs e)
         {
-            (sender as Button).Background = Brushes.CadetBlue;
+            if (String.Compare((sender as Button).Tag.ToString(), "Cancel") == 0)
+                (sender as Button).Background = (Brush)new BrushConverter().ConvertFrom("#B9C2C2");
+            else
+                (sender as Button).Background = Brushes.CadetBlue;
         }
     }
 }
