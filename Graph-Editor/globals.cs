@@ -28,6 +28,8 @@ namespace Graph_Editor
         public static List<Edge> edgesData = new List<Edge>();
 
         public static int vertRadius = 20;
+        public static Brush color = Brushes.Black;
+        public static Brush colorInsideVertex = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
 
         public static Dictionary<int, Tool> toolList = new Dictionary<int, Tool>
         {

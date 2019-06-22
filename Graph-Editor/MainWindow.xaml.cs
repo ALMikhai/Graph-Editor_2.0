@@ -39,9 +39,10 @@ namespace Graph_Editor
         static public void Invalidate()
         {
 
-            Pen pen = new Pen();
-            pen.Brush = Brushes.Black;
-            pen.Thickness = 1;
+            Pen pen = new Pen
+            {
+                Thickness = 1
+            };
 
             graphHost.Children.Clear();
             var drawingVisual = new DrawingVisual();
@@ -49,6 +50,7 @@ namespace Graph_Editor
 
             foreach (var edge in globals.edgesData)
             {
+                pen.Brush = edge.Color;
                 if (edge.Directed)
                 {
                     Point from = edge.From.Coordinates;
@@ -75,13 +77,15 @@ namespace Graph_Editor
                     drawingContext.DrawLine(pen, center, right);
 
                 }
+                
                 drawingContext.DrawLine(pen, edge.From.Coordinates, edge.To.Coordinates);
 
             }
 
             foreach (Vertex vertex in globals.vertexData)
             {
-                drawingContext.DrawEllipse((Brush)new BrushConverter().ConvertFrom("#80FFFF"), pen, vertex.Coordinates, globals.vertRadius, globals.vertRadius);
+                pen.Brush = vertex.Color;
+                drawingContext.DrawEllipse(globals.colorInsideVertex, pen, vertex.Coordinates, globals.vertRadius, globals.vertRadius);
 
                 FormattedText txt = new FormattedText(vertex.Index.ToString(),
                                  CultureInfo.GetCultureInfo("en-us"),
