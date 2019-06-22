@@ -1,4 +1,5 @@
-﻿<Window x:Class="Graph_Editor.Algoritms"
+﻿
+<Window x:Class="Graph_Editor.Algoritms"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,62 +8,75 @@
         mc:Ignorable="d"
         Closing="DataWindow_Closing"
         Title="Выбери" Height="460.939" Width="673.819" ResizeMode="NoResize">
-    <Grid Background="#98B0B0">
-        <Button Content="Поиск в ширину" Background="#728484" BorderThickness="0"
+    <Window.Resources>
+        <Style x:Key="MyButtonStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Background="PaleTurquoise" Margin="0,0,-6,0">
+        <Button Style="{StaticResource MyButtonStyle}" BorderThickness="0" Content="Поиск в ширину"
                 HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
                 FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"
-                Tag="0"
-        />
-        <Button Content="Поиск в глубину" Background="#728484" BorderThickness="0"
+                Tag="0" Background="CadetBlue" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove"> 
+        </Button>
+        <Button Style="{StaticResource MyButtonStyle}" Content="Поиск в глубину" BorderThickness="0"
                 HorizontalAlignment="Left" Margin="224,127,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
                 FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
-                Tag="1"     
+                Tag="1" Background="CadetBlue" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove"
         />
-        <Button Content="Алгоритм Дейкстры" Background="#728484" BorderThickness="0"
+        <Button Style="{StaticResource MyButtonStyle}" Content="Алгоритм Дейкстры" BorderThickness="0"
                 HorizontalAlignment="Left" Margin="440,127,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
                 FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
-                Tag="2"           
+                Tag="2" Background="CadetBlue" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove"           
         />
-        <Button Content="Эйлеров цикл" Background="#728484" BorderThickness="0"
+        <Button Style="{StaticResource MyButtonStyle}" Content="Эйлеров цикл" BorderThickness="0"
                 HorizontalAlignment="Left" Margin="440,201,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
                 FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
-                Tag="5"    
+                Tag="5" Background="CadetBlue" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove"    
         />
-        <Button Content="Гамильтонов цикл" Background="#728484" BorderThickness="0"
+        <Button Style="{StaticResource MyButtonStyle}" Content="Гамильтонов цикл" BorderThickness="0"
                 HorizontalAlignment="Left" Margin="224,201,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
                 FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
-                Tag="4"       
+                Tag="4" Background="CadetBlue" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove"       
         />
-        <Button Content="Раскрасить граф" Background="#728484" BorderThickness="0"
+        <Button Style="{StaticResource MyButtonStyle}" Content="Раскрасить граф" BorderThickness="0"
                 HorizontalAlignment="Left" Margin="10,201,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
                 FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
-                Tag="3"       
+                Tag="3" Background="CadetBlue" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove"       
         />
-        <Button Content="Радиус и диаметр графа" Background="#728484" BorderThickness="0"
+        <Button Style="{StaticResource MyButtonStyle}" Content="Радиус и диаметр графа" BorderThickness="0"
                 HorizontalAlignment="Left" Margin="224,285,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
                 FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
-                Tag="7"       
+                Tag="7" Background="CadetBlue" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove"       
         />
-        <Button Content="Максимальный поток" Background="#728484" BorderThickness="0"
+        <Button Style="{StaticResource MyButtonStyle}" Content="Максимальный поток"  BorderThickness="0"
                 HorizontalAlignment="Left" Margin="440,285,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
                 FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
-                Tag="8"       
+                Tag="8" Background="CadetBlue" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove"       
         />
-        <Button Content="Флойд-Уоршелл" Background="#728484" BorderThickness="0"
+        <Button Style="{StaticResource MyButtonStyle}" Content="Флойд-Уоршелл" BorderThickness="0"
                 HorizontalAlignment="Left" Margin="10,285,0,0" VerticalAlignment="Top"
                 Width="200" Height="60"
                 FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
-                Tag="6"       
+                Tag="6" Background="CadetBlue" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove"       
         />
-        <Button
+        <Button Style="{StaticResource MyButtonStyle}"
             IsCancel="True" Background="#B9C2C2" BorderThickness="0"
             FontSize="20" Content="Отмена"
             HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"

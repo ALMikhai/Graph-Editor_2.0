@@ -20,44 +20,22 @@ namespace Graph_Editor.Objects
         private readonly Vertex from, to;
         private int weight;
         private bool directed;
+        private Brush color = globals.color;
+
+        public Brush Color
+        {get { return color; } set { color = value; } }
 
         public Vertex From
-        {
-            get
-            {
-                return from;
-            }
-        }
-        public Vertex To
-        {
-            get
-            {
-                return to;
-            }
-        }
-        public int Weight
-        {
-            get
-            {
-                return weight;
-            }
-            set
-            {
-                weight = value;
-            }
-        }
-        public bool Directed
-        {
-            get
-            {
-                return directed;
-            }
-            set
-            {
-                directed = value;
-            }
-        }
+        { get{return from;} }
 
+        public Vertex To
+        { get{return to;} }
+
+        public int Weight
+        { get{return weight;} set{weight = value;} }
+
+        public bool Directed
+        {get { return directed; }set { directed = value; } }
 
         public Edge(Vertex first, Vertex second, int w, bool state) { from = first; to = second; weight = w; directed = state; }
     }
