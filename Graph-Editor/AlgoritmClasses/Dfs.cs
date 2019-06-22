@@ -24,6 +24,14 @@ namespace Graph_Editor.AlgoritmClasses
         public static void Start(int v)
         {
             visited[v] = true;
+            for (int i = 0; i < globals.Size; i++)
+            {
+                if (globals.matrix[v,i] != 0 && !visited[i])
+                {
+                    
+                    Start(i);
+                }
+            }
         }
     }
 }

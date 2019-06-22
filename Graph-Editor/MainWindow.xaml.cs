@@ -41,7 +41,7 @@ namespace Graph_Editor
 
             Pen pen = new Pen
             {
-                Thickness = 1
+                Thickness = 6
             };
 
             graphHost.Children.Clear();
