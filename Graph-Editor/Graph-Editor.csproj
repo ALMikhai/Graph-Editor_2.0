@@ -57,6 +57,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AlgoritmClasses\Bfs.cs" />
     <Compile Include="AlgoritmClasses\Dfs.cs" />
     <Compile Include="Algoritms.xaml.cs">
       <DependentUpon>Algoritms.xaml</DependentUpon>
