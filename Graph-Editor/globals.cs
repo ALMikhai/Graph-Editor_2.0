@@ -27,8 +27,8 @@ namespace Graph_Editor
         public static List<Vertex> vertexData = new List<Vertex>();
         public static List<Edge> edgesData = new List<Edge>();
         public static Brush color = Brushes.Black;
-        public static Pen pen = new Pen(color, 6);
-        public static Pen algopen = new Pen(Brushes.Red, 6);
+        public static Pen pen = new Pen(color, 1);
+        public static Pen algopen = new Pen(Brushes.Red, 2);
         public static int vertRadius = 20;
         
         public static Brush colorInsideVertex = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
