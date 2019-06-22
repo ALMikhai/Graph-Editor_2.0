@@ -80,7 +80,7 @@
             IsCancel="True" Background="#B9C2C2" BorderThickness="0"
             FontSize="20" Content="Отмена"
             HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
-            Width="112" Height="42" Click="main_Cancel_Click"
+            Width="112" Height="42" Click="main_Cancel_Click" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove"
         />
         <Grid
             x:Name="LockPanel"
@@ -160,5 +160,6 @@
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="1" Margin="0,174,0,0" VerticalAlignment="Top" Width="391" RenderTransformOrigin="0.5,0.5"/>
         </Grid>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="1" Margin="0,356,0,0" VerticalAlignment="Top" Width="678"/>
+        <Image Source="images/logo.png" Margin="592,380,30,4" Width="48" Height="48"/>
     </Grid>
 </Window>

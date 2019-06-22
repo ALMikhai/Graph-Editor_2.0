@@ -7,6 +7,20 @@
         Closing="DataWindow_Closing"
         mc:Ignorable="d"
         Title="Сonnect vertices" Height="350" Width="600" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style x:Key="MyButtonStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Border BorderThickness="1" BorderBrush="black"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid Background="#98B0B0">
         <Label Content="Из вершины: " HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Height="41" Width="133" FontSize="20"/>
         <Label Content="В вершину: " HorizontalAlignment="Left" Margin="331,26,0,0" VerticalAlignment="Top" Height="41" Width="133" FontSize="20"/>
@@ -47,26 +61,21 @@
             HorizontalAlignment="Left" Margin="117,0,0,10" VerticalAlignment="Bottom"
             Width="112" Height="42" Click="Cancel_Click"
         />
-        <Button x:Name="Directed" Background="#98B0B0"
+        <Button Style="{StaticResource MyButtonStyle}" x:Name="Directed" Background="#98B0B0"
             HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
             FontSize="22" BorderThickness="1"
             Content="Directed" HorizontalAlignment="Left" Margin="35,175,0,0" VerticalAlignment="Top"
-            Height="52" Width="258" Click="Directed_Button_Choose">
-            <Button.Clip>
-                <EllipseGeometry RadiusX="130" RadiusY="155" Center="129,0"/>
-            </Button.Clip>
+            Height="52" Width="258" Click="Directed_Button_Choose" MouseMove="DirecteMouseMove" MouseLeave="DirecteMouseLeave">
         </Button>
-        <Button x:Name="Undirected" Content="Undirected" Background="#789778"
+        <Button Style="{StaticResource MyButtonStyle}" x:Name="Undirected" Content="Undirected" Background="#789778"
             HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
             FontSize="22" BorderThickness="1"
             HorizontalAlignment="Left" Margin="298,175,0,0" VerticalAlignment="Top"
-            Height="52" Width="258" Click="Undirected_Button_Choose">
-            <Button.Clip>
-                <EllipseGeometry RadiusX="130" RadiusY="155" Center="129,0"/>
-            </Button.Clip>
+            Height="52" Width="258" Click="Undirected_Button_Choose" MouseMove="DirecteMouseMove" MouseLeave="DirecteMouseLeave">
         </Button>
         
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="1" Margin="0,72,0,0" VerticalAlignment="Top" Width="594"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="1" Margin="0,247,0,0" VerticalAlignment="Top" Width="594"/>
+        <Image Source="images/logo.png" Margin="552,279,0,0" Width="32" Height="32"/>
     </Grid>
 </Window>
