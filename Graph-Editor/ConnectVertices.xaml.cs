@@ -30,13 +30,14 @@ namespace Graph_Editor
         {
             InitializeComponent();
         }
-
         void DataWindow_Closing(object sender, CancelEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
-            if (mainWindow.WaitPanel != null)
+            if (mainWindow != null && mainWindow.WaitPanel != null)
+            {
                 mainWindow.WaitPanel.Background = null;
-            mainWindow.WaitPanel.Opacity = 0;
+                mainWindow.WaitPanel.Opacity = 0;
+            }
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)
@@ -127,6 +128,18 @@ namespace Graph_Editor
                 WeightSlider.SelectionEnd = point;
                 WeightSlider.Value = point;
             }
+        }
+
+        private void DirecteMouseMove(object sender, MouseEventArgs e)
+        {
+            if (String.Compare("#FF789778", (sender as Button).Background.ToString()) != 0)
+                (sender as Button).Background = (Brush)new BrushConverter().ConvertFrom("#BCCBBC");
+        }
+
+        private void DirecteMouseLeave(object sender, MouseEventArgs e)
+        {
+            if (String.Compare("#FF789778", (sender as Button).Background.ToString()) != 0)
+                (sender as Button).Background = (Brush)new BrushConverter().ConvertFrom("#98B0B0");
         }
     }
 }
