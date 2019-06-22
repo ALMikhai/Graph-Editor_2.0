@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Globalization;
 using Graph_Editor.Objects;
 using System.ComponentModel;
+using Graph_Editor.AlgoritmClasses;
 
 namespace Graph_Editor
 {
@@ -89,13 +90,15 @@ namespace Graph_Editor
             {
                 BFS_DFS.Visibility = Visibility.Hidden;
                 this.Close();
+                globals.IsAlgo = true;
                 if (chooseAlg == 0)
                 {
                     //bfs();
                 } else
                 {
-                    //dfs();
+                    Dfs.Start(Convert.ToInt32(FSstartVertex.Text));
                 }
+                globals.IsAlgo = false;
             }
             else if (globals.IsBe(Convert.ToInt32(DijkstrastartVertex.Text)) && globals.IsBe(Convert.ToInt32(DijkstrafinalVertex.Text)) && chooseAlg == 2
                      && DijkstrastartVertex.Text != "" && DijkstrafinalVertex.Text != "")
