@@ -103,7 +103,6 @@ namespace Graph_Editor
             WaitPanel.Background = Brushes.Gray;
             connectVertices.Show();
         }
-
         private void Algoritm_Button(object sender, RoutedEventArgs e)
         {
             Algoritms algoritms = new Algoritms();
@@ -139,6 +138,15 @@ namespace Graph_Editor
         {
             globals.toolNow.Mouse_Up();
             Invalidate();
+        }
+        private void Button_MouseMove(object sender, MouseEventArgs e)
+        {
+            (sender as Button).Background = Brushes.CadetBlue;
+        }
+
+        private void Button_MouseLeave(object sender, MouseEventArgs e)
+        {
+            (sender as Button).Background = (Brush)new BrushConverter().ConvertFrom("#345160");
         }
     }
 }
