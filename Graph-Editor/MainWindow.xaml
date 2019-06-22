@@ -42,7 +42,7 @@
                 VerticalAlignment="Top"
                 Margin="56,283,0,0"
                 Click="Change_Tool_Button" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove">
-            <Image Source="images/vertexIcon.png"/>
+                <Image Source="images/vertexIcon.png"/>
         </Button>
         <Button Style="{StaticResource MyButtonStyle}" x:Name="MoveVertex"
                 Tag="1" Background="#345160"
@@ -50,11 +50,11 @@
                 VerticalAlignment="Top"
                 Margin="56,387,0,0"
                 Click="Change_Tool_Button"  MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove">
-            <Image Source="images\handTool.png"/>
+            <Image Source="images\handTool.png" Width="64"/>
         </Button>
         <Button Style="{StaticResource MyButtonStyle}" x:Name="Connect" Background="#345160"
                 HorizontalAlignment="Left" Margin="56,491,0,0" VerticalAlignment="Top"
-                FontSize="20" FontWeight="DemiBold"
+                FontSize="20" FontWeight="DemiBold" Tag="2"
                 Click="Connect_Click"  MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove">
             <Image Source="images\edgeIcon.png" Width="64" Height="64"/>
         </Button>

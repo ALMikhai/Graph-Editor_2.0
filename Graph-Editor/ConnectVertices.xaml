@@ -22,8 +22,8 @@
         </Style>
     </Window.Resources>
     <Grid Background="#98B0B0">
-        <Label Content="Из вершины: " HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Height="41" Width="133" FontSize="20"/>
-        <Label Content="В вершину: " HorizontalAlignment="Left" Margin="331,26,0,0" VerticalAlignment="Top" Height="41" Width="133" FontSize="20"/>
+        <Label Content="Start Vertex: " HorizontalAlignment="Left" Margin="20,26,0,0" VerticalAlignment="Top" Height="41" Width="123" FontSize="20"/>
+        <Label Content="Final Vertex: " HorizontalAlignment="Left" Margin="319,26,0,0" VerticalAlignment="Top" Height="41" Width="133" FontSize="20"/>
         <TextBox x:Name="FirstVertex"
             FontSize="20" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"
             Height="38" Margin="143,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
@@ -51,13 +51,13 @@
         />
         <Button
             IsDefault="True"
-            FontSize="20" Content="Создать" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
+            FontSize="20" Content="Create" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
             Width="112" Height="42" Background="#B2B4B4"
             Click="Create_Click"
         />
         <Button
             IsCancel="True" Background="#B2B4B4"
-            FontSize="20" Content="Закрыть"
+            FontSize="20" Content="Close"
             HorizontalAlignment="Left" Margin="117,0,0,10" VerticalAlignment="Bottom"
             Width="112" Height="42" Click="Cancel_Click"
         />
