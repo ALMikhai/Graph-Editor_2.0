@@ -90,13 +90,15 @@ namespace Graph_Editor
             {
                 BFS_DFS.Visibility = Visibility.Hidden;
                 this.Close();
+                globals.IsAlgo = true;
                 if (chooseAlg == 0)
                 {
                     //bfs();
                 } else
                 {
-                    Dfs.Start(0);
+                    Dfs.Start(Convert.ToInt32(FSstartVertex.Text));
                 }
+                globals.IsAlgo = false;
             }
             else if (globals.IsBe(Convert.ToInt32(DijkstrastartVertex.Text)) && globals.IsBe(Convert.ToInt32(DijkstrafinalVertex.Text)) && chooseAlg == 2
                      && DijkstrastartVertex.Text != "" && DijkstrafinalVertex.Text != "")

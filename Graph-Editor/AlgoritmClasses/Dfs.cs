@@ -32,12 +32,11 @@ namespace Graph_Editor.AlgoritmClasses
                     foreach(var edge in globals.edgesData)
                     {
                         if(edge.From.Index == v && edge.To.Index == i)
-                        {
-                            edge.Color = Brushes.Red;
+                        {                            
+                            MainWindow.Invalidate();
+                            Thread.Sleep(100);
+                            break;
                         }
-                        MainWindow.Invalidate();
-                        Thread.Sleep(1000);
-                        break;
                     }
                     Start(i);
                 }

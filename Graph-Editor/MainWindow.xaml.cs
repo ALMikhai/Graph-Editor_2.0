@@ -39,18 +39,17 @@ namespace Graph_Editor
         static public void Invalidate()
         {
 
-            Pen pen = new Pen
-            {
-                Thickness = 6
-            };
-
+            // TODO: при дфс цвет красный, после - черный;
+            Pen pen = new Pen(globals.color, 6);
+            
             graphHost.Children.Clear();
             var drawingVisual = new DrawingVisual();
             var drawingContext = drawingVisual.RenderOpen();
 
             foreach (var edge in globals.edgesData)
             {
-                pen.Brush = edge.Color;
+                if (globals.IsAlgo)
+                    pen.Brush = Brushes.Red;
                 if (edge.Directed)
                 {
                     Point from = edge.From.Coordinates;
@@ -82,9 +81,11 @@ namespace Graph_Editor
 
             }
 
+            pen = globals.pen;
+
             foreach (Vertex vertex in globals.vertexData)
             {
-                pen.Brush = vertex.Color;
+                
                 drawingContext.DrawEllipse(globals.colorInsideVertex, pen, vertex.Coordinates, globals.vertRadius, globals.vertRadius);
 
                 FormattedText txt = new FormattedText(vertex.Index.ToString(),
