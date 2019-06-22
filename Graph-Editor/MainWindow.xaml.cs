@@ -15,6 +15,9 @@ using System.Windows.Shapes;
 using System.Globalization;
 using Graph_Editor.Objects;
 using System.Drawing.Drawing2D;
+using System.Windows.Media.Animation;
+using System.Threading;
+using System.Diagnostics;
 
 namespace Graph_Editor
 {
@@ -28,17 +31,29 @@ namespace Graph_Editor
     {
         public static FigureHost graphHost = new FigureHost();
         bool mouseDown = false;
+        bool animationIsWork = false;
+
+        public static MainWindow Instance { get; private set; }
 
         public MainWindow()
         {
             InitializeComponent();
             graphCanvas.Children.Add(graphHost);
             WaitPanel.Visibility = Visibility.Hidden;
+            Instance = this;
         }
 
 
-        static public void Invalidate()
+        public void Invalidate()
         {
+
+            if (animationIsWork)
+            {
+                
+            }
+
+            graphCanvas.Children.Clear();
+            graphCanvas.Children.Add(graphHost);
 
             // TODO: при дфс цвет красный, после - черный;
             Pen pen = new Pen(globals.color, 6);
@@ -122,6 +137,72 @@ namespace Graph_Editor
             globals.toolNow = globals.toolList[Convert.ToInt32((sender as Button).Tag)];
         }
 
+        public void Animation_Edge(Edge edge)
+        {
+            int time = 10;
+
+            Ellipse ellipse = new Ellipse
+            {
+                Width = globals.vertRadius,
+                Height = globals.vertRadius,
+                Fill = Brushes.Blue
+            };
+
+            graphCanvas.Children.Add(ellipse);
+
+            PathGeometry pathGeom = new PathGeometry();
+            Path p = new Path();
+
+            LineSegment vertLS = new LineSegment();
+            PathFigure vertPF = new PathFigure();
+            vertPF.StartPoint = edge.From.Coordinates;
+            vertLS.Point = edge.To.Coordinates;
+            vertPF.Segments.Add(vertLS);
+            pathGeom.Figures.Add(vertPF);
+
+            var storyboard = new Storyboard
+            {
+                RepeatBehavior = new RepeatBehavior(1)
+            };
+
+            var moveCircleAnimation = new DoubleAnimationUsingPath
+            {
+                PathGeometry = pathGeom,
+                Source = PathAnimationSource.X,
+                Duration = TimeSpan.FromSeconds(time)
+            };
+
+            Storyboard.SetTarget(moveCircleAnimation, ellipse);
+            Storyboard.SetTargetProperty(moveCircleAnimation, new PropertyPath("(Canvas.Left)"));
+
+            var moveCircleAnimation2 = new DoubleAnimationUsingPath
+            {
+                PathGeometry = pathGeom,
+                Source = PathAnimationSource.Y,
+                Duration = TimeSpan.FromSeconds(time)
+            };
+
+            Storyboard.SetTarget(moveCircleAnimation2, ellipse);
+            Storyboard.SetTargetProperty(moveCircleAnimation2, new PropertyPath("(Canvas.Top)"));
+
+            storyboard.Children.Add(moveCircleAnimation);
+            storyboard.Children.Add(moveCircleAnimation2);
+
+            storyboard.Completed += Storyboard_Completed;
+
+            animationIsWork = true;
+
+            storyboard.Begin();
+
+            MessageBox.Show("");
+        }
+
+        private void Storyboard_Completed(object sender, EventArgs e)
+        {
+            animationIsWork = false;
+            Invalidate();
+        }
+
         private void GraphCanvas_MouseDown(object sender, MouseEventArgs e)
         {
             mouseDown = true;
@@ -140,17 +221,24 @@ namespace Graph_Editor
 
         private void GraphCanvas_MouseLeave(object sender, MouseEventArgs e)
         {
-            globals.toolNow.Mouse_Leave();
-            Invalidate();
-            mouseDown = false;
+            if (mouseDown)
+            {
+                globals.toolNow.Mouse_Leave();
+                Invalidate();
+                mouseDown = false;
+            }
         }
 
         private void GraphCanvas_MouseUp(object sender, MouseEventArgs e)
         {
-            globals.toolNow.Mouse_Up();
-            Invalidate();
-            mouseDown = false;
+            if (mouseDown)
+            {
+                globals.toolNow.Mouse_Up();
+                Invalidate();
+                mouseDown = false;
+            }
         }
+
         private void Button_MouseMove(object sender, MouseEventArgs e)
         {
             (sender as Button).Background = Brushes.CadetBlue;
@@ -160,5 +248,7 @@ namespace Graph_Editor
         {
             (sender as Button).Background = (Brush)new BrushConverter().ConvertFrom("#345160");
         }
+
+        
     }
 }

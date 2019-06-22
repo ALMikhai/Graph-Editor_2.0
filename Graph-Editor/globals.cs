@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Globalization;
 using Graph_Editor.Objects;
 using System.ComponentModel;
+using System.Timers;
 
 
 namespace Graph_Editor
