@@ -92,10 +92,9 @@
                Height="87" Width="543"
                FontSize="25" FontStyle="Italic" FontWeight="DemiBold"
         />
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="0" Margin="117,0,0,0" VerticalAlignment="Top" Width="755"/>
         <Grid
             x:Name="BFS_DFS"
-            Background="WhiteSmoke" Margin="224,162,259,139" Visibility="Hidden">
+            Background="WhiteSmoke" Margin="225,160,33.2,86.2" Visibility="Visible">
             <Border BorderBrush="Black" BorderThickness="2"/>
             <Button x:Name="FS_Ready"
             IsDefault="True"
@@ -119,7 +118,7 @@
             Height="38" Margin="271,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
             Background="WhiteSmoke" BorderThickness="1" BorderBrush="black" RenderTransformOrigin="0.494,-0.553"
         />
-            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="2" Margin="0,116,0,0" VerticalAlignment="Top" Width="391"/>
+            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="2" Margin="0,116,0,0" VerticalAlignment="Top" Width="415"/>
         </Grid>
         <Grid
             x:Name="Dijkstra"
