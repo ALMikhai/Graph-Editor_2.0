@@ -117,7 +117,7 @@ namespace Graph_Editor
             WaitPanel.Visibility = Visibility.Visible;
             WaitPanel.Background = Brushes.Gray;
             connectVertices.Show();
-        }
+    }
         private void Algoritm_Button(object sender, RoutedEventArgs e)
         {
             Algoritms algoritms = new Algoritms();
@@ -128,24 +128,42 @@ namespace Graph_Editor
 
         private void Change_Tool_Button(object sender, RoutedEventArgs e)
         {
-            globals.toolNow = globals.toolList[Convert.ToInt32((sender as Button).Tag)];
+            //globals.toolNow = globals.toolList[Convert.ToInt32((sender as Button).Tag)];
 
             if (Convert.ToInt32((sender as Button).Tag) == 0)
             {
                 MoveVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
                 DelVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                Connect.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                (sender as Button).Background = Brushes.CadetBlue;
             }
             else if (Convert.ToInt32((sender as Button).Tag) == 1)
             {
                 AddVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
                 DelVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                Connect.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                (sender as Button).Background = Brushes.CadetBlue;
+            }
+            else if (Convert.ToInt32((sender as Button).Tag) == 2)
+            {
+                AddVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                MoveVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                Connect.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                (sender as Button).Background = Brushes.CadetBlue;
             }
             else
             {
                 AddVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
                 MoveVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                DelVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                if (String.Compare((sender as Button).Background.ToString(), "#FF5F9EA0") != 0)
+                {
+                    // First Click
+                    Connect.Background = Brushes.CadetBlue;
+                }
+                else
+                    Connect_Click(sender, e);
             }
-            (sender as Button).Background = Brushes.CadetBlue;
             chooseTool = Convert.ToInt32((sender as Button).Tag);
         }
 
