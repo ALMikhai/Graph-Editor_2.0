@@ -50,12 +50,13 @@ namespace Graph_Editor
             {
                 if (globals.IsAlgo)
                     pen.Brush = Brushes.Red;
+
                 if (edge.Directed)
                 {
                     Point from = edge.From.Coordinates;
                     Point to = edge.To.Coordinates;
-                    Point center = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
 
+                    Point center = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
                     Point center_second = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
 
                     double d = Math.Sqrt(Math.Pow(to.X - from.X, 2) + Math.Pow(to.Y - from.Y, 2));
@@ -74,7 +75,6 @@ namespace Graph_Editor
 
                     drawingContext.DrawLine(pen, center, left);
                     drawingContext.DrawLine(pen, center, right);
-
                 }
                 
                 drawingContext.DrawLine(pen, edge.From.Coordinates, edge.To.Coordinates);
@@ -118,13 +118,23 @@ namespace Graph_Editor
 
         private void Change_Tool_Button(object sender, RoutedEventArgs e)
         {
-            globals.toolNow = globals.toolList[Convert.ToInt32((sender as Button).Tag)];
+            //globals.toolNow = globals.toolList[Convert.ToInt32((sender as Button).Tag)];
 
             if (Convert.ToInt32((sender as Button).Tag) == 0)
+            {
                 MoveVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
-            else
+                DelVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+            }
+            else if (Convert.ToInt32((sender as Button).Tag) == 1)
+            {
                 AddVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
-
+                DelVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+            }
+            else
+            {
+                AddVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                MoveVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+            }
             (sender as Button).Background = Brushes.CadetBlue;
             chooseTool = Convert.ToInt32((sender as Button).Tag);
         }

@@ -76,23 +76,33 @@ namespace Graph_Editor
 
             Edge newEdge = new Edge(from, to, Convert.ToInt32(TextBox_Weight.Text), route);
 
-            globals.edgesData.Add(newEdge);
-            if (globals.matrix[newEdge.To.Index, newEdge.From.Index] == 1 && route)
+            if (route || (globals.matrix[newEdge.To.Index, newEdge.From.Index] != 1 && globals.matrix[newEdge.From.Index, newEdge.To.Index] != 1))
             {
-                // TODO: Сделать красивый вывод рёбер.
+                if (globals.matrix[newEdge.From.Index, newEdge.To.Index] == 1)
+                    MessageBox.Show("You alredy have this edge!");
+
+                globals.edgesData.Add(newEdge);
+                if (globals.matrix[newEdge.To.Index, newEdge.From.Index] == 1 && route)
+                {
+                    // TODO: Сделать красивый вывод рёбер.
+                }
+
+                globals.matrix[newEdge.From.Index, newEdge.To.Index] = 1;
+                // TODO: Удалять нарисованное ребро (ориентированное) и добавлять обычное (неориентированное)
+                if (!route)
+                    globals.matrix[newEdge.To.Index, newEdge.From.Index] = 1;
+
+                MainWindow.Invalidate();
+
+                //TODO Сделать выделение доп. память для матрицы
+                FirstVertex.Text = "";
+                SecondVertex.Text = "";
+                WeightSlider.Value = 0;
             }
-
-            globals.matrix[newEdge.From.Index, newEdge.To.Index] = 1;
-            // TODO: Удалять нарисованное ребро (ориентированное) и добавлять обычное (неориентированное)
-            if (!route)
-                globals.matrix[newEdge.To.Index, newEdge.From.Index] = 1;
-
-            MainWindow.Invalidate();
-
-            //TODO Сделать выделение доп. память для матрицы
-            FirstVertex.Text = "";
-            SecondVertex.Text = "";
-            WeightSlider.Value = 0;
+            else
+            {
+                MessageBox.Show("Incorrect input");
+            }
         }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
