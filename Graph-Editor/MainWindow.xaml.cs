@@ -37,6 +37,7 @@ namespace Graph_Editor
         }
 
         int chooseTool = -1;
+
         public void Invalidate()
         {
             graphCanvas.Children.Clear();
@@ -53,14 +54,14 @@ namespace Graph_Editor
                 if (globals.IsAlgo)
                     pen.Brush = Brushes.Red;
 
+                Point from = edge.From.Coordinates;
+                Point to = edge.To.Coordinates;
+
+                Point center = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
+                Point center_second = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
+
                 if (edge.Directed)
                 {
-                    Point from = edge.From.Coordinates;
-                    Point to = edge.To.Coordinates;
-
-                    Point center = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
-                    Point center_second = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
-
                     double d = Math.Sqrt(Math.Pow(to.X - from.X, 2) + Math.Pow(to.Y - from.Y, 2));
 
                     double X = to.X - from.X;
@@ -80,6 +81,28 @@ namespace Graph_Editor
                 }
                 
                 drawingContext.DrawLine(pen, edge.From.Coordinates, edge.To.Coordinates);
+
+                //Draw weight.
+                if (edge.Weight > 1)
+                {
+                    if (edge.Directed && globals.matrix[edge.To.Index, edge.From.Index] > 0)
+                    {
+                        drawingContext.DrawText(new FormattedText(edge.Weight.ToString(),
+                                         CultureInfo.GetCultureInfo("en-us"),
+                                         FlowDirection.LeftToRight,
+                                         new Typeface("Romanic"),
+                                         30, Brushes.Red), new Point((from.X + center.X) / 2, (from.Y + center.Y) / 2));
+                    }
+                    else
+                    {
+                        drawingContext.DrawText(new FormattedText(edge.Weight.ToString(),
+                                         CultureInfo.GetCultureInfo("en-us"),
+                                         FlowDirection.LeftToRight,
+                                         new Typeface("Romanic"),
+                                         30, Brushes.Red), center);
+                    }
+                }
+                //
 
             }
 
