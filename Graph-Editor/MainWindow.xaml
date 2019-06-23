@@ -74,7 +74,7 @@
             </Image>
         </Button>
         <Button Style="{StaticResource MyButtonStyle}" x:Name="DelEdge"
-                Tag="2" Background="#345160"
+                Tag="4" Background="#345160"
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Top"
                 Margin="97,450,0,0"
