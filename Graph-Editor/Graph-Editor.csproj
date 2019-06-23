@@ -62,6 +62,7 @@
     <Compile Include="Algoritms.xaml.cs">
       <DependentUpon>Algoritms.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Animation\AnimationEdge.cs" />
     <Compile Include="globals.cs" />
     <Compile Include="Objects\Edge.cs" />
     <Compile Include="Objects\Vertex.cs" />
@@ -69,6 +70,7 @@
       <DependentUpon>ConnectVertices.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tools\AddVertex.cs" />
+    <Compile Include="Tools\DelVertex.cs" />
     <Compile Include="Tools\MoveVertex.cs" />
     <Compile Include="Tools\Tool.cs" />
     <Page Include="Algoritms.xaml">

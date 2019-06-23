@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Globalization;
 using Graph_Editor.Objects;
 using System.ComponentModel;
+using System.Timers;
 
 
 namespace Graph_Editor
@@ -39,6 +40,7 @@ namespace Graph_Editor
         {
             {0, new  AddVertex()},
             {1, new  MoveVertex()},
+            {2, new  DelVertex()}
         };
 
         public static Tool toolNow = toolList[0];
