@@ -37,7 +37,7 @@
         />
         <Label Content="Вес ребра: " FontSize="20" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top"/>
         <Slider x:Name="WeightSlider" Foreground="#98B0B0" Background="#98B0B0"
-            Maximum="100" Minimum="0" SmallChange="1" LargeChange="10"
+            Maximum="100" Minimum="1" SmallChange="1" LargeChange="10"
             TickPlacement="BottomRight" TickFrequency="10"
             IsSelectionRangeEnabled="True" SelectionStart="1" ValueChanged="Slider_ValueChanged"
             HorizontalAlignment="Left"
@@ -48,7 +48,7 @@
             Background="#728484" Foreground="#CCD8D8"
             TextAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top"
             Height="37" Margin="450,104,0,0" Width="86"
-            TextWrapping="Wrap" Text="0" TextChanged="TextBox_Weight_TextChanged"
+            TextWrapping="Wrap" Text="1" TextChanged="TextBox_Weight_TextChanged"
         />
         <Button
             IsDefault="True"
