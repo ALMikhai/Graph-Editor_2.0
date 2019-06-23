@@ -62,7 +62,7 @@
                 FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
                 Tag="3" Background="CadetBlue" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove"       
         />
-        <Button Style="{StaticResource MyButtonStyle}" Content="Unknown" BorderThickness="0"
+        <Button Style="{StaticResource MyButtonStyle}" Content="Kruskal's Algorithm" BorderThickness="0"
                 HorizontalAlignment="Left" Margin="224,285,0,0" VerticalAlignment="Top"
                 FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
                 Tag="7" Background="CadetBlue" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove"       

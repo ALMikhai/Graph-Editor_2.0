@@ -129,22 +129,23 @@ namespace Graph_Editor
         private void Change_Tool_Button(object sender, RoutedEventArgs e)
         {
             //globals.toolNow = globals.toolList[Convert.ToInt32((sender as Button).Tag)];
+            int button_num = Convert.ToInt32((sender as Button).Tag);
 
-            if (Convert.ToInt32((sender as Button).Tag) == 0)
+            if (button_num == 0)
             {
                 MoveVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
                 DelVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
                 Connect.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
                 (sender as Button).Background = Brushes.CadetBlue;
             }
-            else if (Convert.ToInt32((sender as Button).Tag) == 1)
+            else if (button_num == 1)
             {
                 AddVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
                 DelVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
                 Connect.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
                 (sender as Button).Background = Brushes.CadetBlue;
             }
-            else if (Convert.ToInt32((sender as Button).Tag) == 2)
+            else if (button_num == 2)
             {
                 AddVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
                 MoveVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
