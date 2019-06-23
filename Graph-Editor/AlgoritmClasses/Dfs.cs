@@ -33,7 +33,9 @@ namespace Graph_Editor.AlgoritmClasses
                     {
                         if(edge.From.Index == v && edge.To.Index == i)
                         {
-                            MainWindow.Instance.Animation_Edge(edge);
+                            //AnimationEdge.edge = edge;
+                            //AnimationEdge.Refresh_SrtoryBoard();
+                            //AnimationEdge.Start_animation();
                             MainWindow.Instance.Invalidate();
                             break;
                         }

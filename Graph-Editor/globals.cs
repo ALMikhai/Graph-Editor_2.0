@@ -40,6 +40,7 @@ namespace Graph_Editor
         {
             {0, new  AddVertex()},
             {1, new  MoveVertex()},
+            {2, new  DelVertex()}
         };
 
         public static Tool toolNow = toolList[0];
