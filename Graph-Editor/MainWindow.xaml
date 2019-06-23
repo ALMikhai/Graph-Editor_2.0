@@ -11,7 +11,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Grid Background="{TemplateBinding Background}" Width="70" Height="70" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Grid Background="{TemplateBinding Background}" Width="80" Height="80" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             <Border BorderThickness="0"/>
                         </Grid>
@@ -30,33 +30,57 @@
                 MouseUp="GraphCanvas_MouseUp"
                 ClipToBounds="True">
         </Canvas>
-        <Button x:Name="Algorimts_Window"
+        <Button x:Name="Algorimts_Window" Foreground="WhiteSmoke"
             Content="Algoritms" BorderThickness="0"
-            HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top"
-            Width="167" Height="56" Background="#345160"
-            FontSize="20" FontWeight="DemiBold" Click="Algoritm_Button"
+            HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top"
+            Width="160" Height="48" Background="#345160"
+            FontSize="35" FontWeight="DemiBold" Click="Algoritm_Button" FontFamily="Gabriola"
         />
         <Button Style="{StaticResource MyButtonStyle}" x:Name="AddVertex"
                 Tag="0" Background="#345160"
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Top"
-                Margin="56,283,0,0"
-                Click="Change_Tool_Button" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove">
-            <Image Source="images/vertexIcon.png"/>
+                Margin="56,161,0,0"
+                Click="Change_Tool_Button" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove" ToolTip="Create vertex">
+            <Image Source="images/vertexIcon.png" Width="64" Height="64">
+                <Image.Effect>
+                    <DropShadowEffect/>
+                </Image.Effect>
+            </Image>
         </Button>
         <Button Style="{StaticResource MyButtonStyle}" x:Name="MoveVertex"
                 Tag="1" Background="#345160"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Margin="56,387,0,0"
-                Click="Change_Tool_Button"  MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove">
-            <Image Source="images\handTool.png"/>
+                Margin="56,273,0,0"
+                Click="Change_Tool_Button"  MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove" ToolTip="Move vertex">
+            <Image Source="images\handTool.png" Width="64" Height="64">
+                <Image.Effect>
+                    <DropShadowEffect/>
+                </Image.Effect>
+            </Image>
+        </Button>
+        <Button Style="{StaticResource MyButtonStyle}" x:Name="DelVertex"
+                Tag="2" Background="#345160"
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top"
+                Margin="56,382,0,0"
+                Click="Change_Tool_Button" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove" ToolTip="Delete vertex">
+            <Image Source="images/deleteVertexIcon.png" Width="64" Height="64">
+                <Image.Effect>
+                    <DropShadowEffect/>
+                </Image.Effect>
+            </Image>
         </Button>
         <Button Style="{StaticResource MyButtonStyle}" x:Name="Connect" Background="#345160"
                 HorizontalAlignment="Left" Margin="56,491,0,0" VerticalAlignment="Top"
-                FontSize="20" FontWeight="DemiBold"
-                Click="Connect_Click"  MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove">
-            <Image Source="images\edgeIcon.png" Width="64" Height="64"/>
+                FontSize="20" FontWeight="DemiBold" Tag="3"
+                Click="Connect_Click"  MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove" ToolTip="Connect vertices">
+            <Image Source="images\edgeIcon.png" Width="64" Height="64">
+                <Image.Effect>
+                    <DropShadowEffect/>
+                </Image.Effect>
+            </Image>
         </Button>
 
         <!-- Background="LightGray" (to Down)-->
@@ -66,9 +90,9 @@
         />
         <Label Content=".TXT" Background="#b7e1e1"
                    HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"       
-                   Width="150" Height="56"
+                   Width="112" Height="48" FontFamily="Ink Free"
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                   FontSize="30" FontWeight="bold" BorderBrush="black" BorderThickness="1" 
+                   FontSize="30" BorderBrush="black" BorderThickness="1" 
         />
         <Image Source="images/logo.png" Margin="10,584,954,10"/>
     </Grid>

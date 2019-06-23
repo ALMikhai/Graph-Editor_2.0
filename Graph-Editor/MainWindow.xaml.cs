@@ -44,14 +44,11 @@ namespace Graph_Editor
         }
 
 
-        public void Invalidate()
+        static public void Invalidate()
         {
 
-            graphCanvas.Children.Clear();
-            graphCanvas.Children.Add(graphHost);
-
             // TODO: при дфс цвет красный, после - черный;
-            Pen pen = new Pen(globals.color, 6);
+            Pen pen = new Pen(globals.color, 2);
             
             graphHost.Children.Clear();
             var drawingVisual = new DrawingVisual();
@@ -61,12 +58,13 @@ namespace Graph_Editor
             {
                 if (globals.IsAlgo)
                     pen.Brush = Brushes.Red;
+
                 if (edge.Directed)
                 {
                     Point from = edge.From.Coordinates;
                     Point to = edge.To.Coordinates;
-                    Point center = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
 
+                    Point center = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
                     Point center_second = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
 
                     double d = Math.Sqrt(Math.Pow(to.X - from.X, 2) + Math.Pow(to.Y - from.Y, 2));
@@ -85,7 +83,6 @@ namespace Graph_Editor
 
                     drawingContext.DrawLine(pen, center, left);
                     drawingContext.DrawLine(pen, center, right);
-
                 }
                 
                 drawingContext.DrawLine(pen, edge.From.Coordinates, edge.To.Coordinates);
@@ -167,7 +164,6 @@ namespace Graph_Editor
                 mouseDown = false;
             }
         }
-
         private void Button_MouseMove(object sender, MouseEventArgs e)
         {
             (sender as Button).Background = Brushes.CadetBlue;
@@ -177,5 +173,17 @@ namespace Graph_Editor
         {
             (sender as Button).Background = (Brush)new BrushConverter().ConvertFrom("#345160");
         }
+
+        private void Button_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (Convert.ToInt32((sender as Button).Tag) != chooseTool)
+                (sender as Button).Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+        }
     }
 }
+
+        int chooseTool = -1;
+        public void Invalidate()
+
+            graphCanvas.Children.Clear();
+            graphCanvas.Children.Add(graphHost);
