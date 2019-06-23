@@ -70,7 +70,6 @@
       <DependentUpon>ConnectVertices.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tools\AddVertex.cs" />
-    <Compile Include="Tools\CntVert.cs" />
     <Compile Include="Tools\DelVertex.cs" />
     <Compile Include="Tools\MoveVertex.cs" />
     <Compile Include="Tools\Tool.cs" />
