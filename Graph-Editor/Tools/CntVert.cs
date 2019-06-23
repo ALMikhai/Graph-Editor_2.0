@@ -8,8 +8,9 @@ using Graph_Editor.Objects;
 
 namespace Graph_Editor
 {
-    class DelVertex : Tool
+    class CntVert : Tool
     {
+        Vertex vertexFirst;
         Vertex findedVert;
 
         public override void Mouse_Down(Point pntNow)
@@ -28,22 +29,28 @@ namespace Graph_Editor
 
             if(findedVert != null)
             {
-                foreach (Edge edge in globals.edgesData.ToArray())
+                if(vertexFirst != null)
                 {
-                    if (edge.From == findedVert || edge.To == findedVert)
+                    vertexFirst = findedVert;
+                    findedVert = null;
+                }
+                else
+                {
+                    if (globals.matrix[vertexFirst.Index, findedVert.Index] == 1 || globals.matrix[findedVert.Index, vertexFirst.Index] == 1)
                     {
-                        globals.matrix[edge.From.Index, edge.To.Index] = 0;
-                        if (!edge.Directed)
-                        {
-                            globals.matrix[edge.To.Index, edge.From.Index] = 0;
-                        }
-                        globals.edgesData.Remove(edge);
+                        findedVert = null;
+                        vertexFirst = null;
+                    }
+                    else
+                    {
+                        Edge edge = new Edge(vertexFirst, findedVert, 0, false);
+                        globals.matrix[edge.From.Index, edge.To.Index] = 1;
+                        globals.matrix[edge.To.Index, edge.From.Index] = 1;
+
+                        globals.edgesData.Add(edge);
                     }
                 }
-
-                globals.vertexData.Remove(findedVert);
-
-                findedVert = null;
+                
             }
         }
     }
