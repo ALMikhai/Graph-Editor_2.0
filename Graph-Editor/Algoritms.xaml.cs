@@ -41,6 +41,7 @@ namespace Graph_Editor
                 FSstartVertex.Text = "0";
                 BFS_DFS_label.Content = chooseAlg == 0 ? "BFS" : "DFS";
             }
+            
             else if (chooseAlg == 2)
             {
                 Dijkstra.Visibility = Visibility.Visible;
