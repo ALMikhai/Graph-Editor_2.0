@@ -30,6 +30,10 @@ namespace Graph_Editor
         {
             InitializeComponent();
         }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            FirstVertex.Focus();
+        }
         void DataWindow_Closing(object sender, CancelEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)App.Current.MainWindow;

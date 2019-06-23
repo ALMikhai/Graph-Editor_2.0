@@ -19,16 +19,34 @@ using System.Windows.Media.Animation;
 using System.Threading;
 using System.Diagnostics;
 using Graph_Editor.AlgoritmClasses;
+using System;
 using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 
 namespace Graph_Editor
 {
+    /// <summary>
+    /// Логика взаимодействия для MainWindow.xaml
+    /// </summary>
+    ///
+
+
     public partial class MainWindow : Window
     {
         public static FigureHost graphHost = new FigureHost();
         bool mouseDown = false;
+        //bool animationIsWork = false;
 
         public static MainWindow Instance { get; private set; }
+        private void DataWindow_Closing(object sender, CancelEventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
+            mainWindow.WaitPanel.Background = null;
+            mainWindow.WaitPanel.Opacity = 0;
+        }
         public MainWindow()
         {
             InitializeComponent();
@@ -36,17 +54,14 @@ namespace Graph_Editor
             WaitPanel.Visibility = Visibility.Hidden;
             Instance = this;
         }
-        private void DataWindow_Closing(object sender, CancelEventArgs e)
-        {
-            Exit_Dialog.Visibility = Visibility.Visible;
-        }
-        int chooseTool = -1;
 
+        int chooseTool = -1;
         public void Invalidate()
         {
             graphCanvas.Children.Clear();
             graphCanvas.Children.Add(graphHost);
-            
+
+            // TODO: при дфс цвет красный, после - черный;
             Pen pen = new Pen(globals.color, 2);
             
             graphHost.Children.Clear();
@@ -58,14 +73,14 @@ namespace Graph_Editor
                 if (globals.IsAlgo)
                     pen.Brush = Brushes.Red;
 
-                Point from = edge.From.Coordinates;
-                Point to = edge.To.Coordinates;
-
-                Point center = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
-                Point center_second = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
-
                 if (edge.Directed)
                 {
+                    Point from = edge.From.Coordinates;
+                    Point to = edge.To.Coordinates;
+
+                    Point center = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
+                    Point center_second = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
+
                     double d = Math.Sqrt(Math.Pow(to.X - from.X, 2) + Math.Pow(to.Y - from.Y, 2));
 
                     double X = to.X - from.X;
@@ -85,28 +100,6 @@ namespace Graph_Editor
                 }
                 
                 drawingContext.DrawLine(pen, edge.From.Coordinates, edge.To.Coordinates);
-
-                //Draw weight.
-                if (edge.Weight > 1)
-                {
-                    if (edge.Directed && globals.matrix[edge.To.Index, edge.From.Index] > 0)
-                    {
-                        drawingContext.DrawText(new FormattedText(edge.Weight.ToString(),
-                                         CultureInfo.GetCultureInfo("en-us"),
-                                         FlowDirection.LeftToRight,
-                                         new Typeface("Romanic"),
-                                         30, Brushes.Red), new Point((from.X + center.X) / 2, (from.Y + center.Y) / 2));
-                    }
-                    else
-                    {
-                        drawingContext.DrawText(new FormattedText(edge.Weight.ToString(),
-                                         CultureInfo.GetCultureInfo("en-us"),
-                                         FlowDirection.LeftToRight,
-                                         new Typeface("Romanic"),
-                                         30, Brushes.Red), center);
-                    }
-                }
-                //
 
             }
 
