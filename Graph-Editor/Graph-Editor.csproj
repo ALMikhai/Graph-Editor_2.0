@@ -69,6 +69,7 @@
     <Compile Include="ConnectVertices.xaml.cs">
       <DependentUpon>ConnectVertices.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SaveLoad\Exit.cs" />
     <Compile Include="SaveLoad\Load.cs" />
     <Compile Include="SaveLoad\Save.cs" />
     <Compile Include="Tools\AddVertex.cs" />
@@ -139,15 +140,11 @@
   <ItemGroup>
     <Resource Include="images\vertexIcon.png" />
   </ItemGroup>
-<<<<<<< HEAD
   <ItemGroup>
     <Resource Include="images\clearAll.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\deleteEdgeIcon.png" />
   </ItemGroup>
-=======
-  <ItemGroup />
->>>>>>> master
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
