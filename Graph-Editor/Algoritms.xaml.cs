@@ -85,7 +85,7 @@ namespace Graph_Editor
                 globals.IsAlgo = true;
                 if (chooseAlg == 0)
                 {
-                    //bfs();
+                    Bfs.Start(Convert.ToInt32(FSstartVertex.Text));
                 }
                 else
                 {
