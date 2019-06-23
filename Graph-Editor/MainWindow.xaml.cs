@@ -226,5 +226,16 @@ namespace Graph_Editor
         {
             Load.Loaded();
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < globals.globalIndex; i++)
+                for (int j = 0; j < globals.globalIndex; j++)
+                    globals.matrix[i,j] = 0;
+            globals.vertexData.Clear();
+            globals.edgesData.Clear();
+            globals.globalIndex = 0;
+            Invalidate();
+        }
     }
 }

@@ -139,6 +139,15 @@
   <ItemGroup>
     <Resource Include="images\vertexIcon.png" />
   </ItemGroup>
+<<<<<<< HEAD
+  <ItemGroup>
+    <Resource Include="images\clearAll.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\deleteEdgeIcon.png" />
+  </ItemGroup>
+=======
   <ItemGroup />
+>>>>>>> master
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
