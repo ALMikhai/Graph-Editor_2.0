@@ -75,7 +75,7 @@
         <Button Style="{StaticResource MyButtonStyle}" x:Name="Connect" Background="#345160"
                 HorizontalAlignment="Left" Margin="56,491,0,0" VerticalAlignment="Top"
                 FontSize="20" FontWeight="DemiBold" Tag="3"
-                Click="Connect_Click"  MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove" ToolTip="Connect vertices">
+                Click="Change_Tool_Button" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove" ToolTip="Connect vertices">
             <Image Source="images\edgeIcon.png" Width="64" Height="64">
                 <Image.Effect>
                     <DropShadowEffect/>
