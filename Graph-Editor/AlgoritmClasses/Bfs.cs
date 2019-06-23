@@ -27,7 +27,7 @@ namespace Graph_Editor.AlgoritmClasses
                     {
                         q.Enqueue(i);
                         visited[i] = true;
-                        MainWindow.Invalidate();
+                        MainWindow.Instance.Invalidate();
                         Thread.Sleep(100);
                     }
                 }

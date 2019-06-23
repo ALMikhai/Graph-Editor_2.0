@@ -15,6 +15,9 @@ using System.Windows.Shapes;
 using System.Globalization;
 using Graph_Editor.Objects;
 using System.Drawing.Drawing2D;
+using System.Windows.Media.Animation;
+using System.Threading;
+using System.Diagnostics;
 
 namespace Graph_Editor
 {
@@ -28,17 +31,24 @@ namespace Graph_Editor
     {
         public static FigureHost graphHost = new FigureHost();
         bool mouseDown = false;
+        //bool animationIsWork = false;
+
+        public static MainWindow Instance { get; private set; }
 
         public MainWindow()
         {
             InitializeComponent();
             graphCanvas.Children.Add(graphHost);
             WaitPanel.Visibility = Visibility.Hidden;
+            Instance = this;
         }
 
         int chooseTool = -1;
-        static public void Invalidate()
+        public void Invalidate()
         {
+            graphCanvas.Children.Clear();
+            graphCanvas.Children.Add(graphHost);
+
             // TODO: при дфс цвет красный, после - черный;
             Pen pen = new Pen(globals.color, 2);
             
@@ -118,7 +128,7 @@ namespace Graph_Editor
 
         private void Change_Tool_Button(object sender, RoutedEventArgs e)
         {
-            //globals.toolNow = globals.toolList[Convert.ToInt32((sender as Button).Tag)];
+            globals.toolNow = globals.toolList[Convert.ToInt32((sender as Button).Tag)];
 
             if (Convert.ToInt32((sender as Button).Tag) == 0)
             {
@@ -157,17 +167,24 @@ namespace Graph_Editor
 
         private void GraphCanvas_MouseLeave(object sender, MouseEventArgs e)
         {
-            globals.toolNow.Mouse_Leave();
-            Invalidate();
-            mouseDown = false;
+            if (mouseDown)
+            {
+                globals.toolNow.Mouse_Leave();
+                Invalidate();
+                mouseDown = false;
+            }
         }
 
         private void GraphCanvas_MouseUp(object sender, MouseEventArgs e)
         {
-            globals.toolNow.Mouse_Up();
-            Invalidate();
-            mouseDown = false;
+            if (mouseDown)
+            {
+                globals.toolNow.Mouse_Up();
+                Invalidate();
+                mouseDown = false;
+            }
         }
+
         private void Button_MouseMove(object sender, MouseEventArgs e)
         {
             if (Convert.ToInt32((sender as Button).Tag) != chooseTool)
