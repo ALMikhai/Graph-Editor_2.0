@@ -10,8 +10,8 @@ namespace Graph_Editor
 {
     class CntVert : Tool
     {
-        Vertex vertexFirst;
-        Vertex findedVert;
+        Vertex vertexFirst = null;
+        Vertex findedVert = null;
 
         public override void Mouse_Down(Point pntNow)
         {
@@ -29,14 +29,14 @@ namespace Graph_Editor
 
             if(findedVert != null)
             {
-                if(vertexFirst != null)
+                if(vertexFirst == null)
                 {
                     vertexFirst = findedVert;
                     findedVert = null;
                 }
                 else
                 {
-                    if (globals.matrix[vertexFirst.Index, findedVert.Index] == 1 || globals.matrix[findedVert.Index, vertexFirst.Index] == 1)
+                    if (findedVert == vertexFirst || globals.matrix[vertexFirst.Index, findedVert.Index] == 1 || globals.matrix[findedVert.Index, vertexFirst.Index] == 1)
                     {
                         findedVert = null;
                         vertexFirst = null;
@@ -48,10 +48,19 @@ namespace Graph_Editor
                         globals.matrix[edge.To.Index, edge.From.Index] = 1;
 
                         globals.edgesData.Add(edge);
+
+                        findedVert = null;
+                        vertexFirst = null;
                     }
                 }
                 
             }
+        }
+
+        public override void Change_Tool()
+        {
+            findedVert = null;
+            vertexFirst = null;
         }
     }
 }

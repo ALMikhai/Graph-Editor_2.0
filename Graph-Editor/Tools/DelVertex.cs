@@ -46,5 +46,10 @@ namespace Graph_Editor
                 findedVert = null;
             }
         }
+
+        public override void Change_Tool()
+        {
+            findedVert = null;
+        }
     }
 }
