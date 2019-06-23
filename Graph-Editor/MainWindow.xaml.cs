@@ -43,9 +43,11 @@ namespace Graph_Editor
             Instance = this;
         }
 
-
-        static public void Invalidate()
+        int chooseTool = -1;
+        public void Invalidate()
         {
+            graphCanvas.Children.Clear();
+            graphCanvas.Children.Add(graphHost);
 
             // TODO: при дфс цвет красный, после - черный;
             Pen pen = new Pen(globals.color, 2);
@@ -127,6 +129,24 @@ namespace Graph_Editor
         private void Change_Tool_Button(object sender, RoutedEventArgs e)
         {
             globals.toolNow = globals.toolList[Convert.ToInt32((sender as Button).Tag)];
+
+            if (Convert.ToInt32((sender as Button).Tag) == 0)
+            {
+                MoveVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                DelVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+            }
+            else if (Convert.ToInt32((sender as Button).Tag) == 1)
+            {
+                AddVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                DelVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+            }
+            else
+            {
+                AddVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                MoveVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+            }
+            (sender as Button).Background = Brushes.CadetBlue;
+            chooseTool = Convert.ToInt32((sender as Button).Tag);
         }
 
         private void GraphCanvas_MouseDown(object sender, MouseEventArgs e)
@@ -164,14 +184,11 @@ namespace Graph_Editor
                 mouseDown = false;
             }
         }
+
         private void Button_MouseMove(object sender, MouseEventArgs e)
         {
-            (sender as Button).Background = Brushes.CadetBlue;
-        }
-
-        private void Button_MouseLeave(object sender, MouseEventArgs e)
-        {
-            (sender as Button).Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+            if (Convert.ToInt32((sender as Button).Tag) != chooseTool)
+                (sender as Button).Background = (Brush)new BrushConverter().ConvertFrom("#4c7184");
         }
 
         private void Button_MouseLeave(object sender, MouseEventArgs e)
@@ -181,9 +198,3 @@ namespace Graph_Editor
         }
     }
 }
-
-        int chooseTool = -1;
-        public void Invalidate()
-
-            graphCanvas.Children.Clear();
-            graphCanvas.Children.Add(graphHost);
