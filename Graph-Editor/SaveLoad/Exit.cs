@@ -13,8 +13,7 @@ namespace Graph_Editor
 {
     public class Exit
     {
-        public static int choose;
-        public static void Exit_and_Save_All()
+        public static void Exit_and_Save_All(int choose)
         {
             MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
             if (choose == 0)

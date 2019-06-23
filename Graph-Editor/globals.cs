@@ -46,7 +46,8 @@ namespace Graph_Editor
             {0, new  AddVertex()},
             {1, new  MoveVertex()},
             {2, new  DelVertex()},
-            {3, new CntVert()}
+            {3, new CntVert()},
+            {4, new DelEdge()}
         };
 
         public static Tool toolNow = toolList[0];

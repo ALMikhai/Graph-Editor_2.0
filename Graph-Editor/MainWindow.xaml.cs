@@ -152,38 +152,52 @@ namespace Graph_Editor
 
             globals.toolNow.Change_Tool();
 
+            Brush brush = (Brush)new BrushConverter().ConvertFrom("#345160");
+
             if (button_num == 0)
             {
-                MoveVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
-                DelVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
-                Connect.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                MoveVertex.Background = brush;
+                DelVertex.Background = brush;
+                Connect.Background = brush;
+                DelEdge.Background = brush;
                 (sender as Button).Background = Brushes.CadetBlue;
             }
             else if (button_num == 1)
             {
-                AddVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
-                DelVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
-                Connect.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                AddVertex.Background = brush;
+                DelVertex.Background = brush;
+                Connect.Background = brush;
+                DelEdge.Background = brush;
                 (sender as Button).Background = Brushes.CadetBlue;
             }
             else if (button_num == 2)
             {
-                AddVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
-                MoveVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
-                Connect.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                AddVertex.Background = brush;
+                MoveVertex.Background = brush;
+                Connect.Background = brush;
+                DelEdge.Background = brush;
                 (sender as Button).Background = Brushes.CadetBlue;
             }
-            else
+            else if (button_num == 3)
             {
-                AddVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
-                MoveVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
-                DelVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                AddVertex.Background = brush;
+                MoveVertex.Background = brush;
+                DelVertex.Background = brush;
+                DelEdge.Background = brush;
                 if (String.Compare((sender as Button).Background.ToString(), "#FF5F9EA0") != 0)
                 {   
                     Connect.Background = Brushes.CadetBlue;
                 }
                 else
                     Connect_Click(sender, e);
+            }
+            else if (button_num == 4)
+            {
+                AddVertex.Background = brush;
+                MoveVertex.Background = brush;
+                DelVertex.Background = brush;
+                Connect.Background = brush;
+                (sender as Button).Background = Brushes.CadetBlue;
             }
             chooseTool = Convert.ToInt32((sender as Button).Tag);
         }
@@ -247,7 +261,10 @@ namespace Graph_Editor
         }
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            Exit_Dialog.Visibility = Visibility.Visible;
+            if (globals.vertexData.Count > 0)
+                Exit_Dialog.Visibility = Visibility.Visible;
+            else
+                this.Close();
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -263,20 +280,17 @@ namespace Graph_Editor
 
         private void Save_Exit_Click(object sender, RoutedEventArgs e)
         {
-            Exit.choose = 0;
-            Exit.Exit_and_Save_All();
+            Exit.Exit_and_Save_All(0);
         }
 
         private void Exit_Exit_Click(object sender, RoutedEventArgs e)
         {
-            Exit.choose = 1;
-            Exit.Exit_and_Save_All();
+            Exit.Exit_and_Save_All(1);
         }
 
         private void Cancel_Exit_Click(object sender, RoutedEventArgs e)
         {
-            Exit.choose = 2;
-            Exit.Exit_and_Save_All();
+            Exit.Exit_and_Save_All(2);
         }
     }
 }
