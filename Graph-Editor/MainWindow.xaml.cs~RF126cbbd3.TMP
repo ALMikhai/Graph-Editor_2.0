@@ -19,7 +19,12 @@ using System.Windows.Media.Animation;
 using System.Threading;
 using System.Diagnostics;
 using Graph_Editor.AlgoritmClasses;
+using System;
 using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 
 namespace Graph_Editor
 {
@@ -36,6 +41,12 @@ namespace Graph_Editor
         //bool animationIsWork = false;
 
         public static MainWindow Instance { get; private set; }
+        private void DataWindow_Closing(object sender, CancelEventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
+            mainWindow.WaitPanel.Background = null;
+            mainWindow.WaitPanel.Opacity = 0;
+        }
         public MainWindow()
         {
             InitializeComponent();
@@ -43,10 +54,7 @@ namespace Graph_Editor
             WaitPanel.Visibility = Visibility.Hidden;
             Instance = this;
         }
-        private void DataWindow_Closing(object sender, CancelEventArgs e)
-        {
-            Exit_Dialog.Visibility = Visibility.Visible;
-        }
+
         int chooseTool = -1;
         public void Invalidate()
         {
