@@ -21,17 +21,10 @@ using System.Diagnostics;
 
 namespace Graph_Editor
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
-    ///
-
-
     public partial class MainWindow : Window
     {
         public static FigureHost graphHost = new FigureHost();
         bool mouseDown = false;
-        //bool animationIsWork = false;
 
         public static MainWindow Instance { get; private set; }
 
@@ -48,8 +41,7 @@ namespace Graph_Editor
         {
             graphCanvas.Children.Clear();
             graphCanvas.Children.Add(graphHost);
-
-            // TODO: при дфс цвет красный, после - черный;
+            
             Pen pen = new Pen(globals.color, 2);
             
             graphHost.Children.Clear();

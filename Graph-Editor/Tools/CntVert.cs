@@ -43,7 +43,7 @@ namespace Graph_Editor
                     }
                     else
                     {
-                        Edge edge = new Edge(vertexFirst, findedVert, 0, false);
+                        Edge edge = new Edge(vertexFirst, findedVert, 1, false);
                         globals.matrix[edge.From.Index, edge.To.Index] = 1;
                         globals.matrix[edge.To.Index, edge.From.Index] = 1;
 
