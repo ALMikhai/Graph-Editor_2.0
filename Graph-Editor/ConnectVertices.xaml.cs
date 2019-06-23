@@ -92,7 +92,7 @@ namespace Graph_Editor
                 if (!route)
                     globals.matrix[newEdge.To.Index, newEdge.From.Index] = 1;
 
-                MainWindow.Invalidate();
+                MainWindow.Instance.Invalidate();
 
                 //TODO Сделать выделение доп. память для матрицы
                 FirstVertex.Text = "";
