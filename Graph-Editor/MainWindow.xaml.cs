@@ -128,8 +128,10 @@ namespace Graph_Editor
 
         private void Change_Tool_Button(object sender, RoutedEventArgs e)
         {
-            //globals.toolNow = globals.toolList[Convert.ToInt32((sender as Button).Tag)];
+            globals.toolNow = globals.toolList[Convert.ToInt32((sender as Button).Tag)];
             int button_num = Convert.ToInt32((sender as Button).Tag);
+
+            globals.toolNow.Change_Tool();
 
             if (button_num == 0)
             {
@@ -158,8 +160,7 @@ namespace Graph_Editor
                 MoveVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
                 DelVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
                 if (String.Compare((sender as Button).Background.ToString(), "#FF5F9EA0") != 0)
-                {
-                    // First Click
+                {   
                     Connect.Background = Brushes.CadetBlue;
                 }
                 else
@@ -214,6 +215,16 @@ namespace Graph_Editor
         {
             if (Convert.ToInt32((sender as Button).Tag) != chooseTool)
                 (sender as Button).Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            Save.Save_All();
+        }
+
+        private void Load_Click(object sender, RoutedEventArgs e)
+        {
+            Load.Loaded();
         }
     }
 }

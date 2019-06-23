@@ -10,9 +10,6 @@ namespace Graph_Editor
 {
     class DelVertex : Tool
     {
-
-
-
         Vertex findedVert;
 
         public override void Mouse_Down(Point pntNow)
@@ -31,9 +28,9 @@ namespace Graph_Editor
 
             if(findedVert != null)
             {
-                foreach(Edge edge in globals.edgesData)
+                foreach (Edge edge in globals.edgesData.ToArray())
                 {
-                    if(edge.From == findedVert || edge.To == findedVert)
+                    if (edge.From == findedVert || edge.To == findedVert)
                     {
                         globals.matrix[edge.From.Index, edge.To.Index] = 0;
                         if (!edge.Directed)
@@ -48,6 +45,11 @@ namespace Graph_Editor
 
                 findedVert = null;
             }
+        }
+
+        public override void Change_Tool()
+        {
+            findedVert = null;
         }
     }
 }

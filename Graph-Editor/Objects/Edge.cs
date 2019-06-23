@@ -13,9 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Globalization;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Windows.Forms;
+
 namespace Graph_Editor.Objects
 {
-    public class Edge
+    [Serializable]
+    public class Edge : ISerializable
     {
         private readonly Vertex from, to;
         private int weight;
@@ -38,5 +44,44 @@ namespace Graph_Editor.Objects
         {get { return directed; }set { directed = value; } }
 
         public Edge(Vertex first, Vertex second, int w, bool state) { from = first; to = second; weight = w; directed = state; }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("index", globals.globalIndex);
+            info.AddValue("from", from.Index);
+            info.AddValue("to", to.Index);
+            info.AddValue("weight", weight);
+            info.AddValue("directed", directed);
+        }
+
+        public Edge(SerializationInfo info, StreamingContext context)
+        {
+            globals.globalIndex = (int)info.GetValue("index", typeof(int));
+
+            int index = (int)info.GetValue("from", typeof(int));
+            
+            foreach(Vertex vertex in globals.vertexData)
+            {
+                if(vertex.Index == index)
+                {
+                    from = vertex;
+                    break;
+                }
+            }
+
+            index = (int)info.GetValue("to", typeof(int));
+
+            foreach (Vertex vertex in globals.vertexData)
+            {
+                if (vertex.Index == index)
+                {
+                    to = vertex;
+                    break;
+                }
+            }
+
+            weight = (int)info.GetValue("weight", typeof(int));
+            directed = (bool)info.GetValue("directed", typeof(bool));
+        }
     }
 }
