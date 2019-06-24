@@ -11,8 +11,12 @@
     <Grid Background="#98B0B0">
         <Image Source="../images/logo.png" Width="32" Height="32" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
         <Button Content="Я насмотрелся :)" HorizontalAlignment="Left" Margin="10,273,0,7" Width="162" FontSize="20" Click="Cancel_Click"/>
-        <TextBox HorizontalAlignment="Left" Height="258" Margin="10,10,0,0" TextWrapping="Wrap"
-                 Text=" " VerticalAlignment="Top" Width="574" Background="Transparent" Foreground="Black"
+        <TextBox x:Name="mainBlock" HorizontalAlignment="Left" Height="258" Margin="45,10,0,0" TextWrapping="Wrap"
+                 Text=" " VerticalAlignment="Top" Width="539" Background="Transparent" Foreground="Black"
                  FontSize="20"/>
+        <TextBox x:Name="sideBlock" HorizontalAlignment="Left"
+                 Height="258" Margin="10,10,0,0" TextWrapping="Wrap" Text=""
+                 VerticalAlignment="Top" Width="30"
+                 Foreground="Black" Background="Transparent"/>
     </Grid>
 </Window>
