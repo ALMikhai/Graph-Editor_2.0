@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Globalization;
 using System.Threading;
+using Graph_Editor.Objects;
 
 namespace Graph_Editor.AlgoritmClasses
 {
@@ -22,25 +23,56 @@ namespace Graph_Editor.AlgoritmClasses
     {
         static bool[] visited = new bool[globals.Size];
 
+        static List<Edge> edgesUsed = new List<Edge>();
+
         public static void Start(int v)
+        {
+            dfs(v);
+            while (edgesUsed.Count != 0)
+            {
+                AnimationEdge.edge = edgesUsed[0];
+                AnimationEdge.Refresh_SrtoryBoard();
+                AnimationEdge.Start_animation();
+                
+                MainWindow.Instance.InvalidateAlgo(edgesUsed[0]);
+                edgesUsed.RemoveAt(0);
+
+            }
+
+            //AnimationEdge.Rendering(edgesUsed);
+            visited = new bool[globals.Size];
+            edgesUsed.Clear();
+        }
+
+        static void dfs(int v)
         {
             visited[v] = true;
             for (int i = 0; i < globals.Size; i++)
             {
-                if (globals.matrix[v,i] != 0 && !visited[i])
+                if (globals.matrix[v, i] != 0 && !visited[i])
                 {
-                    foreach(var edge in globals.edgesData)
+                    foreach (var edge in globals.edgesData)
                     {
-                        if(edge.From.Index == v && edge.To.Index == i)
+                        if (edge.From.Index == v && edge.To.Index == i)
                         {
-                            //AnimationEdge.edge = edge;
-                            //AnimationEdge.Refresh_SrtoryBoard();
-                            //AnimationEdge.Start_animation();
-                            MainWindow.Instance.Invalidate();
+                            edge.Color = Brushes.Red;
+                            if(!edge.Directed)
+                            {
+                                foreach(var e in globals.edgesData)
+                                {
+                                    if(e.From.Index == i && e.To.Index == v)
+                                    {
+                                        e.Color = Brushes.Red;
+                                        break;
+                                    }
+                                }
+                            }
+                            edgesUsed.Add(edge);
+                            
                             break;
                         }
                     }
-                    Start(i);
+                    dfs(i);
                 }
             }
         }

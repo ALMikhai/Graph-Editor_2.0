@@ -26,7 +26,6 @@ namespace Graph_Editor.Objects
         private readonly int index;
         private Point coordinates;
         private Brush color = globals.color;
-
         public Brush Color
         { get { return color; } set { color = value; } }
 
@@ -38,6 +37,7 @@ namespace Graph_Editor.Objects
         
         public Vertex(int number, Point place) { index = number; coordinates = place; }
 
+        public Vertex(int number) { index = number; }
         public Vertex() { }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
