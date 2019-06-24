@@ -34,14 +34,14 @@ namespace Graph_Editor.AlgoritmClasses
                 AnimationEdge.Refresh_SrtoryBoard();
                 AnimationEdge.Start_animation();
                 
-                MainWindow.Instance.Invalidate();
+                MainWindow.Instance.InvalidateAlgo(edgesUsed[0]);
                 edgesUsed.RemoveAt(0);
 
             }
 
             //AnimationEdge.Rendering(edgesUsed);
             visited = new bool[globals.Size];
-            edgesUsed = new List<Edge>();
+            edgesUsed.Clear();
         }
 
         static void dfs(int v)
@@ -55,7 +55,20 @@ namespace Graph_Editor.AlgoritmClasses
                     {
                         if (edge.From.Index == v && edge.To.Index == i)
                         {
+                            edge.Color = Brushes.Red;
+                            if(!edge.Directed)
+                            {
+                                foreach(var e in globals.edgesData)
+                                {
+                                    if(e.From.Index == i && e.To.Index == v)
+                                    {
+                                        e.Color = Brushes.Red;
+                                        break;
+                                    }
+                                }
+                            }
                             edgesUsed.Add(edge);
+                            
                             break;
                         }
                     }

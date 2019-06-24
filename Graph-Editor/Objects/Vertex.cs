@@ -26,7 +26,6 @@ namespace Graph_Editor.Objects
         private readonly int index;
         private Point coordinates;
         private Brush color = globals.color;
-
         public Brush Color
         { get { return color; } set { color = value; } }
 
