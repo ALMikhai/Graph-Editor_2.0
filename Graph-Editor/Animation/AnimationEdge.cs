@@ -26,8 +26,6 @@ namespace Graph_Editor
     {
         public static Edge edge;
 
-        //static MessageBox message = new MessageBox();
-
         public static Storyboard storyboard = new Storyboard
         {
             RepeatBehavior = new RepeatBehavior(1)
@@ -39,7 +37,6 @@ namespace Graph_Editor
             Height = globals.vertRadius,
             Fill = Brushes.Blue
         };
-
         public static void Refresh_SrtoryBoard()
         {
             int time = 1;
@@ -91,12 +88,27 @@ namespace Graph_Editor
             
         }
 
+        public static void NextAnimation(Edge e, List<Edge> edgesUsed)
+        {
+            edge = e;
+            Refresh_SrtoryBoard();
+            Start_animation();
+            EventHandler callback = null;
+            callback = (o, args) => {
+                MainWindow.Instance.InvalidateAlgo(e);
+                edgesUsed.Remove(edgesUsed[0]);
+                storyboard.Completed -= callback;
+                if (edgesUsed.Count > 0)
+                {
+                    NextAnimation(edgesUsed[0], edgesUsed);
+                }
+            };
+            storyboard.Completed += callback;
+        }
+
         public static void Start_animation()
         {   
             storyboard.Begin();
-            //MessageBox.Show("");
-
         }
-
     }
 }
