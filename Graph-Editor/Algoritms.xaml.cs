@@ -8,9 +8,6 @@ using System.Windows.Media;
 
 namespace Graph_Editor
 {
-    /// <summary>
-    /// Логика взаимодействия для Window2.xaml
-    /// </summary>
     public partial class Algoritms : Window
     {
         int chooseAlg;
@@ -55,7 +52,7 @@ namespace Graph_Editor
                 switch (chooseAlg)
                 {
                     case 3:
-                        // Раскрашиваем граф ();
+                        // Раскрашиваем граф();
                         MessageBox.Show("Sorry, algoritm is not ready now :(");
                         break;
                     case 4:
@@ -80,10 +77,9 @@ namespace Graph_Editor
 
         private void Button_ReadyExitAlgoritm_Click(object sender, RoutedEventArgs e)
         {
-           /* int vertex;
-            bool isInt = Int32.TryParse(FSstartVertex.Text.ToString(), vertex)
-            if ()*/
-            if ((chooseAlg == 0 || chooseAlg == 1 || chooseAlg == 7) && globals.IsBe(Convert.ToInt32(FSstartVertex.Text)) && FSstartVertex.Text != "")
+            int vertex;
+            bool isInt = Int32.TryParse(FSstartVertex.Text.ToString(), out vertex);
+            if (isInt && (chooseAlg == 0 || chooseAlg == 1 || chooseAlg == 7) && globals.IsBe(vertex))
             {
                 BFS_DFS.Visibility = Visibility.Hidden;
                 this.Close();
@@ -99,7 +95,6 @@ namespace Graph_Editor
                 }
                 else if (chooseAlg == 7)
                 {
-                    MessageBox.Show("1");
                     // krusskal();
                 }
                 globals.IsAlgo = false;
