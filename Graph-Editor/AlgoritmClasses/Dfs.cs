@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Globalization;
 using System.Threading;
+using Graph_Editor.Objects;
 
 namespace Graph_Editor.AlgoritmClasses
 {
@@ -22,25 +23,37 @@ namespace Graph_Editor.AlgoritmClasses
     {
         static bool[] visited = new bool[globals.Size];
 
+        public static List<Edge> edgesUsed = new List<Edge>();
+
+        
+
         public static void Start(int v)
+        {
+            
+            MainWindow.Instance.Invalidate();
+            if (!globals.CheckIn(v))
+                return;
+            dfs(v);
+            AnimationEdge.NextAnimation(edgesUsed[0],edgesUsed);
+            visited = new bool[globals.Size];
+        }
+
+        static void dfs(int v)
         {
             visited[v] = true;
             for (int i = 0; i < globals.Size; i++)
             {
-                if (globals.matrix[v,i] != 0 && !visited[i])
+                if (globals.matrix[v, i] != 0 && !visited[i])
                 {
-                    foreach(var edge in globals.edgesData)
+                    foreach (var edge in globals.edgesData)
                     {
-                        if(edge.From.Index == v && edge.To.Index == i)
-                        {
-                            //AnimationEdge.edge = edge;
-                            //AnimationEdge.Refresh_SrtoryBoard();
-                            //AnimationEdge.Start_animation();
-                            MainWindow.Instance.Invalidate();
+                        if (edge.From.Index == v && edge.To.Index == i)
+                        { 
+                            edgesUsed.Add(edge);
                             break;
                         }
                     }
-                    Start(i);
+                    dfs(i);
                 }
             }
         }

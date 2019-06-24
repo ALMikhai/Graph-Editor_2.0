@@ -72,7 +72,14 @@
     <Compile Include="SaveLoad\Exit.cs" />
     <Compile Include="SaveLoad\Load.cs" />
     <Compile Include="SaveLoad\Save.cs" />
+    <Compile Include="ShowData\CurrentMatrix.xaml.cs">
+      <DependentUpon>CurrentMatrix.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ShowData\CurrentList.xaml.cs">
+      <DependentUpon>CurrentList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tools\AddVertex.cs" />
+    <Compile Include="Tools\DelEdge.cs" />
     <Compile Include="Tools\CntVert.cs" />
     <Compile Include="Tools\DelVertex.cs" />
     <Compile Include="Tools\MoveVertex.cs" />
@@ -95,6 +102,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ConnectVertices.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ShowData\CurrentMatrix.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ShowData\CurrentList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -135,9 +150,11 @@
     <Resource Include="images\handTool.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="images\list.png" />
     <Resource Include="images\logo.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="images\matrix.png" />
     <Resource Include="images\vertexIcon.png" />
   </ItemGroup>
   <ItemGroup>
