@@ -1,0 +1,26 @@
+﻿<Window x:Class="Graph_Editor.Documentation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Graph_Editor"
+        mc:Ignorable="d" Icon="images/logo.png"
+        Title="Documentation" Height="604.137" Width="972.327" ResizeMode="NoResize">
+    <Grid>
+        <Label Content="For What and Who?" HorizontalAlignment="Left" Height="48"
+               Margin="100,5,0,0" VerticalAlignment="Top" Width="252"
+               FontWeight="DemiBold" FontSize="25"/>
+
+        <TextBox BorderThickness="0" x:Name="forWhatAndWho" IsReadOnly="True" Text="" FontSize="15" HorizontalAlignment="Left" Height="63" Margin="10,58,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="432"></TextBox>
+        <Label Content="What's the use of it" HorizontalAlignment="Left" Height="48"
+               Margin="100,126,0,0" VerticalAlignment="Top" Width="252"
+               FontWeight="DemiBold" FontSize="25"/>
+
+        <TextBox BorderThickness="0" x:Name="useOfIt" IsReadOnly="True" FontSize="15" Text="" HorizontalAlignment="Left" Height="104" Margin="10,179,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="392"></TextBox>
+        <Label Content="Instruction" HorizontalAlignment="Left" Height="48"
+               Margin="669,10,0,0" VerticalAlignment="Top" Width="135"
+               FontWeight="DemiBold" FontSize="25"/>
+        <TextBox BorderThickness="0" x:Name="Instruct" IsReadOnly="True" FontSize="15" Text="" HorizontalAlignment="Left" Height="507" Margin="504,58,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="436"></TextBox>
+        <Image Source="images/logo.png" HorizontalAlignment="Left" Height="227" Margin="10,338,0,0" VerticalAlignment="Top" Width="266"/>
+    </Grid>
+</Window>

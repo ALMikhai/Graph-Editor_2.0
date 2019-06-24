@@ -31,11 +31,11 @@ namespace Graph_Editor
             chooseAlg = Convert.ToInt32((sender as Button).Tag.ToString());
 
             LockPanel.Background = Brushes.Gray;
-            if (chooseAlg == 0 || chooseAlg == 1 || chooseAlg == 7)
+            if (chooseAlg == 0 || chooseAlg == 1)
             {
                 BFS_DFS.Visibility = Visibility.Visible;
                 FSstartVertex.Text = "0";
-                BFS_DFS_label.Content = chooseAlg == 0 ? "BFS" : chooseAlg == 1 ? "DFS" : "Kruskall";
+                BFS_DFS_label.Content = chooseAlg == 0 ? "BFS" : "DFS";
             }
             
             else if (chooseAlg == 2)
@@ -67,6 +67,9 @@ namespace Graph_Editor
                         // Флойд-Уоршелл();
                         MessageBox.Show("Sorry, algoritm is not ready now :(");
                         break;
+                    case 7:
+                        Kruskal.Start(0);
+                        break;
                     case 8:
                         // Максимальный поток();
                         MessageBox.Show("Sorry, algoritm is not ready now :(");
@@ -79,7 +82,7 @@ namespace Graph_Editor
         {
             int vertex;
             bool isInt = Int32.TryParse(FSstartVertex.Text.ToString(), out vertex);
-            if (isInt && (chooseAlg == 0 || chooseAlg == 1 || chooseAlg == 7) && globals.IsBe(vertex))
+            if (isInt && (chooseAlg == 0 || chooseAlg == 1) && globals.IsBe(vertex))
             {
                 BFS_DFS.Visibility = Visibility.Hidden;
                 this.Close();
@@ -92,11 +95,6 @@ namespace Graph_Editor
                 else if (chooseAlg == 1)
                 {
                     Dfs.Start(Convert.ToInt32(FSstartVertex.Text));
-                }
-                else if (chooseAlg == 7)
-                {
-
-                    Kruskal.Start(Convert.ToInt32(FSstartVertex.Text));
                 }
                 globals.IsAlgo = false;
             }
@@ -118,7 +116,7 @@ namespace Graph_Editor
 
         private void Button_ExitAlgoritm_Click(object sender, RoutedEventArgs e)
         {
-            if (chooseAlg == 0 || chooseAlg == 1 || chooseAlg == 7)
+            if (chooseAlg == 0 || chooseAlg == 1)
             {
                 BFS_DFS.Visibility = Visibility.Hidden;
                 LockPanel.Background = null;

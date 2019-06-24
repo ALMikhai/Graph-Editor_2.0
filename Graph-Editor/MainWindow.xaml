@@ -78,7 +78,7 @@
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Top"
                 Margin="97,450,0,0"
-                Click="Change_Tool_Button" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove" ToolTip="Delete vertex">
+                Click="Change_Tool_Button" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove" ToolTip="Delete edge">
             <Image Source="images/deleteEdgeIcon.png" Width="64" Height="64">
                 <Image.Effect>
                     <DropShadowEffect/>
@@ -129,6 +129,9 @@
                         <Image Source="images/list.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Documentation" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black" Click="ViewDocumentation">
+                
             </MenuItem>
         </Menu>
         <Grid x:Name="Exit_Dialog" Background="White" Margin="366,253,208,313" Visibility="Hidden">

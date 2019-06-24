@@ -354,5 +354,11 @@ namespace Graph_Editor
             WaitPanel.Background = Brushes.Gray;
             currentList.Show();
         }
+
+        private void ViewDocumentation(object sender, RoutedEventArgs e)
+        {
+            Documentation documentation = new Documentation();
+            documentation.Show();
+        }
     }
 }
