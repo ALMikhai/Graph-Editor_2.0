@@ -13,10 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Globalization;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Windows.Forms;
 
 namespace Graph_Editor.Objects
 {
-    public class Vertex
+    [Serializable]
+    public class Vertex : ISerializable
     {
         private readonly int index;
         private Point coordinates;
@@ -35,5 +40,17 @@ namespace Graph_Editor.Objects
 
         public Vertex(int number) { index = number; }
         public Vertex() { }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("index", index);
+            info.AddValue("coordinates", coordinates);
+        }
+
+        public Vertex(SerializationInfo info, StreamingContext context)
+        {
+            index = (int)info.GetValue("index", typeof(int));
+            coordinates = (Point)info.GetValue("coordinates", typeof(Point));
+        }
     }
 }

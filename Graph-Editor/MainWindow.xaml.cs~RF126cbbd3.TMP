@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,16 +19,34 @@ using System.Windows.Media.Animation;
 using System.Threading;
 using System.Diagnostics;
 using Graph_Editor.AlgoritmClasses;
+using System;
 using System.ComponentModel;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 
 namespace Graph_Editor
 {
+    /// <summary>
+    /// Логика взаимодействия для MainWindow.xaml
+    /// </summary>
+    ///
+
+
     public partial class MainWindow : Window
     {
         public static FigureHost graphHost = new FigureHost();
         bool mouseDown = false;
+        //bool animationIsWork = false;
 
         public static MainWindow Instance { get; private set; }
+        private void DataWindow_Closing(object sender, CancelEventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
+            mainWindow.WaitPanel.Background = null;
+            mainWindow.WaitPanel.Opacity = 0;
+        }
         public MainWindow()
         {
             InitializeComponent();
@@ -36,17 +54,14 @@ namespace Graph_Editor
             WaitPanel.Visibility = Visibility.Hidden;
             Instance = this;
         }
-        private void DataWindow_Closing(object sender, CancelEventArgs e)
-        {
-            Exit_Dialog.Visibility = Visibility.Visible;
-        }
-        int chooseTool = -1;
 
+        int chooseTool = -1;
         public void Invalidate()
         {
             graphCanvas.Children.Clear();
             graphCanvas.Children.Add(graphHost);
-            
+
+            // TODO: при дфс цвет красный, после - черный;
             Pen pen = new Pen(globals.color, 2);
             
             graphHost.Children.Clear();
@@ -58,14 +73,14 @@ namespace Graph_Editor
                 if (globals.IsAlgo)
                     pen.Brush = Brushes.Red;
 
-                Point from = edge.From.Coordinates;
-                Point to = edge.To.Coordinates;
-
-                Point center = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
-                Point center_second = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
-
                 if (edge.Directed)
                 {
+                    Point from = edge.From.Coordinates;
+                    Point to = edge.To.Coordinates;
+
+                    Point center = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
+                    Point center_second = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
+
                     double d = Math.Sqrt(Math.Pow(to.X - from.X, 2) + Math.Pow(to.Y - from.Y, 2));
 
                     double X = to.X - from.X;
@@ -85,28 +100,6 @@ namespace Graph_Editor
                 }
                 
                 drawingContext.DrawLine(pen, edge.From.Coordinates, edge.To.Coordinates);
-
-                //Draw weight.
-                if (edge.Weight > 1)
-                {
-                    if (edge.Directed && globals.matrix[edge.To.Index, edge.From.Index] > 0)
-                    {
-                        drawingContext.DrawText(new FormattedText(edge.Weight.ToString(),
-                                         CultureInfo.GetCultureInfo("en-us"),
-                                         FlowDirection.LeftToRight,
-                                         new Typeface("Romanic"),
-                                         30, Brushes.Red), new Point((from.X + center.X) / 2, (from.Y + center.Y) / 2));
-                    }
-                    else
-                    {
-                        drawingContext.DrawText(new FormattedText(edge.Weight.ToString(),
-                                         CultureInfo.GetCultureInfo("en-us"),
-                                         FlowDirection.LeftToRight,
-                                         new Typeface("Romanic"),
-                                         30, Brushes.Red), center);
-                    }
-                }
-                //
 
             }
 
@@ -152,52 +145,38 @@ namespace Graph_Editor
 
             globals.toolNow.Change_Tool();
 
-            Brush brush = (Brush)new BrushConverter().ConvertFrom("#345160");
-
             if (button_num == 0)
             {
-                MoveVertex.Background = brush;
-                DelVertex.Background = brush;
-                Connect.Background = brush;
-                DelEdge.Background = brush;
+                MoveVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                DelVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                Connect.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
                 (sender as Button).Background = Brushes.CadetBlue;
             }
             else if (button_num == 1)
             {
-                AddVertex.Background = brush;
-                DelVertex.Background = brush;
-                Connect.Background = brush;
-                DelEdge.Background = brush;
+                AddVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                DelVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                Connect.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
                 (sender as Button).Background = Brushes.CadetBlue;
             }
             else if (button_num == 2)
             {
-                AddVertex.Background = brush;
-                MoveVertex.Background = brush;
-                Connect.Background = brush;
-                DelEdge.Background = brush;
+                AddVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                MoveVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                Connect.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
                 (sender as Button).Background = Brushes.CadetBlue;
             }
-            else if (button_num == 3)
+            else
             {
-                AddVertex.Background = brush;
-                MoveVertex.Background = brush;
-                DelVertex.Background = brush;
-                DelEdge.Background = brush;
+                AddVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                MoveVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                DelVertex.Background = (Brush)new BrushConverter().ConvertFrom("#345160");
                 if (String.Compare((sender as Button).Background.ToString(), "#FF5F9EA0") != 0)
                 {   
                     Connect.Background = Brushes.CadetBlue;
                 }
                 else
                     Connect_Click(sender, e);
-            }
-            else if (button_num == 4)
-            {
-                AddVertex.Background = brush;
-                MoveVertex.Background = brush;
-                DelVertex.Background = brush;
-                Connect.Background = brush;
-                (sender as Button).Background = Brushes.CadetBlue;
             }
             chooseTool = Convert.ToInt32((sender as Button).Tag);
         }
@@ -261,10 +240,7 @@ namespace Graph_Editor
         }
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            if (globals.vertexData.Count > 0)
-                Exit_Dialog.Visibility = Visibility.Visible;
-            else
-                this.Close();
+            Exit_Dialog.Visibility = Visibility.Visible;
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -280,17 +256,20 @@ namespace Graph_Editor
 
         private void Save_Exit_Click(object sender, RoutedEventArgs e)
         {
-            Exit.Exit_and_Save_All(0);
+            Exit.choose = 0;
+            Exit.Exit_and_Save_All();
         }
 
         private void Exit_Exit_Click(object sender, RoutedEventArgs e)
         {
-            Exit.Exit_and_Save_All(1);
+            Exit.choose = 1;
+            Exit.Exit_and_Save_All();
         }
 
         private void Cancel_Exit_Click(object sender, RoutedEventArgs e)
         {
-            Exit.Exit_and_Save_All(2);
+            Exit.choose = 2;
+            Exit.Exit_and_Save_All();
         }
     }
 }

@@ -30,6 +30,10 @@ namespace Graph_Editor
         {
             InitializeComponent();
         }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            FirstVertex.Focus();
+        }
         void DataWindow_Closing(object sender, CancelEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
@@ -76,28 +80,31 @@ namespace Graph_Editor
 
             Edge newEdge = new Edge(from, to, Convert.ToInt32(TextBox_Weight.Text), route);
 
-            if (route || (globals.matrix[newEdge.To.Index, newEdge.From.Index] != 1 && globals.matrix[newEdge.From.Index, newEdge.To.Index] != 1))
+            if (route || (globals.matrix[newEdge.To.Index, newEdge.From.Index] == 0 && globals.matrix[newEdge.From.Index, newEdge.To.Index] == 0))
             {
-                if (globals.matrix[newEdge.From.Index, newEdge.To.Index] == 1)
+                if (globals.matrix[newEdge.From.Index, newEdge.To.Index] >= 1)
+                {
                     MessageBox.Show("You alredy have this edge!");
+                    return;
+                }
 
                 globals.edgesData.Add(newEdge);
-                if (globals.matrix[newEdge.To.Index, newEdge.From.Index] == 1 && route)
+                if (globals.matrix[newEdge.To.Index, newEdge.From.Index] >= 1 && route)
                 {
                     // TODO: Сделать красивый вывод рёбер.
                 }
 
-                globals.matrix[newEdge.From.Index, newEdge.To.Index] = 1;
+                globals.matrix[newEdge.From.Index, newEdge.To.Index] = newEdge.Weight;
                 // TODO: Удалять нарисованное ребро (ориентированное) и добавлять обычное (неориентированное)
                 if (!route)
-                    globals.matrix[newEdge.To.Index, newEdge.From.Index] = 1;
+                    globals.matrix[newEdge.To.Index, newEdge.From.Index] = newEdge.Weight;
 
                 MainWindow.Instance.Invalidate();
 
                 //TODO Сделать выделение доп. память для матрицы
                 FirstVertex.Text = "";
                 SecondVertex.Text = "";
-                WeightSlider.Value = 0;
+                WeightSlider.Value = 1;
             }
             else
             {

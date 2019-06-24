@@ -30,5 +30,10 @@ namespace Graph_Editor
         {
 
         }
+
+        public virtual void Change_Tool()
+        {
+
+        }
     }
 }
