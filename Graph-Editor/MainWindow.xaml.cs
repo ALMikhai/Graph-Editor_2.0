@@ -33,6 +33,7 @@ namespace Graph_Editor
         public MainWindow()
         {
             InitializeComponent();
+            AddVertex.Background = Brushes.CadetBlue;
             graphCanvas.Children.Add(graphHost);
             Instance = this;
         }
@@ -40,7 +41,7 @@ namespace Graph_Editor
         {
             Exit_Dialog.Visibility = Visibility.Visible;
         }
-        int chooseTool = -1;
+        int chooseTool = 0;
 
         public void Invalidate()
         {
