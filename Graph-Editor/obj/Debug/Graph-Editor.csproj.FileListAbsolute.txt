@@ -59,3 +59,7 @@ C:\Users\salus\OneDrive\Рабочий стол\GE-re\Graph-Editor_2.0\Graph-Edi
 C:\Users\salus\OneDrive\Рабочий стол\GE-re\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentMatrix.baml
 C:\Users\salus\OneDrive\Рабочий стол\GE-re\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentList.baml
 C:\Users\salus\OneDrive\Рабочий стол\GE-re\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.csprojAssemblyReference.cache
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentMatrix.g.cs
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentList.g.cs
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentMatrix.baml
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentList.baml
