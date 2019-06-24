@@ -54,11 +54,24 @@ namespace Graph_Editor
 
         public static bool IsBe(int value)
         {
-            if (value > vertexData.Count - 1)
+            foreach(var vertex in vertexData)
+                if (value == vertex.Index)
+                    return true;
+            return false;
+        }
+
+        public static bool CheckIn(int v)
+        {
+            int i;
+            for (i = 0; i < Size; i++)
+            {
+                if (matrix[v, i] != 0)
+                    break;
+            }
+            if (i == Size)
                 return false;
             return true;
         }
-
         public static void Restore_Matrix()
         {
             for (int i = 0; i < Size; ++i)
@@ -72,7 +85,7 @@ namespace Graph_Editor
             foreach (Edge edge in edgesData)
             {
                 matrix[edge.From.Index, edge.To.Index] = 1;
-                if (edge.Directed)
+                if (!edge.Directed)
                 {
                     matrix[edge.To.Index, edge.From.Index] = 1;
                 }

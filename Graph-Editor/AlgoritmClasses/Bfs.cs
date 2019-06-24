@@ -19,12 +19,15 @@ namespace Graph_Editor.AlgoritmClasses
         public static void Start(int v)
         {
             MainWindow.Instance.Invalidate();
+            if (!CheckIn(v))
+                return;
             bfs(v);
             AnimationEdge.NextAnimation(edgesUsed[0], edgesUsed);
             visited = new bool[Size];
         }
         static void bfs(int v)
         {
+            
             q.Enqueue(v);
             visited[v] = true;
             while (q.Count != 0)
