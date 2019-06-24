@@ -23,6 +23,10 @@ namespace Graph_Editor.ShowData
         public CurrentList()
         {
             InitializeComponent();
+            for (int i = 0; i < globals.vertexData.Count(); i++)
+            {
+                sideBlock.Text += i + "\n";
+            }
         }
         void DataWindow_Closing(object sender, CancelEventArgs e)
         {

@@ -34,7 +34,6 @@ namespace Graph_Editor
         {
             InitializeComponent();
             graphCanvas.Children.Add(graphHost);
-            WaitPanel.Visibility = Visibility.Hidden;
             Instance = this;
         }
         private void DataWindow_Closing(object sender, CancelEventArgs e)
@@ -182,14 +181,13 @@ namespace Graph_Editor
         {
             ConnectVertices connectVertices = new ConnectVertices();
             WaitPanel.Visibility = Visibility.Visible;
-            WaitPanel.Background = Brushes.Gray;
+            WaitPanel.Opacity = 0.4;
             connectVertices.Show();
     }
         private void Algoritm_Button(object sender, RoutedEventArgs e)
         {
             Algoritms algoritms = new Algoritms();
             WaitPanel.Visibility = Visibility.Visible;
-            WaitPanel.Background = Brushes.Gray;
             algoritms.Show();
         }
 

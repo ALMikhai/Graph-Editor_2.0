@@ -98,7 +98,7 @@
 
         <Grid
             x:Name="WaitPanel"
-            Opacity="0.4"/>
+            Opacity="0.4" Background="Gray" Visibility="Hidden"/>
         <Label Content=".TXT" Background="#b7e1e1"
                    HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top"       
                    Width="80" Height="42" FontFamily="Ink Free"
