@@ -59,6 +59,7 @@
     </ApplicationDefinition>
     <Compile Include="AlgoritmClasses\Bfs.cs" />
     <Compile Include="AlgoritmClasses\Dfs.cs" />
+    <Compile Include="AlgoritmClasses\Kruskal.cs" />
     <Compile Include="Algoritms.xaml.cs">
       <DependentUpon>Algoritms.xaml</DependentUpon>
     </Compile>
