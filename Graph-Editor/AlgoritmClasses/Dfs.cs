@@ -29,6 +29,7 @@ namespace Graph_Editor.AlgoritmClasses
 
         public static void Start(int v)
         {
+            MainWindow.Instance.Invalidate();
             dfs(v);
             AnimationEdge.NextAnimation(edgesUsed[0],edgesUsed);
             visited = new bool[globals.Size];
