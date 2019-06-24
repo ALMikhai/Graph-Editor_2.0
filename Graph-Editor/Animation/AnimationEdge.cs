@@ -18,7 +18,7 @@ using System.Drawing.Drawing2D;
 using System.Windows.Media.Animation;
 using System.Threading;
 using System.Diagnostics;
-
+using Graph_Editor.AlgoritmClasses;
 
 namespace Graph_Editor
 {
@@ -28,7 +28,7 @@ namespace Graph_Editor
 
         //static MessageBox message = new MessageBox();
 
-        private static Storyboard storyboard = new Storyboard
+        public static Storyboard storyboard = new Storyboard
         {
             RepeatBehavior = new RepeatBehavior(1)
         };
@@ -86,7 +86,7 @@ namespace Graph_Editor
             storyboard.Completed += Storyboard_Completed;
         }
 
-        private static void Storyboard_Completed(object sender, EventArgs e)
+        public static void Storyboard_Completed(object sender, EventArgs e)
         {
             
         }
@@ -94,8 +94,9 @@ namespace Graph_Editor
         public static void Start_animation()
         {   
             storyboard.Begin();
-            MessageBox.Show("");
-            
+            //MessageBox.Show("");
+
         }
+
     }
 }

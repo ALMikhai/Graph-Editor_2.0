@@ -23,25 +23,31 @@ namespace Graph_Editor.AlgoritmClasses
     {
         static bool[] visited = new bool[globals.Size];
 
-        static List<Edge> edgesUsed = new List<Edge>();
+        public static List<Edge> edgesUsed = new List<Edge>();
+
+        private static void NextAnimation(Edge e)
+        {
+            AnimationEdge.edge = e;
+            AnimationEdge.Refresh_SrtoryBoard();
+            AnimationEdge.Start_animation();
+            EventHandler callback = null;
+            callback = (o, args) => {
+                MainWindow.Instance.InvalidateAlgo(e);
+                edgesUsed.Remove(edgesUsed[0]);
+                AnimationEdge.storyboard.Completed -= callback;
+                if (edgesUsed.Count > 0)
+                {
+                    NextAnimation(edgesUsed[0]);
+                }
+            };
+            AnimationEdge.storyboard.Completed += callback;
+        }
 
         public static void Start(int v)
         {
             dfs(v);
-            while (edgesUsed.Count != 0)
-            {
-                AnimationEdge.edge = edgesUsed[0];
-                AnimationEdge.Refresh_SrtoryBoard();
-                AnimationEdge.Start_animation();
-                
-                MainWindow.Instance.InvalidateAlgo(edgesUsed[0]);
-                edgesUsed.RemoveAt(0);
-
-            }
-
-            //AnimationEdge.Rendering(edgesUsed);
+            NextAnimation(edgesUsed[0]);
             visited = new bool[globals.Size];
-            edgesUsed.Clear();
         }
 
         static void dfs(int v)
