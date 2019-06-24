@@ -41,6 +41,8 @@ namespace Graph_Editor
                     }
                 }
 
+                
+
                 globals.vertexData.Remove(findedVert);
 
                 findedVert = null;

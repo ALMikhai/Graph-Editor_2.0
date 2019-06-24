@@ -133,6 +133,33 @@ namespace Graph_Editor
             var drawingContext = drawingVisual.RenderOpen();
             
             drawingContext.DrawLine(globals.algopen, e.From.Coordinates, e.To.Coordinates);
+
+            if (e.Directed)
+            {
+                Point from = e.From.Coordinates;
+                Point to = e.To.Coordinates;
+
+                Point center = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
+                Point center_second = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
+
+                double d = Math.Sqrt(Math.Pow(to.X - from.X, 2) + Math.Pow(to.Y - from.Y, 2));
+
+                double X = to.X - from.X;
+                double Y = to.Y - from.Y;
+
+                center_second.X = center.X - (X / d) * 15;
+                center_second.Y = center.Y - (Y / d) * 15;
+
+                double Xp = to.Y - from.Y;
+                double Yp = from.X - to.X;
+
+                Point left = new Point((center_second.X + (Xp / d) * 6), (center_second.Y + (Yp / d) * 6));
+                Point right = new Point((center_second.X - (Xp / d) * 6), (center_second.Y - (Yp / d) * 6));
+
+                drawingContext.DrawLine(globals.algopen, center, left);
+                drawingContext.DrawLine(globals.algopen, center, right);
+            }
+
             foreach (Vertex vertex in globals.vertexData)
             {
 

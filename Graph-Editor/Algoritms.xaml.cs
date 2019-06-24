@@ -95,7 +95,8 @@ namespace Graph_Editor
                 }
                 else if (chooseAlg == 7)
                 {
-                    // krusskal();
+
+                    Kruskal.Start(Convert.ToInt32(FSstartVertex.Text));
                 }
                 globals.IsAlgo = false;
             }
