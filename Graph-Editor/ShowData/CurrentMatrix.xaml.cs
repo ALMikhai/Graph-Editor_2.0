@@ -23,6 +23,12 @@ namespace Graph_Editor.ShowData
         public CurrentMatrix()
         {
             InitializeComponent();
+            if (globals.vertexData.Count() == 0)
+            {
+                i_j.Content = " ";
+                i_j.BorderBrush = Brushes.Transparent;
+            }
+
             for (int i = 0; i < globals.vertexData.Count(); i++)
                 topBlock.Text += i.ToString() + " ";
             for (int i = 0; i < globals.vertexData.Count(); i++)
@@ -32,6 +38,8 @@ namespace Graph_Editor.ShowData
             {
                 for (int j = 0; j < globals.vertexData.Count(); j++)
                 {
+                    if (j >= 10)
+                        mainBlock.Text += "  ";
                     mainBlock.Text += globals.matrix[i, j] != 0 ? 1 : 0;
                     mainBlock.Text += " ";
                 }
