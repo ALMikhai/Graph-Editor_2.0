@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +18,7 @@ using System.Drawing.Drawing2D;
 using System.Windows.Media.Animation;
 using System.Threading;
 using System.Diagnostics;
-
+using Graph_Editor.AlgoritmClasses;
 
 namespace Graph_Editor
 {
@@ -28,12 +28,12 @@ namespace Graph_Editor
 
         //static MessageBox message = new MessageBox();
 
-        private static Storyboard storyboard = new Storyboard
+        public static Storyboard storyboard = new Storyboard
         {
             RepeatBehavior = new RepeatBehavior(1)
         };
 
-        private static Ellipse ellipse = new Ellipse
+        public static Ellipse ellipse = new Ellipse
         {
             Width = globals.vertRadius,
             Height = globals.vertRadius,
@@ -42,17 +42,21 @@ namespace Graph_Editor
 
         public static void Refresh_SrtoryBoard()
         {
-            int time = 10;
+            int time = 1;
 
             MainWindow.Instance.graphCanvas.Children.Add(ellipse);
 
             PathGeometry pathGeom = new PathGeometry();
-            Path p = new Path();
-
+            
             LineSegment vertLS = new LineSegment();
             PathFigure vertPF = new PathFigure();
-            vertPF.StartPoint = edge.From.Coordinates;
-            vertLS.Point = edge.To.Coordinates;
+
+            Point startPoint = Point.Add(edge.From.Coordinates, Point.Subtract(edge.From.Coordinates, new Point(edge.From.Coordinates.X + globals.vertRadius / 2, edge.From.Coordinates.Y + globals.vertRadius / 2)));
+            Point finishPoint = Point.Add(edge.To.Coordinates, Point.Subtract(edge.To.Coordinates, new Point(edge.To.Coordinates.X + globals.vertRadius / 2, edge.To.Coordinates.Y + globals.vertRadius / 2)));
+
+            vertPF.StartPoint = startPoint;
+            vertLS.Point = finishPoint;
+
             vertPF.Segments.Add(vertLS);
             pathGeom.Figures.Add(vertPF);
 
@@ -82,26 +86,17 @@ namespace Graph_Editor
             storyboard.Completed += Storyboard_Completed;
         }
 
-        private static void Storyboard_Completed(object sender, EventArgs e)
+        public static void Storyboard_Completed(object sender, EventArgs e)
         {
             
         }
 
-        //public static void start_thread()
-        //{
-
-        //}
-
         public static void Start_animation()
         {   
             storyboard.Begin();
-            MessageBox.Show("");
-            
+            //MessageBox.Show("");
+
         }
 
-        //public static async void RusAni()
-        //{
-        //    await Task.Run(() => Start_animation());
-        //}
     }
 }

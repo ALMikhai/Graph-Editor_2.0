@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +20,7 @@ using System.Threading;
 using System.Diagnostics;
 using Graph_Editor.AlgoritmClasses;
 using System.ComponentModel;
+using Graph_Editor.ShowData;
 
 namespace Graph_Editor
 {
@@ -47,16 +48,24 @@ namespace Graph_Editor
             graphCanvas.Children.Clear();
             graphCanvas.Children.Add(graphHost);
             
-            Pen pen = new Pen(globals.color, 2);
-            
             graphHost.Children.Clear();
             var drawingVisual = new DrawingVisual();
             var drawingContext = drawingVisual.RenderOpen();
 
+            Pen pen = globals.pen;
+
             foreach (var edge in globals.edgesData)
             {
-                if (globals.IsAlgo)
-                    pen.Brush = Brushes.Red;
+
+                if (edge.ForAlgo)
+                {
+                    pen = globals.algopen;
+                }
+                else
+                {
+                    pen = globals.pen;
+                }
+                
 
                 Point from = edge.From.Coordinates;
                 Point to = edge.To.Coordinates;
@@ -106,16 +115,15 @@ namespace Graph_Editor
                                          30, Brushes.Red), center);
                     }
                 }
-                //
-
             }
+
 
             pen = globals.pen;
 
             foreach (Vertex vertex in globals.vertexData)
             {
                 
-                drawingContext.DrawEllipse(globals.colorInsideVertex, pen, vertex.Coordinates, globals.vertRadius, globals.vertRadius);
+                drawingContext.DrawEllipse(globals.colorInsideVertex, globals.pen, vertex.Coordinates, globals.vertRadius, globals.vertRadius);
 
                 FormattedText txt = new FormattedText(vertex.Index.ToString(),
                                  CultureInfo.GetCultureInfo("en-us"),
@@ -126,6 +134,30 @@ namespace Graph_Editor
                 drawingContext.DrawText(txt, new Point(vertex.Coordinates.X + (vertex.Index.ToString().Length * (-5)), vertex.Coordinates.Y - 10));
             }
 
+            drawingContext.Close();
+            graphHost.Children.Add(drawingVisual);
+        }
+
+        public void InvalidateAlgo(Edge e)
+        {
+            graphCanvas.Children.Remove(AnimationEdge.ellipse);
+            var drawingVisual = new DrawingVisual();
+            var drawingContext = drawingVisual.RenderOpen();
+            
+            drawingContext.DrawLine(globals.algopen, e.From.Coordinates, e.To.Coordinates);
+            foreach (Vertex vertex in globals.vertexData)
+            {
+
+                drawingContext.DrawEllipse(globals.colorInsideVertex, globals.pen, vertex.Coordinates, globals.vertRadius, globals.vertRadius);
+
+                FormattedText txt = new FormattedText(vertex.Index.ToString(),
+                                 CultureInfo.GetCultureInfo("en-us"),
+                                 FlowDirection.LeftToRight,
+                                 new Typeface("Romanic"),
+                                 20, (Brush)new BrushConverter().ConvertFrom("#305F5F"));
+
+                drawingContext.DrawText(txt, new Point(vertex.Coordinates.X + (vertex.Index.ToString().Length * (-5)), vertex.Coordinates.Y - 10));
+            }
             drawingContext.Close();
             graphHost.Children.Add(drawingVisual);
         }
@@ -291,6 +323,22 @@ namespace Graph_Editor
         private void Cancel_Exit_Click(object sender, RoutedEventArgs e)
         {
             Exit.Exit_and_Save_All(2);
+        }
+
+        private void ShowMatrix(object sender, RoutedEventArgs e)
+        {
+            CurrentMatrix currentMatrix = new CurrentMatrix();
+            WaitPanel.Visibility = Visibility.Visible;
+            WaitPanel.Background = Brushes.Gray;
+            currentMatrix.Show();
+        }
+
+        private void ShowList(object sender, RoutedEventArgs e)
+        {
+            CurrentList currentList = new CurrentList();
+            WaitPanel.Visibility = Visibility.Visible;
+            WaitPanel.Background = Brushes.Gray;
+            currentList.Show();
         }
     }
 }
