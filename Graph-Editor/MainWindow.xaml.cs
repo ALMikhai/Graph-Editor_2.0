@@ -20,6 +20,7 @@ using System.Threading;
 using System.Diagnostics;
 using Graph_Editor.AlgoritmClasses;
 using System.ComponentModel;
+using Graph_Editor.ShowData;
 
 namespace Graph_Editor
 {
@@ -103,8 +104,6 @@ namespace Graph_Editor
                                          30, Brushes.Red), center);
                     }
                 }
-                //
-
             }
 
 
@@ -313,6 +312,22 @@ namespace Graph_Editor
         private void Cancel_Exit_Click(object sender, RoutedEventArgs e)
         {
             Exit.Exit_and_Save_All(2);
+        }
+
+        private void ShowMatrix(object sender, RoutedEventArgs e)
+        {
+            CurrentMatrix currentMatrix = new CurrentMatrix();
+            WaitPanel.Visibility = Visibility.Visible;
+            WaitPanel.Background = Brushes.Gray;
+            currentMatrix.Show();
+        }
+
+        private void ShowList(object sender, RoutedEventArgs e)
+        {
+            CurrentList currentList = new CurrentList();
+            WaitPanel.Visibility = Visibility.Visible;
+            WaitPanel.Background = Brushes.Gray;
+            currentList.Show();
         }
     }
 }
