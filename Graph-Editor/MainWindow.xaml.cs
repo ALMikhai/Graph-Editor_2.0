@@ -55,17 +55,6 @@ namespace Graph_Editor
 
             foreach (var edge in globals.edgesData)
             {
-
-                if (edge.ForAlgo)
-                {
-                    pen = globals.algopen;
-                }
-                else
-                {
-                    pen = globals.pen;
-                }
-                
-
                 Point from = edge.From.Coordinates;
                 Point to = edge.To.Coordinates;
 

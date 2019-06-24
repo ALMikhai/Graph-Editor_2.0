@@ -27,7 +27,7 @@ namespace Graph_Editor.Objects
         private int weight;
         private bool directed;
         private Brush color = globals.color;
-        private bool forAlgo = false;
+        
 
         public Brush Color
         {get { return color; } set { color = value; } }
@@ -43,10 +43,7 @@ namespace Graph_Editor.Objects
 
         public bool Directed
         {get { return directed; }set { directed = value; } }
-        public bool ForAlgo
-        { get { return forAlgo; } set { forAlgo = value; } }
-
-
+        
         public Edge(Vertex first, Vertex second, int w, bool state) { from = first; to = second; weight = w; directed = state; }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
