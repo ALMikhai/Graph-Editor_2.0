@@ -99,8 +99,8 @@ namespace Graph_Editor
                 }
                 else if (chooseAlg == 7)
                 {
-                    MessageBox.Show("1");
-                    // krusskal();
+
+                    Kruskal.Start(Convert.ToInt32(FSstartVertex.Text));
                 }
                 globals.IsAlgo = false;
             }

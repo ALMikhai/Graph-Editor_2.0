@@ -36,14 +36,28 @@ namespace Graph_Editor.AlgoritmClasses
 
         public static void Start(int v)
         {
-            List<Edge> list = new List<Edge>(globals.edgesData);
-            list.Sort((e1, e2) => e1.Weight.CompareTo(e2.Weight));
-            int a = 0;
+
+            MainWindow.Instance.Invalidate();
+            if (!globals.CheckIn(v) || globals.CheckDirected())
+                return;
+            kru();
+            AnimationEdge.NextAnimation(edgesUsed[0], edgesUsed);
         }
 
-        static void kru(int v)
+        static void kru()
         {
-
+            List<Edge> list = new List<Edge>(globals.edgesData);
+            list.Sort((e1, e2) => e1.Weight.CompareTo(e2.Weight));
+            for (int i = 0; i < globals.Size; i++)
+                p[i] = i;
+            for (int i = 0; i < list.Count; i += 2)
+            {
+                if (dsu_get(list[i].From.Index) != dsu_get(list[i].To.Index))
+                {
+                    edgesUsed.Add(list[i]);
+                    dsu_unite(list[i].From.Index, list[i].To.Index);
+                }
+            }
         }
     }
 }
