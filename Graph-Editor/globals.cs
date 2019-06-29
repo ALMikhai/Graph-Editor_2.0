@@ -72,6 +72,18 @@ namespace Graph_Editor
                 return false;
             return true;
         }
+        public static bool CheckDirected()
+        {
+            foreach(var e in edgesData)
+            {
+                if(e.Directed)
+                {
+                    return true;
+                }
+            }
+            return false;
+            
+        }
         public static void Restore_Matrix()
         {
             for (int i = 0; i < Size; ++i)

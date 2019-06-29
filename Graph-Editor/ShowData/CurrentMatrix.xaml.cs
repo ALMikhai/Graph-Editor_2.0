@@ -24,10 +24,15 @@ namespace Graph_Editor.ShowData
         {
             InitializeComponent();
             for (int i = 0; i < globals.vertexData.Count(); i++)
+                topBlock.Text += i.ToString() + " ";
+            for (int i = 0; i < globals.vertexData.Count(); i++)
+                sideBlock.Text += i.ToString() + "\n";
+
+            for (int i = 0; i < globals.vertexData.Count(); i++)
             {
                 for (int j = 0; j < globals.vertexData.Count(); j++)
                 {
-                    mainBlock.Text += globals.matrix[i, j].ToString();
+                    mainBlock.Text += globals.matrix[i, j] != 0 ? 1 : 0;
                     mainBlock.Text += " ";
                 }
                 mainBlock.Text += "\n";

@@ -14,6 +14,7 @@ namespace Graph_Editor
     public partial class Algoritms : Window
     {
         int chooseAlg;
+        MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
         public Algoritms()
         {
             InitializeComponent();
@@ -21,9 +22,7 @@ namespace Graph_Editor
 
         private void DataWindow_Closing(object sender, CancelEventArgs e)
         {
-            MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
-            mainWindow.WaitPanel.Background = null;
-            mainWindow.WaitPanel.Opacity = 0;
+            mainWindow.WaitPanel.Visibility = Visibility.Hidden;
         }
         private void main_Cancel_Click(object sender, RoutedEventArgs e)
         {
@@ -35,19 +34,20 @@ namespace Graph_Editor
             chooseAlg = Convert.ToInt32((sender as Button).Tag.ToString());
 
             LockPanel.Background = Brushes.Gray;
-            if (chooseAlg == 0 || chooseAlg == 1)
+            if (chooseAlg == 0 || chooseAlg == 1 || chooseAlg == 7)
             {
                 BFS_DFS.Visibility = Visibility.Visible;
                 FSstartVertex.Text = "0";
-                BFS_DFS_label.Content = chooseAlg == 0 ? "BFS" : "DFS";
+                BFS_DFS_label.Content = chooseAlg == 0 ? "BFS" : chooseAlg == 1 ? "DFS" : "Kruskall";
             }
             
             else if (chooseAlg == 2)
             {
-                Dijkstra.Visibility = Visibility.Visible;
+                /*Dijkstra.Visibility = Visibility.Visible;
                 DijkstrastartVertex.Text = "0";
                 DijkstrafinalVertex.Text = "0";
-                Dijkstra_Label.Content = "Dijkstra";
+                Dijkstra_Label.Content = "Dijkstra";*/
+                MessageBox.Show("Sorry, algoritm is not ready now :(");
             }
             else
             {
@@ -56,21 +56,23 @@ namespace Graph_Editor
                 {
                     case 3:
                         // Раскрашиваем граф ();
+                        MessageBox.Show("Sorry, algoritm is not ready now :(");
                         break;
                     case 4:
                         // Гамильтонов цикл();
+                        MessageBox.Show("Sorry, algoritm is not ready now :(");
                         break;
                     case 5:
                         // Эйлеров цикл();
+                        MessageBox.Show("Sorry, algoritm is not ready now :(");
                         break;
                     case 6:
                         // Флойд-Уоршелл();
-                        break;
-                    case 7:
-                        // Радиус и диаметр графа();
+                        MessageBox.Show("Sorry, algoritm is not ready now :(");
                         break;
                     case 8:
                         // Максимальный поток();
+                        MessageBox.Show("Sorry, algoritm is not ready now :(");
                         break;
                 }
             }
@@ -78,23 +80,31 @@ namespace Graph_Editor
 
         private void Button_ReadyExitAlgoritm_Click(object sender, RoutedEventArgs e)
         {
-            if ((chooseAlg == 0 || chooseAlg == 1) && globals.IsBe(Convert.ToInt32(FSstartVertex.Text)) && FSstartVertex.Text != "")
+           /* int vertex;
+            bool isInt = Int32.TryParse(FSstartVertex.Text.ToString(), vertex)
+            if ()*/
+            if ((chooseAlg == 0 || chooseAlg == 1 || chooseAlg == 7) && globals.IsBe(Convert.ToInt32(FSstartVertex.Text)) && FSstartVertex.Text != "")
             {
                 BFS_DFS.Visibility = Visibility.Hidden;
                 this.Close();
+
                 globals.IsAlgo = true;
                 if (chooseAlg == 0)
                 {
                     Bfs.Start(Convert.ToInt32(FSstartVertex.Text));
                 }
-                else
+                else if (chooseAlg == 1)
                 {
                     Dfs.Start(Convert.ToInt32(FSstartVertex.Text));
                 }
+                else if (chooseAlg == 7)
+                {
+
+                    Kruskal.Start(Convert.ToInt32(FSstartVertex.Text));
+                }
                 globals.IsAlgo = false;
             }
-            else if (globals.IsBe(Convert.ToInt32(DijkstrastartVertex.Text)) && globals.IsBe(Convert.ToInt32(DijkstrafinalVertex.Text)) && chooseAlg == 2
-                     && DijkstrastartVertex.Text != "" && DijkstrafinalVertex.Text != "")
+            /*else if (globals.IsBe(Convert.ToInt32(DijkstrastartVertex.Text)) && globals.IsBe(Convert.ToInt32(DijkstrafinalVertex.Text)) && chooseAlg == 2 && DijkstrastartVertex.Text != "" && DijkstrafinalVertex.Text != "")
             {
                 if (Convert.ToInt32(DijkstrastartVertex.Text) != Convert.ToInt32(DijkstrafinalVertex.Text))
                 {
@@ -103,15 +113,16 @@ namespace Graph_Editor
                     // Dijkstra();
                 }
                 else
-                    MessageBox.Show("Enter different vertices");
-            }
+                    MessageBox.Show("Enter different vertices");*/
+            //}
             else
                 MessageBox.Show("Invalid input data");
+            
         }
 
         private void Button_ExitAlgoritm_Click(object sender, RoutedEventArgs e)
         {
-            if (chooseAlg == 0 || chooseAlg == 1)
+            if (chooseAlg == 0 || chooseAlg == 1 || chooseAlg == 7)
             {
                 BFS_DFS.Visibility = Visibility.Hidden;
                 LockPanel.Background = null;
