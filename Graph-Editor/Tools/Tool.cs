@@ -26,11 +26,6 @@ namespace Graph_Editor
 
         }
 
-        public virtual void Mouse_Leave()
-        {
-
-        }
-
         public virtual void Change_Tool()
         {
 

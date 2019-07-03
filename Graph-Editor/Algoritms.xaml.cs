@@ -83,12 +83,11 @@ namespace Graph_Editor
            /* int vertex;
             bool isInt = Int32.TryParse(FSstartVertex.Text.ToString(), vertex)
             if ()*/
-            if ((chooseAlg == 0 || chooseAlg == 1 || chooseAlg == 7) && globals.IsBe(Convert.ToInt32(FSstartVertex.Text)) && FSstartVertex.Text != "")
+            if ((chooseAlg == 0 || chooseAlg == 1 || chooseAlg == 7) && Globals.IsBe(Convert.ToInt32(FSstartVertex.Text)) && FSstartVertex.Text != "")
             {
                 BFS_DFS.Visibility = Visibility.Hidden;
                 this.Close();
-
-                globals.IsAlgo = true;
+                
                 if (chooseAlg == 0)
                 {
                     Bfs.Start(Convert.ToInt32(FSstartVertex.Text));
@@ -102,7 +101,6 @@ namespace Graph_Editor
 
                     Kruskal.Start(Convert.ToInt32(FSstartVertex.Text));
                 }
-                globals.IsAlgo = false;
             }
             /*else if (globals.IsBe(Convert.ToInt32(DijkstrastartVertex.Text)) && globals.IsBe(Convert.ToInt32(DijkstrafinalVertex.Text)) && chooseAlg == 2 && DijkstrastartVertex.Text != "" && DijkstrafinalVertex.Text != "")
             {

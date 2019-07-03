@@ -24,42 +24,38 @@ using Graph_Editor.ShowData;
 
 namespace Graph_Editor
 {
+    // TODO Сделать отдельный виртуальный класс Alogoritm и вынести туда общие методы по типу (старт).
+
     public partial class MainWindow : Window
     {
-        public static FigureHost graphHost = new FigureHost();
-        bool mouseDown = false;
-
+        private static FigureHost graphHost = new FigureHost();
         public static MainWindow Instance { get; private set; }
+
         public MainWindow()
         {
             InitializeComponent();
-            graphCanvas.Children.Add(graphHost);
+            GraphCanvas.Children.Add(graphHost);
             Instance = this;
         }
-        private void DataWindow_Closing(object sender, CancelEventArgs e)
-        {
-            Exit_Dialog.Visibility = Visibility.Visible;
-        }
-        int chooseTool = -1;
 
         public void Invalidate()
         {
-            graphCanvas.Children.Clear();
-            graphCanvas.Children.Add(graphHost);
+            GraphCanvas.Children.Clear();
+            GraphCanvas.Children.Add(graphHost);
             
             graphHost.Children.Clear();
             var drawingVisual = new DrawingVisual();
             var drawingContext = drawingVisual.RenderOpen();
 
-            Pen pen = globals.pen;
+            var pen = Globals.BasePen;
 
-            foreach (var edge in globals.edgesData)
+            foreach (var edge in Globals.EdgesData)
             {
                 Point from = edge.From.Coordinates;
                 Point to = edge.To.Coordinates;
 
-                Point center = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
-                Point center_second = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
+                var center = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
+                var centerSecond = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
 
                 if (edge.Directed)
                 {
@@ -68,56 +64,51 @@ namespace Graph_Editor
                     double X = to.X - from.X;
                     double Y = to.Y - from.Y;
 
-                    center_second.X = center.X - (X / d) * 15;
-                    center_second.Y = center.Y - (Y / d) * 15;
+                    centerSecond.X = center.X - (X / d) * 15;
+                    centerSecond.Y = center.Y - (Y / d) * 15;
 
                     double Xp = to.Y - from.Y;
                     double Yp = from.X - to.X;
 
-                    Point left = new Point((center_second.X + (Xp / d) * 6), (center_second.Y + (Yp / d) * 6));
-                    Point right = new Point((center_second.X - (Xp / d) * 6), (center_second.Y - (Yp / d) * 6));
+                    var left = new Point((centerSecond.X + (Xp / d) * 6), (centerSecond.Y + (Yp / d) * 6));
+                    var right = new Point((centerSecond.X - (Xp / d) * 6), (centerSecond.Y - (Yp / d) * 6));
 
                     drawingContext.DrawLine(pen, center, left);
                     drawingContext.DrawLine(pen, center, right);
                 }
                 
                 drawingContext.DrawLine(pen, edge.From.Coordinates, edge.To.Coordinates);
-
-                //Draw weight.
+                
                 if (edge.Weight > 1)
                 {
-                    if (edge.Directed && globals.matrix[edge.To.Index, edge.From.Index] > 0)
+                    if (edge.Directed && (Globals.Matrix[edge.To.Index, edge.From.Index] > 0))
                     {
                         drawingContext.DrawText(new FormattedText(edge.Weight.ToString(),
-                                         CultureInfo.GetCultureInfo("en-us"),
-                                         FlowDirection.LeftToRight,
-                                         new Typeface("Romanic"),
-                                         30, Brushes.Red), new Point((from.X + center.X) / 2, (from.Y + center.Y) / 2));
+                                                CultureInfo.GetCultureInfo("en-us"),
+                                                FlowDirection.LeftToRight,
+                                                new Typeface("Romanic"),
+                                                30, Brushes.Red), new Point((from.X + center.X) / 2, (from.Y + center.Y) / 2));
                     }
                     else
                     {
                         drawingContext.DrawText(new FormattedText(edge.Weight.ToString(),
-                                         CultureInfo.GetCultureInfo("en-us"),
-                                         FlowDirection.LeftToRight,
-                                         new Typeface("Romanic"),
-                                         30, Brushes.Red), center);
+                                                CultureInfo.GetCultureInfo("en-us"),
+                                                FlowDirection.LeftToRight,
+                                                new Typeface("Romanic"),
+                                                30, Brushes.Red), center);
                     }
                 }
             }
 
-
-            pen = globals.pen;
-
-            foreach (Vertex vertex in globals.vertexData)
+            foreach (var vertex in Globals.VertexData)
             {
-                
-                drawingContext.DrawEllipse(globals.colorInsideVertex, globals.pen, vertex.Coordinates, globals.vertRadius, globals.vertRadius);
+                drawingContext.DrawEllipse(Globals.ColorInsideVertex, Globals.BasePen, vertex.Coordinates, Globals.VertRadius, Globals.VertRadius);
 
                 FormattedText txt = new FormattedText(vertex.Index.ToString(),
-                                 CultureInfo.GetCultureInfo("en-us"),
-                                 FlowDirection.LeftToRight,
-                                 new Typeface("Romanic"),
-                                 20, (Brush)new BrushConverter().ConvertFrom("#305F5F"));
+                                    CultureInfo.GetCultureInfo("en-us"),
+                                    FlowDirection.LeftToRight,
+                                    new Typeface("Romanic"),
+                                    20, (Brush)new BrushConverter().ConvertFrom("#305F5F"));
 
                 drawingContext.DrawText(txt, new Point(vertex.Coordinates.X + (vertex.Index.ToString().Length * (-5)), vertex.Coordinates.Y - 10));
             }
@@ -126,53 +117,53 @@ namespace Graph_Editor
             graphHost.Children.Add(drawingVisual);
         }
 
-        public void InvalidateAlgo(Edge e)
+        public void InvalidateAlgo(Edge edge)
         {
-            graphCanvas.Children.Remove(AnimationEdge.ellipse);
+            GraphCanvas.Children.Remove(AnimationEdge.ellipse);
             var drawingVisual = new DrawingVisual();
             var drawingContext = drawingVisual.RenderOpen();
             
-            drawingContext.DrawLine(globals.algopen, e.From.Coordinates, e.To.Coordinates);
+            drawingContext.DrawLine(Globals.AlgoPen, edge.From.Coordinates, edge.To.Coordinates);
 
-            if (e.Directed)
+            if (edge.Directed)
             {
-                Point from = e.From.Coordinates;
-                Point to = e.To.Coordinates;
+                Point from = edge.From.Coordinates;
+                Point to = edge.To.Coordinates;
 
-                Point center = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
-                Point center_second = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
+                var center = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
+                var centerSecond = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
 
                 double d = Math.Sqrt(Math.Pow(to.X - from.X, 2) + Math.Pow(to.Y - from.Y, 2));
 
                 double X = to.X - from.X;
                 double Y = to.Y - from.Y;
 
-                center_second.X = center.X - (X / d) * 15;
-                center_second.Y = center.Y - (Y / d) * 15;
+                centerSecond.X = center.X - (X / d) * 15;
+                centerSecond.Y = center.Y - (Y / d) * 15;
 
                 double Xp = to.Y - from.Y;
                 double Yp = from.X - to.X;
 
-                Point left = new Point((center_second.X + (Xp / d) * 6), (center_second.Y + (Yp / d) * 6));
-                Point right = new Point((center_second.X - (Xp / d) * 6), (center_second.Y - (Yp / d) * 6));
+                var left = new Point((centerSecond.X + (Xp / d) * 6), (centerSecond.Y + (Yp / d) * 6));
+                var right = new Point((centerSecond.X - (Xp / d) * 6), (centerSecond.Y - (Yp / d) * 6));
 
-                drawingContext.DrawLine(globals.algopen, center, left);
-                drawingContext.DrawLine(globals.algopen, center, right);
+                drawingContext.DrawLine(Globals.AlgoPen, center, left);
+                drawingContext.DrawLine(Globals.AlgoPen, center, right);
             }
 
-            foreach (Vertex vertex in globals.vertexData)
+            foreach (var vertex in Globals.VertexData)
             {
-
-                drawingContext.DrawEllipse(globals.colorInsideVertex, globals.pen, vertex.Coordinates, globals.vertRadius, globals.vertRadius);
+                drawingContext.DrawEllipse(Globals.ColorInsideVertex, Globals.BasePen, vertex.Coordinates, Globals.VertRadius, Globals.VertRadius);
 
                 FormattedText txt = new FormattedText(vertex.Index.ToString(),
-                                 CultureInfo.GetCultureInfo("en-us"),
-                                 FlowDirection.LeftToRight,
-                                 new Typeface("Romanic"),
-                                 20, (Brush)new BrushConverter().ConvertFrom("#305F5F"));
+                                    CultureInfo.GetCultureInfo("en-us"),
+                                    FlowDirection.LeftToRight,
+                                    new Typeface("Romanic"),
+                                    20, (Brush)new BrushConverter().ConvertFrom("#305F5F"));
 
                 drawingContext.DrawText(txt, new Point(vertex.Coordinates.X + (vertex.Index.ToString().Length * (-5)), vertex.Coordinates.Y - 10));
             }
+
             drawingContext.Close();
             graphHost.Children.Add(drawingVisual);
         }
@@ -183,117 +174,79 @@ namespace Graph_Editor
             WaitPanel.Visibility = Visibility.Visible;
             WaitPanel.Opacity = 0.4;
             connectVertices.Show();
-    }
-        private void Algoritm_Button(object sender, RoutedEventArgs e)
+        }
+
+        private void AlgoritmButton_Click(object sender, RoutedEventArgs e)
         {
             Algoritms algoritms = new Algoritms();
             WaitPanel.Visibility = Visibility.Visible;
             algoritms.Show();
         }
 
+        Brush baseButtonColor = (Brush)new BrushConverter().ConvertFrom("#345160");
+
         private void Change_Tool_Button(object sender, RoutedEventArgs e)
         {
-            globals.toolNow = globals.toolList[Convert.ToInt32((sender as Button).Tag)];
-            int button_num = Convert.ToInt32((sender as Button).Tag);
+            Globals.ToolNow = Globals.ToolList[Convert.ToInt32((sender as Button).Tag)];
 
-            globals.toolNow.Change_Tool();
+            Globals.ToolNow.Change_Tool();
 
-            Brush brush = (Brush)new BrushConverter().ConvertFrom("#345160");
+            int SelectedToolIndex = Convert.ToInt32((sender as Button).Tag);
 
-            if (button_num == 0)
+            if (SelectedToolIndex == 3)
             {
-                MoveVertex.Background = brush;
-                DelVertex.Background = brush;
-                Connect.Background = brush;
-                DelEdge.Background = brush;
-                (sender as Button).Background = Brushes.CadetBlue;
-            }
-            else if (button_num == 1)
-            {
-                AddVertex.Background = brush;
-                DelVertex.Background = brush;
-                Connect.Background = brush;
-                DelEdge.Background = brush;
-                (sender as Button).Background = Brushes.CadetBlue;
-            }
-            else if (button_num == 2)
-            {
-                AddVertex.Background = brush;
-                MoveVertex.Background = brush;
-                Connect.Background = brush;
-                DelEdge.Background = brush;
-                (sender as Button).Background = Brushes.CadetBlue;
-            }
-            else if (button_num == 3)
-            {
-                AddVertex.Background = brush;
-                MoveVertex.Background = brush;
-                DelVertex.Background = brush;
-                DelEdge.Background = brush;
-                if (String.Compare((sender as Button).Background.ToString(), "#FF5F9EA0") != 0)
-                {   
-                    Connect.Background = Brushes.CadetBlue;
-                }
-                else
+                if (string.Compare((sender as Button).Background.ToString(), "#FF5F9EA0") == 0)
+                {
                     Connect_Click(sender, e);
+                }
             }
-            else if (button_num == 4)
-            {
-                AddVertex.Background = brush;
-                MoveVertex.Background = brush;
-                DelVertex.Background = brush;
-                Connect.Background = brush;
-                (sender as Button).Background = Brushes.CadetBlue;
-            }
-            chooseTool = Convert.ToInt32((sender as Button).Tag);
+
+            AddVertex.Background = baseButtonColor;
+            MoveVertex.Background = baseButtonColor;
+            DelVertex.Background = baseButtonColor;
+            Connect.Background = baseButtonColor;
+            DelEdge.Background = baseButtonColor;
+            (sender as Button).Background = Brushes.CadetBlue;
         }
 
         private void GraphCanvas_MouseDown(object sender, MouseEventArgs e)
         {
-            mouseDown = true;
-            globals.toolNow.Mouse_Down(e.GetPosition(graphCanvas));
+            Globals.ToolNow.Mouse_Down(e.GetPosition(GraphCanvas));
             Invalidate();
         }
 
         private void GraphCanvas_MouseMove(object sender, MouseEventArgs e)
         {
-            if (mouseDown)
+            if (Mouse.LeftButton == MouseButtonState.Pressed)
             {
-                globals.toolNow.Mouse_Move(e.GetPosition(graphCanvas));
+                Globals.ToolNow.Mouse_Move(e.GetPosition(GraphCanvas));
                 Invalidate();
-            }
-        }
-
-        private void GraphCanvas_MouseLeave(object sender, MouseEventArgs e)
-        {
-            if (mouseDown)
-            {
-                globals.toolNow.Mouse_Leave();
-                Invalidate();
-                mouseDown = false;
             }
         }
 
         private void GraphCanvas_MouseUp(object sender, MouseEventArgs e)
         {
-            if (mouseDown)
+            if (Mouse.LeftButton == MouseButtonState.Pressed)
             {
-                globals.toolNow.Mouse_Up();
+                Globals.ToolNow.Mouse_Up();
                 Invalidate();
-                mouseDown = false;
             }
         }
 
-        private void Button_MouseMove(object sender, MouseEventArgs e)
+        private void ToolButton_MouseMove(object sender, MouseEventArgs e)
         {
-            if (Convert.ToInt32((sender as Button).Tag) != chooseTool)
+            if (string.Compare((sender as Button).Background.ToString(), "#FF5F9EA0") != 0)
+            {
                 (sender as Button).Background = (Brush)new BrushConverter().ConvertFrom("#4c7184");
+            }
         }
 
-        private void Button_MouseLeave(object sender, MouseEventArgs e)
+        private void ToolButton_MouseLeave(object sender, MouseEventArgs e)
         {
-            if (Convert.ToInt32((sender as Button).Tag) != chooseTool)
+            if (string.Compare((sender as Button).Background.ToString(), "#FF5F9EA0") != 0)
+            {
                 (sender as Button).Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+            }
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
@@ -305,22 +258,32 @@ namespace Graph_Editor
         {
             Load.Loaded();
         }
+
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            if (globals.vertexData.Count > 0)
+            if (Globals.VertexData.Count > 0)
+            {
                 Exit_Dialog.Visibility = Visibility.Visible;
+            }
             else
+            {
                 this.Close();
+            }
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void ClearAll_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < globals.globalIndex; i++)
-                for (int j = 0; j < globals.globalIndex; j++)
-                    globals.matrix[i,j] = 0;
-            globals.vertexData.Clear();
-            globals.edgesData.Clear();
-            globals.globalIndex = 0;
+            for (int i = 0; i < Globals.GlobalIndex; i++)
+            {
+                for (int j = 0; j < Globals.GlobalIndex; j++)
+                {
+                    Globals.Matrix[i, j] = 0;
+                }
+            }
+
+            Globals.VertexData.Clear();
+            Globals.EdgesData.Clear();
+            Globals.GlobalIndex = 0;
             Invalidate();
         }
 
@@ -337,6 +300,11 @@ namespace Graph_Editor
         private void Cancel_Exit_Click(object sender, RoutedEventArgs e)
         {
             Exit.Exit_and_Save_All(2);
+        }
+
+        private void DataWindow_Closing(object sender, CancelEventArgs e)
+        {
+            Exit_Dialog.Visibility = Visibility.Visible;
         }
 
         private void ShowMatrix(object sender, RoutedEventArgs e)

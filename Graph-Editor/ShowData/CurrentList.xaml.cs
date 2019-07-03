@@ -23,7 +23,7 @@ namespace Graph_Editor.ShowData
         public CurrentList()
         {
             InitializeComponent();
-            for (int i = 0; i < globals.vertexData.Count(); i++)
+            for (int i = 0; i < Globals.VertexData.Count(); i++)
             {
                 sideBlock.Text += i + "\n";
             }

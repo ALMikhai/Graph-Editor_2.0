@@ -15,12 +15,12 @@ namespace Graph_Editor
 
         public override void Mouse_Down(Point pntNow)
         {
-            foreach (Vertex vert in globals.vertexData)
+            foreach (Vertex vert in Globals.VertexData)
             {
-                if (vert.Coordinates.X - (globals.vertRadius) <= pntNow.X &&
-                    pntNow.X <= vert.Coordinates.X + (globals.vertRadius) &&
-                    vert.Coordinates.Y - (globals.vertRadius) <= pntNow.Y &&
-                    pntNow.Y <= vert.Coordinates.Y + (globals.vertRadius))
+                if (vert.Coordinates.X - (Globals.VertRadius) <= pntNow.X &&
+                    pntNow.X <= vert.Coordinates.X + (Globals.VertRadius) &&
+                    vert.Coordinates.Y - (Globals.VertRadius) <= pntNow.Y &&
+                    pntNow.Y <= vert.Coordinates.Y + (Globals.VertRadius))
                 {
                     findedVert = vert;
                     break;
@@ -36,7 +36,7 @@ namespace Graph_Editor
                 }
                 else
                 {
-                    if (findedVert == vertexFirst || globals.matrix[vertexFirst.Index, findedVert.Index] == 1 || globals.matrix[findedVert.Index, vertexFirst.Index] == 1)
+                    if (findedVert == vertexFirst || Globals.Matrix[vertexFirst.Index, findedVert.Index] == 1 || Globals.Matrix[findedVert.Index, vertexFirst.Index] == 1)
                     {
                         findedVert = null;
                         vertexFirst = null;
@@ -45,11 +45,11 @@ namespace Graph_Editor
                     {
                         Edge edge = new Edge(vertexFirst, findedVert, 1, false);
                         Edge edge1 = new Edge(findedVert, vertexFirst, 1, false);
-                        globals.matrix[edge.From.Index, edge.To.Index] = 1;
-                        globals.matrix[edge.To.Index, edge.From.Index] = 1;
+                        Globals.Matrix[edge.From.Index, edge.To.Index] = 1;
+                        Globals.Matrix[edge.To.Index, edge.From.Index] = 1;
 
-                        globals.edgesData.Add(edge);
-                        globals.edgesData.Add(edge1);
+                        Globals.EdgesData.Add(edge);
+                        Globals.EdgesData.Add(edge1);
 
                         findedVert = null;
                         vertexFirst = null;

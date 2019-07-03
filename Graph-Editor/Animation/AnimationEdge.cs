@@ -33,23 +33,23 @@ namespace Graph_Editor
 
         public static Ellipse ellipse = new Ellipse
         {
-            Width = globals.vertRadius,
-            Height = globals.vertRadius,
+            Width = Globals.VertRadius,
+            Height = Globals.VertRadius,
             Fill = Brushes.Blue
         };
         public static void Refresh_SrtoryBoard()
         {
             int time = 1;
 
-            MainWindow.Instance.graphCanvas.Children.Add(ellipse);
+            MainWindow.Instance.GraphCanvas.Children.Add(ellipse);
 
             PathGeometry pathGeom = new PathGeometry();
             
             LineSegment vertLS = new LineSegment();
             PathFigure vertPF = new PathFigure();
 
-            Point startPoint = Point.Add(edge.From.Coordinates, Point.Subtract(edge.From.Coordinates, new Point(edge.From.Coordinates.X + globals.vertRadius / 2, edge.From.Coordinates.Y + globals.vertRadius / 2)));
-            Point finishPoint = Point.Add(edge.To.Coordinates, Point.Subtract(edge.To.Coordinates, new Point(edge.To.Coordinates.X + globals.vertRadius / 2, edge.To.Coordinates.Y + globals.vertRadius / 2)));
+            Point startPoint = Point.Add(edge.From.Coordinates, Point.Subtract(edge.From.Coordinates, new Point(edge.From.Coordinates.X + Globals.VertRadius / 2, edge.From.Coordinates.Y + Globals.VertRadius / 2)));
+            Point finishPoint = Point.Add(edge.To.Coordinates, Point.Subtract(edge.To.Coordinates, new Point(edge.To.Coordinates.X + Globals.VertRadius / 2, edge.To.Coordinates.Y + Globals.VertRadius / 2)));
 
             vertPF.StartPoint = startPoint;
             vertLS.Point = finishPoint;

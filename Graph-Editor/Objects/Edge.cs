@@ -26,7 +26,7 @@ namespace Graph_Editor.Objects
         private readonly Vertex from, to;
         private int weight;
         private bool directed;
-        private Brush color = globals.color;
+        private Brush color = Globals.StrokeColor;
         
 
         public Brush Color
@@ -48,7 +48,7 @@ namespace Graph_Editor.Objects
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("index", globals.globalIndex);
+            info.AddValue("index", Globals.GlobalIndex);
             info.AddValue("from", from.Index);
             info.AddValue("to", to.Index);
             info.AddValue("weight", weight);
@@ -58,11 +58,11 @@ namespace Graph_Editor.Objects
         public Edge(SerializationInfo info, StreamingContext context)
         {
 
-            globals.globalIndex = (int)info.GetValue("index", typeof(int));
+            Globals.GlobalIndex = (int)info.GetValue("index", typeof(int));
 
             int index = (int)info.GetValue("from", typeof(int));
             
-            foreach(Vertex vertex in globals.vertexData)
+            foreach(Vertex vertex in Globals.VertexData)
             {
                 if(vertex.Index == index)
                 {
@@ -73,7 +73,7 @@ namespace Graph_Editor.Objects
 
             index = (int)info.GetValue("to", typeof(int));
 
-            foreach (Vertex vertex in globals.vertexData)
+            foreach (Vertex vertex in Globals.VertexData)
             {
                 if (vertex.Index == index)
                 {

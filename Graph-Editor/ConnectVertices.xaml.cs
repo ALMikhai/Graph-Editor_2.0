@@ -55,7 +55,7 @@ namespace Graph_Editor
                 return;
             }
 
-            foreach (Vertex vertex in globals.vertexData)
+            foreach (Vertex vertex in Globals.VertexData)
             {
                 if (findF && findS)
                     break;
@@ -80,27 +80,27 @@ namespace Graph_Editor
             Edge newEdge = new Edge(from, to, Convert.ToInt32(TextBox_Weight.Text), route);
             Edge newEdge1 = new Edge(to, from, Convert.ToInt32(TextBox_Weight.Text), route);
 
-            if (route || (globals.matrix[newEdge.To.Index, newEdge.From.Index] == 0 && globals.matrix[newEdge.From.Index, newEdge.To.Index] == 0))
+            if (route || (Globals.Matrix[newEdge.To.Index, newEdge.From.Index] == 0 && Globals.Matrix[newEdge.From.Index, newEdge.To.Index] == 0))
             {
-                if (globals.matrix[newEdge.From.Index, newEdge.To.Index] >= 1)
+                if (Globals.Matrix[newEdge.From.Index, newEdge.To.Index] >= 1)
                 {
                     MessageBox.Show("You alredy have this edge!");
                     return;
                 }
 
-                globals.edgesData.Add(newEdge);
+                Globals.EdgesData.Add(newEdge);
                 
-                if (globals.matrix[newEdge.To.Index, newEdge.From.Index] >= 1 && route)
+                if (Globals.Matrix[newEdge.To.Index, newEdge.From.Index] >= 1 && route)
                 {
                     // TODO: Сделать красивый вывод рёбер.
                 }
 
-                globals.matrix[newEdge.From.Index, newEdge.To.Index] = newEdge.Weight;
+                Globals.Matrix[newEdge.From.Index, newEdge.To.Index] = newEdge.Weight;
                 // TODO: Удалять нарисованное ребро (ориентированное) и добавлять обычное (неориентированное)
                 if (!route)
                 {
-                    globals.matrix[newEdge.To.Index, newEdge.From.Index] = newEdge.Weight;
-                    globals.edgesData.Add(newEdge1);
+                    Globals.Matrix[newEdge.To.Index, newEdge.From.Index] = newEdge.Weight;
+                    Globals.EdgesData.Add(newEdge1);
                 }
                     
 

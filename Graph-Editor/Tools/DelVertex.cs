@@ -14,12 +14,12 @@ namespace Graph_Editor
 
         public override void Mouse_Down(Point pntNow)
         {
-            foreach (Vertex vert in globals.vertexData)
+            foreach (Vertex vert in Globals.VertexData)
             {
-                if (vert.Coordinates.X - (globals.vertRadius) <= pntNow.X &&
-                    pntNow.X <= vert.Coordinates.X + (globals.vertRadius) &&
-                    vert.Coordinates.Y - (globals.vertRadius) <= pntNow.Y &&
-                    pntNow.Y <= vert.Coordinates.Y + (globals.vertRadius))
+                if (vert.Coordinates.X - (Globals.VertRadius) <= pntNow.X &&
+                    pntNow.X <= vert.Coordinates.X + (Globals.VertRadius) &&
+                    vert.Coordinates.Y - (Globals.VertRadius) <= pntNow.Y &&
+                    pntNow.Y <= vert.Coordinates.Y + (Globals.VertRadius))
                 {
                     findedVert = vert;
                     break;
@@ -28,22 +28,22 @@ namespace Graph_Editor
 
             if(findedVert != null)
             {
-                foreach (Edge edge in globals.edgesData.ToArray())
+                foreach (Edge edge in Globals.EdgesData.ToArray())
                 {
                     if (edge.From == findedVert || edge.To == findedVert)
                     {
-                        globals.matrix[edge.From.Index, edge.To.Index] = 0;
+                        Globals.Matrix[edge.From.Index, edge.To.Index] = 0;
                         if (!edge.Directed)
                         {
-                            globals.matrix[edge.To.Index, edge.From.Index] = 0;
+                            Globals.Matrix[edge.To.Index, edge.From.Index] = 0;
                         }
-                        globals.edgesData.Remove(edge);
+                        Globals.EdgesData.Remove(edge);
                     }
                 }
 
                 
 
-                globals.vertexData.Remove(findedVert);
+                Globals.VertexData.Remove(findedVert);
 
                 findedVert = null;
             }

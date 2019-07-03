@@ -26,18 +26,18 @@ namespace Graph_Editor
                 Stream file = (FileStream)ofd.OpenFile();
                 BinaryFormatter deserializer = new BinaryFormatter();
 
-                globals.vertexData = (List<Vertex>)deserializer.Deserialize(file);
+                Globals.VertexData = (List<Vertex>)deserializer.Deserialize(file);
                 file.Close();
 
                 ofd.FileName = ofd.FileName + '2';
 
                 file = (FileStream)ofd.OpenFile();
-                globals.edgesData = (List<Edge>)deserializer.Deserialize(file);
+                Globals.EdgesData = (List<Edge>)deserializer.Deserialize(file);
                 file.Close();
 
                 MainWindow.Instance.Invalidate();
 
-                globals.Restore_Matrix();
+                Globals.RestoreMatrix();
             }
         }
     }

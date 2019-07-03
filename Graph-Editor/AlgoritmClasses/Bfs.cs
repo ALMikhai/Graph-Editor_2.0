@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
-using static Graph_Editor.globals;
+using static Graph_Editor.Globals;
 using Graph_Editor.Objects;
 
 namespace Graph_Editor.AlgoritmClasses
@@ -35,9 +35,9 @@ namespace Graph_Editor.AlgoritmClasses
                 int vt = q.Dequeue();
                 for (int i = 0; i < Size; i++)
                 {
-                    if (matrix[vt, i] != 0 && !visited[i])
+                    if (Matrix[vt, i] != 0 && !visited[i])
                     {
-                        foreach (var edge in edgesData)
+                        foreach (var edge in EdgesData)
                         {
                             if (edge.From.Index == vt && edge.To.Index == i)
                             {

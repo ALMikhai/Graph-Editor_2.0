@@ -15,7 +15,7 @@ namespace Graph_Editor
     {
         public static void Save_All()
         {
-            if (globals.vertexData.Count != 0)
+            if (Globals.VertexData.Count != 0)
             {
                 SaveFileDialog sfd = new SaveFileDialog();
                 sfd.Title = "Выберете папку для сохранения";
@@ -29,8 +29,8 @@ namespace Graph_Editor
                     sfd.FileName = sfd.FileName + '2';
                     FileStream fileEdge = (FileStream)sfd.OpenFile();
                     BinaryFormatter bin = new BinaryFormatter();
-                    bin.Serialize(fileVertex, globals.vertexData);
-                    bin.Serialize(fileEdge, globals.edgesData);
+                    bin.Serialize(fileVertex, Globals.VertexData);
+                    bin.Serialize(fileEdge, Globals.EdgesData);
                     fileVertex.Close();
                     fileEdge.Close();
                 }

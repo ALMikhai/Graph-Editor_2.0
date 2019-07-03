@@ -15,19 +15,19 @@ namespace Graph_Editor
 
         public override void Mouse_Down(Point pntNow)
         {
-            foreach (Vertex vert in globals.vertexData)
+            foreach (Vertex vert in Globals.VertexData)
             {
-                if (vert.Coordinates.X - (globals.vertRadius) <= pntNow.X &&
-                    pntNow.X <= vert.Coordinates.X + (globals.vertRadius) &&
-                    vert.Coordinates.Y - (globals.vertRadius) <= pntNow.Y &&
-                    pntNow.Y <= vert.Coordinates.Y + (globals.vertRadius))
+                if (vert.Coordinates.X - (Globals.VertRadius) <= pntNow.X &&
+                    pntNow.X <= vert.Coordinates.X + (Globals.VertRadius) &&
+                    vert.Coordinates.Y - (Globals.VertRadius) <= pntNow.Y &&
+                    pntNow.Y <= vert.Coordinates.Y + (Globals.VertRadius))
                 {
                     findedVert = vert;
                     return;
                 }
             }
-            Vertex vertexNow = new Vertex(globals.globalIndex++, pntNow);
-            globals.vertexData.Add(vertexNow);
+            Vertex vertexNow = new Vertex(Globals.GlobalIndex++, pntNow);
+            Globals.VertexData.Add(vertexNow);
         }
 
         public override void Mouse_Move(Point pntNow)
@@ -39,11 +39,6 @@ namespace Graph_Editor
         }
 
         public override void Mouse_Up()
-        {
-            findedVert = null;
-        }
-
-        public override void Mouse_Leave()
         {
             findedVert = null;
         }

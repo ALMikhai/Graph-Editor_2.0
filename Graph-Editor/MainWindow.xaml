@@ -22,12 +22,12 @@
         </Style>
     </Window.Resources>
     <Grid Background="#0a3f4c">
-        <Canvas x:Name="graphCanvas" 
+        <Canvas x:Name="GraphCanvas" 
                 Margin="182,10,10,10" 
                 Background="#b7e1e1"
                 MouseDown="GraphCanvas_MouseDown"
                 MouseMove="GraphCanvas_MouseMove"
-                MouseLeave="GraphCanvas_MouseLeave"
+                MouseLeave="GraphCanvas_MouseUp"
                 MouseUp="GraphCanvas_MouseUp"
                 ClipToBounds="True">
         </Canvas>
@@ -35,14 +35,14 @@
             Content="Algoritms" BorderThickness="0"
             HorizontalAlignment="Left" Margin="10,140,0,0" VerticalAlignment="Top"
             Width="160" Height="48" Background="#345160"
-            FontSize="35" FontWeight="DemiBold" Click="Algoritm_Button" FontFamily="Gabriola"
+            FontSize="35" FontWeight="DemiBold" Click="AlgoritmButton_Click" FontFamily="Gabriola"
         />
         <Button Style="{StaticResource MyButtonStyle}" x:Name="AddVertex"
                 Tag="0" Background="#345160"
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Top"
                 Margin="54,239,0,0"
-                Click="Change_Tool_Button" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove" ToolTip="Create vertex">
+                Click="Change_Tool_Button" MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove" ToolTip="Create vertex">
             <Image Source="images/vertexIcon.png" Width="64" Height="64">
                 <Image.Effect>
                     <DropShadowEffect/>
@@ -54,7 +54,7 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Margin="54,344,0,0"
-                Click="Change_Tool_Button"  MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove" ToolTip="Move vertex">
+                Click="Change_Tool_Button"  MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove" ToolTip="Move vertex">
             <Image Source="images\handTool.png" Width="64" Height="64">
                 <Image.Effect>
                     <DropShadowEffect/>
@@ -66,7 +66,7 @@
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Top"
                 Margin="10,450,0,0"
-                Click="Change_Tool_Button" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove" ToolTip="Delete vertex">
+                Click="Change_Tool_Button" MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove" ToolTip="Delete vertex">
             <Image Source="images/deleteVertexIcon.png" Width="64" Height="64">
                 <Image.Effect>
                     <DropShadowEffect/>
@@ -78,7 +78,7 @@
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Top"
                 Margin="97,450,0,0"
-                Click="Change_Tool_Button" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove" ToolTip="Delete vertex">
+                Click="Change_Tool_Button" MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove" ToolTip="Delete vertex">
             <Image Source="images/deleteEdgeIcon.png" Width="64" Height="64">
                 <Image.Effect>
                     <DropShadowEffect/>
@@ -88,7 +88,7 @@
         <Button Style="{StaticResource MyButtonStyle}" x:Name="Connect" Background="#345160"
                 HorizontalAlignment="Left" Margin="54,563,0,0" VerticalAlignment="Top"
                 FontSize="20" FontWeight="DemiBold" Tag="3"
-                Click="Change_Tool_Button" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove" ToolTip="Connect vertices">
+                Click="Change_Tool_Button" MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove" ToolTip="Connect vertices">
             <Image Source="images\edgeIcon.png" Width="64" Height="64">
                 <Image.Effect>
                     <DropShadowEffect/>
@@ -113,7 +113,7 @@
                 <Separator Background="Black"/>
                 <MenuItem Header="Exit" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black" Click="Exit_Click"></MenuItem>
             </MenuItem>
-            <MenuItem Width="24" Background="Black" Click="MenuItem_Click">
+            <MenuItem Width="24" Background="Black" Click="ClearAll_Click">
                 <MenuItem.Icon>
                     <Image Source="images/clearAll.png" Width="15"/>
                 </MenuItem.Icon>
