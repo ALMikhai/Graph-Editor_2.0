@@ -11,12 +11,12 @@ namespace Graph_Editor
     public class Tool
     { 
 
-        public virtual void Mouse_Down(Point pntNow)
+        public virtual void Mouse_Down(Point pointNow)
         {
 
         }
 
-        public virtual void Mouse_Move(Point pntNow)
+        public virtual void Mouse_Move(Point pointNow)
         {
 
         }

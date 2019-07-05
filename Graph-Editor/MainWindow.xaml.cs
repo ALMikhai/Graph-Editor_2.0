@@ -226,6 +226,12 @@ namespace Graph_Editor
 
         private void GraphCanvas_MouseUp(object sender, MouseEventArgs e)
         {
+            Globals.ToolNow.Mouse_Up();
+            Invalidate();
+        }
+
+        private void GraphCanvas_MouseLeave(object sender, MouseEventArgs e)
+        {
             if (Mouse.LeftButton == MouseButtonState.Pressed)
             {
                 Globals.ToolNow.Mouse_Up();

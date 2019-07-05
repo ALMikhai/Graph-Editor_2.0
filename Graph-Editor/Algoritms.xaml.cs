@@ -8,13 +8,14 @@ using System.Windows.Media;
 
 namespace Graph_Editor
 {
-    /// <summary>
-    /// Логика взаимодействия для Window2.xaml
-    /// </summary>
     public partial class Algoritms : Window
     {
+        // Баг - при нажатии на не готовый алгоритм, появляется messagebox после которого всё блочится.
+
         int chooseAlg;
+
         MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
+
         public Algoritms()
         {
             InitializeComponent();
@@ -24,6 +25,7 @@ namespace Graph_Editor
         {
             mainWindow.WaitPanel.Visibility = Visibility.Hidden;
         }
+
         private void main_Cancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -34,6 +36,7 @@ namespace Graph_Editor
             chooseAlg = Convert.ToInt32((sender as Button).Tag.ToString());
 
             LockPanel.Background = Brushes.Gray;
+
             if (chooseAlg == 0 || chooseAlg == 1 || chooseAlg == 7)
             {
                 BFS_DFS.Visibility = Visibility.Visible;
@@ -83,7 +86,7 @@ namespace Graph_Editor
            /* int vertex;
             bool isInt = Int32.TryParse(FSstartVertex.Text.ToString(), vertex)
             if ()*/
-            if ((chooseAlg == 0 || chooseAlg == 1 || chooseAlg == 7) && Globals.IsBe(Convert.ToInt32(FSstartVertex.Text)) && FSstartVertex.Text != "")
+            if ((chooseAlg == 0 || chooseAlg == 1 || chooseAlg == 7) && FSstartVertex.Text != "" && Globals.IsBe(Convert.ToInt32(FSstartVertex.Text)))
             {
                 BFS_DFS.Visibility = Visibility.Hidden;
                 this.Close();
@@ -98,7 +101,6 @@ namespace Graph_Editor
                 }
                 else if (chooseAlg == 7)
                 {
-
                     Kruskal.Start(Convert.ToInt32(FSstartVertex.Text));
                 }
             }
@@ -140,9 +142,13 @@ namespace Graph_Editor
         private void Button_MouseLeave(object sender, MouseEventArgs e)
         {
             if (String.Compare((sender as Button).Tag.ToString(), "Cancel") == 0)
+            {
                 (sender as Button).Background = (Brush)new BrushConverter().ConvertFrom("#B9C2C2");
+            }
             else
+            {
                 (sender as Button).Background = Brushes.CadetBlue;
+            }
         }
     }
 }

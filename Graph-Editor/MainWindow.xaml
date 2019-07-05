@@ -27,7 +27,7 @@
                 Background="#b7e1e1"
                 MouseDown="GraphCanvas_MouseDown"
                 MouseMove="GraphCanvas_MouseMove"
-                MouseLeave="GraphCanvas_MouseUp"
+                MouseLeave="GraphCanvas_MouseLeave"
                 MouseUp="GraphCanvas_MouseUp"
                 ClipToBounds="True">
         </Canvas>

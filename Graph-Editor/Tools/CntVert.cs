@@ -10,59 +10,59 @@ namespace Graph_Editor
 {
     class CntVert : Tool
     {
+        Vertex vertexSecond = null;
         Vertex vertexFirst = null;
-        Vertex findedVert = null;
 
-        public override void Mouse_Down(Point pntNow)
+        public override void Mouse_Down(Point pointNow)
         {
-            foreach (Vertex vert in Globals.VertexData)
+            foreach (var vertex in Globals.VertexData)
             {
-                if (vert.Coordinates.X - (Globals.VertRadius) <= pntNow.X &&
-                    pntNow.X <= vert.Coordinates.X + (Globals.VertRadius) &&
-                    vert.Coordinates.Y - (Globals.VertRadius) <= pntNow.Y &&
-                    pntNow.Y <= vert.Coordinates.Y + (Globals.VertRadius))
+                if (vertex.Coordinates.X - (Globals.VertRadius) <= pointNow.X &&
+                    pointNow.X <= vertex.Coordinates.X + (Globals.VertRadius) &&
+                    vertex.Coordinates.Y - (Globals.VertRadius) <= pointNow.Y &&
+                    pointNow.Y <= vertex.Coordinates.Y + (Globals.VertRadius))
                 {
-                    findedVert = vert;
+                    vertexFirst = vertex;
                     break;
                 }
             }
 
-            if(findedVert != null)
+            if(vertexFirst != null)
             {
-                if(vertexFirst == null)
+                if(vertexSecond == null)
                 {
-                    vertexFirst = findedVert;
-                    findedVert = null;
+                    vertexSecond = vertexFirst;
+                    vertexFirst = null;
                 }
                 else
                 {
-                    if (findedVert == vertexFirst || Globals.Matrix[vertexFirst.Index, findedVert.Index] == 1 || Globals.Matrix[findedVert.Index, vertexFirst.Index] == 1)
+                    if (vertexFirst == vertexSecond || Globals.Matrix[vertexSecond.Index, vertexFirst.Index] >= 1 || Globals.Matrix[vertexFirst.Index, vertexSecond.Index] >= 1)
                     {
-                        findedVert = null;
                         vertexFirst = null;
+                        vertexSecond = null;
                     }
                     else
                     {
-                        Edge edge = new Edge(vertexFirst, findedVert, 1, false);
-                        Edge edge1 = new Edge(findedVert, vertexFirst, 1, false);
-                        Globals.Matrix[edge.From.Index, edge.To.Index] = 1;
-                        Globals.Matrix[edge.To.Index, edge.From.Index] = 1;
+                        var edgeDirected = new Edge(vertexSecond, vertexFirst, 1, false);
+                        var edgeUndirected = new Edge(vertexFirst, vertexSecond, 1, false);
 
-                        Globals.EdgesData.Add(edge);
-                        Globals.EdgesData.Add(edge1);
+                        Globals.Matrix[edgeDirected.From.Index, edgeDirected.To.Index] = 1;
+                        Globals.Matrix[edgeDirected.To.Index, edgeDirected.From.Index] = 1;
 
-                        findedVert = null;
+                        Globals.EdgesData.Add(edgeDirected);
+                        Globals.EdgesData.Add(edgeUndirected);
+
                         vertexFirst = null;
+                        vertexSecond = null;
                     }
                 }
-                
             }
         }
 
         public override void Change_Tool()
         {
-            findedVert = null;
             vertexFirst = null;
+            vertexSecond = null;
         }
     }
 }

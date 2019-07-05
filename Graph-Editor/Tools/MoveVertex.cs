@@ -10,40 +10,39 @@ namespace Graph_Editor
 {
     class MoveVertex : Tool
     {
+        Vertex findedVertex;
 
-        Vertex findedVert;
-
-        public override void Mouse_Down(Point pntNow)
+        public override void Mouse_Down(Point pointNow)
         {
-            foreach (Vertex vert in Globals.VertexData)
+            foreach (var vertex in Globals.VertexData)
             {
-                if (vert.Coordinates.X - (Globals.VertRadius) <= pntNow.X &&
-                    pntNow.X <= vert.Coordinates.X + (Globals.VertRadius) &&
-                    vert.Coordinates.Y - (Globals.VertRadius) <= pntNow.Y &&
-                    pntNow.Y <= vert.Coordinates.Y + (Globals.VertRadius))
+                if (vertex.Coordinates.X - (Globals.VertRadius) <= pointNow.X &&
+                    pointNow.X <= vertex.Coordinates.X + (Globals.VertRadius) &&
+                    vertex.Coordinates.Y - (Globals.VertRadius) <= pointNow.Y &&
+                    pointNow.Y <= vertex.Coordinates.Y + (Globals.VertRadius))
                 {
-                    findedVert = vert;
+                    findedVertex = vertex;
                     break;
                 }
             }
         }
 
-        public override void Mouse_Move(Point pntNow)
+        public override void Mouse_Move(Point pointNow)
         {
-            if(findedVert != null)
+            if(findedVertex != null)
             {
-                findedVert.Coordinates = pntNow;
+                findedVertex.Coordinates = pointNow;
             }
         }
 
         public override void Mouse_Up()
         {
-            findedVert = null;
+            findedVertex = null;
         }
 
         public override void Change_Tool()
         {
-            findedVert = null;
+            findedVertex = null;
         }
     }
 }

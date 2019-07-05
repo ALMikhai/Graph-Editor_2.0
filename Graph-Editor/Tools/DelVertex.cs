@@ -12,23 +12,23 @@ namespace Graph_Editor
     {
         Vertex findedVert;
 
-        public override void Mouse_Down(Point pntNow)
+        public override void Mouse_Down(Point pointNow)
         {
-            foreach (Vertex vert in Globals.VertexData)
+            foreach (var vertex in Globals.VertexData)
             {
-                if (vert.Coordinates.X - (Globals.VertRadius) <= pntNow.X &&
-                    pntNow.X <= vert.Coordinates.X + (Globals.VertRadius) &&
-                    vert.Coordinates.Y - (Globals.VertRadius) <= pntNow.Y &&
-                    pntNow.Y <= vert.Coordinates.Y + (Globals.VertRadius))
+                if (vertex.Coordinates.X - (Globals.VertRadius) <= pointNow.X &&
+                    pointNow.X <= vertex.Coordinates.X + (Globals.VertRadius) &&
+                    vertex.Coordinates.Y - (Globals.VertRadius) <= pointNow.Y &&
+                    pointNow.Y <= vertex.Coordinates.Y + (Globals.VertRadius))
                 {
-                    findedVert = vert;
+                    findedVert = vertex;
                     break;
                 }
             }
 
             if(findedVert != null)
             {
-                foreach (Edge edge in Globals.EdgesData.ToArray())
+                foreach (var edge in Globals.EdgesData.ToArray())
                 {
                     if (edge.From == findedVert || edge.To == findedVert)
                     {
@@ -40,8 +40,6 @@ namespace Graph_Editor
                         Globals.EdgesData.Remove(edge);
                     }
                 }
-
-                
 
                 Globals.VertexData.Remove(findedVert);
 
