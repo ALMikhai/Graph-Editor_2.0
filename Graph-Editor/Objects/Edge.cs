@@ -27,24 +27,42 @@ namespace Graph_Editor.Objects
         private int weight;
         private bool directed;
         private Brush color = Globals.StrokeColor;
-        
-
-        public Brush Color
-        {get { return color; } set { color = value; } }
 
         public Vertex From
-        { get{return from;} }
+        {
+            get { return from; }
+        }
 
         public Vertex To
-        { get{return to;} }
+        {
+            get { return to; }
+        }
 
         public int Weight
-        { get{return weight;} set{weight = value;} }
+        {
+            get { return weight; }
+            set { weight = value; }
+        }
 
         public bool Directed
-        {get { return directed; }set { directed = value; } }
-        
-        public Edge(Vertex first, Vertex second, int w, bool state) { from = first; to = second; weight = w; directed = state; }
+        {
+            get { return directed; }
+            set { directed = value; }
+        }
+
+        public Brush Color
+        {
+            get { return color; }
+            set { color = value; }
+        }
+
+        public Edge(Vertex first, Vertex second, int w, bool state)
+        {
+            from = first;
+            to = second;
+            weight = w;
+            directed = state;
+        }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
@@ -57,12 +75,11 @@ namespace Graph_Editor.Objects
 
         public Edge(SerializationInfo info, StreamingContext context)
         {
-
             Globals.GlobalIndex = (int)info.GetValue("index", typeof(int));
 
             int index = (int)info.GetValue("from", typeof(int));
             
-            foreach(Vertex vertex in Globals.VertexData)
+            foreach(var vertex in Globals.VertexData)
             {
                 if(vertex.Index == index)
                 {
@@ -73,7 +90,7 @@ namespace Graph_Editor.Objects
 
             index = (int)info.GetValue("to", typeof(int));
 
-            foreach (Vertex vertex in Globals.VertexData)
+            foreach (var vertex in Globals.VertexData)
             {
                 if (vertex.Index == index)
                 {
@@ -85,6 +102,7 @@ namespace Graph_Editor.Objects
             weight = (int)info.GetValue("weight", typeof(int));
             directed = (bool)info.GetValue("directed", typeof(bool));
         }
+
         public Edge() { }
     }
 }

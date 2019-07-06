@@ -23,10 +23,16 @@ namespace Graph_Editor.ShowData
         public CurrentMatrix()
         {
             InitializeComponent();
+
             for (int i = 0; i < Globals.VertexData.Count(); i++)
+            {
                 topBlock.Text += i.ToString() + " ";
+            }
+
             for (int i = 0; i < Globals.VertexData.Count(); i++)
+            {
                 sideBlock.Text += i.ToString() + "\n";
+            }
 
             for (int i = 0; i < Globals.VertexData.Count(); i++)
             {
@@ -38,9 +44,11 @@ namespace Graph_Editor.ShowData
                 mainBlock.Text += "\n";
             }
         }
+
         void DataWindow_Closing(object sender, CancelEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
+
             if (mainWindow != null && mainWindow.WaitPanel != null)
             {
                 mainWindow.WaitPanel.Background = null;

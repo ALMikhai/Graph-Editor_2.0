@@ -26,18 +26,34 @@ namespace Graph_Editor.Objects
         private readonly int index;
         private Point coordinates;
         private Brush color = Globals.StrokeColor;
-        public Brush Color
-        { get { return color; } set { color = value; } }
 
         public int Index
-        { get { return index; } }
+        {
+            get { return index; }
+        }
 
         public Point Coordinates
-        { get{return coordinates; } set { coordinates = value; } }
-        
-        public Vertex(int number, Point place) { index = number; coordinates = place; }
+        {
+            get {return coordinates; }
+            set { coordinates = value; }
+        }
 
-        public Vertex(int number) { index = number; }
+        public Brush Color {
+            get { return color; }
+            set { color = value; }
+        }
+
+        public Vertex(int number, Point place)
+        {
+            index = number;
+            coordinates = place;
+        }
+
+        public Vertex(int number)
+        {
+            index = number;
+        }
+
         public Vertex() { }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)

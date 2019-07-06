@@ -257,7 +257,7 @@ namespace Graph_Editor
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            Save.Save_All();
+            Save.SaveAll();
         }
 
         private void Load_Click(object sender, RoutedEventArgs e)

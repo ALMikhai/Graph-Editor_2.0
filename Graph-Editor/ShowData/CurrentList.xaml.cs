@@ -23,14 +23,17 @@ namespace Graph_Editor.ShowData
         public CurrentList()
         {
             InitializeComponent();
+
             for (int i = 0; i < Globals.VertexData.Count(); i++)
             {
                 sideBlock.Text += i + "\n";
             }
         }
+
         void DataWindow_Closing(object sender, CancelEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
+
             if (mainWindow != null && mainWindow.WaitPanel != null)
             {
                 mainWindow.WaitPanel.Background = null;
