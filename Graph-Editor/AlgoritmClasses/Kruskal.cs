@@ -13,8 +13,6 @@ namespace Graph_Editor.AlgoritmClasses
         static int[] p = new int[Globals.Size];
         static Random rnd = new Random();
 
-        
-        
         static int dsu_get(int v)
         {
             return (v == p[v]) ? v : (p[v] = dsu_get(p[v]));

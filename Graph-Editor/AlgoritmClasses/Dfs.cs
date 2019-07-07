@@ -23,11 +23,10 @@ namespace Graph_Editor.AlgoritmClasses
     {
         static bool[] visited = new bool[Globals.Size];
 
-        public static List<Edge> edgesUsed = new List<Edge>();
+        static List<Edge> edgesUsed = new List<Edge>();
 
         public static void Start(int v)
         {
-            
             MainWindow.Instance.Invalidate();
             if (!Globals.CheckIn(v))
                 return;

@@ -24,7 +24,7 @@ using Graph_Editor.ShowData;
 
 namespace Graph_Editor
 {
-    // TODO Сделать отдельный виртуальный класс Alogoritm и вынести туда общие методы по типу (старт).
+    // TODO Сделать отдельный виртуальный класс Alogoritm и вынести туда общие методы по типу (старт). Нужно для удобного вызова Алгоритмов(Не DFS.Start() BFS.Start(), а AlgoritmNow.Start()для всех).
 
     public partial class MainWindow : Window
     {
@@ -119,7 +119,7 @@ namespace Graph_Editor
 
         public void InvalidateAlgo(Edge edge)
         {
-            GraphCanvas.Children.Remove(AnimationEdge.ellipse);
+            GraphCanvas.Children.Remove(AnimationEdge.AnimationEllipse);
             var drawingVisual = new DrawingVisual();
             var drawingContext = drawingVisual.RenderOpen();
             

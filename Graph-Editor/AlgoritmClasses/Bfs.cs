@@ -15,7 +15,8 @@ namespace Graph_Editor.AlgoritmClasses
 
         static Queue<int> q = new Queue<int>();
 
-        public static List<Edge> edgesUsed = new List<Edge>();
+        static List<Edge> edgesUsed = new List<Edge>();
+
         public static void Start(int v)
         {
             MainWindow.Instance.Invalidate();
@@ -25,9 +26,9 @@ namespace Graph_Editor.AlgoritmClasses
             AnimationEdge.NextAnimation(edgesUsed[0], edgesUsed);
             visited = new bool[Size];
         }
+
         static void bfs(int v)
         {
-            
             q.Enqueue(v);
             visited[v] = true;
             while (q.Count != 0)
