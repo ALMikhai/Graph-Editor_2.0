@@ -14,12 +14,15 @@ namespace Graph_Editor
         public static int[,] Matrix = new int[Size, Size];
         public static List<Vertex> VertexData = new List<Vertex>();
         public static List<Edge> EdgesData = new List<Edge>();
-        public static Brush StrokeColor = Brushes.Black;
-        public static Pen BasePen = new Pen(StrokeColor, 1);
+
+        public static Pen BasePen = new Pen(Brushes.Black, 1);
         public static Pen AlgoPen = new Pen(Brushes.Red, 2);
         public static int VertRadius = 20;
         
         public static Brush ColorInsideVertex = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
+        public static Brush ColorEdge = Brushes.Black;
+        public static double ThicknessEdge = 1;
+
 
         public static Dictionary<int, Tool> ToolList = new Dictionary<int, Tool>
         {

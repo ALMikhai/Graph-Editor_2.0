@@ -25,7 +25,7 @@ namespace Graph_Editor.Objects
     {
         private readonly int index;
         private Point coordinates;
-        private Brush color = Globals.StrokeColor;
+        private Brush color = Globals.ColorInsideVertex.Clone();
 
         public int Index
         {
@@ -60,12 +60,14 @@ namespace Graph_Editor.Objects
         {
             info.AddValue("index", index);
             info.AddValue("coordinates", coordinates);
+            info.AddValue("color", color.ToString());
         }
 
         public Vertex(SerializationInfo info, StreamingContext context)
         {
             index = (int)info.GetValue("index", typeof(int));
             coordinates = (Point)info.GetValue("coordinates", typeof(Point));
+            color = (Brush)(new BrushConverter().ConvertFromString((string)info.GetValue("color", typeof(string))));
         }
     }
 }

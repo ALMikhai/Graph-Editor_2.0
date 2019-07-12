@@ -101,6 +101,7 @@ namespace Graph_Editor
                 storyboard.Completed -= callback;
                 if (edgesUsed.Count > 0)
                 {
+                    storyboard.Children.Clear();
                     NextAnimation(edgesUsed[0], edgesUsed);
                 }
             };

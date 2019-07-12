@@ -56,8 +56,6 @@ namespace Graph_Editor
             var drawingVisual = new DrawingVisual();
             var drawingContext = drawingVisual.RenderOpen();
 
-            var pen = Globals.BasePen;
-
             foreach (var edge in Globals.EdgesData)
             {
                 Point from = edge.From.Coordinates;
@@ -65,6 +63,8 @@ namespace Graph_Editor
 
                 var center = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
                 var centerSecond = new Point((from.X + to.X) / 2, (from.Y + to.Y) / 2);
+
+                Pen pen = new Pen(edge.Color, edge.Thickness);
 
                 if (edge.Directed)
                 {
@@ -81,6 +81,8 @@ namespace Graph_Editor
 
                     var left = new Point((centerSecond.X + (Xp / d) * 6), (centerSecond.Y + (Yp / d) * 6));
                     var right = new Point((centerSecond.X - (Xp / d) * 6), (centerSecond.Y - (Yp / d) * 6));
+
+
 
                     drawingContext.DrawLine(pen, center, left);
                     drawingContext.DrawLine(pen, center, right);
@@ -111,7 +113,7 @@ namespace Graph_Editor
 
             foreach (var vertex in Globals.VertexData)
             {
-                drawingContext.DrawEllipse(Globals.ColorInsideVertex, Globals.BasePen, vertex.Coordinates, Globals.VertRadius, Globals.VertRadius);
+                drawingContext.DrawEllipse(vertex.Color, Globals.BasePen, vertex.Coordinates, Globals.VertRadius, Globals.VertRadius);
 
                 FormattedText txt = new FormattedText(vertex.Index.ToString(),
                                     CultureInfo.GetCultureInfo("en-us"),
@@ -162,7 +164,7 @@ namespace Graph_Editor
 
             foreach (var vertex in Globals.VertexData)
             {
-                drawingContext.DrawEllipse(Globals.ColorInsideVertex, Globals.BasePen, vertex.Coordinates, Globals.VertRadius, Globals.VertRadius);
+                drawingContext.DrawEllipse(vertex.Color, Globals.BasePen, vertex.Coordinates, Globals.VertRadius, Globals.VertRadius);
 
                 FormattedText txt = new FormattedText(vertex.Index.ToString(),
                                     CultureInfo.GetCultureInfo("en-us"),
@@ -336,6 +338,16 @@ namespace Graph_Editor
             WaitPanel.Visibility = Visibility.Visible;
             WaitPanel.Background = Brushes.Gray;
             currentList.Show();
+        }
+
+        private void ChangeVertexColorButton_Click(object sender, RoutedEventArgs e)
+        {
+            Globals.ColorInsideVertex = (sender as Button).Background;
+        }
+
+        private void ChangeEdgeColorButton_Click(object sender, RoutedEventArgs e)
+        {
+            Globals.ColorEdge = (sender as Button).Background;
         }
     }
 }
