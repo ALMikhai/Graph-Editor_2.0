@@ -35,6 +35,8 @@ namespace Graph_Editor
     // 8) Не использовать сокращения в названиях переменных и функций.
 
     // TODO Сделать отдельный виртуальный класс Alogoritm и вынести туда общие методы по типу (старт). Нужно для удобного вызова Алгоритмов(Не DFS.Start() BFS.Start(), а AlgoritmNow.Start()для всех).
+    // TODO Плохо работает визуализация матрицы смежности(переделать).
+    
     public partial class MainWindow : Window
     {
         private static FigureHost graphHost = new FigureHost();

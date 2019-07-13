@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Graph_Editor"
         mc:Ignorable="d" Icon="images/logo.png"
         Closing="DataWindow_Closing"
-        Title="GraphON" Height="766.5" Width="1080" ResizeMode="NoResize">
+        Title="GraphON" MinHeight="776.5" MinWidth="1080" Height="776.5" Width="1080" ResizeMode="CanResize">
     <Window.Resources>
         <Style x:Key="MyButtonStyle" TargetType="Button">
             <Setter Property="Template">
@@ -22,15 +22,18 @@
         </Style>
     </Window.Resources>
     <Grid Background="#0a3f4c">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="625*"/>
+            <ColumnDefinition Width="447*"/>
+        </Grid.ColumnDefinitions>
         <Canvas x:Name="GraphCanvas" 
-                Margin="182,10,10,10" 
+                Margin="182,8,8,10" 
                 Background="#b7e1e1"
                 MouseDown="GraphCanvas_MouseDown"
                 MouseMove="GraphCanvas_MouseMove"
                 MouseLeave="GraphCanvas_MouseLeave"
                 MouseUp="GraphCanvas_MouseUp"
-                ClipToBounds="True">
-        </Canvas>
+                ClipToBounds="True" Grid.ColumnSpan="2"/>
         <Button x:Name="Algorimts_Window" Foreground="WhiteSmoke"
             Content="Algoritms" BorderThickness="0"
             HorizontalAlignment="Left" Margin="10,140,0,0" VerticalAlignment="Top"
@@ -98,15 +101,15 @@
 
         <Grid
             x:Name="WaitPanel"
-            Opacity="0.4" Background="Gray" Visibility="Hidden"/>
+            Opacity="0.4" Background="Gray" Visibility="Hidden" Grid.ColumnSpan="2"/>
         <Label Content=".TXT" Background="#b7e1e1"
                    HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top"       
                    Width="80" Height="42" FontFamily="Ink Free"
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                    FontSize="30" BorderBrush="black" BorderThickness="1" 
         />
-        <Image Source="images/logo.png" Width="64" Height="64" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-        <Menu Height="22" VerticalAlignment="Top" Background="Black" Foreground="White" BorderBrush="Black">
+        <Image Source="images/logo.png" Margin="0,673,561,0" Height="62" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="64"/>
+        <Menu Height="22" VerticalAlignment="Top" Background="Black" Foreground="White" BorderBrush="Black" Grid.ColumnSpan="2">
             <MenuItem Header="File" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black">
                 <MenuItem Header="Save as" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black" Click="Save_Click"></MenuItem>
                 <MenuItem Header="Open with" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black" Click="Load_Click"></MenuItem>
@@ -131,7 +134,7 @@
                 </MenuItem>
             </MenuItem>
         </Menu>
-        <Grid x:Name="Exit_Dialog" Background="White" Margin="366,253,208,313" Visibility="Hidden">
+        <Grid x:Name="Exit_Dialog" Background="White" Margin="366,253,208,313" Visibility="Hidden" Grid.ColumnSpan="2">
             <Label HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="35" Margin="30,10,33,0">
                 <Label.Content>
                     Would you like to save it?

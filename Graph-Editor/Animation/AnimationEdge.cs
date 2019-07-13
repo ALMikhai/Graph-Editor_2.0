@@ -40,7 +40,7 @@ namespace Graph_Editor
 
         public static void RefreshStoryboard()
         {
-            int animationTime = 1;
+            double animationTime = 1;
 
             MainWindow.Instance.GraphCanvas.Children.Add(AnimationEllipse);
 

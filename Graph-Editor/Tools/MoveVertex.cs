@@ -12,6 +12,9 @@ namespace Graph_Editor
     {
         Vertex findedVertex;
 
+        Point startPoint;
+        Point finishPoint;
+
         public override void Mouse_Down(Point pointNow)
         {
             foreach (var vertex in Globals.VertexData)
@@ -22,9 +25,11 @@ namespace Graph_Editor
                     pointNow.Y <= vertex.Coordinates.Y + (Globals.VertRadius))
                 {
                     findedVertex = vertex;
-                    break;
+                    return;
                 }
             }
+
+            startPoint = pointNow;
         }
 
         public override void Mouse_Move(Point pointNow)
@@ -32,7 +37,20 @@ namespace Graph_Editor
             if(findedVertex != null)
             {
                 findedVertex.Coordinates = pointNow;
+                return;
             }
+
+            if(startPoint != null)
+            {
+                finishPoint = pointNow;
+
+                foreach(var vertex in Globals.VertexData)
+                {
+                    vertex.Coordinates = Point.Add(vertex.Coordinates, Point.Subtract(finishPoint, startPoint));
+                }
+            }
+
+            startPoint = finishPoint;
         }
 
         public override void Mouse_Up()
