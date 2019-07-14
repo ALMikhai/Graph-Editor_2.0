@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 using Graph_Editor.Objects;
 
 namespace Graph_Editor
@@ -12,6 +13,8 @@ namespace Graph_Editor
     {
         Vertex vertexSecond = null;
         Vertex vertexFirst = null;
+
+        Brush saveColor;
 
         public override void Mouse_Down(Point pointNow)
         {
@@ -33,11 +36,15 @@ namespace Graph_Editor
                 {
                     vertexSecond = vertexFirst;
                     vertexFirst = null;
+
+                    saveColor = vertexSecond.Color;
+                    vertexSecond.Color = Brushes.Red;
                 }
                 else
                 {
                     if (vertexFirst == vertexSecond || Globals.Matrix[vertexSecond.Index, vertexFirst.Index] >= 1 || Globals.Matrix[vertexFirst.Index, vertexSecond.Index] >= 1)
                     {
+                        vertexSecond.Color = saveColor;
                         vertexFirst = null;
                         vertexSecond = null;
                     }
@@ -52,6 +59,7 @@ namespace Graph_Editor
                         Globals.EdgesData.Add(edgeDirected);
                         Globals.EdgesData.Add(edgeUndirected);
 
+                        vertexSecond.Color = saveColor;
                         vertexFirst = null;
                         vertexSecond = null;
                     }
@@ -61,6 +69,11 @@ namespace Graph_Editor
 
         public override void Change_Tool()
         {
+            if (vertexSecond != null)
+            {
+                vertexSecond.Color = saveColor;
+            }
+            saveColor = null;
             vertexFirst = null;
             vertexSecond = null;
         }

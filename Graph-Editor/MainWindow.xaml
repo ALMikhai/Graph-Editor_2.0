@@ -147,11 +147,11 @@
         </Grid>
         <Button  Background="White" HorizontalAlignment="Left" Height="15" Margin="10,92,0,0" VerticalAlignment="Top" Width="20" Click="ChangeVertexColorButton_Click"/>
         <Button  Background="Green" HorizontalAlignment="Left" Height="15" Margin="60,92,0,0" VerticalAlignment="Top" Width="20" Click="ChangeVertexColorButton_Click"/>
-        <Button  Background="Red" HorizontalAlignment="Left" Height="15" Margin="35,92,0,0" VerticalAlignment="Top" Width="20" Click="ChangeVertexColorButton_Click"/>
-        <Button  Background="Black" HorizontalAlignment="Left" Height="15" Margin="85,92,0,0" VerticalAlignment="Top" Width="20" Click="ChangeVertexColorButton_Click"/>
+        <Button  Background="Yellow" HorizontalAlignment="Left" Height="15" Margin="35,92,0,0" VerticalAlignment="Top" Width="20" Click="ChangeVertexColorButton_Click"/>
+        <Button  Background="Blue" HorizontalAlignment="Left" Height="15" Margin="85,92,0,0" VerticalAlignment="Top" Width="20" Click="ChangeVertexColorButton_Click"/>
         <Button  Background="White" HorizontalAlignment="Left" Height="15" Margin="10,112,0,0" VerticalAlignment="Top" Width="20" Click="ChangeEdgeColorButton_Click"/>
         <Button  Background="Green" HorizontalAlignment="Left" Height="15" Margin="60,112,0,0" VerticalAlignment="Top" Width="20" Click="ChangeEdgeColorButton_Click"/>
-        <Button  Background="Red" HorizontalAlignment="Left" Height="15" Margin="35,112,0,0" VerticalAlignment="Top" Width="20" Click="ChangeEdgeColorButton_Click"/>
-        <Button  Background="Black" HorizontalAlignment="Left" Height="15" Margin="85,112,0,0" VerticalAlignment="Top" Width="20" Click="ChangeEdgeColorButton_Click"/>
+        <Button  Background="Yellow" HorizontalAlignment="Left" Height="15" Margin="35,112,0,0" VerticalAlignment="Top" Width="20" Click="ChangeEdgeColorButton_Click"/>
+        <Button  Background="Blue" HorizontalAlignment="Left" Height="15" Margin="85,112,0,0" VerticalAlignment="Top" Width="20" Click="ChangeEdgeColorButton_Click"/>
     </Grid>
 </Window>

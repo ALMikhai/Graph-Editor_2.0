@@ -200,9 +200,11 @@ namespace Graph_Editor
 
         private void Change_Tool_Button(object sender, RoutedEventArgs e)
         {
-            Globals.ToolNow = Globals.ToolList[Convert.ToInt32((sender as Button).Tag)];
-
             Globals.ToolNow.Change_Tool();
+
+            Invalidate();
+
+            Globals.ToolNow = Globals.ToolList[Convert.ToInt32((sender as Button).Tag)];
 
             int SelectedToolIndex = Convert.ToInt32((sender as Button).Tag);
 
