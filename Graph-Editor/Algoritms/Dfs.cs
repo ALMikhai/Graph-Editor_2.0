@@ -17,33 +17,32 @@ using System.Globalization;
 using System.Threading;
 using Graph_Editor.Objects;
 
-namespace Graph_Editor.AlgoritmClasses
+namespace Graph_Editor.Algoritms
 {
     public static class Dfs
     {
-        static bool[] visited = new bool[globals.Size];
+        static bool[] visited = new bool[Globals.Size];
 
-        public static List<Edge> edgesUsed = new List<Edge>();
+        static List<Edge> edgesUsed = new List<Edge>();
 
         public static void Start(int v)
         {
-            
             MainWindow.Instance.Invalidate();
-            if (!globals.CheckIn(v))
+            if (!Globals.CheckIn(v))
                 return;
             dfs(v);
             AnimationEdge.NextAnimation(edgesUsed[0],edgesUsed);
-            visited = new bool[globals.Size];
+            visited = new bool[Globals.Size];
         }
 
         static void dfs(int v)
         {
             visited[v] = true;
-            for (int i = 0; i < globals.Size; i++)
+            for (int i = 0; i < Globals.Size; i++)
             {
-                if (globals.matrix[v, i] != 0 && !visited[i])
+                if (Globals.Matrix[v, i] != 0 && !visited[i])
                 {
-                    foreach (var edge in globals.edgesData)
+                    foreach (var edge in Globals.EdgesData)
                     {
                         if (edge.From.Index == v && edge.To.Index == i)
                         { 

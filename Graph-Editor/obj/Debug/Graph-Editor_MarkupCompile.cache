@@ -9,12 +9,21 @@ Graph_Editor
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\salus\OneDrive\Рабочий стол\GE-re\Graph-Editor_2.0\Graph-Editor\App.xaml
 61304782947
 
 27-1845106739
 151984215308
 Algoritms.xaml;MainWindow.xaml;ConnectVertices.xaml;ShowData\CurrentMatrix.xaml;ShowData\CurrentList.xaml;Documentation.xaml;
+=======
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\App.xaml
+5-1017867537
+
+26-610478429
+151984215308
+AlgoritmsWindow.xaml;MainWindow.xaml;ConnectVertices.xaml;ShowData\CurrentMatrix.xaml;ShowData\CurrentList.xaml;
+>>>>>>> master
 
 False
 

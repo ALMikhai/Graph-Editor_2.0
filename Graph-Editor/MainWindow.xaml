@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Graph_Editor"
         mc:Ignorable="d" Icon="images/logo.png"
         Closing="DataWindow_Closing"
-        Title="GraphON" Height="766.5" Width="1080" ResizeMode="NoResize">
+        Title="GraphON" MinHeight="776.5" MinWidth="1080" Height="776.5" Width="1080" ResizeMode="CanResize">
     <Window.Resources>
         <Style x:Key="MyButtonStyle" TargetType="Button">
             <Setter Property="Template">
@@ -22,27 +22,30 @@
         </Style>
     </Window.Resources>
     <Grid Background="#0a3f4c">
-        <Canvas x:Name="graphCanvas" 
-                Margin="182,10,10,10" 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="625*"/>
+            <ColumnDefinition Width="447*"/>
+        </Grid.ColumnDefinitions>
+        <Canvas x:Name="GraphCanvas" 
+                Margin="182,8,8,10" 
                 Background="#b7e1e1"
                 MouseDown="GraphCanvas_MouseDown"
                 MouseMove="GraphCanvas_MouseMove"
                 MouseLeave="GraphCanvas_MouseLeave"
                 MouseUp="GraphCanvas_MouseUp"
-                ClipToBounds="True">
-        </Canvas>
+                ClipToBounds="True" Grid.ColumnSpan="2"/>
         <Button x:Name="Algorimts_Window" Foreground="WhiteSmoke"
             Content="Algoritms" BorderThickness="0"
             HorizontalAlignment="Left" Margin="10,140,0,0" VerticalAlignment="Top"
             Width="160" Height="48" Background="#345160"
-            FontSize="35" FontWeight="DemiBold" Click="Algoritm_Button" FontFamily="Gabriola"
+            FontSize="35" FontWeight="DemiBold" Click="AlgoritmButton_Click" FontFamily="Gabriola"
         />
         <Button Style="{StaticResource MyButtonStyle}" x:Name="AddVertex"
                 Tag="0" Background="#345160"
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Top"
                 Margin="54,239,0,0"
-                Click="Change_Tool_Button" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove" ToolTip="Create vertex">
+                Click="Change_Tool_Button" MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove" ToolTip="Create vertex">
             <Image Source="images/vertexIcon.png" Width="64" Height="64">
                 <Image.Effect>
                     <DropShadowEffect/>
@@ -54,7 +57,7 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Margin="54,344,0,0"
-                Click="Change_Tool_Button"  MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove" ToolTip="Move vertex">
+                Click="Change_Tool_Button"  MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove" ToolTip="Move vertex">
             <Image Source="images\handTool.png" Width="64" Height="64">
                 <Image.Effect>
                     <DropShadowEffect/>
@@ -66,7 +69,7 @@
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Top"
                 Margin="10,450,0,0"
-                Click="Change_Tool_Button" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove" ToolTip="Delete vertex">
+                Click="Change_Tool_Button" MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove" ToolTip="Delete vertex">
             <Image Source="images/deleteVertexIcon.png" Width="64" Height="64">
                 <Image.Effect>
                     <DropShadowEffect/>
@@ -78,7 +81,7 @@
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Top"
                 Margin="97,450,0,0"
-                Click="Change_Tool_Button" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove" ToolTip="Delete edge">
+                Click="Change_Tool_Button" MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove" ToolTip="Delete vertex">
             <Image Source="images/deleteEdgeIcon.png" Width="64" Height="64">
                 <Image.Effect>
                     <DropShadowEffect/>
@@ -88,7 +91,7 @@
         <Button Style="{StaticResource MyButtonStyle}" x:Name="Connect" Background="#345160"
                 HorizontalAlignment="Left" Margin="54,563,0,0" VerticalAlignment="Top"
                 FontSize="20" FontWeight="DemiBold" Tag="3"
-                Click="Change_Tool_Button" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove" ToolTip="Connect vertices">
+                Click="Change_Tool_Button" MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove" ToolTip="Connect vertices">
             <Image Source="images\edgeIcon.png" Width="64" Height="64">
                 <Image.Effect>
                     <DropShadowEffect/>
@@ -98,22 +101,22 @@
 
         <Grid
             x:Name="WaitPanel"
-            Opacity="0.4" Background="Gray" Visibility="Hidden"/>
+            Opacity="0.4" Background="Gray" Visibility="Hidden" Grid.ColumnSpan="2"/>
         <Label Content=".TXT" Background="#b7e1e1"
                    HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top"       
                    Width="80" Height="42" FontFamily="Ink Free"
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                    FontSize="30" BorderBrush="black" BorderThickness="1" 
         />
-        <Image Source="images/logo.png" Width="64" Height="64" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-        <Menu Height="22" VerticalAlignment="Top" Background="Black" Foreground="White" BorderBrush="Black">
+        <Image Source="images/logo.png" Margin="0,673,561,0" Height="62" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="64"/>
+        <Menu Height="22" VerticalAlignment="Top" Background="Black" Foreground="White" BorderBrush="Black" Grid.ColumnSpan="2">
             <MenuItem Header="File" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black">
                 <MenuItem Header="Save as" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black" Click="Save_Click"></MenuItem>
                 <MenuItem Header="Open with" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black" Click="Load_Click"></MenuItem>
                 <Separator Background="Black"/>
                 <MenuItem Header="Exit" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black" Click="Exit_Click"></MenuItem>
             </MenuItem>
-            <MenuItem Width="24" Background="Black" Click="MenuItem_Click">
+            <MenuItem Width="24" Background="Black" Click="ClearAll_Click">
                 <MenuItem.Icon>
                     <Image Source="images/clearAll.png" Width="15"/>
                 </MenuItem.Icon>
@@ -134,7 +137,7 @@
                 
             </MenuItem>
         </Menu>
-        <Grid x:Name="Exit_Dialog" Background="White" Margin="366,253,208,313" Visibility="Hidden">
+        <Grid x:Name="Exit_Dialog" Background="White" Margin="366,253,208,313" Visibility="Hidden" Grid.ColumnSpan="2">
             <Label HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="35" Margin="30,10,33,0">
                 <Label.Content>
                     Would you like to save it?
@@ -145,5 +148,13 @@
             <Button VerticalAlignment="Bottom" Content="Exit" FontSize="30" Height="55" Margin="170,0,174,10" Click="Exit_Exit_Click"/>
             <Button VerticalAlignment="Bottom" Content="Cancel" FontSize="30" Height="55" Width="150" Margin="330,0,10,10" Click="Cancel_Exit_Click"/>
         </Grid>
+        <Button  Background="White" HorizontalAlignment="Left" Height="15" Margin="10,92,0,0" VerticalAlignment="Top" Width="20" Click="ChangeVertexColorButton_Click"/>
+        <Button  Background="Green" HorizontalAlignment="Left" Height="15" Margin="60,92,0,0" VerticalAlignment="Top" Width="20" Click="ChangeVertexColorButton_Click"/>
+        <Button  Background="Yellow" HorizontalAlignment="Left" Height="15" Margin="35,92,0,0" VerticalAlignment="Top" Width="20" Click="ChangeVertexColorButton_Click"/>
+        <Button  Background="Blue" HorizontalAlignment="Left" Height="15" Margin="85,92,0,0" VerticalAlignment="Top" Width="20" Click="ChangeVertexColorButton_Click"/>
+        <Button  Background="White" HorizontalAlignment="Left" Height="15" Margin="10,112,0,0" VerticalAlignment="Top" Width="20" Click="ChangeEdgeColorButton_Click"/>
+        <Button  Background="Green" HorizontalAlignment="Left" Height="15" Margin="60,112,0,0" VerticalAlignment="Top" Width="20" Click="ChangeEdgeColorButton_Click"/>
+        <Button  Background="Yellow" HorizontalAlignment="Left" Height="15" Margin="35,112,0,0" VerticalAlignment="Top" Width="20" Click="ChangeEdgeColorButton_Click"/>
+        <Button  Background="Blue" HorizontalAlignment="Left" Height="15" Margin="85,112,0,0" VerticalAlignment="Top" Width="20" Click="ChangeEdgeColorButton_Click"/>
     </Grid>
 </Window>

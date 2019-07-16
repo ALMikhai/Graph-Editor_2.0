@@ -12,38 +12,36 @@ namespace Graph_Editor
     {
         Vertex findedVert;
 
-        public override void Mouse_Down(Point pntNow)
+        public override void Mouse_Down(Point pointNow)
         {
-            foreach (Vertex vert in globals.vertexData)
+            foreach (var vertex in Globals.VertexData)
             {
-                if (vert.Coordinates.X - (globals.vertRadius) <= pntNow.X &&
-                    pntNow.X <= vert.Coordinates.X + (globals.vertRadius) &&
-                    vert.Coordinates.Y - (globals.vertRadius) <= pntNow.Y &&
-                    pntNow.Y <= vert.Coordinates.Y + (globals.vertRadius))
+                if (vertex.Coordinates.X - (Globals.VertRadius) <= pointNow.X &&
+                    pointNow.X <= vertex.Coordinates.X + (Globals.VertRadius) &&
+                    vertex.Coordinates.Y - (Globals.VertRadius) <= pointNow.Y &&
+                    pointNow.Y <= vertex.Coordinates.Y + (Globals.VertRadius))
                 {
-                    findedVert = vert;
+                    findedVert = vertex;
                     break;
                 }
             }
 
             if(findedVert != null)
             {
-                foreach (Edge edge in globals.edgesData.ToArray())
+                foreach (var edge in Globals.EdgesData.ToArray())
                 {
                     if (edge.From == findedVert || edge.To == findedVert)
                     {
-                        globals.matrix[edge.From.Index, edge.To.Index] = 0;
+                        Globals.Matrix[edge.From.Index, edge.To.Index] = 0;
                         if (!edge.Directed)
                         {
-                            globals.matrix[edge.To.Index, edge.From.Index] = 0;
+                            Globals.Matrix[edge.To.Index, edge.From.Index] = 0;
                         }
-                        globals.edgesData.Remove(edge);
+                        Globals.EdgesData.Remove(edge);
                     }
                 }
 
-                
-
-                globals.vertexData.Remove(findedVert);
+                Globals.VertexData.Remove(findedVert);
 
                 findedVert = null;
             }

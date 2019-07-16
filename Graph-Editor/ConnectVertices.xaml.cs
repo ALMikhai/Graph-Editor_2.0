@@ -24,19 +24,22 @@ namespace Graph_Editor
     /// 
     public partial class ConnectVertices : Window
     {
-        public static FigureHost graphHost = new FigureHost();
-        bool route = false;
+        bool directedNow = false;
+
         public ConnectVertices()
         {
             InitializeComponent();
         }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             FirstVertex.Focus();
         }
+
         void DataWindow_Closing(object sender, CancelEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
+
             if (mainWindow != null && mainWindow.WaitPanel != null)
             {
                 mainWindow.WaitPanel.Background = null;
@@ -47,7 +50,7 @@ namespace Graph_Editor
         {
             Vertex from = new Vertex(), to = new Vertex();
 
-            bool findF = false, findS = false;
+            bool findFrom = false, findTo = false;
 
             if (FirstVertex.Text == "" || SecondVertex.Text == "" || TextBox_Weight.Text == "")
             {
@@ -55,58 +58,62 @@ namespace Graph_Editor
                 return;
             }
 
-            foreach (Vertex vertex in globals.vertexData)
+            foreach (Vertex vertex in Globals.VertexData)
             {
-                if (findF && findS)
-                    break;
-                if (vertex.Index == Convert.ToInt32(FirstVertex.Text) && !findF)
+                if (findFrom && findTo)
                 {
-                    from = vertex;
-                    findF = true;
+                    break;
                 }
 
-                else if (vertex.Index == Convert.ToInt32(SecondVertex.Text) && !findS)
+                if (vertex.Index == Convert.ToInt32(FirstVertex.Text) && !findFrom)
+                {
+                    from = vertex;
+                    findFrom = true;
+                }
+
+                else if (vertex.Index == Convert.ToInt32(SecondVertex.Text) && !findTo)
                 {
                     to = vertex;
-                    findS = true;
+                    findTo = true;
                 }
             }
-            if (!findF || !findS)
+
+            if (!findFrom || !findTo)
             {
                 MessageBox.Show("ERROR!!!");
                 return;
             }
 
-            Edge newEdge = new Edge(from, to, Convert.ToInt32(TextBox_Weight.Text), route);
-            Edge newEdge1 = new Edge(to, from, Convert.ToInt32(TextBox_Weight.Text), route);
+            Edge edgeDirected = new Edge(from, to, Convert.ToInt32(TextBox_Weight.Text), directedNow);
+            Edge edgeUndirected = new Edge(to, from, Convert.ToInt32(TextBox_Weight.Text), directedNow);
 
-            if (route || (globals.matrix[newEdge.To.Index, newEdge.From.Index] == 0 && globals.matrix[newEdge.From.Index, newEdge.To.Index] == 0))
+            if (directedNow || (Globals.Matrix[edgeDirected.To.Index, edgeDirected.From.Index] == 0 && Globals.Matrix[edgeDirected.From.Index, edgeDirected.To.Index] == 0))
             {
-                if (globals.matrix[newEdge.From.Index, newEdge.To.Index] >= 1)
+                if (Globals.Matrix[edgeDirected.From.Index, edgeDirected.To.Index] >= 1)
                 {
                     MessageBox.Show("You alredy have this edge!");
                     return;
                 }
 
-                globals.edgesData.Add(newEdge);
+                Globals.EdgesData.Add(edgeDirected);
                 
-                if (globals.matrix[newEdge.To.Index, newEdge.From.Index] >= 1 && route)
+                if (Globals.Matrix[edgeDirected.To.Index, edgeDirected.From.Index] >= 1 && directedNow)
                 {
                     // TODO: Сделать красивый вывод рёбер.
                 }
 
-                globals.matrix[newEdge.From.Index, newEdge.To.Index] = newEdge.Weight;
-                // TODO: Удалять нарисованное ребро (ориентированное) и добавлять обычное (неориентированное)
-                if (!route)
+                Globals.Matrix[edgeDirected.From.Index, edgeDirected.To.Index] = edgeDirected.Weight;
+                // TODO: Удалять нарисованное ребро (ориентированное) и добавлять обычное (неориентированное).
+                if (!directedNow)
                 {
-                    globals.matrix[newEdge.To.Index, newEdge.From.Index] = newEdge.Weight;
-                    globals.edgesData.Add(newEdge1);
+                    Globals.Matrix[edgeDirected.To.Index, edgeDirected.From.Index] = edgeDirected.Weight;
+                    Globals.EdgesData.Add(edgeUndirected);
                 }
                     
 
                 MainWindow.Instance.Invalidate();
 
-                //TODO Сделать выделение доп. память для матрицы
+                // TODO Сделать выделение доп. память для матрицы.
                 FirstVertex.Text = "";
                 SecondVertex.Text = "";
                 WeightSlider.Value = 1;
@@ -122,17 +129,21 @@ namespace Graph_Editor
             double num = e.NewValue;
             ((Slider)sender).SelectionEnd = num;
             if (TextBox_Weight != null)
+            {
                 TextBox_Weight.Text = Math.Round(num).ToString();
+            }
         }
+
         private void Directed_Button_Choose(object sender, RoutedEventArgs e)
         {
-            route = true;
+            directedNow = true;
             Undirected.Background = (Brush)new BrushConverter().ConvertFrom("#98B0B0");
             Directed.Background = (Brush)new BrushConverter().ConvertFrom("#789778");
         }
+
         private void Undirected_Button_Choose(object sender, RoutedEventArgs e)
         {
-            route = false;
+            directedNow = false;
             Undirected.Background = (Brush)new BrushConverter().ConvertFrom("#789778");
             Directed.Background = (Brush)new BrushConverter().ConvertFrom("#98B0B0");
         }
@@ -155,13 +166,17 @@ namespace Graph_Editor
         private void DirecteMouseMove(object sender, MouseEventArgs e)
         {
             if (String.Compare("#FF789778", (sender as Button).Background.ToString()) != 0)
+            {
                 (sender as Button).Background = (Brush)new BrushConverter().ConvertFrom("#BCCBBC");
+            }
         }
 
         private void DirecteMouseLeave(object sender, MouseEventArgs e)
         {
             if (String.Compare("#FF789778", (sender as Button).Background.ToString()) != 0)
+            {
                 (sender as Button).Background = (Brush)new BrushConverter().ConvertFrom("#98B0B0");
+            }
         }
     }
 }
