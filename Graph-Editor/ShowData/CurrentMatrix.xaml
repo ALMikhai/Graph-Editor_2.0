@@ -6,23 +6,23 @@
         xmlns:local="clr-namespace:Graph_Editor"
         Closing="DataWindow_Closing"
         mc:Ignorable="d" Icon="../images/logo.png"
-        Title="Current adjacency matrix" Height="350" Width="600" ResizeMode="NoResize">
+        Title="Current adjacency matrix" Height="695" Width="765" ResizeMode="NoResize">
 
-    <Grid Background="#98B0B0">
+    <Grid Background="#98B0B0" Margin="0,0,0,-29">
         <Image Source="../images/logo.png" Width="32" Height="32" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-        <Button Content="Я насмотрелся :)" HorizontalAlignment="Left" Margin="10,273,0,7" Width="162" FontSize="20" Click="Cancel_Click"/>
-        <TextBox x:Name="mainBlock" HorizontalAlignment="Left" Height="230" Margin="38,38,0,0" TextWrapping="Wrap"
-                 Text="" VerticalAlignment="Top" Width="546" Background="Transparent" Foreground="Black"
+        <Button Content="Я насмотрелся :)" HorizontalAlignment="Left" Margin="10,638,0,7" Width="162" FontSize="20" Click="Cancel_Click"/>
+        <TextBox IsReadOnly="True" x:Name="mainBlock" HorizontalAlignment="Left" Height="586" Margin="38,38,0,0" TextWrapping="Wrap"
+                 Text="" VerticalAlignment="Top" Width="680" Background="Transparent" Foreground="Black"
                  FontSize="20"/>
-        <TextBox x:Name="topBlock" HorizontalAlignment="Left" Height="27" Margin="38,6,0,0"
-                 TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="556"
+        <TextBox IsReadOnly="True" x:Name="topBlock" HorizontalAlignment="Left" Height="27" Margin="38,6,0,0"
+                 TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="680"
                  Background="Transparent" Foreground="Black"
                  FontSize="20"/>
-        <TextBox x:Name="sideBlock" HorizontalAlignment="Left" Height="230" Margin="10,38,0,0" 
-                 TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="23"
+        <TextBox IsReadOnly="True" x:Name="sideBlock" HorizontalAlignment="Left" Height="586" Margin="0,38,0,0" 
+                 TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="33"
                  Background="Transparent" Foreground="Black"
                  FontSize="20"/>
-        <Label BorderThickness="1" BorderBrush="Black" Content="j / i" HorizontalAlignment="Left" Height="28" Margin="5,6,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
+        <Label x:Name="i_j" BorderThickness="1" BorderBrush="Black" Content="i / j" HorizontalAlignment="Left" Height="28" Margin="5,6,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

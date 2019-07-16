@@ -86,7 +86,10 @@
     <Compile Include="Tools\DelVertex.cs" />
     <Compile Include="Tools\MoveVertex.cs" />
     <Compile Include="Tools\Tool.cs" />
-    <Page Include="AlgoritmsWindow.xaml">
+    <Compile Include="Documentation.xaml.cs">
+      <DependentUpon>Documentation.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Algoritms.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -112,6 +115,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ShowData\CurrentList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Documentation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
