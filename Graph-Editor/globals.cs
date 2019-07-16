@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Media;
-using Graph_Editor.Algoritms;
 using Graph_Editor.Objects;
 
 
@@ -32,12 +31,6 @@ namespace Graph_Editor
             {2, new  DelVertex()},
             {3, new CntVert()},
             {4, new DelEdge()}
-        };
-        public static Dictionary<int, Algoritm> AlgoList = new Dictionary<int, Algoritm>
-        {
-            {0, new Bfs()},
-            {1, new Dfs()},
-            {7, new Kruskal()}
         };
 
         public static Tool ToolNow = ToolList[0];
