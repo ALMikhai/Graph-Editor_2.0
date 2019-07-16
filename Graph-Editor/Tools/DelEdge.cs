@@ -10,53 +10,56 @@ namespace Graph_Editor
 {
     class DelEdge:Tool
     {
+        Vertex vertexSecond = null;
         Vertex vertexFirst = null;
-        Vertex findedVert = null;
 
-        public override void Mouse_Down(Point pntNow)
+        public override void Mouse_Down(Point pointNow)
         {
-            foreach (Vertex vert in globals.vertexData)
+            foreach (var vertex in Globals.VertexData)
             {
-                if (vert.Coordinates.X - (globals.vertRadius) <= pntNow.X &&
-                    pntNow.X <= vert.Coordinates.X + (globals.vertRadius) &&
-                    vert.Coordinates.Y - (globals.vertRadius) <= pntNow.Y &&
-                    pntNow.Y <= vert.Coordinates.Y + (globals.vertRadius))
+                if (vertex.Coordinates.X - (Globals.VertRadius) <= pointNow.X &&
+                    pointNow.X <= vertex.Coordinates.X + (Globals.VertRadius) &&
+                    vertex.Coordinates.Y - (Globals.VertRadius) <= pointNow.Y &&
+                    pointNow.Y <= vertex.Coordinates.Y + (Globals.VertRadius))
                 {
-                    findedVert = vert;
+                    vertexFirst = vertex;
                     break;
                 }
             }
 
-            if (findedVert != null)
+            if (vertexFirst != null)
             {
-                if (vertexFirst == null)
+                if (vertexSecond == null)
                 {
-                    vertexFirst = findedVert;
-                    findedVert = null;
+                    vertexSecond = vertexFirst;
+                    vertexFirst = null;
                 }
                 else
                 {
-                    if (findedVert == vertexFirst)
+                    if (vertexFirst == vertexSecond)
                     {
-                        findedVert = null;
                         vertexFirst = null;
+                        vertexSecond = null;
                     }
                     else
                     {
-                        foreach (Edge edge in globals.edgesData.ToArray())
+                        foreach (var edge in Globals.EdgesData.ToArray())
                         {
-                            if ((edge.From == vertexFirst && edge.To == findedVert) || (edge.From == findedVert && edge.To == vertexFirst))
+                            if ((edge.From == vertexSecond && edge.To == vertexFirst) || (edge.From == vertexFirst && edge.To == vertexSecond))
                             {
-                                globals.matrix[edge.From.Index, edge.To.Index] = 0;
-                                if (!edge.Directed)
-                                    globals.matrix[edge.To.Index, edge.From.Index] = 0;
+                                Globals.Matrix[edge.From.Index, edge.To.Index] = 0;
 
-                                globals.edgesData.Remove(edge);
+                                if (!edge.Directed)
+                                {
+                                    Globals.Matrix[edge.To.Index, edge.From.Index] = 0;
+                                }
+
+                                Globals.EdgesData.Remove(edge);
                             }
                         }
 
-                        findedVert = null;
                         vertexFirst = null;
+                        vertexSecond = null;
                     }
                 }
 
@@ -65,8 +68,8 @@ namespace Graph_Editor
 
         public override void Change_Tool()
         {
-            findedVert = null;
             vertexFirst = null;
+            vertexSecond = null;
         }
     }
 }

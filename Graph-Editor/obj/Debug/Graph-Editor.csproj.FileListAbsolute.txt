@@ -63,3 +63,7 @@ C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\o
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentList.g.cs
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentMatrix.baml
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentList.baml
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\ShowData\CurrentMatrix.g.cs
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\ShowData\CurrentList.g.cs
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\ShowData\CurrentMatrix.baml
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\ShowData\CurrentList.baml

@@ -1,47 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Globalization;
 using Graph_Editor.Objects;
-using System.ComponentModel;
-using System.Timers;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Windows.Forms;
 
 
 namespace Graph_Editor
 {
     [Serializable]
-    public static class globals
+    public static class Globals
     {
-        public static int globalIndex = 0;
+        public static int GlobalIndex = 0;
         public static int Size = 100;
-        public static int[,] matrix = new int[Size, Size];
-        public static List<Vertex> vertexData = new List<Vertex>();
-        public static List<Edge> edgesData = new List<Edge>();
-        public static Brush color = Brushes.Black;
-        public static Pen pen = new Pen(color, 1);
-        public static Pen algopen = new Pen(Brushes.Red, 2);
-        public static int vertRadius = 20;
+        public static int[,] Matrix = new int[Size, Size];
+        public static List<Vertex> VertexData = new List<Vertex>();
+        public static List<Edge> EdgesData = new List<Edge>();
+
+        public static Pen BasePen = new Pen(Brushes.Black, 1);
+        public static Pen AlgoPen = new Pen(Brushes.Red, 2);
+        public static int VertRadius = 20;
         
-        public static Brush colorInsideVertex = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
-        public static bool IsAlgo = false;
+        public static Brush ColorInsideVertex = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
+        public static Brush ColorEdge = Brushes.Black;
+        public static double ThicknessEdge = 1;
 
 
-        public static Dictionary<int, Tool> toolList = new Dictionary<int, Tool>
+        public static Dictionary<int, Tool> ToolList = new Dictionary<int, Tool>
         {
             {0, new  AddVertex()},
             {1, new  MoveVertex()},
@@ -50,33 +33,43 @@ namespace Graph_Editor
             {4, new DelEdge()}
         };
 
-        public static Tool toolNow = toolList[0];
+        public static Tool ToolNow = ToolList[0];
 
         public static bool IsBe(int value)
         {
-            foreach(var vertex in vertexData)
+            foreach (var vertex in VertexData)
+            {
                 if (value == vertex.Index)
+                {
                     return true;
+                }
+            }
             return false;
         }
 
         public static bool CheckIn(int v)
         {
             int i;
+
             for (i = 0; i < Size; i++)
             {
-                if (matrix[v, i] != 0)
+                if (Matrix[v, i] != 0)
                     break;
             }
+
             if (i == Size)
+            {
                 return false;
+            }
+
             return true;
         }
+
         public static bool CheckDirected()
         {
-            foreach(var e in edgesData)
+            foreach(var edge in EdgesData)
             {
-                if(e.Directed)
+                if(edge.Directed)
                 {
                     return true;
                 }
@@ -84,22 +77,23 @@ namespace Graph_Editor
             return false;
             
         }
-        public static void Restore_Matrix()
+
+        public static void RestoreMatrix()
         {
             for (int i = 0; i < Size; ++i)
             {
                 for (int j = 0; j < Size; ++j)
                 {
-                    matrix[i, j] = 0;
+                    Matrix[i, j] = 0;
                 }
             }
 
-            foreach (Edge edge in edgesData)
+            foreach (var edge in EdgesData)
             {
-                matrix[edge.From.Index, edge.To.Index] = 1;
+                Matrix[edge.From.Index, edge.To.Index] = 1;
                 if (!edge.Directed)
                 {
-                    matrix[edge.To.Index, edge.From.Index] = 1;
+                    Matrix[edge.To.Index, edge.From.Index] = 1;
                 }
             }
         }

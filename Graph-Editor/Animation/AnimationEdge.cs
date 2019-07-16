@@ -24,32 +24,32 @@ namespace Graph_Editor
 {
     static class AnimationEdge
     {
-        public static Edge edge;
+        private static Edge animatedEdge;
 
-        public static Storyboard storyboard = new Storyboard
+        private static Storyboard storyboard = new Storyboard
         {
             RepeatBehavior = new RepeatBehavior(1)
         };
 
-        public static Ellipse ellipse = new Ellipse
+        public static Ellipse AnimationEllipse = new Ellipse
         {
-            Width = globals.vertRadius,
-            Height = globals.vertRadius,
+            Width = Globals.VertRadius,
+            Height = Globals.VertRadius,
             Fill = Brushes.Blue
         };
-        public static void Refresh_SrtoryBoard()
+
+        public static void RefreshStoryboard()
         {
-            int time = 1;
+            double animationTime = 1;
 
-            MainWindow.Instance.graphCanvas.Children.Add(ellipse);
+            MainWindow.Instance.GraphCanvas.Children.Add(AnimationEllipse);
 
-            PathGeometry pathGeom = new PathGeometry();
-            
-            LineSegment vertLS = new LineSegment();
-            PathFigure vertPF = new PathFigure();
+            var pathGeom = new PathGeometry();
+            var vertPF = new PathFigure();
+            var vertLS = new LineSegment();
 
-            Point startPoint = Point.Add(edge.From.Coordinates, Point.Subtract(edge.From.Coordinates, new Point(edge.From.Coordinates.X + globals.vertRadius / 2, edge.From.Coordinates.Y + globals.vertRadius / 2)));
-            Point finishPoint = Point.Add(edge.To.Coordinates, Point.Subtract(edge.To.Coordinates, new Point(edge.To.Coordinates.X + globals.vertRadius / 2, edge.To.Coordinates.Y + globals.vertRadius / 2)));
+            var startPoint = Point.Add(animatedEdge.From.Coordinates, Point.Subtract(animatedEdge.From.Coordinates, new Point(animatedEdge.From.Coordinates.X + Globals.VertRadius / 2, animatedEdge.From.Coordinates.Y + Globals.VertRadius / 2)));
+            var finishPoint = Point.Add(animatedEdge.To.Coordinates, Point.Subtract(animatedEdge.To.Coordinates, new Point(animatedEdge.To.Coordinates.X + Globals.VertRadius / 2, animatedEdge.To.Coordinates.Y + Globals.VertRadius / 2)));
 
             vertPF.StartPoint = startPoint;
             vertLS.Point = finishPoint;
@@ -61,20 +61,20 @@ namespace Graph_Editor
             {
                 PathGeometry = pathGeom,
                 Source = PathAnimationSource.X,
-                Duration = TimeSpan.FromSeconds(time)
+                Duration = TimeSpan.FromSeconds(animationTime)
             };
 
-            Storyboard.SetTarget(moveCircleAnimation, ellipse);
+            Storyboard.SetTarget(moveCircleAnimation, AnimationEllipse);
             Storyboard.SetTargetProperty(moveCircleAnimation, new PropertyPath("(Canvas.Left)"));
 
             var moveCircleAnimation2 = new DoubleAnimationUsingPath
             {
                 PathGeometry = pathGeom,
                 Source = PathAnimationSource.Y,
-                Duration = TimeSpan.FromSeconds(time)
+                Duration = TimeSpan.FromSeconds(animationTime)
             };
 
-            Storyboard.SetTarget(moveCircleAnimation2, ellipse);
+            Storyboard.SetTarget(moveCircleAnimation2, AnimationEllipse);
             Storyboard.SetTargetProperty(moveCircleAnimation2, new PropertyPath("(Canvas.Top)"));
 
             storyboard.Children.Add(moveCircleAnimation);
@@ -88,25 +88,28 @@ namespace Graph_Editor
             
         }
 
-        public static void NextAnimation(Edge e, List<Edge> edgesUsed)
+        public static void NextAnimation(Edge edge, List<Edge> edgesUsed)
         {
-            edge = e;
-            Refresh_SrtoryBoard();
-            Start_animation();
+            animatedEdge = edge;
+            RefreshStoryboard();
+            StartAnimation();
             EventHandler callback = null;
+
             callback = (o, args) => {
-                MainWindow.Instance.InvalidateAlgo(e);
+                MainWindow.Instance.InvalidateAlgo(edge);
                 edgesUsed.Remove(edgesUsed[0]);
                 storyboard.Completed -= callback;
                 if (edgesUsed.Count > 0)
                 {
+                    storyboard.Children.Clear();
                     NextAnimation(edgesUsed[0], edgesUsed);
                 }
             };
+
             storyboard.Completed += callback;
         }
 
-        public static void Start_animation()
+        public static void StartAnimation()
         {   
             storyboard.Begin();
         }
