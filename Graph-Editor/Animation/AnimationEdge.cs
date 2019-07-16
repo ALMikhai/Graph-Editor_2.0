@@ -18,7 +18,7 @@ using System.Drawing.Drawing2D;
 using System.Windows.Media.Animation;
 using System.Threading;
 using System.Diagnostics;
-using Graph_Editor.AlgoritmClasses;
+using Graph_Editor.Algoritms;
 
 namespace Graph_Editor
 {
