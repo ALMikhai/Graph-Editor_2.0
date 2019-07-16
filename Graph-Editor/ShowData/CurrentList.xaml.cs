@@ -28,13 +28,6 @@ namespace Graph_Editor.ShowData
             {
                 sideBlock.Text += i + "\n";
             }
-            for (int i = 0; i < globals.vertexData.Count(); i++)
-            {
-                for (int j = 0; j < globals.vertexData.Count(); j++)
-                {
-
-                }
-            }
         }
 
         void DataWindow_Closing(object sender, CancelEventArgs e)
