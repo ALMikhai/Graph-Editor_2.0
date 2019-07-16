@@ -356,6 +356,16 @@ namespace Graph_Editor
             currentList.Show();
         }
 
+        private void ChangeVertexColorButton_Click(object sender, RoutedEventArgs e)
+        {
+            Globals.ColorInsideVertex = (sender as Button).Background;
+        }
+
+        private void ChangeEdgeColorButton_Click(object sender, RoutedEventArgs e)
+        {
+            Globals.ColorEdge = (sender as Button).Background;
+        }
+
         private void ViewDocumentation(object sender, RoutedEventArgs e)
         {
             Documentation documentation = new Documentation();
