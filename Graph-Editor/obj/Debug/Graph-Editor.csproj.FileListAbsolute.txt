@@ -20,3 +20,4 @@ C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\o
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.csproj.CoreCompileInputs.cache
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.exe
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.pdb
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.csprojAssemblyReference.cache

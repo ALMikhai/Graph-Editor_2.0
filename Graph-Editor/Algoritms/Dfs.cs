@@ -19,13 +19,13 @@ using Graph_Editor.Objects;
 
 namespace Graph_Editor.Algoritms
 {
-    public static class Dfs
+    public class Dfs : Algoritm
     {
         static bool[] visited = new bool[Globals.Size];
-
+        int c = 2;
         static List<Edge> edgesUsed = new List<Edge>();
 
-        public static void Start(int v)
+        public override void Start(int v)
         {
             MainWindow.Instance.Invalidate();
             if (!Globals.CheckIn(v))
