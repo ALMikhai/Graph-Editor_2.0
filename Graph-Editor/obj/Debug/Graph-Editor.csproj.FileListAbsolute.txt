@@ -54,6 +54,14 @@ C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\o
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.csproj.CoreCompileInputs.cache
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.exe
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.pdb
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Dmitry's_branch
+<<<<<<< HEAD
+>>>>>>> Dmitry's_branch
 C:\Users\salus\OneDrive\Рабочий стол\GE-re\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentMatrix.g.cs
 C:\Users\salus\OneDrive\Рабочий стол\GE-re\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentList.g.cs
 C:\Users\salus\OneDrive\Рабочий стол\GE-re\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentMatrix.baml
@@ -65,3 +73,14 @@ C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\o
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentList.baml
 C:\Users\salus\OneDrive\Рабочий стол\GE-re\Graph-Editor_2.0\Graph-Editor\obj\Debug\Documentation.g.cs
 C:\Users\salus\OneDrive\Рабочий стол\GE-re\Graph-Editor_2.0\Graph-Editor\obj\Debug\Documentation.baml
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> master
+<<<<<<< HEAD
+=======
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.csprojAssemblyReference.cache
+>>>>>>> master
+=======
+>>>>>>> Dmitry's_branch
+>>>>>>> Dmitry's_branch
