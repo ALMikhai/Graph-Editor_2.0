@@ -22,73 +22,47 @@ namespace Graph_Editor.Objects
 {
     [Serializable]
     public class Edge : ISerializable
-    { // TODO Сделать поле color и хранить только цвет и толщину, при отрисовке делать новый карандаш из цвета и толщины.
+    {
         private readonly Vertex from, to;
         private int weight;
         private bool directed;
-        private Brush color = Globals.ColorEdge;
-        private double thickness = Globals.ThicknessEdge;
-
-        public Vertex From
-        {
-            get { return from; }
-        }
-
-        public Vertex To
-        {
-            get { return to; }
-        }
-
-        public int Weight
-        {
-            get { return weight; }
-            set { weight = value; }
-        }
-
-        public bool Directed
-        {
-            get { return directed; }
-            set { directed = value; }
-        }
+        private Brush color = globals.color;
+        
 
         public Brush Color
-        {
-            get { return color; }
-            set { color = value; }
-        }
+        {get { return color; } set { color = value; } }
 
-        public double Thickness
-        {
-            get { return thickness; }
-            set { thickness = value; }
-        }
+        public Vertex From
+        { get{return from;} }
 
-        public Edge(Vertex first, Vertex second, int w, bool state)
-        {
-            from = first;
-            to = second;
-            weight = w;
-            directed = state;
-        }
+        public Vertex To
+        { get{return to;} }
+
+        public int Weight
+        { get{return weight;} set{weight = value;} }
+
+        public bool Directed
+        {get { return directed; }set { directed = value; } }
+        
+        public Edge(Vertex first, Vertex second, int w, bool state) { from = first; to = second; weight = w; directed = state; }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("index", Globals.GlobalIndex);
+            info.AddValue("index", globals.globalIndex);
             info.AddValue("from", from.Index);
             info.AddValue("to", to.Index);
             info.AddValue("weight", weight);
             info.AddValue("directed", directed);
-            info.AddValue("color", color.ToString());
-            info.AddValue("thickness", thickness);
         }
 
         public Edge(SerializationInfo info, StreamingContext context)
         {
-            Globals.GlobalIndex = (int)info.GetValue("index", typeof(int));
+
+            globals.globalIndex = (int)info.GetValue("index", typeof(int));
 
             int index = (int)info.GetValue("from", typeof(int));
             
-            foreach(var vertex in Globals.VertexData)
+            foreach(Vertex vertex in globals.vertexData)
             {
                 if(vertex.Index == index)
                 {
@@ -99,7 +73,7 @@ namespace Graph_Editor.Objects
 
             index = (int)info.GetValue("to", typeof(int));
 
-            foreach (var vertex in Globals.VertexData)
+            foreach (Vertex vertex in globals.vertexData)
             {
                 if (vertex.Index == index)
                 {
@@ -110,10 +84,7 @@ namespace Graph_Editor.Objects
 
             weight = (int)info.GetValue("weight", typeof(int));
             directed = (bool)info.GetValue("directed", typeof(bool));
-            color = (Brush)(new BrushConverter().ConvertFromString((string)info.GetValue("color", typeof(string))));
-            thickness = (double)info.GetValue("thickness", typeof(double));
         }
-
         public Edge() { }
     }
 }

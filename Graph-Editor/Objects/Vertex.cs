@@ -25,49 +25,31 @@ namespace Graph_Editor.Objects
     {
         private readonly int index;
         private Point coordinates;
-        private Brush color = Globals.ColorInsideVertex.Clone();
+        private Brush color = globals.color;
+        public Brush Color
+        { get { return color; } set { color = value; } }
 
         public int Index
-        {
-            get { return index; }
-        }
+        { get { return index; } }
 
         public Point Coordinates
-        {
-            get {return coordinates; }
-            set { coordinates = value; }
-        }
+        { get{return coordinates; } set { coordinates = value; } }
+        
+        public Vertex(int number, Point place) { index = number; coordinates = place; }
 
-        public Brush Color {
-            get { return color; }
-            set { color = value; }
-        }
-
-        public Vertex(int number, Point place)
-        {
-            index = number;
-            coordinates = place;
-        }
-
-        public Vertex(int number)
-        {
-            index = number;
-        }
-
+        public Vertex(int number) { index = number; }
         public Vertex() { }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("index", index);
             info.AddValue("coordinates", coordinates);
-            info.AddValue("color", color.ToString());
         }
 
         public Vertex(SerializationInfo info, StreamingContext context)
         {
             index = (int)info.GetValue("index", typeof(int));
             coordinates = (Point)info.GetValue("coordinates", typeof(Point));
-            color = (Brush)(new BrushConverter().ConvertFromString((string)info.GetValue("color", typeof(string))));
         }
     }
 }

@@ -13,31 +13,24 @@ namespace Graph_Editor
 { 
     public class Save
     {
-        public static void SaveAll()
+        public static void Save_All()
         {
-            if (Globals.VertexData.Count != 0)
+            if (globals.vertexData.Count != 0)
             {
-                SaveFileDialog fileDialog = new SaveFileDialog()
-                {
-                    Title = "Выберете папку для сохранения",
-                    OverwritePrompt = true,
-                    CheckPathExists = true,
-                    Filter = "Files(*.bin)|*.bin1"
-                };
-
-                fileDialog.ShowDialog();
-
-                if (fileDialog.FileName != "")
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Title = "Выберете папку для сохранения";
+                sfd.OverwritePrompt = true;
+                sfd.CheckPathExists = true;
+                sfd.Filter = "Files(*.bin)|*.bin1";
+                sfd.ShowDialog();
+                if (sfd.FileName != "")
                 { 
-                    FileStream fileVertex = (FileStream)fileDialog.OpenFile();
-
-                    fileDialog.FileName = fileDialog.FileName + '2';
-                    FileStream fileEdge = (FileStream)fileDialog.OpenFile();
-
+                    FileStream fileVertex = (FileStream)sfd.OpenFile();
+                    sfd.FileName = sfd.FileName + '2';
+                    FileStream fileEdge = (FileStream)sfd.OpenFile();
                     BinaryFormatter bin = new BinaryFormatter();
-                    bin.Serialize(fileVertex, Globals.VertexData);
-                    bin.Serialize(fileEdge, Globals.EdgesData);
-
+                    bin.Serialize(fileVertex, globals.vertexData);
+                    bin.Serialize(fileEdge, globals.edgesData);
                     fileVertex.Close();
                     fileEdge.Close();
                 }

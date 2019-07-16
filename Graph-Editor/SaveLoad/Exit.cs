@@ -16,17 +16,14 @@ namespace Graph_Editor
         public static void Exit_and_Save_All(int choose)
         {
             MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
-
             if (choose == 0)
             {
-                Save.SaveAll();
+                Save.Save_All();
             }
-
             else if (choose == 1)
             {
                 mainWindow.Close();
             }
-
             else if (choose == 2)
             {
                 mainWindow.Exit_Dialog.Visibility = System.Windows.Visibility.Hidden;

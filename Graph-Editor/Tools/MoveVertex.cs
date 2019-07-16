@@ -10,57 +10,45 @@ namespace Graph_Editor
 {
     class MoveVertex : Tool
     {
-        Vertex findedVertex;
 
-        Point startPoint;
-        Point finishPoint;
+        Vertex findedVert;
 
-        public override void Mouse_Down(Point pointNow)
+        public override void Mouse_Down(Point pntNow)
         {
-            foreach (var vertex in Globals.VertexData)
+            foreach (Vertex vert in globals.vertexData)
             {
-                if (vertex.Coordinates.X - (Globals.VertRadius) <= pointNow.X &&
-                    pointNow.X <= vertex.Coordinates.X + (Globals.VertRadius) &&
-                    vertex.Coordinates.Y - (Globals.VertRadius) <= pointNow.Y &&
-                    pointNow.Y <= vertex.Coordinates.Y + (Globals.VertRadius))
+                if (vert.Coordinates.X - (globals.vertRadius) <= pntNow.X &&
+                    pntNow.X <= vert.Coordinates.X + (globals.vertRadius) &&
+                    vert.Coordinates.Y - (globals.vertRadius) <= pntNow.Y &&
+                    pntNow.Y <= vert.Coordinates.Y + (globals.vertRadius))
                 {
-                    findedVertex = vertex;
-                    return;
+                    findedVert = vert;
+                    break;
                 }
             }
-
-            startPoint = pointNow;
         }
 
-        public override void Mouse_Move(Point pointNow)
+        public override void Mouse_Move(Point pntNow)
         {
-            if(findedVertex != null)
+            if(findedVert != null)
             {
-                findedVertex.Coordinates = pointNow;
-                return;
+                findedVert.Coordinates = pntNow;
             }
-
-            if(startPoint != null)
-            {
-                finishPoint = pointNow;
-
-                foreach(var vertex in Globals.VertexData)
-                {
-                    vertex.Coordinates = Point.Add(vertex.Coordinates, Point.Subtract(finishPoint, startPoint));
-                }
-            }
-
-            startPoint = finishPoint;
         }
 
         public override void Mouse_Up()
         {
-            findedVertex = null;
+            findedVert = null;
+        }
+
+        public override void Mouse_Leave()
+        {
+            findedVert = null;
         }
 
         public override void Change_Tool()
         {
-            findedVertex = null;
+            findedVert = null;
         }
     }
 }

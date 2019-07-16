@@ -15,46 +15,29 @@ namespace Graph_Editor
     {
         public static void Loaded()
         {
-            OpenFileDialog fileDialog = new OpenFileDialog
+            OpenFileDialog ofd = new OpenFileDialog
             {
                 Filter = "Files(*.bin1)|*.bin1",
                 Title = "Открыть файл .bin1"
             };
-
-            fileDialog.ShowDialog();
-
-            if (fileDialog.FileName != "")
+            ofd.ShowDialog();
+            if (ofd.FileName != "")
             {
-                try
-                {
-                    Stream file = (FileStream)fileDialog.OpenFile();
-                    BinaryFormatter deserializer = new BinaryFormatter();
+                Stream file = (FileStream)ofd.OpenFile();
+                BinaryFormatter deserializer = new BinaryFormatter();
 
-                    Globals.VertexData = (List<Vertex>)deserializer.Deserialize(file);
-                    file.Close();
+                globals.vertexData = (List<Vertex>)deserializer.Deserialize(file);
+                file.Close();
 
-                    fileDialog.FileName = fileDialog.FileName + '2';
+                ofd.FileName = ofd.FileName + '2';
 
-                    file = (FileStream)fileDialog.OpenFile();
-                    Globals.EdgesData = (List<Edge>)deserializer.Deserialize(file);
-                    file.Close();
+                file = (FileStream)ofd.OpenFile();
+                globals.edgesData = (List<Edge>)deserializer.Deserialize(file);
+                file.Close();
 
-                    MainWindow.Instance.Invalidate();
+                MainWindow.Instance.Invalidate();
 
-                    Globals.RestoreMatrix();
-                }
-                catch
-                {
-                    Globals.VertexData.Clear();
-                    Globals.EdgesData.Clear();
-                    Globals.RestoreMatrix();
-
-                    Globals.GlobalIndex = 0;
-
-                    MainWindow.Instance.Invalidate();
-
-                    MessageBox.Show("Не удалось открыть файл");
-                }
+                globals.Restore_Matrix();
             }
         }
     }

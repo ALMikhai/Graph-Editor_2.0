@@ -23,32 +23,32 @@ namespace Graph_Editor.ShowData
         public CurrentMatrix()
         {
             InitializeComponent();
-
-            for (int i = 0; i < Globals.VertexData.Count(); i++)
+            if (globals.vertexData.Count() == 0)
             {
+                i_j.Content = " ";
+                i_j.BorderBrush = Brushes.Transparent;
+            }
+
+            for (int i = 0; i < globals.vertexData.Count(); i++)
                 topBlock.Text += i.ToString() + " ";
-            }
-
-            for (int i = 0; i < Globals.VertexData.Count(); i++)
-            {
+            for (int i = 0; i < globals.vertexData.Count(); i++)
                 sideBlock.Text += i.ToString() + "\n";
-            }
 
-            for (int i = 0; i < Globals.VertexData.Count(); i++)
+            for (int i = 0; i < globals.vertexData.Count(); i++)
             {
-                for (int j = 0; j < Globals.VertexData.Count(); j++)
+                for (int j = 0; j < globals.vertexData.Count(); j++)
                 {
-                    mainBlock.Text += Globals.Matrix[i, j] != 0 ? 1 : 0;
+                    if (j >= 10)
+                        mainBlock.Text += "  ";
+                    mainBlock.Text += globals.matrix[i, j] != 0 ? 1 : 0;
                     mainBlock.Text += " ";
                 }
                 mainBlock.Text += "\n";
             }
         }
-
         void DataWindow_Closing(object sender, CancelEventArgs e)
         {
             MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
-
             if (mainWindow != null && mainWindow.WaitPanel != null)
             {
                 mainWindow.WaitPanel.Background = null;
