@@ -9,7 +9,7 @@ using Graph_Editor.Objects;
 
 namespace Graph_Editor.Algoritms
 {
-    public class Bfs
+    public class Bfs : Algoritm
     {
         static bool[] visited = new bool[Size];
 
@@ -17,7 +17,7 @@ namespace Graph_Editor.Algoritms
 
         static List<Edge> edgesUsed = new List<Edge>();
 
-        public static void Start(int v)
+        public override void Start(int v)
         {
             MainWindow.Instance.Invalidate();
             if (!CheckIn(v))
