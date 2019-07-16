@@ -64,7 +64,7 @@
       <DependentUpon>Algoritms.xaml</DependentUpon>
     </Compile>
     <Compile Include="Animation\AnimationEdge.cs" />
-    <Compile Include="globals.cs" />
+    <Compile Include="Globals.cs" />
     <Compile Include="Objects\Edge.cs" />
     <Compile Include="Objects\Vertex.cs" />
     <Compile Include="ConnectVertices.xaml.cs">
@@ -142,27 +142,27 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\deleteVertexIcon.png" />
+    <Resource Include="Images\deleteVertexIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\edgeIcon.png" />
+    <Resource Include="Images\edgeIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\handTool.png" />
+    <Resource Include="Images\handTool.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\list.png" />
-    <Resource Include="images\logo.png" />
+    <Resource Include="Images\list.png" />
+    <Resource Include="Images\logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\matrix.png" />
-    <Resource Include="images\vertexIcon.png" />
+    <Resource Include="Images\matrix.png" />
+    <Resource Include="Images\vertexIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\clearAll.png" />
+    <Resource Include="Images\clearAll.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\deleteEdgeIcon.png" />
+    <Resource Include="Images\deleteEdgeIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -10,11 +10,9 @@ namespace Graph_Editor.AlgoritmClasses
     public static class Kruskal
     {
         public static List<Edge> edgesUsed = new List<Edge>();
-        static int[] p = new int[globals.Size];
+        static int[] p = new int[Globals.Size];
         static Random rnd = new Random();
 
-        
-        
         static int dsu_get(int v)
         {
             return (v == p[v]) ? v : (p[v] = dsu_get(p[v]));
@@ -38,7 +36,7 @@ namespace Graph_Editor.AlgoritmClasses
         {
 
             MainWindow.Instance.Invalidate();
-            if (!globals.CheckIn(v) || globals.CheckDirected())
+            if (!Globals.CheckIn(v) || Globals.CheckDirected())
                 return;
             kru();
             AnimationEdge.NextAnimation(edgesUsed[0], edgesUsed);
@@ -46,9 +44,9 @@ namespace Graph_Editor.AlgoritmClasses
 
         static void kru()
         {
-            List<Edge> list = new List<Edge>(globals.edgesData);
+            List<Edge> list = new List<Edge>(Globals.EdgesData);
             list.Sort((e1, e2) => e1.Weight.CompareTo(e2.Weight));
-            for (int i = 0; i < globals.Size; i++)
+            for (int i = 0; i < Globals.Size; i++)
                 p[i] = i;
             for (int i = 0; i < list.Count; i += 2)
             {

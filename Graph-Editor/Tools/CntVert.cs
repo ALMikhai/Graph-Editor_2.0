@@ -4,65 +4,78 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 using Graph_Editor.Objects;
 
 namespace Graph_Editor
 {
     class CntVert : Tool
     {
+        Vertex vertexSecond = null;
         Vertex vertexFirst = null;
-        Vertex findedVert = null;
 
-        public override void Mouse_Down(Point pntNow)
+        Brush saveColor;
+
+        public override void Mouse_Down(Point pointNow)
         {
-            foreach (Vertex vert in globals.vertexData)
+            foreach (var vertex in Globals.VertexData)
             {
-                if (vert.Coordinates.X - (globals.vertRadius) <= pntNow.X &&
-                    pntNow.X <= vert.Coordinates.X + (globals.vertRadius) &&
-                    vert.Coordinates.Y - (globals.vertRadius) <= pntNow.Y &&
-                    pntNow.Y <= vert.Coordinates.Y + (globals.vertRadius))
+                if (vertex.Coordinates.X - (Globals.VertRadius) <= pointNow.X &&
+                    pointNow.X <= vertex.Coordinates.X + (Globals.VertRadius) &&
+                    vertex.Coordinates.Y - (Globals.VertRadius) <= pointNow.Y &&
+                    pointNow.Y <= vertex.Coordinates.Y + (Globals.VertRadius))
                 {
-                    findedVert = vert;
+                    vertexFirst = vertex;
                     break;
                 }
             }
 
-            if(findedVert != null)
+            if(vertexFirst != null)
             {
-                if(vertexFirst == null)
+                if(vertexSecond == null)
                 {
-                    vertexFirst = findedVert;
-                    findedVert = null;
+                    vertexSecond = vertexFirst;
+                    vertexFirst = null;
+
+                    saveColor = vertexSecond.Color;
+                    vertexSecond.Color = Brushes.Red;
                 }
                 else
                 {
-                    if (findedVert == vertexFirst || globals.matrix[vertexFirst.Index, findedVert.Index] == 1 || globals.matrix[findedVert.Index, vertexFirst.Index] == 1)
+                    if (vertexFirst == vertexSecond || Globals.Matrix[vertexSecond.Index, vertexFirst.Index] >= 1 || Globals.Matrix[vertexFirst.Index, vertexSecond.Index] >= 1)
                     {
-                        findedVert = null;
+                        vertexSecond.Color = saveColor;
                         vertexFirst = null;
+                        vertexSecond = null;
                     }
                     else
                     {
-                        Edge edge = new Edge(vertexFirst, findedVert, 1, false);
-                        Edge edge1 = new Edge(findedVert, vertexFirst, 1, false);
-                        globals.matrix[edge.From.Index, edge.To.Index] = 1;
-                        globals.matrix[edge.To.Index, edge.From.Index] = 1;
+                        var edgeDirected = new Edge(vertexSecond, vertexFirst, 1, false);
+                        var edgeUndirected = new Edge(vertexFirst, vertexSecond, 1, false);
 
-                        globals.edgesData.Add(edge);
-                        globals.edgesData.Add(edge1);
+                        Globals.Matrix[edgeDirected.From.Index, edgeDirected.To.Index] = 1;
+                        Globals.Matrix[edgeDirected.To.Index, edgeDirected.From.Index] = 1;
 
-                        findedVert = null;
+                        Globals.EdgesData.Add(edgeDirected);
+                        Globals.EdgesData.Add(edgeUndirected);
+
+                        vertexSecond.Color = saveColor;
                         vertexFirst = null;
+                        vertexSecond = null;
                     }
                 }
-                
             }
         }
 
         public override void Change_Tool()
         {
-            findedVert = null;
+            if (vertexSecond != null)
+            {
+                vertexSecond.Color = saveColor;
+            }
+            saveColor = null;
             vertexFirst = null;
+            vertexSecond = null;
         }
     }
 }
