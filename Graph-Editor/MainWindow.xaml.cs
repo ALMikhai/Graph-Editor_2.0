@@ -18,7 +18,7 @@ using System.Drawing.Drawing2D;
 using System.Windows.Media.Animation;
 using System.Threading;
 using System.Diagnostics;
-using Graph_Editor.AlgoritmClasses;
+using Graph_Editor.Algoritms;
 using System.ComponentModel;
 using Graph_Editor.ShowData;
 
@@ -191,7 +191,7 @@ namespace Graph_Editor
 
         private void AlgoritmButton_Click(object sender, RoutedEventArgs e)
         {
-            Algoritms algoritms = new Algoritms();
+            AlgoritmsWindow algoritms = new AlgoritmsWindow();
             WaitPanel.Visibility = Visibility.Visible;
             algoritms.Show();
         }
