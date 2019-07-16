@@ -57,7 +57,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Algoritms\Algoritm.cs" />
     <Compile Include="Algoritms\Bfs.cs" />
     <Compile Include="Algoritms\Dfs.cs" />
     <Compile Include="Algoritms\Kruskal.cs" />
