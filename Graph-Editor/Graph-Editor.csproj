@@ -57,11 +57,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AlgoritmClasses\Bfs.cs" />
-    <Compile Include="AlgoritmClasses\Dfs.cs" />
-    <Compile Include="AlgoritmClasses\Kruskal.cs" />
-    <Compile Include="Algoritms.xaml.cs">
-      <DependentUpon>Algoritms.xaml</DependentUpon>
+    <Compile Include="Algoritms\Bfs.cs" />
+    <Compile Include="Algoritms\Dfs.cs" />
+    <Compile Include="Algoritms\Kruskal.cs" />
+    <Compile Include="AlgoritmsWindow.xaml.cs">
+      <DependentUpon>AlgoritmsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Animation\AnimationEdge.cs" />
     <Compile Include="Globals.cs" />
@@ -85,7 +85,7 @@
     <Compile Include="Tools\DelVertex.cs" />
     <Compile Include="Tools\MoveVertex.cs" />
     <Compile Include="Tools\Tool.cs" />
-    <Page Include="Algoritms.xaml">
+    <Page Include="AlgoritmsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
