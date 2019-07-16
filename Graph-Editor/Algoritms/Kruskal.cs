@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Graph_Editor.Algoritms
 {
-    public class Kruskal : Algoritm
+    public static class Kruskal
     {
         public static List<Edge> edgesUsed = new List<Edge>();
         static int[] p = new int[Globals.Size];
@@ -32,7 +32,7 @@ namespace Graph_Editor.Algoritms
                 p[a] = b;
         }
 
-        public override void Start(int v)
+        public static void Start(int v)
         {
 
             MainWindow.Instance.Invalidate();
