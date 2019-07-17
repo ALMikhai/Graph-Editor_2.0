@@ -1,4 +1,5 @@
 ﻿using Graph_Editor.Objects;
+using Graph_Editor.UndoRedo;
 using System.Windows;
 
 
@@ -24,6 +25,8 @@ namespace Graph_Editor
 
             Vertex newVertex = new Vertex(Globals.GlobalIndex++, pointNow);
             Globals.VertexData.Add(newVertex);
+
+            History.Add(null, newVertex);
         }
 
         public override void Mouse_Move(Point pntNow)

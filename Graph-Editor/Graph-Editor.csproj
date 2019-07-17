@@ -65,6 +65,8 @@
     </Compile>
     <Compile Include="Animation\AnimationEdge.cs" />
     <Compile Include="Globals.cs" />
+    <Compile Include="UndoRedo\History.cs" />
+    <Compile Include="UndoRedo\Record.cs" />
     <Compile Include="Objects\Edge.cs" />
     <Compile Include="Objects\Vertex.cs" />
     <Compile Include="ConnectVertices.xaml.cs">

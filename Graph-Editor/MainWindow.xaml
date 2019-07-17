@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Graph_Editor"
         mc:Ignorable="d" Icon="images/logo.png"
         Closing="DataWindow_Closing"
-        Title="GraphON" MinHeight="776.5" MinWidth="1080" Height="776.5" Width="1080" ResizeMode="CanResize">
+        Title="GraphON" MinHeight="776.5" MinWidth="1080" Height="776.5" Width="1080" ResizeMode="CanResize" KeyDown="Window_KeyDown">
     <Window.Resources>
         <Style x:Key="MyButtonStyle" TargetType="Button">
             <Setter Property="Template">

@@ -21,6 +21,7 @@ using System.Diagnostics;
 using Graph_Editor.Algoritms;
 using System.ComponentModel;
 using Graph_Editor.ShowData;
+using Graph_Editor.UndoRedo;
 
 namespace Graph_Editor
 {
@@ -352,6 +353,15 @@ namespace Graph_Editor
         private void ChangeEdgeColorButton_Click(object sender, RoutedEventArgs e)
         {
             Globals.ColorEdge = (sender as Button).Background;
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Z & Keyboard.Modifiers == ModifierKeys.Control)
+            {
+                History.Undo();
+                Invalidate();
+            }
         }
     }
 }
