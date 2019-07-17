@@ -1,4 +1,0 @@
-canvas : b7e1e1
-background : 0a3f4c
-toolbar : 477088
-button : 345160
