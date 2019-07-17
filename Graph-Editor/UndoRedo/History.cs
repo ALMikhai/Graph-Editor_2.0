@@ -56,19 +56,40 @@ namespace Graph_Editor.UndoRedo
             {
                 Vertex rollback = Globals.VertexData.Find(match => match == record.After);
 
-                if (record.Befor == null)
+                if (rollback != null)
                 {
-                    if(rollback != null)
+                    if(record.Befor == null)
                     {
                         Globals.VertexData.Remove(rollback);
                     }
                 }
-                else
-                {
-                    rollback = (Vertex)record.Befor;
-                }
+                //else
+                //{
+                //    rollback = (Vertex)record.Befor;
+                //}
                 // Есть сомнения что это так работает.
 
+            }
+
+            if ((record.Befor is Edge) || (record.After is Edge))
+            {
+                Edge rollbackDirected = Globals.EdgesData.Find(match => match == record.After);
+                Edge rollbackUndirected = Globals.EdgesData.Find(match => (match.From == (record.After as Edge).To) && (match.To == (record.After as Edge).From));
+
+                if(rollbackDirected != null)
+                {
+                    if (record.Befor == null)
+                    {
+                        if (!rollbackDirected.Directed)
+                        {
+                            Globals.Matrix[rollbackUndirected.From.Index, rollbackUndirected.To.Index] = 0;
+                            Globals.EdgesData.Remove(rollbackUndirected);
+                        }
+
+                        Globals.Matrix[rollbackDirected.From.Index, rollbackDirected.To.Index] = 0;
+                        Globals.EdgesData.Remove(rollbackDirected);
+                    }
+                }
             }
         }
 
