@@ -11,7 +11,7 @@ namespace Graph_Editor
     class MoveVertex : Tool
     {
         Vertex findedVertex;
-
+	int forrepair;
         Point startPoint;
         Point finishPoint;
 
