@@ -130,7 +130,8 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="Documentation" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black" Click="ViewDocumentation">
-
+            </MenuItem>
+            <MenuItem Header="Options" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black" Click="GoToOptions">
             </MenuItem>
         </Menu>
         <Grid x:Name="Exit_Dialog" Background="White" Margin="366,253,208,313" Visibility="Hidden" Grid.ColumnSpan="2">
@@ -144,13 +145,5 @@
             <Button VerticalAlignment="Bottom" Content="Exit" FontSize="30" Height="55" Margin="170,0,174,10" Click="Exit_Exit_Click"/>
             <Button VerticalAlignment="Bottom" Content="Cancel" FontSize="30" Height="55" Width="150" Margin="330,0,10,10" Click="Cancel_Exit_Click"/>
         </Grid>
-        <Button  Background="White" HorizontalAlignment="Left" Height="15" Margin="10,92,0,0" VerticalAlignment="Top" Width="20" Click="ChangeVertexColorButton_Click"/>
-        <Button  Background="Green" HorizontalAlignment="Left" Height="15" Margin="60,92,0,0" VerticalAlignment="Top" Width="20" Click="ChangeVertexColorButton_Click"/>
-        <Button  Background="Yellow" HorizontalAlignment="Left" Height="15" Margin="35,92,0,0" VerticalAlignment="Top" Width="20" Click="ChangeVertexColorButton_Click"/>
-        <Button  Background="Blue" HorizontalAlignment="Left" Height="15" Margin="85,92,0,0" VerticalAlignment="Top" Width="20" Click="ChangeVertexColorButton_Click"/>
-        <Button  Background="White" HorizontalAlignment="Left" Height="15" Margin="10,112,0,0" VerticalAlignment="Top" Width="20" Click="ChangeEdgeColorButton_Click"/>
-        <Button  Background="Green" HorizontalAlignment="Left" Height="15" Margin="60,112,0,0" VerticalAlignment="Top" Width="20" Click="ChangeEdgeColorButton_Click"/>
-        <Button  Background="Yellow" HorizontalAlignment="Left" Height="15" Margin="35,112,0,0" VerticalAlignment="Top" Width="20" Click="ChangeEdgeColorButton_Click"/>
-        <Button  Background="Blue" HorizontalAlignment="Left" Height="15" Margin="85,112,0,0" VerticalAlignment="Top" Width="20" Click="ChangeEdgeColorButton_Click"/>
     </Grid>
 </Window>

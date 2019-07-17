@@ -71,6 +71,9 @@
     <Compile Include="ConnectVertices.xaml.cs">
       <DependentUpon>ConnectVertices.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OptionsWindow.xaml.cs">
+      <DependentUpon>OptionsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SaveLoad\Exit.cs" />
     <Compile Include="SaveLoad\Load.cs" />
     <Compile Include="SaveLoad\Save.cs" />
@@ -107,6 +110,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ConnectVertices.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OptionsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -171,6 +178,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\deleteEdgeIcon.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Themes\tmp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

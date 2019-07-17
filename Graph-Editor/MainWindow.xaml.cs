@@ -49,7 +49,6 @@ namespace Graph_Editor
             GraphCanvas.Children.Add(graphHost);
             Instance = this;
         }
-
         public void Invalidate()
         {
             GraphCanvas.Children.Clear();
@@ -350,15 +349,10 @@ namespace Graph_Editor
             Documentation documentation = new Documentation();
             documentation.Show();
         }
-
-        private void ChangeVertexColorButton_Click(object sender, RoutedEventArgs e)
+        private void GoToOptions(object sender, RoutedEventArgs e)
         {
-            Globals.ColorInsideVertex = (sender as Button).Background;
-        }
-
-        private void ChangeEdgeColorButton_Click(object sender, RoutedEventArgs e)
-        {
-            Globals.ColorEdge = (sender as Button).Background;
+            OptionsWindow optionsWindow = new OptionsWindow();
+            optionsWindow.Show();
         }
     }
 }

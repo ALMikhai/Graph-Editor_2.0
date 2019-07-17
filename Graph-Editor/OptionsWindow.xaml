@@ -1,0 +1,46 @@
+﻿<Window x:Class="Graph_Editor.OptionsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Graph_Editor"
+        mc:Ignorable="d"
+        Title="OptionsWindow" Height="688.565" Width="912.216" ResizeMode="NoResize">
+    <Grid>
+        <ToolBarPanel HorizontalAlignment="Left" Height="660" VerticalAlignment="Top" Width="162">
+            <Button Content="Theme" Margin="5 10 5 0" Height="100"
+                    FontSize="25" FontWeight="DemiBold" Foreground="Black" Background="Gray"></Button>
+            <Button Content="Vertex/Edge" Margin="5 10 5 0" Height="100" 
+                    FontSize="25" FontWeight="DemiBold" Foreground="Black" ></Button>
+            <Button Content="Animation" Margin="5,10,5,0" Height="100"
+                    FontSize="25" FontWeight="DemiBold" Foreground="Black" ></Button>
+        </ToolBarPanel>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="660" Margin="167,0,0,0" VerticalAlignment="Top" Width="1"/>
+
+        <Grid x:Name="ThemeGrid" Margin="173,0,0,0" Visibility="Visible">
+            <Label Content="Style" FontSize="50" Margin="116,63,478,511"/>
+            <Label Content="Vertex: " FontSize="35" Margin="0,222,600,370"/>
+
+            <Button x:Name="BaseVertex" Tag="0" Background="Black" HorizontalAlignment="Left" Height="30" Margin="120,175,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
+            <Button Tag="1" Background="Green" HorizontalAlignment="Left" Height="25" Margin="190,175,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
+            <Button Tag="2" Background="Yellow" HorizontalAlignment="Left" Height="25" Margin="155,175,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
+            <Button Tag="3" Background="Blue" HorizontalAlignment="Left" Height="25" Margin="225,175,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
+            <Label Content="Edge: " FontSize="35" Margin="0,154,600,438"/>
+
+            <Button x:Name="BaseEdge" Tag="4" Background="#80FFFF" HorizontalAlignment="Left" Height="30" Margin="120,240,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
+            <Button Tag="5" Background="Green" HorizontalAlignment="Left" Height="25" Margin="190,240,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
+            <Button Tag="6" Background="Yellow" HorizontalAlignment="Left" Height="25" Margin="155,240,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
+            <Button Tag="7" Background="Blue" HorizontalAlignment="Left" Height="25" Margin="225,240,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
+
+            <Button Background="Gray"         BorderThickness="0" Content="Cancel" FontSize="23" Margin="65,309,583,306"  Width="85"/>
+            <Button Background="DarkSeaGreen" BorderThickness="0" Content="Check"  FontSize="23" Margin="150,309,498,306" Width="85"/>
+
+
+            <Button Content="OK" FontSize="35" Margin="190,592,395,10"/>
+            <Button Content="Close" FontSize="35" Margin="10,592,563,10"/>
+
+            <Image Source="images/Themes/tmp.png" Margin="398,0,0,0"/>
+        </Grid>
+
+    </Grid>
+</Window>
