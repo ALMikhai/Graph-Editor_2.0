@@ -45,6 +45,7 @@ namespace Graph_Editor
         public MainWindow()
         {
             InitializeComponent();
+            AddVertex.Background = Brushes.CadetBlue;
             GraphCanvas.Children.Add(graphHost);
             Instance = this;
         }
@@ -342,6 +343,12 @@ namespace Graph_Editor
             WaitPanel.Visibility = Visibility.Visible;
             WaitPanel.Background = Brushes.Gray;
             currentList.Show();
+        }
+
+        private void ViewDocumentation(object sender, RoutedEventArgs e)
+        {
+            Documentation documentation = new Documentation();
+            documentation.Show();
         }
 
         private void ChangeVertexColorButton_Click(object sender, RoutedEventArgs e)
