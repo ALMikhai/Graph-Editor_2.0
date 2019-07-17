@@ -1,6 +1,7 @@
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\bin\Debug\Graph-Editor.exe.config
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\bin\Debug\Graph-Editor.exe
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\bin\Debug\Graph-Editor.pdb
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.csprojAssemblyReference.cache
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\AlgoritmsWindow.g.cs
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\MainWindow.g.cs
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ConnectVertices.g.cs
@@ -20,21 +21,3 @@ C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\o
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.csproj.CoreCompileInputs.cache
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.exe
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.pdb
-<<<<<<< HEAD
-<<<<<<< HEAD
-C:\Users\salus\OneDrive\Рабочий стол\GE-re\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentMatrix.g.cs
-C:\Users\salus\OneDrive\Рабочий стол\GE-re\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentList.g.cs
-C:\Users\salus\OneDrive\Рабочий стол\GE-re\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentMatrix.baml
-C:\Users\salus\OneDrive\Рабочий стол\GE-re\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentList.baml
-C:\Users\salus\OneDrive\Рабочий стол\GE-re\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.csprojAssemblyReference.cache
-C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentMatrix.g.cs
-C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentList.g.cs
-C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentMatrix.baml
-C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentList.baml
-C:\Users\salus\OneDrive\Рабочий стол\GE-re\Graph-Editor_2.0\Graph-Editor\obj\Debug\Documentation.g.cs
-C:\Users\salus\OneDrive\Рабочий стол\GE-re\Graph-Editor_2.0\Graph-Editor\obj\Debug\Documentation.baml
-=======
->>>>>>> master
-=======
-C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.csprojAssemblyReference.cache
->>>>>>> master
