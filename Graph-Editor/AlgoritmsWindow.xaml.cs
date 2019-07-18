@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using static Graph_Editor.Globals;
 
 namespace Graph_Editor
 {
@@ -24,6 +25,7 @@ namespace Graph_Editor
         private void DataWindow_Closing(object sender, CancelEventArgs e)
         {
             mainWindow.WaitPanel.Visibility = Visibility.Hidden;
+            mainWindow.Algorimts_Window.IsEnabled = true;
         }
 
         private void main_Cancel_Click(object sender, RoutedEventArgs e)
@@ -35,7 +37,7 @@ namespace Graph_Editor
         {
             chooseAlg = Convert.ToInt32((sender as Button).Tag.ToString());
 
-            LockPanel.Background = Brushes.Gray;
+            LockPanel.Visibility = Visibility.Visible;
 
             if (chooseAlg == 0 || chooseAlg == 1 || chooseAlg == 7)
             {
@@ -44,19 +46,21 @@ namespace Graph_Editor
                 BFS_DFS_label.Content = chooseAlg == 0 ? "BFS" : chooseAlg == 1 ? "DFS" : "Kruskall";
             }
             
-            else if (chooseAlg == 2)
+            /*else if (chooseAlg == 2)
             {
-                /*Dijkstra.Visibility = Visibility.Visible;
+                *//*Dijkstra.Visibility = Visibility.Visible;
                 DijkstrastartVertex.Text = "0";
                 DijkstrafinalVertex.Text = "0";
-                Dijkstra_Label.Content = "Dijkstra";*/
+                Dijkstra_Label.Content = "Dijkstra";*//*
                 MessageBox.Show("Sorry, algoritm is not ready now :(");
-            }
+            }*/
             else
             {
-                this.Close();
                 switch (chooseAlg)
                 {
+                    case 2:
+                        MessageBox.Show("Sorry, algoritm is not ready now :(");
+                        break;
                     case 3:
                         // Раскрашиваем граф ();
                         MessageBox.Show("Sorry, algoritm is not ready now :(");
@@ -78,59 +82,38 @@ namespace Graph_Editor
                         MessageBox.Show("Sorry, algoritm is not ready now :(");
                         break;
                 }
+                LockPanel.Visibility = Visibility.Hidden;
             }
         }
 
         private void Button_ReadyExitAlgoritm_Click(object sender, RoutedEventArgs e)
         {
-           /* int vertex;
-            bool isInt = Int32.TryParse(FSstartVertex.Text.ToString(), vertex)
-            if ()*/
-            if ((chooseAlg == 0 || chooseAlg == 1 || chooseAlg == 7) && FSstartVertex.Text != "" && Globals.IsBe(Convert.ToInt32(FSstartVertex.Text)))
+            /* int vertex;
+             bool isInt = Int32.TryParse(FSstartVertex.Text.ToString(), vertex)
+             if ()*/
+            if (FSstartVertex.Text != "" && Globals.IsBe(Convert.ToInt32(FSstartVertex.Text)))
             {
                 BFS_DFS.Visibility = Visibility.Hidden;
                 this.Close();
-                
-                if (chooseAlg == 0)
-                {
-                    Bfs.Start(Convert.ToInt32(FSstartVertex.Text));
-                }
-                else if (chooseAlg == 1)
-                {
-                    Dfs.Start(Convert.ToInt32(FSstartVertex.Text));
-                }
-                else if (chooseAlg == 7)
-                {
-                    Kruskal.Start(Convert.ToInt32(FSstartVertex.Text));
-                }
+
+                AlgoList[chooseAlg].Start(Convert.ToInt32(FSstartVertex.Text));
             }
-            /*else if (globals.IsBe(Convert.ToInt32(DijkstrastartVertex.Text)) && globals.IsBe(Convert.ToInt32(DijkstrafinalVertex.Text)) && chooseAlg == 2 && DijkstrastartVertex.Text != "" && DijkstrafinalVertex.Text != "")
-            {
-                if (Convert.ToInt32(DijkstrastartVertex.Text) != Convert.ToInt32(DijkstrafinalVertex.Text))
-                {
-                    this.Close();
-                    Dijkstra.Visibility = Visibility.Hidden;
-                    // Dijkstra();
-                }
-                else
-                    MessageBox.Show("Enter different vertices");*/
-            //}
             else
                 MessageBox.Show("Invalid input data");
             
         }
-
+        
         private void Button_ExitAlgoritm_Click(object sender, RoutedEventArgs e)
         {
             if (chooseAlg == 0 || chooseAlg == 1 || chooseAlg == 7)
             {
                 BFS_DFS.Visibility = Visibility.Hidden;
-                LockPanel.Background = null;
+                LockPanel.Visibility = Visibility.Hidden;
             }
             else if (chooseAlg == 2)
             {
                 Dijkstra.Visibility = Visibility.Hidden;
-                LockPanel.Background = null;
+                LockPanel.Visibility = Visibility.Hidden;
             }
         }
 

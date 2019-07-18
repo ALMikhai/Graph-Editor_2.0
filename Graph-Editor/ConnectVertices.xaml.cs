@@ -42,8 +42,9 @@ namespace Graph_Editor
 
             if (mainWindow != null && mainWindow.WaitPanel != null)
             {
-                mainWindow.WaitPanel.Background = null;
+                mainWindow.WaitPanel.Visibility = Visibility.Hidden;
             }
+            mainWindow.Connect.IsEnabled = true;
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)

@@ -47,10 +47,10 @@ namespace Graph_Editor
         public MainWindow()
         {
             InitializeComponent();
+            AddVertex.Background = Brushes.CadetBlue;
             GraphCanvas.Children.Add(graphHost);
             Instance = this;
         }
-
         public void Invalidate()
         {
             GraphCanvas.Children.Clear();
@@ -187,7 +187,6 @@ namespace Graph_Editor
         {
             ConnectVertices connectVertices = new ConnectVertices();
             WaitPanel.Visibility = Visibility.Visible;
-            WaitPanel.Opacity = 0.4;
             connectVertices.Show();
         }
 
@@ -195,6 +194,7 @@ namespace Graph_Editor
         {
             AlgoritmsWindow algoritms = new AlgoritmsWindow();
             WaitPanel.Visibility = Visibility.Visible;
+            Algorimts_Window.IsEnabled = false;
             algoritms.Show();
         }
 
@@ -215,6 +215,7 @@ namespace Graph_Editor
                 if (string.Compare((sender as Button).Background.ToString(), "#FF5F9EA0") == 0)
                 {
                     Connect_Click(sender, e);
+                    Connect.IsEnabled = false;
                 }
             }
 
@@ -334,7 +335,6 @@ namespace Graph_Editor
         {
             CurrentMatrix currentMatrix = new CurrentMatrix();
             WaitPanel.Visibility = Visibility.Visible;
-            WaitPanel.Background = Brushes.Gray;
             currentMatrix.Show();
         }
 
@@ -342,18 +342,19 @@ namespace Graph_Editor
         {
             CurrentList currentList = new CurrentList();
             WaitPanel.Visibility = Visibility.Visible;
-            WaitPanel.Background = Brushes.Gray;
             currentList.Show();
         }
 
-        private void ChangeVertexColorButton_Click(object sender, RoutedEventArgs e)
+        private void ViewDocumentation(object sender, RoutedEventArgs e)
         {
-            Globals.ColorInsideVertex = (sender as Button).Background;
+            Documentation documentation = new Documentation();
+            documentation.Show();
         }
 
-        private void ChangeEdgeColorButton_Click(object sender, RoutedEventArgs e)
+        private void GoToOptions(object sender, RoutedEventArgs e)
         {
-            Globals.ColorEdge = (sender as Button).Background;
+            OptionsWindow optionsWindow = new OptionsWindow();
+            optionsWindow.Show();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

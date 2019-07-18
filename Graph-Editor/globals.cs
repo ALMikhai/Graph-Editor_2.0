@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Media;
+using Graph_Editor.Algoritms;
 using Graph_Editor.Objects;
 
 
@@ -9,6 +10,11 @@ namespace Graph_Editor
     [Serializable]
     public static class Globals
     {
+        public static string baseVertex = "vBlack";
+        public static string baseEdge = "eLightBlue";
+
+        public static double animationTime = 1.5;
+
         public static int GlobalIndex = 0;
         public static int Size = 100;
         public static int[,] Matrix = new int[Size, Size];
@@ -31,6 +37,12 @@ namespace Graph_Editor
             {2, new  DelVertex()},
             {3, new CntVert()},
             {4, new DelEdge()}
+        };
+        public static Dictionary<int, Algoritm> AlgoList = new Dictionary<int, Algoritm>
+        {
+            {0, new Bfs()},
+            {1, new Dfs()},
+            {7, new Kruskal()}
         };
 
         public static Tool ToolNow = ToolList[0];

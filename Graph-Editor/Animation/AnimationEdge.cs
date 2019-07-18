@@ -40,8 +40,6 @@ namespace Graph_Editor
 
         public static void RefreshStoryboard()
         {
-            double animationTime = 1;
-
             MainWindow.Instance.GraphCanvas.Children.Add(AnimationEllipse);
 
             var pathGeom = new PathGeometry();
@@ -61,7 +59,7 @@ namespace Graph_Editor
             {
                 PathGeometry = pathGeom,
                 Source = PathAnimationSource.X,
-                Duration = TimeSpan.FromSeconds(animationTime)
+                Duration = TimeSpan.FromSeconds(Globals.animationTime)
             };
 
             Storyboard.SetTarget(moveCircleAnimation, AnimationEllipse);
@@ -71,7 +69,7 @@ namespace Graph_Editor
             {
                 PathGeometry = pathGeom,
                 Source = PathAnimationSource.Y,
-                Duration = TimeSpan.FromSeconds(animationTime)
+                Duration = TimeSpan.FromSeconds(Globals.animationTime)
             };
 
             Storyboard.SetTarget(moveCircleAnimation2, AnimationEllipse);

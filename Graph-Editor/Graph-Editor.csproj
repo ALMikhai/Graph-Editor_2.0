@@ -57,6 +57,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Algoritms\Algoritm.cs" />
     <Compile Include="Algoritms\Bfs.cs" />
     <Compile Include="Algoritms\Dfs.cs" />
     <Compile Include="Algoritms\Kruskal.cs" />
@@ -71,6 +72,9 @@
     <Compile Include="Objects\Vertex.cs" />
     <Compile Include="ConnectVertices.xaml.cs">
       <DependentUpon>ConnectVertices.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OptionsWindow.xaml.cs">
+      <DependentUpon>OptionsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SaveLoad\Exit.cs" />
     <Compile Include="SaveLoad\Load.cs" />
@@ -87,6 +91,9 @@
     <Compile Include="Tools\DelVertex.cs" />
     <Compile Include="Tools\MoveVertex.cs" />
     <Compile Include="Tools\Tool.cs" />
+    <Compile Include="Documentation.xaml.cs">
+      <DependentUpon>Documentation.xaml</DependentUpon>
+    </Compile>
     <Page Include="AlgoritmsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -108,11 +115,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="OptionsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ShowData\CurrentMatrix.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ShowData\CurrentList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Documentation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -165,6 +180,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\deleteEdgeIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Themes\LightTheme.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Themes\tmp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
