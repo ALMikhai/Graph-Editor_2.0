@@ -9,7 +9,7 @@ namespace Graph_Editor.UndoRedo
 {
     public static class History
     {
-        private static List<Record> records = new List<Record>();
+        public static List<Record> records = new List<Record>();
 
         private static int numberRecords = 0;
 
@@ -54,7 +54,9 @@ namespace Graph_Editor.UndoRedo
 
             if ((record.Befor is Vertex) || (record.After is Vertex))
             {
-                Vertex rollback = Globals.VertexData.Find(match => match == record.After);
+                Vertex rollback = Globals.VertexData.Find(match => (match.Index == (record.After as Vertex).Index
+                                                         && match.Coordinates == (record.After as Vertex).Coordinates
+                                                         && match.Color == (record.After as Vertex).Color));
 
                 if (rollback != null)
                 {
@@ -62,13 +64,26 @@ namespace Graph_Editor.UndoRedo
                     {
                         Globals.VertexData.Remove(rollback);
                     }
-                }
-                //else
-                //{
-                //    rollback = (Vertex)record.Befor;
-                //}
-                // Есть сомнения что это так работает.
+                    else
+                    {
+                        Globals.VertexData.Add((Vertex)record.Befor);
 
+                        foreach (var edge in Globals.EdgesData.ToArray())
+                        {
+                            if(edge.From == rollback)
+                            {
+                                edge.From = (Vertex)record.Befor;
+                            }
+
+                            if(edge.To == rollback)
+                            {
+                                edge.To = (Vertex)record.Befor;
+                            }
+                        }
+
+                        Globals.VertexData.Remove(rollback);
+                    }
+                }
             }
 
             if ((record.Befor is Edge) || (record.After is Edge))

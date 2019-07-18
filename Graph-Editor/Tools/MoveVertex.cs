@@ -5,15 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Graph_Editor.Objects;
+using Graph_Editor.UndoRedo;
 
 namespace Graph_Editor
 {
     class MoveVertex : Tool
     {
-        Vertex findedVertex;
+        Vertex startPositionVertex;
+        Vertex finishPositionVertex;
 
-        Point startPoint;
-        Point finishPoint;
+        //Point startPoint;
+        //Point finishPoint;
 
         public override void Mouse_Down(Point pointNow)
         {
@@ -24,43 +26,47 @@ namespace Graph_Editor
                     vertex.Coordinates.Y - (Globals.VertRadius) <= pointNow.Y &&
                     pointNow.Y <= vertex.Coordinates.Y + (Globals.VertRadius))
                 {
-                    findedVertex = vertex;
+                    startPositionVertex = new Vertex(vertex);
+                    finishPositionVertex = vertex;
                     return;
                 }
             }
 
-            startPoint = pointNow;
+            //startPoint = pointNow;
         }
 
         public override void Mouse_Move(Point pointNow)
         {
-            if(findedVertex != null)
+            if(startPositionVertex != null)
             {
-                findedVertex.Coordinates = pointNow;
+                finishPositionVertex.Coordinates = pointNow;
                 return;
             }
 
-            if(startPoint != null)
-            {
-                finishPoint = pointNow;
+            //if(startPoint != null)
+            //{
+            //    finishPoint = pointNow;
 
-                foreach(var vertex in Globals.VertexData)
-                {
-                    vertex.Coordinates = Point.Add(vertex.Coordinates, Point.Subtract(finishPoint, startPoint));
-                }
-            }
+            //    foreach(var vertex in Globals.VertexData)
+            //    {
+            //        vertex.Coordinates = Point.Add(vertex.Coordinates, Point.Subtract(finishPoint, startPoint));
+            //    }
+            //}
 
-            startPoint = finishPoint;
+            //startPoint = finishPoint;
         }
 
         public override void Mouse_Up()
         {
-            findedVertex = null;
+            History.Add(new Vertex(startPositionVertex), new Vertex(finishPositionVertex));
+            startPositionVertex = null;
+            finishPositionVertex = null;
         }
 
         public override void Change_Tool()
         {
-            findedVertex = null;
+            startPositionVertex = null;
+            finishPositionVertex = null;
         }
     }
 }

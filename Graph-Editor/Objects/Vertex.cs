@@ -23,12 +23,13 @@ namespace Graph_Editor.Objects
     [Serializable]
     public class Vertex : ISerializable
     {
-        private readonly int index;
+        private int index;
         private Point coordinates;
         private Brush color = Globals.ColorInsideVertex.Clone();
 
         public int Index
         {
+            set { index = value; }
             get { return index; }
         }
 
@@ -52,6 +53,13 @@ namespace Graph_Editor.Objects
         public Vertex(int number)
         {
             index = number;
+        }
+
+        public Vertex(Vertex vertex)
+        {
+            Index = vertex.Index;
+            Coordinates = vertex.Coordinates;
+            Color = vertex.Color;
         }
 
         public Vertex() { }
