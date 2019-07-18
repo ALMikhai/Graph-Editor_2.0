@@ -26,19 +26,19 @@ namespace Graph_Editor.ShowData
 
             for (int i = 0; i < Globals.VertexData.Count(); i++)
             {
-                topBlock.Text += i.ToString() + " ";
+                topBlock.Text += Globals.VertexData[i].Index.ToString() + " ";
             }
 
             for (int i = 0; i < Globals.VertexData.Count(); i++)
             {
-                sideBlock.Text += i.ToString() + "\n";
+                sideBlock.Text += Globals.VertexData[i].Index.ToString() + "\n";
             }
 
             for (int i = 0; i < Globals.VertexData.Count(); i++)
             {
                 for (int j = 0; j < Globals.VertexData.Count(); j++)
                 {
-                    mainBlock.Text += Globals.Matrix[i, j] != 0 ? 1 : 0;
+                    mainBlock.Text += Globals.Matrix[i, j].ToString();
                     mainBlock.Text += " ";
                 }
                 mainBlock.Text += "\n";

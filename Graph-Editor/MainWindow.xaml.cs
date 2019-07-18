@@ -21,6 +21,7 @@ using System.Diagnostics;
 using Graph_Editor.Algoritms;
 using System.ComponentModel;
 using Graph_Editor.ShowData;
+using Graph_Editor.UndoRedo;
 
 namespace Graph_Editor
 {
@@ -34,9 +35,10 @@ namespace Graph_Editor
     // 7) Названия переменных и функций должны быть понятны всем, а не только тому кто это писал.
     // 8) Не использовать сокращения в названиях переменных и функций.
 
-    // TODO Сделать отдельный виртуальный класс Alogoritm и вынести туда общие методы по типу (старт). Нужно для удобного вызова Алгоритмов(Не DFS.Start() BFS.Start(), а AlgoritmNow.Start()для всех).
     // TODO Плохо работает визуализация матрицы смежности(переделать).
-    
+    // TODO База данных, через серилизацию.
+    // TODO Сдвиг индексов по удалению.
+
     public partial class MainWindow : Window
     {
         private static FigureHost graphHost = new FigureHost();
@@ -353,6 +355,15 @@ namespace Graph_Editor
         {
             OptionsWindow optionsWindow = new OptionsWindow();
             optionsWindow.Show();
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Z & Keyboard.Modifiers == ModifierKeys.Control)
+            {
+                History.Undo();
+                Invalidate();
+            }
         }
     }
 }

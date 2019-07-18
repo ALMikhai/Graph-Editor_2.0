@@ -22,8 +22,8 @@ namespace Graph_Editor.Objects
 {
     [Serializable]
     public class Edge : ISerializable
-    { // TODO Сделать поле color и хранить только цвет и толщину, при отрисовке делать новый карандаш из цвета и толщины.
-        private readonly Vertex from, to;
+    {
+        private Vertex from, to;
         private int weight;
         private bool directed;
         private Brush color = Globals.ColorEdge;
@@ -31,11 +31,13 @@ namespace Graph_Editor.Objects
 
         public Vertex From
         {
+            set { from = value; }
             get { return from; }
         }
 
         public Vertex To
         {
+            set { to = value; }
             get { return to; }
         }
 
