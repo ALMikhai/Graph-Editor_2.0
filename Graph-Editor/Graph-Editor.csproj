@@ -179,7 +179,9 @@
   <ItemGroup>
     <Resource Include="Images\deleteEdgeIcon.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Themes\LightTheme.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Themes\tmp.png" />
   </ItemGroup>

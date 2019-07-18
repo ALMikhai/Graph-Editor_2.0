@@ -8,6 +8,18 @@
         Closing="DataWindow_Closing"
         Title="GraphON" MinHeight="776.5" MinWidth="1080" Height="776.5" Width="1080" ResizeMode="CanResize">
     <Window.Resources>
+        <Style x:Key="LockHover" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Border BorderThickness="0"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style x:Key="MyButtonStyle" TargetType="Button">
             <Setter Property="Template">
                 <Setter.Value>
@@ -30,7 +42,8 @@
                 MouseLeave="GraphCanvas_MouseLeave"
                 MouseUp="GraphCanvas_MouseUp"
                 ClipToBounds="True" Grid.ColumnSpan="2"/>
-        <Button x:Name="Algorimts_Window" Foreground="WhiteSmoke"
+        <Button Style="{StaticResource LockHover}" x:Name="Algorimts_Window" Foreground="WhiteSmoke"
+            MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove"
             Content="Algoritms" BorderThickness="0"
             HorizontalAlignment="Left" Margin="10,140,0,0" VerticalAlignment="Top"
             Width="160" Height="48" Background="#345160"

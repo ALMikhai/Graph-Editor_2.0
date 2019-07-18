@@ -193,6 +193,7 @@ namespace Graph_Editor
         {
             AlgoritmsWindow algoritms = new AlgoritmsWindow();
             WaitPanel.Visibility = Visibility.Visible;
+            Algorimts_Window.IsEnabled = false;
             algoritms.Show();
         }
 
@@ -213,6 +214,7 @@ namespace Graph_Editor
                 if (string.Compare((sender as Button).Background.ToString(), "#FF5F9EA0") == 0)
                 {
                     Connect_Click(sender, e);
+                    Connect.IsEnabled = false;
                 }
             }
 

@@ -10,6 +10,9 @@ namespace Graph_Editor
     [Serializable]
     public static class Globals
     {
+        public static string baseVertex = "vBlack";
+        public static string baseEdge = "eLightBlue";
+
         public static int GlobalIndex = 0;
         public static int Size = 100;
         public static int[,] Matrix = new int[Size, Size];

@@ -44,6 +44,7 @@ namespace Graph_Editor
             {
                 mainWindow.WaitPanel.Background = null;
             }
+            mainWindow.Connect.IsEnabled = true;
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)

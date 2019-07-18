@@ -25,6 +25,7 @@ namespace Graph_Editor
         private void DataWindow_Closing(object sender, CancelEventArgs e)
         {
             mainWindow.WaitPanel.Visibility = Visibility.Hidden;
+            mainWindow.Algorimts_Window.IsEnabled = true;
         }
 
         private void main_Cancel_Click(object sender, RoutedEventArgs e)
