@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Graph_Editor.Objects;
+using Graph_Editor.UndoRedo;
 
 namespace Graph_Editor
 {
@@ -40,6 +41,17 @@ namespace Graph_Editor
                         Globals.EdgesData.Remove(edge);
                     }
                 }
+
+                for(var i = findedVert.Index; i < Globals.VertexData.Count; ++i)
+                {
+                    Globals.VertexData[i].Index--;
+                }
+
+                Globals.GlobalIndex--;
+
+                Globals.RestoreMatrix();
+
+                // TODO Добавлять в историю, до - вершина, после - лист интов с индексами вершин которые были связаны с этой.
 
                 Globals.VertexData.Remove(findedVert);
 

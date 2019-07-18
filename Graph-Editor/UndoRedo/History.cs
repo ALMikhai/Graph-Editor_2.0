@@ -62,9 +62,16 @@ namespace Graph_Editor.UndoRedo
                 {
                     if(record.Befor == null)
                     {
+                        Globals.GlobalIndex--;
                         Globals.VertexData.Remove(rollback);
                     }
-                    else
+
+                    if(record.After is List<int>)
+                    {
+                        // TODO Если в до лежит вершина, а в после лежит лист индексов - вставить обратно эту вершину и соеденить с вершинами в листе.
+                    }
+
+                    if((record.Befor is Vertex) && (record.After is Vertex))
                     {
                         Globals.VertexData.Add((Vertex)record.Befor);
 

@@ -58,7 +58,10 @@ namespace Graph_Editor
 
         public override void Mouse_Up()
         {
-            History.Add(new Vertex(startPositionVertex), new Vertex(finishPositionVertex));
+            if (startPositionVertex != null && finishPositionVertex != null)
+            {
+                History.Add(new Vertex(startPositionVertex), new Vertex(finishPositionVertex));
+            }
             startPositionVertex = null;
             finishPositionVertex = null;
         }
