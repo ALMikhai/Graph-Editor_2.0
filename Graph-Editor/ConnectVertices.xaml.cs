@@ -42,8 +42,9 @@ namespace Graph_Editor
 
             if (mainWindow != null && mainWindow.WaitPanel != null)
             {
-                mainWindow.WaitPanel.Background = null;
+                mainWindow.WaitPanel.Visibility = Visibility.Hidden;
             }
+            mainWindow.Connect.IsEnabled = true;
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)
@@ -84,32 +85,15 @@ namespace Graph_Editor
                 return;
             }
 
-            Edge edgeDirected = new Edge(from, to, Convert.ToInt32(TextBox_Weight.Text), directedNow);
-            Edge edgeUndirected = new Edge(to, from, Convert.ToInt32(TextBox_Weight.Text), directedNow);
-
-            if (directedNow || (Globals.Matrix[edgeDirected.To.Index, edgeDirected.From.Index] == 0 && Globals.Matrix[edgeDirected.From.Index, edgeDirected.To.Index] == 0))
+            if (directedNow || (Globals.Matrix[to.Index, from.Index] == 0 && Globals.Matrix[from.Index, to.Index] == 0))
             {
-                if (Globals.Matrix[edgeDirected.From.Index, edgeDirected.To.Index] >= 1)
+                if (Globals.Matrix[from.Index, to.Index] >= 1)
                 {
                     MessageBox.Show("You alredy have this edge!");
                     return;
                 }
 
-                Globals.EdgesData.Add(edgeDirected);
-                
-                if (Globals.Matrix[edgeDirected.To.Index, edgeDirected.From.Index] >= 1 && directedNow)
-                {
-                    // TODO: Сделать красивый вывод рёбер.
-                }
-
-                Globals.Matrix[edgeDirected.From.Index, edgeDirected.To.Index] = edgeDirected.Weight;
-                // TODO: Удалять нарисованное ребро (ориентированное) и добавлять обычное (неориентированное).
-                if (!directedNow)
-                {
-                    Globals.Matrix[edgeDirected.To.Index, edgeDirected.From.Index] = edgeDirected.Weight;
-                    Globals.EdgesData.Add(edgeUndirected);
-                }
-                    
+                CntVert.ConnectVertex(from, to, Convert.ToInt32(TextBox_Weight.Text), directedNow);
 
                 MainWindow.Instance.Invalidate();
 

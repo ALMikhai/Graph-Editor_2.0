@@ -10,6 +10,11 @@ namespace Graph_Editor
     [Serializable]
     public static class Globals
     {
+        public static string baseVertex = "vBlack";
+        public static string baseEdge = "eLightBlue";
+
+        public static double animationTime = 1.5;
+
         public static int GlobalIndex = 0;
         public static int Size = 100;
         public static int[,] Matrix = new int[Size, Size];
@@ -97,10 +102,10 @@ namespace Graph_Editor
 
             foreach (var edge in EdgesData)
             {
-                Matrix[edge.From.Index, edge.To.Index] = 1;
+                Matrix[edge.From.Index, edge.To.Index] = edge.Weight;
                 if (!edge.Directed)
                 {
-                    Matrix[edge.To.Index, edge.From.Index] = 1;
+                    Matrix[edge.To.Index, edge.From.Index] = edge.Weight;
                 }
             }
         }

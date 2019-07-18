@@ -83,11 +83,9 @@
             HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
             Width="180" Height="70" Click="main_Cancel_Click" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove"
         />
-        <Grid
-            x:Name="LockPanel"
-            Opacity="0.4"
-            Grid.ColumnSpan="20" Grid.RowSpan="20">
-        </Grid>
+
+        <Grid x:Name="LockPanel" Opacity="0.4" Background="Gray" Visibility="Hidden"/>
+
         <TextBlock Text="Select the algorithm you want to use or demonstrate." TextWrapping = "Wrap"
                HorizontalAlignment="Left" Margin="128,26,0,0" VerticalAlignment="Top"
                Height="69" Width="371" TextAlignment="Center"
@@ -99,24 +97,24 @@
             <Border BorderBrush="Black" BorderThickness="2"/>
             <Button x:Name="FS_Ready"
             IsDefault="True"
-            FontSize="20" Content="Выполнить" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
+            FontSize="20" Content="Run" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
             Width="127" Height="42" Click="Button_ReadyExitAlgoritm_Click"
         />
             <Button x:Name="FS_Cancel"
             IsCancel="True"
-            FontSize="20" Content="Отмена"
+            FontSize="20" Content="Cancel"
             HorizontalAlignment="Left" Margin="137,0,0,10" VerticalAlignment="Bottom"
             Width="112" Height="42"
             Click="Button_ExitAlgoritm_Click"
         />
-            <Label Content="Начальная вершина:" 
-               HorizontalAlignment="Left" Height="38" Margin="10,42,0,0" 
-               VerticalAlignment="Top" Width="290" 
+            <Label Content="Start vertex:" 
+               HorizontalAlignment="Left" Height="38" Margin="53,42,0,0" 
+               VerticalAlignment="Top" Width="247" 
                FontSize="25"
         />
             <TextBox x:Name="FSstartVertex"
             FontSize="20" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"
-            Height="38" Margin="271,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
+            Height="38" Margin="246,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
             Background="WhiteSmoke" BorderThickness="1" BorderBrush="black" RenderTransformOrigin="0.494,-0.553"
         />
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="2" Margin="0,116,0,0" VerticalAlignment="Top" Width="415"/>
@@ -135,34 +133,34 @@
             <Border BorderBrush="Black" BorderThickness="2"/>
             <Button x:Name="Dijkstra_Ready"
             IsDefault="True"
-            FontSize="20" Content="Выполнить" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
+            FontSize="20" Content="Run" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
             Width="127" Height="42" Click="Button_ReadyExitAlgoritm_Click"
             />
             <Button x:Name="Dijkstra_Cancel"
             IsCancel="True"
-            FontSize="20" Content="Отмена"
+            FontSize="20" Content="Cancel"
             HorizontalAlignment="Left" Margin="137,0,0,10" VerticalAlignment="Bottom"
             Width="112" Height="42"
             Click="Button_ExitAlgoritm_Click"
             />
-            <Label Content="Начальная вершина:" 
-               HorizontalAlignment="Left" Height="50" Margin="10,42,0,0" 
-               VerticalAlignment="Top" Width="290" 
+            <Label Content="Start vertex:" 
+               HorizontalAlignment="Left" Height="50" Margin="40,42,0,0" 
+               VerticalAlignment="Top" Width="260" 
                FontSize="25"
             />
             <TextBox x:Name="DijkstrastartVertex"
             FontSize="20" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"
-            Height="38" Margin="271,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
+            Height="38" Margin="246,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
             Background="WhiteSmoke" BorderThickness="1" BorderBrush="black"
             />
-            <Label Content="Конечная вершина:" 
-               HorizontalAlignment="Left" Height="50" Margin="10,102,0,0" 
-               VerticalAlignment="Top" Width="290" 
+            <Label Content="Final vertex:" 
+               HorizontalAlignment="Left" Height="50" Margin="40,102,0,0" 
+               VerticalAlignment="Top" Width="260" 
                FontSize="25"
             />
             <TextBox x:Name="DijkstrafinalVertex"
             FontSize="20" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"
-            Height="38" Margin="271,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
+            Height="38" Margin="246,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
             Background="WhiteSmoke" BorderThickness="1" BorderBrush="black"
             />
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="1" Margin="0,174,0,0" VerticalAlignment="Top" Width="391" RenderTransformOrigin="0.5,0.5"/>
