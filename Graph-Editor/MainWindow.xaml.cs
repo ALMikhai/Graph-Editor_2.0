@@ -185,7 +185,6 @@ namespace Graph_Editor
         {
             ConnectVertices connectVertices = new ConnectVertices();
             WaitPanel.Visibility = Visibility.Visible;
-            WaitPanel.Opacity = 0.4;
             connectVertices.Show();
         }
 
@@ -334,7 +333,6 @@ namespace Graph_Editor
         {
             CurrentMatrix currentMatrix = new CurrentMatrix();
             WaitPanel.Visibility = Visibility.Visible;
-            WaitPanel.Background = Brushes.Gray;
             currentMatrix.Show();
         }
 
@@ -342,7 +340,6 @@ namespace Graph_Editor
         {
             CurrentList currentList = new CurrentList();
             WaitPanel.Visibility = Visibility.Visible;
-            WaitPanel.Background = Brushes.Gray;
             currentList.Show();
         }
 
@@ -351,6 +348,7 @@ namespace Graph_Editor
             Documentation documentation = new Documentation();
             documentation.Show();
         }
+
         private void GoToOptions(object sender, RoutedEventArgs e)
         {
             OptionsWindow optionsWindow = new OptionsWindow();

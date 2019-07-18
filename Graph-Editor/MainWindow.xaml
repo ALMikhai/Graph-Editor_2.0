@@ -35,13 +35,13 @@
     </Window.Resources>
     <Grid Background="#0a3f4c">
         <Canvas x:Name="GraphCanvas" 
-                Margin="182,8,8,10" 
+                Margin="182,22,8,10" 
                 Background="#b7e1e1"
                 MouseDown="GraphCanvas_MouseDown"
                 MouseMove="GraphCanvas_MouseMove"
                 MouseLeave="GraphCanvas_MouseLeave"
                 MouseUp="GraphCanvas_MouseUp"
-                ClipToBounds="True" Grid.ColumnSpan="2"/>
+                ClipToBounds="True"/>
         <Button Style="{StaticResource LockHover}" x:Name="Algorimts_Window" Foreground="WhiteSmoke"
             MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove"
             Content="Algoritms" BorderThickness="0"
@@ -108,9 +108,7 @@
             </Image>
         </Button>
 
-        <Grid
-            x:Name="WaitPanel"
-            Opacity="0.4" Background="Gray" Visibility="Hidden" Grid.ColumnSpan="2"/>
+        <Grid x:Name="WaitPanel" Opacity="0.4" Background="Gray" Visibility="Hidden"/>
         <Label Content=".TXT" Background="#b7e1e1"
                    HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top"       
                    Width="80" Height="42" FontFamily="Ink Free"

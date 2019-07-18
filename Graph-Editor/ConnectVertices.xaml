@@ -35,7 +35,7 @@
             Height="38" Margin="0,26,56,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
             Background="#728484" BorderThickness="1" BorderBrush="black"
         />
-        <Label Content="Вес ребра: " FontSize="20" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top"/>
+        <Label Content="Edge weight: " FontSize="20" HorizontalAlignment="Left" Margin="0,104,0,0" VerticalAlignment="Top"/>
         <Slider x:Name="WeightSlider" Foreground="#98B0B0" Background="#98B0B0"
             Maximum="100" Minimum="1" SmallChange="1" LargeChange="10"
             TickPlacement="BottomRight" TickFrequency="10"

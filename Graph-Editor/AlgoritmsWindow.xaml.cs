@@ -37,7 +37,7 @@ namespace Graph_Editor
         {
             chooseAlg = Convert.ToInt32((sender as Button).Tag.ToString());
 
-            LockPanel.Background = Brushes.Gray;
+            LockPanel.Visibility = Visibility.Visible;
 
             if (chooseAlg == 0 || chooseAlg == 1 || chooseAlg == 7)
             {
@@ -46,19 +46,21 @@ namespace Graph_Editor
                 BFS_DFS_label.Content = chooseAlg == 0 ? "BFS" : chooseAlg == 1 ? "DFS" : "Kruskall";
             }
             
-            else if (chooseAlg == 2)
+            /*else if (chooseAlg == 2)
             {
-                /*Dijkstra.Visibility = Visibility.Visible;
+                *//*Dijkstra.Visibility = Visibility.Visible;
                 DijkstrastartVertex.Text = "0";
                 DijkstrafinalVertex.Text = "0";
-                Dijkstra_Label.Content = "Dijkstra";*/
+                Dijkstra_Label.Content = "Dijkstra";*//*
                 MessageBox.Show("Sorry, algoritm is not ready now :(");
-            }
+            }*/
             else
             {
-                this.Close();
                 switch (chooseAlg)
                 {
+                    case 2:
+                        MessageBox.Show("Sorry, algoritm is not ready now :(");
+                        break;
                     case 3:
                         // Раскрашиваем граф ();
                         MessageBox.Show("Sorry, algoritm is not ready now :(");
@@ -80,6 +82,7 @@ namespace Graph_Editor
                         MessageBox.Show("Sorry, algoritm is not ready now :(");
                         break;
                 }
+                LockPanel.Visibility = Visibility.Hidden;
             }
         }
 
@@ -105,12 +108,12 @@ namespace Graph_Editor
             if (chooseAlg == 0 || chooseAlg == 1 || chooseAlg == 7)
             {
                 BFS_DFS.Visibility = Visibility.Hidden;
-                LockPanel.Background = null;
+                LockPanel.Visibility = Visibility.Hidden;
             }
             else if (chooseAlg == 2)
             {
                 Dijkstra.Visibility = Visibility.Hidden;
-                LockPanel.Background = null;
+                LockPanel.Visibility = Visibility.Hidden;
             }
         }
 

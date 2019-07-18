@@ -16,6 +16,9 @@ namespace Graph_Editor
 {
     public partial class OptionsWindow : Window
     {
+        private double setNowSpeed = 1;
+        private int MaxSpeed = 200;
+
         private Brush vertexColor = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
         private Brush edgeColor = Brushes.Black;
 
@@ -117,6 +120,51 @@ namespace Graph_Editor
         private void ChooseAnimationMenu(object sender, RoutedEventArgs e)
         {
             Rechoose("AnimationGrid", sender);
+        }
+
+        private void ChooseSlowAnimation(object sender, RoutedEventArgs e)
+        {
+            setNowSpeed = 3;
+        }
+
+        private void ChooseMediumAnimation(object sender, RoutedEventArgs e)
+        {
+            setNowSpeed = 1.5;
+        }
+
+        private void ChooseFastAnimation(object sender, RoutedEventArgs e)
+        {
+            setNowSpeed = 1;
+        }
+
+        private void ChooseVeryFastAnimation(object sender, RoutedEventArgs e)
+        {
+            setNowSpeed = 0.5;
+        }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            double num = e.NewValue;
+            ((Slider)sender).SelectionEnd = num;
+            if (TextBox_Speed != null)
+                TextBox_Speed.Text = Math.Round(num).ToString();
+        }
+
+        private void TextBox_Speed_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (TextBox_Speed.Text != "")
+            {
+                int point = Convert.ToInt32(TextBox_Speed.Text);
+                SpeedSlider.SelectionEnd = point;
+                SpeedSlider.Value = point;
+                setNowSpeed = (MaxSpeed - Convert.ToDouble(TextBox_Speed.Text)) / 175;
+            }
+        }
+
+        private void animationOK_Click(object sender, RoutedEventArgs e)
+        {
+            Globals.animationTime = setNowSpeed;
+            this.Close();
         }
     }
 }

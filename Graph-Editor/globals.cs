@@ -13,6 +13,8 @@ namespace Graph_Editor
         public static string baseVertex = "vBlack";
         public static string baseEdge = "eLightBlue";
 
+        public static double animationTime = 1.5;
+
         public static int GlobalIndex = 0;
         public static int Size = 100;
         public static int[,] Matrix = new int[Size, Size];
