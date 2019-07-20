@@ -49,9 +49,12 @@ namespace Graph_Editor
 
                 History.Add(new Vertex(findedVert), adjacentVertices);
 
-                for (var i = findedVert.Index; i < Globals.VertexData.Count; ++i)
+                foreach(var vertex in Globals.VertexData)
                 {
-                    Globals.VertexData[i].Index--;
+                    if(vertex.Index >= findedVert.Index && vertex != findedVert)
+                    {
+                        vertex.Index--;
+                    }
                 }
 
                 Globals.RestoreMatrix();
