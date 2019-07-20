@@ -35,12 +35,6 @@ namespace Graph_Editor
                 {
                     if (edge.From == findedVert || edge.To == findedVert)
                     {
-                        Globals.Matrix[edge.From.Index, edge.To.Index] = 0;
-                        if (!edge.Directed)
-                        {
-                            Globals.Matrix[edge.To.Index, edge.From.Index] = 0;
-                        }
-
                         adjacentVertices.Add(new Edge(edge));
 
                         Globals.EdgesData.Remove(edge);

@@ -359,7 +359,13 @@ namespace Graph_Editor
         {
             if (e.Key == Key.Z & Keyboard.Modifiers == ModifierKeys.Control)
             {
-                History.Undo();
+                History.UndoRedo(0);
+                Invalidate();
+            }
+
+            if (e.Key == Key.Y & Keyboard.Modifiers == ModifierKeys.Control)
+            {
+                History.UndoRedo(1);
                 Invalidate();
             }
         }
