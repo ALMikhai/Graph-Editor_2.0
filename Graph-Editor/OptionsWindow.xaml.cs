@@ -21,11 +21,16 @@ namespace Graph_Editor
 
         private Brush vertexColor = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
         private Brush edgeColor = Brushes.Black;
+        private Brush animateColor = Brushes.Blue;
 
         private string setNowVertex;
         private string setNowEdge;
+        
         private string currentWindow;
         private string currentButtonWindow;
+
+        private string setNowAnimationColor;
+        private string setNowAnimationSpeed;
 
         public OptionsWindow()
         {
@@ -37,8 +42,12 @@ namespace Graph_Editor
             setNowEdge = Globals.baseEdge;
             setNowVertex = Globals.baseVertex;
 
+            setNowAnimationColor = Globals.baseAnimationColor;
+            setNowAnimationSpeed = Globals.baseAnimationSpeed;
+
             ((Button)this.FindName(Globals.baseEdge)).Height = 30;
             ((Button)this.FindName(Globals.baseVertex)).Height = 30;
+            ((Button)this.FindName(Globals.baseAnimationColor)).Height = 30;
 
             currentWindow = "ThemeGrid";
             currentButtonWindow = "ThemeButton";
@@ -122,24 +131,32 @@ namespace Graph_Editor
             Rechoose("AnimationGrid", sender);
         }
 
+        private void ChooseAnimationSpeed(object sender, double speed)
+        {
+            setNowSpeed = speed;
+            ((Button)this.FindName(setNowAnimationSpeed)).Background = Brushes.LightGray;
+            setNowAnimationSpeed = (sender as Button).Name;
+            (sender as Button).Background = Brushes.LightCyan;
+        }
+
         private void ChooseSlowAnimation(object sender, RoutedEventArgs e)
         {
-            setNowSpeed = 3;
+            ChooseAnimationSpeed(sender, 3);
         }
 
         private void ChooseMediumAnimation(object sender, RoutedEventArgs e)
         {
-            setNowSpeed = 1.5;
+            ChooseAnimationSpeed(sender, 1.5);
         }
 
         private void ChooseFastAnimation(object sender, RoutedEventArgs e)
         {
-            setNowSpeed = 1;
+            ChooseAnimationSpeed(sender, 1);
         }
 
         private void ChooseVeryFastAnimation(object sender, RoutedEventArgs e)
         {
-            setNowSpeed = 0.5;
+            ChooseAnimationSpeed(sender, 0.5);
         }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -164,7 +181,32 @@ namespace Graph_Editor
         private void animationOK_Click(object sender, RoutedEventArgs e)
         {
             Globals.animationTime = setNowSpeed;
+            Globals.AnimationEllipse.Fill = animateColor;
+            Globals.baseAnimationSpeed = setNowAnimationSpeed;
+
+            Globals.baseAnimationColor = setNowAnimationColor;
+
             this.Close();
+        }
+
+        private void ChangeBallColorButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((Button)this.FindName(setNowAnimationColor)).Height = 25;
+
+            animateColor = (sender as Button).Background;
+
+            setNowAnimationColor = (sender as Button).Name;
+            (sender as Button).Height = 30;
+        }
+
+        private void ResetAnimationColor_Click(object sender, RoutedEventArgs e)
+        {
+            ((Button)this.FindName(setNowAnimationColor)).Height = 25;
+
+            ((Button)this.FindName(Globals.baseAnimationColor)).Height = 30;
+
+            setNowAnimationColor = Globals.baseAnimationColor;
+            animateColor = Globals.AnimationEllipse.Fill;
         }
     }
 }

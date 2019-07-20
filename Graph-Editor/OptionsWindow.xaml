@@ -56,6 +56,14 @@
             <Button x:Name="VeryFast" Content="Very fast" FontSize="25" Margin="572,129,39,479" Click="ChooseVeryFastAnimation"/>
             <Label Content="Speed: " FontSize="45" Margin="0,258,572,327"/>
 
+            <Label Content="Color animation: "  FontSize="45" Margin="0,387,371,194"/>
+            <Button x:Name="orbBlue"  Background="Blue"  HorizontalAlignment="Left" Height="25" Margin="367,416,0,0" VerticalAlignment="Top" Width="30" Click="ChangeBallColorButton_Click"/>
+            <Button x:Name="orbYellow" Background="Yellow" HorizontalAlignment="Left" Height="25" Margin="409,416,0,0" VerticalAlignment="Top" Width="30" Click="ChangeBallColorButton_Click"/>
+            <Button x:Name="orbGreen"  Background="Green"  HorizontalAlignment="Left" Height="25" Margin="451,416,0,0" VerticalAlignment="Top" Width="30" Click="ChangeBallColorButton_Click"/>
+            <Button x:Name="orbBlack"   Background="Black"   HorizontalAlignment="Left" Height="25" Margin="493,416,0,0" VerticalAlignment="Top" Width="30" Click="ChangeBallColorButton_Click"/>
+            <Button x:Name="orbRed"    Background="Red"    HorizontalAlignment="Left" Height="25" Margin="533,416,0,0" VerticalAlignment="Top" Width="30" Click="ChangeBallColorButton_Click"/>
+
+            <Button Content="Reset" FontSize="25" Margin="468,458,170,150" Click="ResetAnimationColor_Click"/>
             <Slider x:Name="SpeedSlider"
                     Foreground="Black" Background="Transparent"
                     Maximum="100" Minimum="1" SmallChange="1" LargeChange="10"
@@ -71,6 +79,7 @@
                      Height="75" Margin="502,258,0,0" Width="129"
                      TextWrapping="Wrap" Text="1" TextChanged="TextBox_Speed_TextChanged"
             />
+
             <Button Content="OK"    FontSize="35" Margin="190,592,395,10" Click="animationOK_Click"/>
             <Button Content="Close" FontSize="35" Margin="10,592,563,10" Click="Exit"/>
         </Grid>

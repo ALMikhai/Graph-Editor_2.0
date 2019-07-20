@@ -134,7 +134,7 @@ namespace Graph_Editor
 
         public void InvalidateAlgo(Edge edge)
         {
-            GraphCanvas.Children.Remove(AnimationEdge.AnimationEllipse);
+            GraphCanvas.Children.Remove(Globals.AnimationEllipse);
             var drawingVisual = new DrawingVisual();
             var drawingContext = drawingVisual.RenderOpen();
             

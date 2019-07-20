@@ -140,9 +140,12 @@
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="Documentation" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black" Click="ViewDocumentation">
+            <MenuItem Header="Documentation" FontFamily="sans-serif" FontSize="15" BorderBrush="Black" Foreground="White" Click="ViewDocumentation">
             </MenuItem>
-            <MenuItem Header="Options" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black" Click="GoToOptions">
+            <MenuItem Header="Options" FontFamily="sans-serif" FontSize="15" BorderBrush="Black" Foreground="White" Click="GoToOptions">
+            </MenuItem>
+            <MenuItem Header="Colors" FontFamily="sans-serid" FontSize="15" BorderBrush="Black" Foreground="White">
+                <ToolBarPanel Name="colorbarPanel" Grid.Row="0" Height="35px" Orientation="Horizontal" Margin="24,0,0,0"/>
             </MenuItem>
         </Menu>
         <Grid x:Name="Exit_Dialog" Background="White" Margin="366,253,208,313" Visibility="Hidden" Grid.ColumnSpan="2">
