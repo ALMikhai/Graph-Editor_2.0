@@ -54,51 +54,73 @@ namespace Graph_Editor.UndoRedo
 
             if ((record.Befor is Vertex) || (record.After is Vertex))
             {
-                Vertex rollback = Globals.VertexData.Find(match => (match.Index == (record.After as Vertex).Index
-                                                         && match.Coordinates == (record.After as Vertex).Coordinates
-                                                         && match.Color == (record.After as Vertex).Color));
 
-                if (rollback != null)
+                if ((record.Befor is Vertex) && (record.After is List<Edge>))
                 {
-                    if(record.Befor == null)
+                    for(var i = (record.Befor as Vertex).Index; i < Globals.VertexData.Count; ++i)
                     {
-                        Globals.GlobalIndex--;
-                        Globals.VertexData.Remove(rollback);
+                        Globals.VertexData[i].Index++;
                     }
 
-                    if(record.After is List<int>)
-                    {
-                        // TODO Если в до лежит вершина, а в после лежит лист индексов - вставить обратно эту вершину и соеденить с вершинами в листе.
-                    }
+                    Globals.VertexData.Add((Vertex)record.Befor);
 
-                    if((record.Befor is Vertex) && (record.After is Vertex))
+                    foreach (var edge in (List<Edge>)record.After)
                     {
-                        Globals.VertexData.Add((Vertex)record.Befor);
-
-                        foreach (var edge in Globals.EdgesData.ToArray())
+                        if (edge.From.Index == (record.Befor as Vertex).Index && edge.From.Coordinates == (record.Befor as Vertex).Coordinates && edge.From.Color == (record.Befor as Vertex).Color)
                         {
-                            if(edge.From == rollback)
-                            {
-                                edge.From = (Vertex)record.Befor;
-                            }
+                            Vertex to = findVertex(edge.To);
+                            Globals.EdgesData.Add(new Edge((Vertex)record.Befor, to, edge.Weight, edge.Directed, edge.Color, edge.Thickness));
+                        }
+                        else
+                        {
+                            Vertex from = findVertex(edge.From);
+                            Globals.EdgesData.Add(new Edge(from, (Vertex)record.Befor, edge.Weight, edge.Directed, edge.Color, edge.Thickness));
+                        }
+                    }
 
-                            if(edge.To == rollback)
-                            {
-                                edge.To = (Vertex)record.Befor;
-                            }
+                    Globals.RestoreMatrix();
+
+                    return;
+                }
+
+                Vertex rollback = findVertex(record.After as Vertex);
+                
+                if(record.Befor == null)
+                {
+                    Globals.GlobalIndex--;
+                    Globals.VertexData.Remove(rollback);
+                    return;
+                }
+
+                if((record.Befor is Vertex) && (record.After is Vertex))
+                {
+                    Globals.VertexData.Add((Vertex)record.Befor);
+
+                    foreach (var edge in Globals.EdgesData.ToArray())
+                    {
+                        if(edge.From == rollback)
+                        {
+                            edge.From = (Vertex)record.Befor;
                         }
 
-                        Globals.VertexData.Remove(rollback);
+                        if(edge.To == rollback)
+                        {
+                            edge.To = (Vertex)record.Befor;
+                        }
                     }
+
+                    Globals.VertexData.Remove(rollback);
+                    return;
                 }
+                
             }
 
             if ((record.Befor is Edge) || (record.After is Edge))
             {
-                Edge rollbackDirected = Globals.EdgesData.Find(match => match == record.After);
-                Edge rollbackUndirected = Globals.EdgesData.Find(match => (match.From == (record.After as Edge).To) && (match.To == (record.After as Edge).From));
+                Edge rollbackDirected = findEdge((Edge)record.After);
+                Edge rollbackUndirected = findReversEdge((Edge)record.After);
 
-                if(rollbackDirected != null)
+                if (rollbackDirected != null)
                 {
                     if (record.Befor == null)
                     {
@@ -118,6 +140,23 @@ namespace Graph_Editor.UndoRedo
         public static void Redo()
         {
 
+        }
+
+        private static Vertex findVertex(Vertex vertex)
+        {
+            return Globals.VertexData.Find(match => (match.Index == vertex.Index
+                                                  && match.Coordinates == vertex.Coordinates
+                                                  && match.Color == vertex.Color));
+        }
+
+        private static Edge findEdge(Edge edge)
+        {
+            return Globals.EdgesData.Find(match => (match.From == findVertex(edge.From) && match.To == findVertex(edge.To)));
+        }
+
+        private static Edge findReversEdge(Edge edge)
+        {
+            return Globals.EdgesData.Find(match => (match.From == findVertex(edge.To) && match.To == findVertex(edge.From)));
         }
     }
 }

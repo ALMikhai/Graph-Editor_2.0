@@ -29,6 +29,8 @@ namespace Graph_Editor
 
             if(findedVert != null)
             {
+                List<Edge> adjacentVertices = new List<Edge>();
+
                 foreach (var edge in Globals.EdgesData.ToArray())
                 {
                     if (edge.From == findedVert || edge.To == findedVert)
@@ -38,20 +40,23 @@ namespace Graph_Editor
                         {
                             Globals.Matrix[edge.To.Index, edge.From.Index] = 0;
                         }
+
+                        adjacentVertices.Add(new Edge(edge));
+
                         Globals.EdgesData.Remove(edge);
                     }
                 }
 
-                for(var i = findedVert.Index; i < Globals.VertexData.Count; ++i)
+                History.Add(new Vertex(findedVert), adjacentVertices);
+
+                for (var i = findedVert.Index; i < Globals.VertexData.Count; ++i)
                 {
                     Globals.VertexData[i].Index--;
                 }
 
-                Globals.GlobalIndex--;
-
                 Globals.RestoreMatrix();
 
-                // TODO Добавлять в историю, до - вершина, после - лист интов с индексами вершин которые были связаны с этой.
+                Globals.GlobalIndex--;
 
                 Globals.VertexData.Remove(findedVert);
 
