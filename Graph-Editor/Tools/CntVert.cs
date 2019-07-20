@@ -51,9 +51,9 @@ namespace Graph_Editor
                     }
                     else
                     {
+                        vertexSecond.Color = saveColor;
                         ConnectVertex(vertexFirst, vertexSecond, 1, false);
 
-                        vertexSecond.Color = saveColor;
                         vertexFirst = null;
                         vertexSecond = null;
                     }
@@ -68,8 +68,8 @@ namespace Graph_Editor
                 return;
             }
 
-            var edgeDirected = new Edge(from, to, weight, directed);
-            var edgeUndirected = new Edge(to, from, weight, directed);
+            var edgeDirected = new Edge(from, to, weight, directed, Globals.ColorEdge, Globals.ThicknessEdge);
+            var edgeUndirected = new Edge(to, from, weight, directed, Globals.ColorEdge, Globals.ThicknessEdge);
 
             Globals.EdgesData.Add(edgeDirected);
             Globals.Matrix[from.Index, to.Index] = weight;
@@ -80,7 +80,7 @@ namespace Graph_Editor
                 Globals.Matrix[to.Index, from.Index] = weight;
             }
 
-            History.Add(null, edgeDirected);
+            History.Add(null, new Edge(edgeDirected));
         }
 
         public override void Change_Tool()
