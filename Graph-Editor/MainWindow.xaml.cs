@@ -21,22 +21,24 @@ using System.Diagnostics;
 using Graph_Editor.Algoritms;
 using System.ComponentModel;
 using Graph_Editor.ShowData;
+using Graph_Editor.UndoRedo;
 
 namespace Graph_Editor
 {
     // CodeStyle.
-    // 1) Переменный - локальные(Camel casing), глобальные(Pascal casing).
-    // 2) Приватные, защищённые поля(Camel casing) публичные поля, свойства(Pascal casing).
-    // 3) Аргументы функций(Camel casing).
-    // 4) В объявлении foreach использовать var, в объявлении переменных где будет понятен тип переменной использовать var.
-    // 5) Названия функций(Camel casing).
-    // 6) В назывниях функциий, переменных и даже в xaml'е не должно присутствовать знака подчеркивания '_' (только в тех случаях, когда это делает студия).
-    // 7) Названия переменных и функций должны быть понятны всем, а не только тому кто это писал.
-    // 8) Не использовать сокращения в названиях переменных и функций.
+    // 1) пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ(Camel casing), пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ(Pascal casing).
+    // 2) пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ(Camel casing) пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ(Pascal casing).
+    // 3) пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ(Camel casing).
+    // 4) пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ foreach пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ var, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ var.
+    // 5) пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ(Camel casing).
+    // 6) пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅ xaml'пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ '_' (пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ).
+    // 7) пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
+    // 8) пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 
-    // TODO Сделать отдельный виртуальный класс Alogoritm и вынести туда общие методы по типу (старт). Нужно для удобного вызова Алгоритмов(Не DFS.Start() BFS.Start(), а AlgoritmNow.Start()для всех).
-    // TODO Плохо работает визуализация матрицы смежности(переделать).
-    
+    // TODO пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ(пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ).
+    // TODO пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+    // TODO пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
+
     public partial class MainWindow : Window
     {
         private static FigureHost graphHost = new FigureHost();
@@ -45,10 +47,10 @@ namespace Graph_Editor
         public MainWindow()
         {
             InitializeComponent();
+            AddVertex.Background = Brushes.CadetBlue;
             GraphCanvas.Children.Add(graphHost);
             Instance = this;
         }
-
         public void Invalidate()
         {
             GraphCanvas.Children.Clear();
@@ -83,9 +85,7 @@ namespace Graph_Editor
 
                     var left = new Point((centerSecond.X + (Xp / d) * 6), (centerSecond.Y + (Yp / d) * 6));
                     var right = new Point((centerSecond.X - (Xp / d) * 6), (centerSecond.Y - (Yp / d) * 6));
-
-
-
+                    
                     drawingContext.DrawLine(pen, center, left);
                     drawingContext.DrawLine(pen, center, right);
                 }
@@ -185,7 +185,6 @@ namespace Graph_Editor
         {
             ConnectVertices connectVertices = new ConnectVertices();
             WaitPanel.Visibility = Visibility.Visible;
-            WaitPanel.Opacity = 0.4;
             connectVertices.Show();
         }
 
@@ -193,6 +192,7 @@ namespace Graph_Editor
         {
             AlgoritmsWindow algoritms = new AlgoritmsWindow();
             WaitPanel.Visibility = Visibility.Visible;
+            Algorimts_Window.IsEnabled = false;
             algoritms.Show();
         }
 
@@ -213,6 +213,7 @@ namespace Graph_Editor
                 if (string.Compare((sender as Button).Background.ToString(), "#FF5F9EA0") == 0)
                 {
                     Connect_Click(sender, e);
+                    Connect.IsEnabled = false;
                 }
             }
 
@@ -332,7 +333,6 @@ namespace Graph_Editor
         {
             CurrentMatrix currentMatrix = new CurrentMatrix();
             WaitPanel.Visibility = Visibility.Visible;
-            WaitPanel.Background = Brushes.Gray;
             currentMatrix.Show();
         }
 
@@ -340,18 +340,34 @@ namespace Graph_Editor
         {
             CurrentList currentList = new CurrentList();
             WaitPanel.Visibility = Visibility.Visible;
-            WaitPanel.Background = Brushes.Gray;
             currentList.Show();
         }
 
-        private void ChangeVertexColorButton_Click(object sender, RoutedEventArgs e)
+        private void ViewDocumentation(object sender, RoutedEventArgs e)
         {
-            Globals.ColorInsideVertex = (sender as Button).Background;
+            Documentation documentation = new Documentation();
+            documentation.Show();
         }
 
-        private void ChangeEdgeColorButton_Click(object sender, RoutedEventArgs e)
+        private void GoToOptions(object sender, RoutedEventArgs e)
         {
-            Globals.ColorEdge = (sender as Button).Background;
+            OptionsWindow optionsWindow = new OptionsWindow();
+            optionsWindow.Show();
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Z & Keyboard.Modifiers == ModifierKeys.Control)
+            {
+                History.UndoRedo(0);
+                Invalidate();
+            }
+
+            if (e.Key == Key.Y & Keyboard.Modifiers == ModifierKeys.Control)
+            {
+                History.UndoRedo(1);
+                Invalidate();
+            }
         }
     }
 }

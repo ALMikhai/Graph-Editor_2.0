@@ -10,6 +10,11 @@ namespace Graph_Editor
     [Serializable]
     public static class Globals
     {
+        public static string baseVertex = "vBlack";
+        public static string baseEdge = "eLightBlue";
+
+        public static double animationTime = 1.5;
+
         public static int GlobalIndex = 0;
         public static int Size = 100;
         public static int[,] Matrix = new int[Size, Size];
@@ -97,12 +102,29 @@ namespace Graph_Editor
 
             foreach (var edge in EdgesData)
             {
-                Matrix[edge.From.Index, edge.To.Index] = 1;
+                Matrix[edge.From.Index, edge.To.Index] = edge.Weight;
                 if (!edge.Directed)
                 {
-                    Matrix[edge.To.Index, edge.From.Index] = 1;
+                    Matrix[edge.To.Index, edge.From.Index] = edge.Weight;
                 }
             }
+        }
+
+        public static Vertex FindVertex(Vertex vertex)
+        {
+            return VertexData.Find(match => (match.Index == vertex.Index
+                                                  && match.Coordinates == vertex.Coordinates
+                                                  && match.Color == vertex.Color));
+        }
+
+        public static Edge FindEdge(Edge edge)
+        {
+            return EdgesData.Find(match => (match.From == FindVertex(edge.From) && match.To == FindVertex(edge.To)));
+        }
+
+        public static Edge FindReversEdge(Edge edge)
+        {
+            return EdgesData.Find(match => (match.From == FindVertex(edge.To) && match.To == FindVertex(edge.From)));
         }
     }
 }

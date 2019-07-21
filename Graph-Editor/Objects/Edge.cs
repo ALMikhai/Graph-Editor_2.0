@@ -22,8 +22,8 @@ namespace Graph_Editor.Objects
 {
     [Serializable]
     public class Edge : ISerializable
-    { // TODO Сделать поле color и хранить только цвет и толщину, при отрисовке делать новый карандаш из цвета и толщины.
-        private readonly Vertex from, to;
+    {
+        private Vertex from, to;
         private int weight;
         private bool directed;
         private Brush color = Globals.ColorEdge;
@@ -31,11 +31,13 @@ namespace Graph_Editor.Objects
 
         public Vertex From
         {
+            set { from = value; }
             get { return from; }
         }
 
         public Vertex To
         {
+            set { to = value; }
             get { return to; }
         }
 
@@ -63,12 +65,24 @@ namespace Graph_Editor.Objects
             set { thickness = value; }
         }
 
-        public Edge(Vertex first, Vertex second, int w, bool state)
+        public Edge(Vertex from, Vertex to, int weight, bool directed, Brush color, double thickness)
         {
-            from = first;
-            to = second;
-            weight = w;
-            directed = state;
+            From = from;
+            To = to;
+            Weight = weight;
+            Directed = directed;
+            Color = color;
+            Thickness = thickness;
+        }
+
+        public Edge(Edge edge)
+        {
+            From = new Vertex(edge.From);
+            To = new Vertex(edge.To);
+            Weight = edge.Weight;
+            Directed = edge.Directed;
+            Color = edge.Color;
+            Thickness = edge.Thickness;
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)

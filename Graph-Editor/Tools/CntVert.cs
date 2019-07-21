@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using Graph_Editor.Objects;
+using Graph_Editor.UndoRedo;
 
 namespace Graph_Editor
 {
@@ -50,21 +51,36 @@ namespace Graph_Editor
                     }
                     else
                     {
-                        var edgeDirected = new Edge(vertexSecond, vertexFirst, 1, false);
-                        var edgeUndirected = new Edge(vertexFirst, vertexSecond, 1, false);
-
-                        Globals.Matrix[edgeDirected.From.Index, edgeDirected.To.Index] = 1;
-                        Globals.Matrix[edgeDirected.To.Index, edgeDirected.From.Index] = 1;
-
-                        Globals.EdgesData.Add(edgeDirected);
-                        Globals.EdgesData.Add(edgeUndirected);
-
                         vertexSecond.Color = saveColor;
+                        ConnectVertex(vertexFirst, vertexSecond, 1, false);
+
                         vertexFirst = null;
                         vertexSecond = null;
                     }
                 }
             }
+        }
+
+        public static void ConnectVertex(Vertex from, Vertex to, int weight, bool directed)
+        {
+            if (Globals.Matrix[from.Index, to.Index] >= 1 || (Globals.Matrix[to.Index, from.Index] >= 1 && !directed))
+            {
+                return;
+            }
+
+            var edgeDirected = new Edge(from, to, weight, directed, Globals.ColorEdge, Globals.ThicknessEdge);
+            var edgeUndirected = new Edge(to, from, weight, directed, Globals.ColorEdge, Globals.ThicknessEdge);
+
+            Globals.EdgesData.Add(edgeDirected);
+            Globals.Matrix[from.Index, to.Index] = weight;
+
+            if (!directed)
+            {
+                Globals.EdgesData.Add(edgeUndirected);
+                Globals.Matrix[to.Index, from.Index] = weight;
+            }
+
+            History.Add(null, new Edge(edgeDirected));
         }
 
         public override void Change_Tool()
