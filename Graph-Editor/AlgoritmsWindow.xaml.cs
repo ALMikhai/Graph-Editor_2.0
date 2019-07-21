@@ -133,5 +133,23 @@ namespace Graph_Editor
                 (sender as Button).Background = Brushes.CadetBlue;
             }
         }
+
+        private void FSstartVertex_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(FSstartVertex.Text, "[^0-9]"))
+                FSstartVertex.Text = FSstartVertex.Text.Remove(FSstartVertex.Text.Length - 1);
+        }
+
+        private void DijkstrastartVertex_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(DijkstrastartVertex.Text, "[^0-9]"))
+                DijkstrastartVertex.Text = DijkstrastartVertex.Text.Remove(DijkstrastartVertex.Text.Length - 1);
+        }
+
+        private void DijkstrafinalVertex_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(DijkstrafinalVertex.Text, "[^0-9]"))
+                DijkstrafinalVertex.Text = DijkstrafinalVertex.Text.Remove(DijkstrafinalVertex.Text.Length - 1);
+        }
     }
 }

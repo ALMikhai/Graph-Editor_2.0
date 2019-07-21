@@ -115,7 +115,8 @@
             <TextBox x:Name="FSstartVertex"
             FontSize="20" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"
             Height="38" Margin="246,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
-            Background="WhiteSmoke" BorderThickness="1" BorderBrush="black" RenderTransformOrigin="0.494,-0.553"
+            Background="WhiteSmoke" BorderThickness="1" BorderBrush="black" RenderTransformOrigin="0.494,-0.553" TextChanged="FSstartVertex_TextChanged"
+            
         />
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="2" Margin="0,116,0,0" VerticalAlignment="Top" Width="415"/>
             <Label x:Name="BFS_DFS_label"
@@ -151,7 +152,7 @@
             <TextBox x:Name="DijkstrastartVertex"
             FontSize="20" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"
             Height="38" Margin="246,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
-            Background="WhiteSmoke" BorderThickness="1" BorderBrush="black"
+            Background="WhiteSmoke" BorderThickness="1" BorderBrush="black" TextChanged="DijkstrastartVertex_TextChanged"
             />
             <Label Content="Final vertex:" 
                HorizontalAlignment="Left" Height="50" Margin="40,102,0,0" 
@@ -161,7 +162,7 @@
             <TextBox x:Name="DijkstrafinalVertex"
             FontSize="20" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"
             Height="38" Margin="246,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
-            Background="WhiteSmoke" BorderThickness="1" BorderBrush="black"
+            Background="WhiteSmoke" BorderThickness="1" BorderBrush="black" TextChanged="DijkstrafinalVertex_TextChanged"
             />
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="1" Margin="0,174,0,0" VerticalAlignment="Top" Width="391" RenderTransformOrigin="0.5,0.5"/>
         </Grid>
