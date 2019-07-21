@@ -50,6 +50,7 @@ namespace Graph_Editor
         public static Brush MainCanvas = (Brush)new BrushConverter().ConvertFrom("#B7E1E1");
         public static Brush MainMenu = Brushes.Black;
         public static Brush MainExitDialog = Brushes.White;
+        public static Brush MainMenuItems = Brushes.Black;
 
         // Documentation Window
         public static Brush DocCreatorsButton = Brushes.Transparent;

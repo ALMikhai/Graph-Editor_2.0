@@ -60,6 +60,11 @@ namespace Graph_Editor
             GraphCanvas.Background = Themes.MainCanvas;
 
             MainMenu.Background = Themes.MainMenu;
+            save.Background = Themes.MainMenuItems;
+            open.Background = Themes.MainMenuItems;
+            exit.Background = Themes.MainMenuItems;
+            matrix.Background = Themes.MainMenuItems;
+            list.Background = Themes.MainMenuItems;
 
             Exit_Dialog.Background = Themes.MainExitDialog;
         }
@@ -68,6 +73,9 @@ namespace Graph_Editor
         {
             InitializeComponent();
             ThemeSettings();
+
+            list.Background = Brushes.Gray;
+
             GraphCanvas.Children.Add(graphHost);
             Instance = this;
         }
