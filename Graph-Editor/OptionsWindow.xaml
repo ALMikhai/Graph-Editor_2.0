@@ -5,55 +5,97 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Graph_Editor"
         mc:Ignorable="d"
-        Title="OptionsWindow" Height="688.565" Width="912.216" ResizeMode="NoResize">
-    <Grid>
+        Closing="Window_Closing"
+        Title="OptionsWindow" Height="688.565" Width="912" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style x:Key="ToolBarButton" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}" HorizontalAlignment="Center" VerticalAlignment="Center"
+                              Height="103" Width="160" Margin="2,10,0,0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Border BorderThickness="0"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="AnimationSpeed" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="52" Width="123">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="Exit_Buttons" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="58" Width="148">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid x:Name="MainWindow" Background="#DCF5F5">
         <ToolBarPanel HorizontalAlignment="Left" Height="660" VerticalAlignment="Top" Width="162">
-            <Button x:Name="ThemeButton" Content="Theme" Margin="5 10 5 0" Height="100"
-                    FontSize="25" FontWeight="DemiBold" Foreground="Black" Background="Gray" Click="ChooseThemeMenu"></Button>
-            <Button x:Name="VertexEdgeButton" Content="Vertex/Edge" Margin="5 10 5 0" Height="100" 
-                    FontSize="25" FontWeight="DemiBold" Foreground="Black" Background="LightGray" Click="ChooseVertex_Edge_Menu" ></Button>
-            <Button x:Name="AnimationButton" Content="Animation" Margin="5,10,5,0" Height="100"
-                    FontSize="25" FontWeight="DemiBold" Foreground="Black" Background="LightGray" Click="ChooseAnimationMenu"></Button>
+            <Button Style="{StaticResource ToolBarButton}" x:Name="ThemeButton" Content="Theme"
+                    Background="#C6DCDC"
+                    FontSize="25" FontWeight="DemiBold" Click="ChooseThemeMenu"></Button>
+            <Button Style="{StaticResource ToolBarButton}" x:Name="VertexEdgeButton" Content="Vertex/Edge"
+                    Background="#B0C4C4"
+                    FontSize="25" FontWeight="DemiBold" Click="ChooseVertex_Edge_Menu" ></Button>
+            <Button Style="{StaticResource ToolBarButton}" x:Name="AnimationButton" Content="Animation"
+                    Background="#B0C4C4"
+                    FontSize="25" FontWeight="DemiBold" Click="ChooseAnimationMenu"></Button>
         </ToolBarPanel>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="660" Margin="167,0,0,0" VerticalAlignment="Top" Width="1"/>
 
         <Grid x:Name="ThemeGrid" Margin="173,0,0,0" Visibility="Visible">
-            <Button x:Name="LightTheme" Background="Transparent" FontSize="35" Content="Light Theme" Margin="34,89,495,487"/>
-            <Image Source="images/Themes/LightTheme.png" Width="350" Height="240" Margin="286,30,97,390"/>
+            <Label Content="Choose Theme:" Margin="129,76,165,484" FontSize="55" FontWeight="SemiBold"/>
+            <Button x:Name="LightTheme" Background="Transparent" FontSize="35" Content="Light Theme" Margin="18,258,395,86" Click="LightTheme_Click"/>
 
-            <Button x:Name="DarkTheme" Background="Transparent" FontSize="35" Content="Dark Theme" Margin="34,450,495,126" />
-            <Image Source="images/Themes/LightTheme.png" Width="350" Height="240" Margin="286,369,97,51" />
+            <Button x:Name="DarkTheme" Background="Transparent" FontSize="35" Content="Dark Theme" Margin="379,258,33,86" />
+
+            <Button x:Name="ThemeOkButton" Background="#CBDFDF" Style="{StaticResource Exit_Buttons}" Content="OK"    FontSize="35" Margin="190,592,395,10" Click="ThemeOK_Click"/>
+            <Button x:Name="ThemeCloseButton" Background="#CBDFDF" Style="{StaticResource Exit_Buttons}" Content="Close" FontSize="35" Margin="10,592,563,10" Click="Exit"/>
         </Grid>
         <Grid x:Name="VertexEdgeGrid" Margin="173,0,0,0" Visibility="Hidden">
-            <Label Content="Style" FontSize="50" Margin="116,63,478,511"/>
+            <Label Content="Style:" FontSize="65" Margin="10,95,475,448" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
-            <Label Content="Vertex: " FontSize="35" Margin="0,222,600,370"/>
-            <Button x:Name="vBlack"  Background="Black"  HorizontalAlignment="Left" Height="25" Margin="120,175,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
-            <Button x:Name="vYellow" Background="Yellow" HorizontalAlignment="Left" Height="25" Margin="155,175,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
-            <Button x:Name="vGreen"  Background="Green"  HorizontalAlignment="Left" Height="25" Margin="190,175,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
-            <Button x:Name="vBlue"   Background="Blue"   HorizontalAlignment="Left" Height="25" Margin="225,175,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
+            <Label Content="Vertex: " FontSize="35" Margin="0,307,600,285"/>
+            <Button x:Name="vBlack"  Background="Black"  HorizontalAlignment="Left" Height="26" Margin="133,246,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
+            <Button x:Name="vYellow" Background="Yellow" HorizontalAlignment="Left" Height="25" Margin="175,246,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
+            <Button x:Name="vGreen"  Background="Green"  HorizontalAlignment="Left" Height="25" Margin="220,246,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
+            <Button x:Name="vBlue"   Background="Blue"   HorizontalAlignment="Left" Height="25" Margin="266,246,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
 
-            <Label Content="Edge: " FontSize="35" Margin="0,154,600,438"/>
-            <Button x:Name="eLightBlue" Background="#80FFFF" HorizontalAlignment="Left" Height="25" Margin="120,240,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
-            <Button x:Name="eYellow"    Background="Yellow"  HorizontalAlignment="Left" Height="25" Margin="155,240,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
-            <Button x:Name="eGreen"     Background="Green"   HorizontalAlignment="Left" Height="25" Margin="190,240,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
-            <Button x:Name="eBlue"      Background="Blue"    HorizontalAlignment="Left" Height="25" Margin="225,240,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
+            <Label Content="Edge: " FontSize="35" Margin="0,229,600,363"/>
+            <Button x:Name="eLightBlue" Background="#80FFFF" HorizontalAlignment="Left" Height="25" Margin="133,325,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
+            <Button x:Name="eYellow"    Background="Yellow"  HorizontalAlignment="Left" Height="25" Margin="175,325,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
+            <Button x:Name="eGreen"     Background="Green"   HorizontalAlignment="Left" Height="25" Margin="220,325,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
+            <Button x:Name="eBlue"      Background="Blue"    HorizontalAlignment="Left" Height="25" Margin="266,325,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
 
-            <Button Background="Gray"         BorderThickness="0" Content="Reset" FontSize="23" Margin="65,309,583,306"  Width="85" Click="Reset_Click"/>
-            <Button Background="DarkSeaGreen" BorderThickness="0" Content="Check"  FontSize="23" Margin="150,309,478,306" Click="Check_Click"/>
+            <Button x:Name="VEReset" Background="Gray"         BorderThickness="0" Content="Reset" FontSize="27" Margin="84,381,545,228" Click="Reset_Click"/>
+            <Button x:Name="VECheck" Background="DarkSeaGreen" BorderThickness="0" Content="Check"  FontSize="27" Margin="175,381,453,228" Click="Check_Click"/>
 
-
-            <Button Content="OK"    FontSize="35" Margin="190,592,395,10" Click="OK_Click"/>
-            <Button Content="Close" FontSize="35" Margin="10,592,563,10" Click="Exit"/>
+            <Button x:Name="VEOkButton" Background="#CBDFDF" Style="{StaticResource Exit_Buttons}" Content="OK"    FontSize="35" Margin="190,592,395,10" Click="OK_Click"/>
+            <Button x:Name="VECloseButton" Background="#CBDFDF" Style="{StaticResource Exit_Buttons}" Content="Close" FontSize="35" Margin="10,592,563,10" Click="Exit"/>
 
             <Image Source="images/Themes/tmp.png" Margin="398,0,0,0"/>
         </Grid>
         <Grid x:Name="AnimationGrid" Margin="173,0,0,0" Visibility="Hidden">
             <Label Content="Animation Speed" FontSize="50" FontWeight="DemiBold" FontStyle="Italic" HorizontalContentAlignment="Center" Margin="139,10,144,567"/>
-            <Button x:Name="Slow" Content="Slow" FontSize="25" Margin="38,129,572,479" Click="ChooseSlowAnimation"/>
-            <Button x:Name="Medium" Content="Medium" FontSize="25" Margin="220,129,391,479" Click="ChooseMediumAnimation"/>
-            <Button x:Name="Fast" Content="Fast" FontSize="25" Margin="399,129,210,479" Click="ChooseFastAnimation"/>
-            <Button x:Name="VeryFast" Content="Very fast" FontSize="25" Margin="572,129,39,479" Click="ChooseVeryFastAnimation"/>
+            <Button Style="{StaticResource AnimationSpeed}" Background="#C6DCDC" x:Name="Slow" Content="Slow" FontSize="25" Margin="38,129,572,479" Click="ChooseSlowAnimation"/>
+            <Button Style="{StaticResource AnimationSpeed}" Background="#C6DCDC" x:Name="Medium" Content="Medium" FontSize="25" Margin="220,129,391,479" Click="ChooseMediumAnimation"/>
+            <Button Style="{StaticResource AnimationSpeed}" Background="#C6DCDC" x:Name="Fast" Content="Fast" FontSize="25" Margin="399,129,210,479" Click="ChooseFastAnimation"/>
+            <Button Style="{StaticResource AnimationSpeed}" Background="#C6DCDC" x:Name="VeryFast" Content="Very fast" FontSize="25" Margin="572,129,39,479" Click="ChooseVeryFastAnimation"/>
             <Label Content="Speed: " FontSize="45" Margin="0,258,572,327"/>
 
             <Label Content="Color animation: "  FontSize="45" Margin="0,387,371,194"/>
@@ -63,7 +105,7 @@
             <Button x:Name="orbBlack"   Background="Black"   HorizontalAlignment="Left" Height="25" Margin="493,416,0,0" VerticalAlignment="Top" Width="30" Click="ChangeBallColorButton_Click"/>
             <Button x:Name="orbRed"    Background="Red"    HorizontalAlignment="Left" Height="25" Margin="533,416,0,0" VerticalAlignment="Top" Width="30" Click="ChangeBallColorButton_Click"/>
 
-            <Button Content="Reset" FontSize="25" Margin="468,458,170,150" Click="ResetAnimationColor_Click"/>
+            <Button x:Name="AnimReset" Background="#C6DCDC" Content="Reset" FontSize="25" Margin="468,458,170,150" Click="ResetAnimationColor_Click"/>
             <Slider x:Name="SpeedSlider"
                     Foreground="Black" Background="Transparent"
                     Maximum="100" Minimum="1" SmallChange="1" LargeChange="10"
@@ -80,8 +122,8 @@
                      TextWrapping="Wrap" Text="1" TextChanged="TextBox_Speed_TextChanged"
             />
 
-            <Button Content="OK"    FontSize="35" Margin="190,592,395,10" Click="animationOK_Click"/>
-            <Button Content="Close" FontSize="35" Margin="10,592,563,10" Click="Exit"/>
+            <Button x:Name="AnimOkButton" Background="#CBDFDF" Style="{StaticResource Exit_Buttons}" Content="OK"    FontSize="35" Margin="190,592,395,10" Click="animationOK_Click"/>
+            <Button x:Name="AnimCloseButton" Background="#CBDFDF" Style="{StaticResource Exit_Buttons}" Content="Close" FontSize="35" Margin="10,592,563,10" Click="Exit"/>
         </Grid>
 
     </Grid>

@@ -16,10 +16,28 @@ namespace Graph_Editor
         int chooseAlg;
 
         MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
+        
+        private void ThemeSettings()
+        {
+            MainWindow.Background           = Themes.AlgoMainWindowColor;
+
+            BFSButton.Background            = Themes.AlgoIsAlgoReady;
+            DFSButton.Background            = Themes.AlgoIsAlgoReady;
+            DijkstraButton.Background       = Themes.AlgoIsAlgoFailed;
+            ColorButton.Background          = Themes.AlgoIsAlgoFailed;
+            HamiltonianButton.Background    = Themes.AlgoIsAlgoFailed;
+            EulerButton.Background          = Themes.AlgoIsAlgoFailed;
+            FloydButton.Background          = Themes.AlgoIsAlgoFailed;
+            KruskalButton.Background        = Themes.AlgoIsAlgoReady;
+            MaximumButton.Background        = Themes.AlgoIsAlgoFailed;
+
+            CancelButton.Background         = Themes.AlgoCancelButton;
+        }
 
         public AlgoritmsWindow()
         {
             InitializeComponent();
+            ThemeSettings();
         }
 
         private void DataWindow_Closing(object sender, CancelEventArgs e)
