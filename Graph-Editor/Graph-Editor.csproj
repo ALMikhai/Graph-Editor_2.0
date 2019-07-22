@@ -66,9 +66,14 @@
     </Compile>
     <Compile Include="Animation\AnimationEdge.cs" />
     <Compile Include="Globals.cs" />
+<<<<<<< HEAD
     <Compile Include="PropertiesWindow\VertexProrerty.xaml.cs">
       <DependentUpon>VertexProrerty.xaml</DependentUpon>
     </Compile>
+=======
+    <Compile Include="Settings.cs" />
+    <Compile Include="Themes.cs" />
+>>>>>>> Dmitry's_branch_reborn
     <Compile Include="UndoRedo\History.cs" />
     <Compile Include="UndoRedo\Record.cs" />
     <Compile Include="Objects\Edge.cs" />
