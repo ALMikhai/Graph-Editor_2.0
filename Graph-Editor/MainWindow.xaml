@@ -62,7 +62,7 @@
             </Image>
         </Button>
         <Button Style="{StaticResource MyButtonStyle}" x:Name="MoveVertex"
-                Tag="1" Background="#345160"
+                Tag="5" Background="#345160"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Margin="54,344,0,0"

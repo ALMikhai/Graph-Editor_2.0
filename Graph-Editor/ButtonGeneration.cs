@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using Graph_Editor.Objects;
+using Graph_Editor.PropertiesWindow;
 
 namespace Graph_Editor
 {

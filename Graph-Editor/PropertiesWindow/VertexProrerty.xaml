@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Graph_Editor.PropertiesWindow"
         mc:Ignorable="d"
-        Title="VertexProrerty" Height="200" Width="300
+        Title="VertexProrerty" Height="250" Width="400
         ">
     <Grid Background="#98B0B0">
-        <TextBox x:Name="NameVertex" HorizontalAlignment="Center" Height="24" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="162,28,10,0"/>
-        <Label x:Name="labeName" Content="Name of vertex" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="10,28,0,0" VerticalAlignment="Top" Width="112" Height="24"/>
-        <ToolBarPanel x:Name="toolBar" Background="Azure" HorizontalAlignment="Left" Height="20" Margin="10,139,0,0" VerticalAlignment="Top" Width="272"/>
-        <Label x:Name="labelColor" Content="Color Vertex" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" Margin="10,108,10,35" Width="272" Height="26"/>
-
+        <TextBox x:Name="nameVertex" FontSize="20" FontWeight="DemiBold" HorizontalAlignment="Center" TextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="54" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" Margin="212,28,10,0" MaxLength="3"/>
+        <Label x:Name="labeName" Content="Name of vertex" FontSize="20" FontWeight="DemiBold" HorizontalAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="10,33,0,0" VerticalAlignment="Top" Width="170" Height="49"/>
+        <ToolBar x:Name="colorBar" Background="Azure" HorizontalAlignment="Left" Height="38" Margin="10,128,0,0" VerticalAlignment="Top" Width="372"/>
+        <Label x:Name="labelColor" Content="Color Vertex" FontSize="20" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" Margin="58,87,62,96" Width="272" Height="36"/>
+        <Button x:Name="buttonClose" Content="Close" HorizontalAlignment="Left" Margin="282,176,0,0" VerticalAlignment="Top" Width="100" Click="ButtonClose_Click" Height="33"/>
     </Grid>
 </Window>

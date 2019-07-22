@@ -24,6 +24,7 @@ namespace Graph_Editor.Objects
     public class Vertex : ISerializable
     {
         private int index;
+        private string text = "";
         private Point coordinates;
         private Brush color = Themes.ColorInsideVertex.Clone();
 
@@ -44,6 +45,12 @@ namespace Graph_Editor.Objects
             set { color = value; }
         }
 
+        public string Text
+        {
+            get { return text; }
+            set { text = value; }
+        }
+
         public Vertex(int number, Point place)
         {
             index = number;
@@ -60,6 +67,7 @@ namespace Graph_Editor.Objects
             Index = vertex.Index;
             Coordinates = vertex.Coordinates;
             Color = vertex.Color;
+            Text = vertex.Text;
         }
 
         public Vertex() { }
@@ -69,6 +77,7 @@ namespace Graph_Editor.Objects
             info.AddValue("index", index);
             info.AddValue("coordinates", coordinates);
             info.AddValue("color", color.ToString());
+            info.AddValue("text", text);
         }
 
         public Vertex(SerializationInfo info, StreamingContext context)
@@ -76,6 +85,7 @@ namespace Graph_Editor.Objects
             index = (int)info.GetValue("index", typeof(int));
             coordinates = (Point)info.GetValue("coordinates", typeof(Point));
             color = (Brush)(new BrushConverter().ConvertFromString((string)info.GetValue("color", typeof(string))));
+            text = (string)info.GetValue("text", typeof(string));
         }
     }
 }

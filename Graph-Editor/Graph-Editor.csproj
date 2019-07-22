@@ -72,6 +72,7 @@
     <Compile Include="PropertiesWindow\VertexProrerty.xaml.cs">
       <DependentUpon>VertexProrerty.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tools\EditVertexEdge.cs" />
     <Compile Include="UndoRedo\History.cs" />
     <Compile Include="UndoRedo\Record.cs" />
     <Compile Include="Objects\Edge.cs" />
