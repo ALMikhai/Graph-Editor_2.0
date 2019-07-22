@@ -10,11 +10,14 @@ namespace Graph_Editor
     [Serializable]
     public static class Globals
     {
+<<<<<<< HEAD
         public static string BaseVertex = "vBlack";
         public static string BaseEdge = "eLightBlue";
 
         public static double animationTime = 1.5;
 
+=======
+>>>>>>> Dmitry's_branch_reborn
         public static int GlobalIndex = 0;
         public static int Size = 100;
         public static int[,] Matrix = new int[Size, Size];

@@ -34,11 +34,28 @@ namespace Graph_Editor
         }
         private void RestartWindow()
         {
+<<<<<<< HEAD
             setNowEdge = Globals.BaseEdge;
             setNowVertex = Globals.BaseVertex;
 
             ((Button)this.FindName(Globals.BaseEdge)).Height = 30;
             ((Button)this.FindName(Globals.BaseVertex)).Height = 30;
+=======
+            ThemeSettings();
+
+            setNowEdge = Settings.baseEdge;
+            setNowVertex = Settings.baseVertex;
+            animateColor = Globals.AnimationEllipse.Fill;
+
+            setNowAnimationColor = Settings.baseAnimationColor;
+            setNowAnimationSpeed = Settings.baseAnimationSpeed;
+            setNowSpeed = Settings.animationTime;
+
+            ((Button)this.FindName(Settings.baseEdge)).Height = 30;
+            ((Button)this.FindName(Settings.baseVertex)).Height = 30;
+            ((Button)this.FindName(Settings.baseAnimationColor)).Height = 30;
+            ((Button)this.FindName(Settings.baseAnimationSpeed)).Background = Themes.OptionsActiveAnimationSpeedButtons;
+>>>>>>> Dmitry's_branch_reborn
 
             currentWindow = "ThemeGrid";
             currentButtonWindow = "ThemeButton";
@@ -71,11 +88,19 @@ namespace Graph_Editor
             ((Button)this.FindName(setNowVertex)).Height = 25;
             ((Button)this.FindName(setNowEdge)).Height = 25;
 
+<<<<<<< HEAD
             ((Button)this.FindName(Globals.BaseVertex)).Height = 30;
             ((Button)this.FindName(Globals.BaseEdge)).Height = 30;
 
             setNowVertex = Globals.BaseVertex;
             setNowEdge = Globals.BaseEdge;
+=======
+            ((Button)this.FindName(Settings.baseVertex)).Height = 30;
+            ((Button)this.FindName(Settings.baseEdge)).Height = 30;
+
+            setNowVertex = Settings.baseVertex;
+            setNowEdge = Settings.baseEdge;
+>>>>>>> Dmitry's_branch_reborn
 
         }
 
@@ -91,8 +116,13 @@ namespace Graph_Editor
 
         private void OK_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
             Globals.BaseVertex = setNowVertex;
             Globals.BaseEdge = setNowEdge;
+=======
+            Settings.baseVertex = setNowVertex;
+            Settings.baseEdge = setNowEdge;
+>>>>>>> Dmitry's_branch_reborn
             this.Close();
         }
         private void Rechoose(string name, object sender)
@@ -163,8 +193,56 @@ namespace Graph_Editor
 
         private void animationOK_Click(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
             Globals.animationTime = setNowSpeed;
             this.Close();
         }
+=======
+            Globals.AnimationEllipse.Fill = animateColor;
+            Settings.baseAnimationColor = setNowAnimationColor;
+
+            Settings.animationTime = setNowSpeed;
+            Settings.baseAnimationSpeed = setNowAnimationSpeed;
+
+            Settings.AnimationEllipseColor = animateColor;
+            this.Close();
+        }
+
+        private void ChangeBallColorButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((Button)this.FindName(setNowAnimationColor)).Height = 25;
+
+            animateColor = (sender as Button).Background;
+
+            setNowAnimationColor = (sender as Button).Name;
+            (sender as Button).Height = 30;
+        }
+
+        private void ResetAnimationColor_Click(object sender, RoutedEventArgs e)
+        {
+            ((Button)this.FindName(setNowAnimationColor)).Height = 25;
+
+            ((Button)this.FindName(Settings.baseAnimationColor)).Height = 30;
+
+            setNowAnimationColor = Settings.baseAnimationColor;
+            animateColor = Globals.AnimationEllipse.Fill;
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
+            mainWindow.Settings.IsEnabled = true;
+        }
+
+        private void ThemeOK_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LightTheme_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+>>>>>>> Dmitry's_branch_reborn
     }
 }

@@ -66,6 +66,11 @@
     </Compile>
     <Compile Include="Animation\AnimationEdge.cs" />
     <Compile Include="Globals.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="Settings.cs" />
+    <Compile Include="Themes.cs" />
+>>>>>>> Dmitry's_branch_reborn
     <Compile Include="PropertiesWindow\VertexProrerty.xaml.cs">
       <DependentUpon>VertexProrerty.xaml</DependentUpon>
     </Compile>
