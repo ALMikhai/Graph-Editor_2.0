@@ -67,18 +67,18 @@ namespace Graph_Editor
         {
             ThemeSettings();
 
-            setNowEdge = Globals.baseEdge;
-            setNowVertex = Globals.baseVertex;
+            setNowEdge = Settings.baseEdge;
+            setNowVertex = Settings.baseVertex;
             animateColor = Globals.AnimationEllipse.Fill;
 
-            setNowAnimationColor = Globals.baseAnimationColor;
-            setNowAnimationSpeed = Globals.baseAnimationSpeed;
-            setNowSpeed = Globals.animationTime;
+            setNowAnimationColor = Settings.baseAnimationColor;
+            setNowAnimationSpeed = Settings.baseAnimationSpeed;
+            setNowSpeed = Settings.animationTime;
 
-            ((Button)this.FindName(Globals.baseEdge)).Height = 30;
-            ((Button)this.FindName(Globals.baseVertex)).Height = 30;
-            ((Button)this.FindName(Globals.baseAnimationColor)).Height = 30;
-            ((Button)this.FindName(Globals.baseAnimationSpeed)).Background = Themes.OptionsActiveAnimationSpeedButtons;
+            ((Button)this.FindName(Settings.baseEdge)).Height = 30;
+            ((Button)this.FindName(Settings.baseVertex)).Height = 30;
+            ((Button)this.FindName(Settings.baseAnimationColor)).Height = 30;
+            ((Button)this.FindName(Settings.baseAnimationSpeed)).Background = Themes.OptionsActiveAnimationSpeedButtons;
 
             currentWindow = "ThemeGrid";
             currentButtonWindow = "ThemeButton";
@@ -113,11 +113,11 @@ namespace Graph_Editor
             ((Button)this.FindName(setNowVertex)).Height = 25;
             ((Button)this.FindName(setNowEdge)).Height = 25;
 
-            ((Button)this.FindName(Globals.baseVertex)).Height = 30;
-            ((Button)this.FindName(Globals.baseEdge)).Height = 30;
+            ((Button)this.FindName(Settings.baseVertex)).Height = 30;
+            ((Button)this.FindName(Settings.baseEdge)).Height = 30;
 
-            setNowVertex = Globals.baseVertex;
-            setNowEdge = Globals.baseEdge;
+            setNowVertex = Settings.baseVertex;
+            setNowEdge = Settings.baseEdge;
 
         }
 
@@ -133,8 +133,8 @@ namespace Graph_Editor
 
         private void OK_Click(object sender, RoutedEventArgs e)
         {
-            Globals.baseVertex = setNowVertex;
-            Globals.baseEdge = setNowEdge;
+            Settings.baseVertex = setNowVertex;
+            Settings.baseEdge = setNowEdge;
             this.Close();
         }
         private void Rechoose(string name, object sender)
@@ -213,13 +213,13 @@ namespace Graph_Editor
 
         private void animationOK_Click(object sender, RoutedEventArgs e)
         {
-
             Globals.AnimationEllipse.Fill = animateColor;
-            Globals.baseAnimationColor = setNowAnimationColor;
+            Settings.baseAnimationColor = setNowAnimationColor;
 
-            Globals.animationTime = setNowSpeed;
-            Globals.baseAnimationSpeed = setNowAnimationSpeed;
+            Settings.animationTime = setNowSpeed;
+            Settings.baseAnimationSpeed = setNowAnimationSpeed;
 
+            Settings.AnimationEllipseColor = animateColor;
             this.Close();
         }
 
@@ -237,9 +237,9 @@ namespace Graph_Editor
         {
             ((Button)this.FindName(setNowAnimationColor)).Height = 25;
 
-            ((Button)this.FindName(Globals.baseAnimationColor)).Height = 30;
+            ((Button)this.FindName(Settings.baseAnimationColor)).Height = 30;
 
-            setNowAnimationColor = Globals.baseAnimationColor;
+            setNowAnimationColor = Settings.baseAnimationColor;
             animateColor = Globals.AnimationEllipse.Fill;
         }
 

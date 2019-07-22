@@ -52,7 +52,7 @@ namespace Graph_Editor
             {
                 PathGeometry = pathGeom,
                 Source = PathAnimationSource.X,
-                Duration = TimeSpan.FromSeconds(Globals.animationTime)
+                Duration = TimeSpan.FromSeconds(Settings.animationTime)
             };
 
             Storyboard.SetTarget(moveCircleAnimation, Globals.AnimationEllipse);
@@ -62,7 +62,7 @@ namespace Graph_Editor
             {
                 PathGeometry = pathGeom,
                 Source = PathAnimationSource.Y,
-                Duration = TimeSpan.FromSeconds(Globals.animationTime)
+                Duration = TimeSpan.FromSeconds(Settings.animationTime)
             };
 
             Storyboard.SetTarget(moveCircleAnimation2, Globals.AnimationEllipse);
