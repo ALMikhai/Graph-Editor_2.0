@@ -65,9 +65,10 @@
       <DependentUpon>AlgoritmsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Animation\AnimationEdge.cs" />
-    <Compile Include="ButtonGeneration.cs" />
     <Compile Include="Globals.cs" />
-    <Compile Include="Themes.cs" />
+    <Compile Include="PropertiesWindow\VertexProrerty.xaml.cs">
+      <DependentUpon>VertexProrerty.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UndoRedo\History.cs" />
     <Compile Include="UndoRedo\Record.cs" />
     <Compile Include="Objects\Edge.cs" />
@@ -118,6 +119,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="OptionsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PropertiesWindow\VertexProrerty.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

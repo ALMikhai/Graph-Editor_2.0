@@ -68,8 +68,8 @@ namespace Graph_Editor
                 return;
             }
 
-            var edgeDirected = new Edge(from, to, weight, directed, Themes.ColorEdge, Globals.ThicknessEdge);
-            var edgeUndirected = new Edge(to, from, weight, directed, Themes.ColorEdge, Globals.ThicknessEdge);
+            var edgeDirected = new Edge(from, to, weight, directed, Globals.ColorEdge, Globals.ThicknessEdge);
+            var edgeUndirected = new Edge(to, from, weight, directed, Globals.ColorEdge, Globals.ThicknessEdge);
 
             Globals.EdgesData.Add(edgeDirected);
             Globals.Matrix[from.Index, to.Index] = weight;

@@ -19,19 +19,9 @@ namespace Graph_Editor
     /// </summary>
     public partial class Documentation : Window
     {
-
-        private void ThemeSettings()
-        {
-            CreatorsButton.Background = Themes.DocCreatorsButton;
-            Creators.Background = Themes.DocCreatorsWindow;
-
-            end.Background = Themes.DocExitButton;
-        }
-
         public Documentation()
         {
             InitializeComponent();
-            ThemeSettings();
             forWhatAndWho.Text += "1) This program was created to demonstrate the work with graphs.\n\n" +
                 "2) This application can be used by both students and teachers.";
             useOfIt.Text += "1) For students, this is the highest-quality presentation of information about working with graphs.\n\n" +
@@ -57,18 +47,16 @@ namespace Graph_Editor
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Creators.Visibility = Visibility.Hidden;
-            MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
-            mainWindow.viewDoc.IsEnabled = true;
         }
 
         private void End_MouseLeave(object sender, MouseEventArgs e)
         {
-            end.Background = Themes.DocExitButton;
+            end.Background = Brushes.Transparent;
         }
 
         private void End_MouseMove(object sender, MouseEventArgs e)
         {
-            end.Background = Themes.DocExitButtonHover;
+            end.Background = Brushes.WhiteSmoke;
         }
     }
 }
