@@ -26,7 +26,7 @@ namespace Graph_Editor.Objects
         private Vertex from, to;
         private int weight;
         private bool directed;
-        private Brush color = Themes.ColorEdge;
+        private Brush color = Globals.ColorEdge;
         private double thickness = Globals.ThicknessEdge;
 
         public Vertex From

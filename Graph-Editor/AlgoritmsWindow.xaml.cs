@@ -16,28 +16,10 @@ namespace Graph_Editor
         int chooseAlg;
 
         MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
-        
-        private void ThemeSettings()
-        {
-            MainWindow.Background           = Themes.AlgoMainWindowColor;
-
-            BFSButton.Background            = Themes.AlgoIsAlgoReady;
-            DFSButton.Background            = Themes.AlgoIsAlgoReady;
-            DijkstraButton.Background       = Themes.AlgoIsAlgoFailed;
-            ColorButton.Background          = Themes.AlgoIsAlgoFailed;
-            HamiltonianButton.Background    = Themes.AlgoIsAlgoFailed;
-            EulerButton.Background          = Themes.AlgoIsAlgoFailed;
-            FloydButton.Background          = Themes.AlgoIsAlgoFailed;
-            KruskalButton.Background        = Themes.AlgoIsAlgoReady;
-            MaximumButton.Background        = Themes.AlgoIsAlgoFailed;
-
-            CancelButton.Background         = Themes.AlgoCancelButton;
-        }
 
         public AlgoritmsWindow()
         {
             InitializeComponent();
-            ThemeSettings();
         }
 
         private void DataWindow_Closing(object sender, CancelEventArgs e)
@@ -150,24 +132,6 @@ namespace Graph_Editor
             {
                 (sender as Button).Background = Brushes.CadetBlue;
             }
-        }
-
-        private void FSstartVertex_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (System.Text.RegularExpressions.Regex.IsMatch(FSstartVertex.Text, "[^0-9]"))
-                FSstartVertex.Text = FSstartVertex.Text.Remove(FSstartVertex.Text.Length - 1);
-        }
-
-        private void DijkstrastartVertex_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (System.Text.RegularExpressions.Regex.IsMatch(DijkstrastartVertex.Text, "[^0-9]"))
-                DijkstrastartVertex.Text = DijkstrastartVertex.Text.Remove(DijkstrastartVertex.Text.Length - 1);
-        }
-
-        private void DijkstrafinalVertex_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (System.Text.RegularExpressions.Regex.IsMatch(DijkstrafinalVertex.Text, "[^0-9]"))
-                DijkstrafinalVertex.Text = DijkstrafinalVertex.Text.Remove(DijkstrafinalVertex.Text.Length - 1);
         }
     }
 }
