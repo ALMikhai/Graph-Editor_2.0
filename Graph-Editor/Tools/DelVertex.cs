@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Graph_Editor.Objects;
+using Graph_Editor.UndoRedo;
 
 namespace Graph_Editor
 {
@@ -28,18 +29,31 @@ namespace Graph_Editor
 
             if(findedVert != null)
             {
+                List<Edge> adjacentVertices = new List<Edge>();
+
                 foreach (var edge in Globals.EdgesData.ToArray())
                 {
                     if (edge.From == findedVert || edge.To == findedVert)
                     {
-                        Globals.Matrix[edge.From.Index, edge.To.Index] = 0;
-                        if (!edge.Directed)
-                        {
-                            Globals.Matrix[edge.To.Index, edge.From.Index] = 0;
-                        }
+                        adjacentVertices.Add(new Edge(edge));
+
                         Globals.EdgesData.Remove(edge);
                     }
                 }
+
+                History.Add(new Vertex(findedVert), adjacentVertices);
+
+                foreach(var vertex in Globals.VertexData)
+                {
+                    if(vertex.Index >= findedVert.Index && vertex != findedVert)
+                    {
+                        vertex.Index--;
+                    }
+                }
+
+                Globals.RestoreMatrix();
+
+                Globals.GlobalIndex--;
 
                 Globals.VertexData.Remove(findedVert);
 

@@ -31,9 +31,16 @@ namespace Graph_Editor
             RepeatBehavior = new RepeatBehavior(1)
         };
 
+        public static Ellipse AnimationEllipse = new Ellipse
+        {
+            Width = Globals.VertRadius,
+            Height = Globals.VertRadius,
+            Fill = Brushes.Blue
+        };
+
         public static void RefreshStoryboard()
         {
-            MainWindow.Instance.GraphCanvas.Children.Add(Globals.AnimationEllipse);
+            MainWindow.Instance.GraphCanvas.Children.Add(AnimationEllipse);
 
             var pathGeom = new PathGeometry();
             var vertPF = new PathFigure();
@@ -52,20 +59,20 @@ namespace Graph_Editor
             {
                 PathGeometry = pathGeom,
                 Source = PathAnimationSource.X,
-                Duration = TimeSpan.FromSeconds(Settings.animationTime)
+                Duration = TimeSpan.FromSeconds(Globals.animationTime)
             };
 
-            Storyboard.SetTarget(moveCircleAnimation, Globals.AnimationEllipse);
+            Storyboard.SetTarget(moveCircleAnimation, AnimationEllipse);
             Storyboard.SetTargetProperty(moveCircleAnimation, new PropertyPath("(Canvas.Left)"));
 
             var moveCircleAnimation2 = new DoubleAnimationUsingPath
             {
                 PathGeometry = pathGeom,
                 Source = PathAnimationSource.Y,
-                Duration = TimeSpan.FromSeconds(Settings.animationTime)
+                Duration = TimeSpan.FromSeconds(Globals.animationTime)
             };
 
-            Storyboard.SetTarget(moveCircleAnimation2, Globals.AnimationEllipse);
+            Storyboard.SetTarget(moveCircleAnimation2, AnimationEllipse);
             Storyboard.SetTargetProperty(moveCircleAnimation2, new PropertyPath("(Canvas.Top)"));
 
             storyboard.Children.Add(moveCircleAnimation);

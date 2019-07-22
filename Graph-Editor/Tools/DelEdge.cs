@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Graph_Editor.Objects;
+using Graph_Editor.UndoRedo;
 
 namespace Graph_Editor
 {
@@ -43,21 +44,23 @@ namespace Graph_Editor
                     }
                     else
                     {
-                        foreach (var edge in Globals.EdgesData.ToArray())
+
+                        Edge directedEdge = Globals.EdgesData.Find(match => (match.From == vertexSecond && match.To == vertexFirst));
+
+                        if (directedEdge != null)
                         {
-                            if ((edge.From == vertexSecond && edge.To == vertexFirst) || (edge.From == vertexFirst && edge.To == vertexSecond))
+                            if (!directedEdge.Directed)
                             {
-                                Globals.Matrix[edge.From.Index, edge.To.Index] = 0;
-
-                                if (!edge.Directed)
-                                {
-                                    Globals.Matrix[edge.To.Index, edge.From.Index] = 0;
-                                }
-
-                                Globals.EdgesData.Remove(edge);
+                                Edge unDirectedEdge = Globals.EdgesData.Find(match => (match.From == vertexFirst && match.To == vertexSecond));
+                                Globals.EdgesData.Remove(unDirectedEdge);
                             }
-                        }
 
+                            History.Add(new Edge(directedEdge), null);
+
+                            Globals.EdgesData.Remove(directedEdge);
+
+                            Globals.RestoreMatrix();
+                        }
                         vertexFirst = null;
                         vertexSecond = null;
                     }

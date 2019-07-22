@@ -26,7 +26,7 @@ namespace Graph_Editor.Objects
         private Vertex from, to;
         private int weight;
         private bool directed;
-        private Brush color = Themes.ColorEdge;
+        private Brush color = Globals.ColorEdge;
         private double thickness = Globals.ThicknessEdge;
 
         public Vertex From
@@ -65,12 +65,24 @@ namespace Graph_Editor.Objects
             set { thickness = value; }
         }
 
-        public Edge(Vertex first, Vertex second, int w, bool state)
+        public Edge(Vertex from, Vertex to, int weight, bool directed, Brush color, double thickness)
         {
-            from = first;
-            to = second;
-            weight = w;
-            directed = state;
+            From = from;
+            To = to;
+            Weight = weight;
+            Directed = directed;
+            Color = color;
+            Thickness = thickness;
+        }
+
+        public Edge(Edge edge)
+        {
+            From = new Vertex(edge.From);
+            To = new Vertex(edge.To);
+            Weight = edge.Weight;
+            Directed = edge.Directed;
+            Color = edge.Color;
+            Thickness = edge.Thickness;
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)

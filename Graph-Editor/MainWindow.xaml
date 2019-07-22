@@ -33,7 +33,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid x:Name="FullWindow" Background="#0a3f4c">
+    <Grid Background="#0a3f4c">
         <Canvas x:Name="GraphCanvas" 
                 Margin="182,22,8,10" 
                 Background="#b7e1e1"
@@ -109,43 +109,40 @@
         </Button>
 
         <Grid x:Name="WaitPanel" Opacity="0.4" Background="Gray" Visibility="Hidden"/>
-        <Label x:Name="TeamName" Content=".TXT" Background="#b7e1e1"
+        <Label Content=".TXT" Background="#b7e1e1"
                    HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top"       
                    Width="80" Height="42" FontFamily="Ink Free"
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                    FontSize="30" BorderBrush="black" BorderThickness="1" 
         />
         <Image Source="images/logo.png" Margin="0,673,561,0" Height="62" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="64"/>
-        <Menu x:Name="MainMenu" Height="22" VerticalAlignment="Top" Background="Black" Foreground="White" BorderBrush="Black">
-            <MenuItem Header="File" FontFamily="sans-serif" FontSize="15" Foreground="White" BorderBrush="Black">
-                <MenuItem x:Name="save" Header="Save as" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black" Click="Save_Click"></MenuItem>
-                <MenuItem x:Name="open" Header="Open with" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black" Click="Load_Click"></MenuItem>
+        <Menu Height="22" VerticalAlignment="Top" Background="Black" Foreground="White" BorderBrush="Black">
+            <MenuItem Header="File" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black">
+                <MenuItem Header="Save as" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black" Click="Save_Click"></MenuItem>
+                <MenuItem Header="Open with" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black" Click="Load_Click"></MenuItem>
                 <Separator Background="Black"/>
-                <MenuItem x:Name="exit" Header="Exit" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black" Click="Exit_Click"></MenuItem>
+                <MenuItem Header="Exit" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black" Click="Exit_Click"></MenuItem>
             </MenuItem>
-            <MenuItem BorderBrush="Black" Width="24" Click="ClearAll_Click">
+            <MenuItem Width="24" Background="Black" Click="ClearAll_Click">
                 <MenuItem.Icon>
                     <Image Source="images/clearAll.png" Width="15"/>
                 </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Header="Representation" FontFamily="sans-serif" FontSize="15" Foreground="White" BorderBrush="Black">
-                <MenuItem x:Name="matrix" Header="Matrix" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black" Click="ShowMatrix">
+            <MenuItem Header="Representation" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black">
+                <MenuItem Header="Matrix" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black" Click="ShowMatrix">
                     <MenuItem.Icon>
                         <Image Source="images/matrix.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem x:Name="list" Header="List" FontFamily="sans-serif" FontSize="15" Background="Gray" Foreground="White" BorderBrush="Black">
+                <MenuItem Header="List" FontFamily="sans-serif" FontSize="15" Background="Gray" Foreground="White" BorderBrush="Black">
                     <MenuItem.Icon>
                         <Image Source="images/list.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem x:Name="viewDoc" Header="Documentation" FontFamily="sans-serif" FontSize="15" BorderBrush="Black" Foreground="White" Click="ViewDocumentation">
+            <MenuItem Header="Documentation" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black" Click="ViewDocumentation">
             </MenuItem>
-            <MenuItem x:Name="Settings" Header="Options" FontFamily="sans-serif" FontSize="15" BorderBrush="Black" Foreground="White" Click="GoToOptions">
-            </MenuItem>
-            <MenuItem Header="Colors" FontFamily="sans-serid" FontSize="15" BorderBrush="Black" Foreground="White">
-                <ToolBarPanel Name="colorbarPanel" Grid.Row="0" Height="35px" Orientation="Horizontal" Margin="24,0,0,0"/>
+            <MenuItem Header="Options" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black" Click="GoToOptions">
             </MenuItem>
         </Menu>
         <Grid x:Name="Exit_Dialog" Background="White" Margin="366,253,208,313" Visibility="Hidden" Grid.ColumnSpan="2">
