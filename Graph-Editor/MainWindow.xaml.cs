@@ -38,6 +38,7 @@ namespace Graph_Editor
     // TODO Плохо работает визуализация матрицы смежности(переделать).
     // TODO База данных, через серилизацию.
     // TODO Сделать генерацию цветов для быстрой смены.
+    // TODO Добавить откат для ClearAll().
 
     public partial class MainWindow : Window
     {
@@ -321,19 +322,26 @@ namespace Graph_Editor
             }
         }
 
-        private void ClearAll_Click(object sender, RoutedEventArgs e)
+        public void ClearAll_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < Globals.GlobalIndex; i++)
+            List<Vertex> vertices = new List<Vertex>();
+            foreach(var vertex in Globals.VertexData)
             {
-                for (int j = 0; j < Globals.GlobalIndex; j++)
-                {
-                    Globals.Matrix[i, j] = 0;
-                }
+                vertices.Add(new Vertex(vertex));
             }
+
+            List<Edge> edges = new List<Edge>();
+            foreach(var edge in Globals.EdgesData)
+            {
+                edges.Add(new Edge(edge));
+            }
+
+            History.Add(vertices, edges);
 
             Globals.VertexData.Clear();
             Globals.EdgesData.Clear();
             Globals.GlobalIndex = 0;
+            Globals.RestoreMatrix();
             Invalidate();
         }
 
