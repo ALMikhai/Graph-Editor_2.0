@@ -25,7 +25,7 @@ namespace Graph_Editor.Objects
     {
         private int index;
         private Point coordinates;
-        private Brush color = Globals.ColorInsideVertex.Clone();
+        private Brush color = Themes.ColorInsideVertex.Clone();
 
         public int Index
         {
