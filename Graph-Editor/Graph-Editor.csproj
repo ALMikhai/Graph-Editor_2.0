@@ -65,6 +65,7 @@
       <DependentUpon>AlgoritmsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Animation\AnimationEdge.cs" />
+    <Compile Include="ButtonGeneration.cs" />
     <Compile Include="Globals.cs" />
     <Compile Include="Themes.cs" />
     <Compile Include="UndoRedo\History.cs" />

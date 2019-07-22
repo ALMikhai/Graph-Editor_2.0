@@ -79,6 +79,8 @@ namespace Graph_Editor
 
             GraphCanvas.Children.Add(graphHost);
             Instance = this;
+
+            ButtonGeneration.ColorButtonGeneration();
         }
         public void Invalidate()
         {
@@ -405,6 +407,14 @@ namespace Graph_Editor
             {
                 History.UndoRedo(1);
                 Invalidate();
+            }
+        }
+
+        public void ChangeColor(object sender, RoutedEventArgs e)
+        {
+            if((sender as Button).Tag.ToString() == "0")
+            {
+                Themes.ColorInsideVertex = (sender as Button).Background;
             }
         }
     }

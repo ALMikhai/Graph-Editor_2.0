@@ -67,18 +67,18 @@ namespace Graph_Editor
         {
             ThemeSettings();
 
-            setNowEdge = Globals.baseEdge;
-            setNowVertex = Globals.baseVertex;
+            setNowEdge = Globals.BaseEdge;
+            setNowVertex = Globals.BaseVertex;
             animateColor = Globals.AnimationEllipse.Fill;
 
-            setNowAnimationColor = Globals.baseAnimationColor;
-            setNowAnimationSpeed = Globals.baseAnimationSpeed;
+            setNowAnimationColor = Globals.BaseAnimationColor;
+            setNowAnimationSpeed = Globals.BaseAnimationSpeed;
             setNowSpeed = Globals.animationTime;
 
-            ((Button)this.FindName(Globals.baseEdge)).Height = 30;
-            ((Button)this.FindName(Globals.baseVertex)).Height = 30;
-            ((Button)this.FindName(Globals.baseAnimationColor)).Height = 30;
-            ((Button)this.FindName(Globals.baseAnimationSpeed)).Background = Themes.OptionsActiveAnimationSpeedButtons;
+            ((Button)this.FindName(Globals.BaseEdge)).Height = 30;
+            ((Button)this.FindName(Globals.BaseVertex)).Height = 30;
+            ((Button)this.FindName(Globals.BaseAnimationColor)).Height = 30;
+            ((Button)this.FindName(Globals.BaseAnimationSpeed)).Background = Themes.OptionsActiveAnimationSpeedButtons;
 
             currentWindow = "ThemeGrid";
             currentButtonWindow = "ThemeButton";
@@ -215,10 +215,10 @@ namespace Graph_Editor
         {
 
             Globals.AnimationEllipse.Fill = animateColor;
-            Globals.baseAnimationColor = setNowAnimationColor;
+            Globals.BaseAnimationColor = setNowAnimationColor;
 
             Globals.animationTime = setNowSpeed;
-            Globals.baseAnimationSpeed = setNowAnimationSpeed;
+            Globals.BaseAnimationSpeed = setNowAnimationSpeed;
 
             this.Close();
         }
@@ -237,9 +237,9 @@ namespace Graph_Editor
         {
             ((Button)this.FindName(setNowAnimationColor)).Height = 25;
 
-            ((Button)this.FindName(Globals.baseAnimationColor)).Height = 30;
+            ((Button)this.FindName(Globals.BaseAnimationColor)).Height = 30;
 
-            setNowAnimationColor = Globals.baseAnimationColor;
+            setNowAnimationColor = Globals.BaseAnimationColor;
             animateColor = Globals.AnimationEllipse.Fill;
         }
 

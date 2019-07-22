@@ -26,10 +26,10 @@ namespace Graph_Editor
     [Serializable]
     public static class Globals
     {
-        public static string baseVertex = "vBlack";
-        public static string baseEdge = "eLightBlue";
-        public static string baseAnimationColor = "orbBlue";
-        public static string baseAnimationSpeed = "Medium";
+        public static string BaseVertex = "vBlack";
+        public static string BaseEdge = "eLightBlue";
+        public static string BaseAnimationColor = "orbBlue";
+        public static string BaseAnimationSpeed = "Medium";
 
         public static double animationTime = 1.5;
 
@@ -42,7 +42,9 @@ namespace Graph_Editor
         public static Pen BasePen = new Pen(Brushes.Black, 1);
         public static Pen AlgoPen = new Pen(Brushes.Red, 2);
         public static int VertRadius = 20;
-        
+
+        //public static Brush ColorInsideVertex = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
+        //public static Brush ColorEdge = Brushes.Black;
         public static double ThicknessEdge = 1;
 
         public static Ellipse AnimationEllipse = new Ellipse
@@ -65,6 +67,15 @@ namespace Graph_Editor
             {0, new Bfs()},
             {1, new Dfs()},
             {7, new Kruskal()}
+        };
+
+        public static List<Brush> Colors = new List<Brush>
+        {
+            {(Brush)new BrushConverter().ConvertFrom("#80FFFF")},
+            {(Brush)new BrushConverter().ConvertFrom("#A0ECFF")},
+            {(Brush)new BrushConverter().ConvertFrom("#FBCD6B")},
+            {(Brush)new BrushConverter().ConvertFrom("#BE88DC")},
+            {(Brush)new BrushConverter().ConvertFrom("#EA6461")}
         };
 
         public static Tool ToolNow = ToolList[0];

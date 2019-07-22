@@ -145,7 +145,8 @@
             <MenuItem x:Name="Settings" Header="Options" FontFamily="sans-serif" FontSize="15" BorderBrush="Black" Foreground="White" Click="GoToOptions">
             </MenuItem>
             <MenuItem Header="Colors" FontFamily="sans-serid" FontSize="15" BorderBrush="Black" Foreground="White">
-                <ToolBarPanel Name="colorbarPanel" Grid.Row="0" Height="35px" Orientation="Horizontal" Margin="24,0,0,0"/>
+                <ToolBarPanel Name="colorbarPanel" Height="35" HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                </ToolBarPanel>
             </MenuItem>
         </Menu>
         <Grid x:Name="Exit_Dialog" Background="White" Margin="366,253,208,313" Visibility="Hidden" Grid.ColumnSpan="2">
