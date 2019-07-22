@@ -26,9 +26,27 @@ namespace Graph_Editor
     {
         bool directedNow = false;
 
+        private void ThemeSettings()
+        {
+            FullWindow.Background = Themes.ConnectMainWindow;
+
+            FirstVertex.Background = Themes.ConnectWindowForVertex;
+            SecondVertex.Background = Themes.ConnectWindowForVertex;
+
+            WeightSlider.Background = Themes.ConnectSlider;
+            TextBox_Weight.Background = Themes.ConnectSliderWindow;
+
+            Create.Background = Themes.ConnectResultButtons;
+            Close.Background = Themes.ConnectResultButtons;
+
+            Undirected.Background = Themes.ConnectActiveOrientation;
+            Directed.Background = Themes.ConnectUnactiveOrientation;
+        }
+
         public ConnectVertices()
         {
             InitializeComponent();
+            ThemeSettings();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -121,15 +139,15 @@ namespace Graph_Editor
         private void Directed_Button_Choose(object sender, RoutedEventArgs e)
         {
             directedNow = true;
-            Undirected.Background = (Brush)new BrushConverter().ConvertFrom("#98B0B0");
-            Directed.Background = (Brush)new BrushConverter().ConvertFrom("#789778");
+            Undirected.Background = Themes.ConnectUnactiveOrientation;
+            Directed.Background = Themes.ConnectActiveOrientation;
         }
 
         private void Undirected_Button_Choose(object sender, RoutedEventArgs e)
         {
             directedNow = false;
-            Undirected.Background = (Brush)new BrushConverter().ConvertFrom("#789778");
-            Directed.Background = (Brush)new BrushConverter().ConvertFrom("#98B0B0");
+            Undirected.Background = Themes.ConnectActiveOrientation;
+            Directed.Background = Themes.ConnectUnactiveOrientation;
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -151,7 +169,7 @@ namespace Graph_Editor
         {
             if (String.Compare("#FF789778", (sender as Button).Background.ToString()) != 0)
             {
-                (sender as Button).Background = (Brush)new BrushConverter().ConvertFrom("#BCCBBC");
+                (sender as Button).Background = Themes.ConnectUnactiveOrientationHover;
             }
         }
 
@@ -159,7 +177,7 @@ namespace Graph_Editor
         {
             if (String.Compare("#FF789778", (sender as Button).Background.ToString()) != 0)
             {
-                (sender as Button).Background = (Brush)new BrushConverter().ConvertFrom("#98B0B0");
+                (sender as Button).Background = Themes.ConnectUnactiveOrientation;
             }
         }
     }
