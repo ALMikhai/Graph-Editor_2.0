@@ -12,7 +12,11 @@ DEBUG;TRACE
 C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\App.xaml
 7-1595192129
 
+<<<<<<< HEAD
 331278038863
+=======
+3325714179
+>>>>>>> Dmitry's_branch_reborn
 151984215308
 AlgoritmsWindow.xaml;MainWindow.xaml;ConnectVertices.xaml;OptionsWindow.xaml;ShowData\CurrentMatrix.xaml;ShowData\CurrentList.xaml;Documentation.xaml;
 

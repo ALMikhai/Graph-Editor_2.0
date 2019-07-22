@@ -67,6 +67,7 @@
     <Compile Include="Animation\AnimationEdge.cs" />
     <Compile Include="ButtonGeneration.cs" />
     <Compile Include="Globals.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="Themes.cs" />
     <Compile Include="UndoRedo\History.cs" />
     <Compile Include="UndoRedo\Record.cs" />
