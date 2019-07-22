@@ -26,13 +26,6 @@ namespace Graph_Editor
     [Serializable]
     public static class Globals
     {
-        public static string BaseVertex = "vBlack";
-        public static string BaseEdge = "eLightBlue";
-        public static string BaseAnimationColor = "orbBlue";
-        public static string BaseAnimationSpeed = "Medium";
-
-        public static double animationTime = 1.5;
-
         public static int GlobalIndex = 0;
         public static int Size = 100;
         public static int[,] Matrix = new int[Size, Size];
@@ -51,7 +44,7 @@ namespace Graph_Editor
         {
             Width = VertRadius,
             Height = VertRadius,
-            Fill = Brushes.Blue
+            Fill = Settings.AnimationEllipseColor
         };
 
         public static Dictionary<int, Tool> ToolList = new Dictionary<int, Tool>
