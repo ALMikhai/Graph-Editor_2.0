@@ -31,53 +31,53 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid Background="PaleTurquoise" Margin="0,0,-6,0">
-        <Button Style="{StaticResource MyButtonStyle}" Content="Breadth First Search"
+    <Grid x:Name="MainWindow" Background="PaleTurquoise" Margin="0,0,-6,0">
+        <Button x:Name="BFSButton" Style="{StaticResource MyButtonStyle}" Content="Breadth First Search"
                 HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top"
                 FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"
                 Tag="0" Background="CadetBlue" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove">
         </Button>
-        <Button Style="{StaticResource MyButtonStyle}" Content="Depth-first search" BorderThickness="0"
+        <Button x:Name="DFSButton" Style="{StaticResource MyButtonStyle}" Content="Depth-first search" BorderThickness="0"
                 HorizontalAlignment="Left" Margin="224,127,0,0" VerticalAlignment="Top"
                 FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
                 Tag="1" Background="CadetBlue" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove"
         />
-        <Button Style="{StaticResource MyButtonStyle}" Content="Dijkstra's Algorithm" BorderThickness="0"
+        <Button x:Name="DijkstraButton" Style="{StaticResource MyButtonStyle}" Content="Dijkstra's Algorithm" BorderThickness="0"
                 HorizontalAlignment="Left" Margin="440,127,0,0" VerticalAlignment="Top"
                 FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
                 Tag="2" Background="#afcecf"
         />
-        <Button Style="{StaticResource MyButtonStyle}" Content="Euler cycle" BorderThickness="0"
+        <Button x:Name="EulerButton" Style="{StaticResource MyButtonStyle}" Content="Euler cycle" BorderThickness="0"
                 HorizontalAlignment="Left" Margin="440,201,0,0" VerticalAlignment="Top"
                 FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
                 Tag="5" Background="#afcecf"
         />
-        <Button Style="{StaticResource MyButtonStyle}" Content="Hamiltonian cycle" BorderThickness="0"
+        <Button x:Name="HamiltonianButton" Style="{StaticResource MyButtonStyle}" Content="Hamiltonian cycle" BorderThickness="0"
                 HorizontalAlignment="Left" Margin="224,201,0,0" VerticalAlignment="Top"
                 FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
                 Tag="4" Background="#afcecf"
         />
-        <Button Style="{StaticResource MyButtonStyle}" Content="Color the graph" BorderThickness="0"
+        <Button x:Name="ColorButton" Style="{StaticResource MyButtonStyle}" Content="Color the graph" BorderThickness="0"
                 HorizontalAlignment="Left" Margin="10,201,0,0" VerticalAlignment="Top"
                 FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
                 Tag="3" Background="#afcecf"
         />
-        <Button Style="{StaticResource MyButtonStyle}" Content="Kruskal's Algorithm" BorderThickness="0"
+        <Button x:Name="KruskalButton" Style="{StaticResource MyButtonStyle}" Content="Kruskal's Algorithm" BorderThickness="0"
                 HorizontalAlignment="Left" Margin="224,285,0,0" VerticalAlignment="Top"
                 FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
                 Tag="7" Background="CadetBlue" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove"
         />
-        <Button Style="{StaticResource MyButtonStyle}" Content="Maximum flow"  BorderThickness="0"
+        <Button x:Name="MaximumButton" Style="{StaticResource MyButtonStyle}" Content="Maximum flow"  BorderThickness="0"
                 HorizontalAlignment="Left" Margin="440,285,0,0" VerticalAlignment="Top"
                 FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
                 Tag="8" Background="#afcecf"       
         />
-        <Button Style="{StaticResource MyButtonStyle}" Content="Floyd-Worshel Algorithm" BorderThickness="0"
+        <Button x:Name="FloydButton" Style="{StaticResource MyButtonStyle}" Content="Floyd-Worshel Algorithm" BorderThickness="0"
                 HorizontalAlignment="Left" Margin="10,285,0,0" VerticalAlignment="Top"
                 FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
                 Tag="6" Background="#afcecf"
         />
-        <Button Style="{StaticResource CancelButton}"
+        <Button x:Name="CancelButton" Style="{StaticResource CancelButton}"
             IsCancel="True" Background="#B9C2C2" BorderThickness="0"
             FontSize="20" Content="Cancel" Tag="Cancel"
             HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
@@ -115,7 +115,8 @@
             <TextBox x:Name="FSstartVertex"
             FontSize="20" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"
             Height="38" Margin="246,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
-            Background="WhiteSmoke" BorderThickness="1" BorderBrush="black" RenderTransformOrigin="0.494,-0.553"
+            Background="WhiteSmoke" BorderThickness="1" BorderBrush="black" RenderTransformOrigin="0.494,-0.553" TextChanged="FSstartVertex_TextChanged"
+            
         />
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="2" Margin="0,116,0,0" VerticalAlignment="Top" Width="415"/>
             <Label x:Name="BFS_DFS_label"
@@ -151,7 +152,7 @@
             <TextBox x:Name="DijkstrastartVertex"
             FontSize="20" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"
             Height="38" Margin="246,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
-            Background="WhiteSmoke" BorderThickness="1" BorderBrush="black"
+            Background="WhiteSmoke" BorderThickness="1" BorderBrush="black" TextChanged="DijkstrastartVertex_TextChanged"
             />
             <Label Content="Final vertex:" 
                HorizontalAlignment="Left" Height="50" Margin="40,102,0,0" 
@@ -161,7 +162,7 @@
             <TextBox x:Name="DijkstrafinalVertex"
             FontSize="20" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"
             Height="38" Margin="246,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
-            Background="WhiteSmoke" BorderThickness="1" BorderBrush="black"
+            Background="WhiteSmoke" BorderThickness="1" BorderBrush="black" TextChanged="DijkstrafinalVertex_TextChanged"
             />
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="1" Margin="0,174,0,0" VerticalAlignment="Top" Width="391" RenderTransformOrigin="0.5,0.5"/>
         </Grid>

@@ -38,18 +38,49 @@ namespace Graph_Editor
     // TODO Плохо работает визуализация матрицы смежности(переделать).
     // TODO База данных, через серилизацию.
     // TODO Сделать генерацию цветов для быстрой смены.
+    // TODO Добавить откат для ClearAll().
 
     public partial class MainWindow : Window
     {
         private static FigureHost graphHost = new FigureHost();
         public static MainWindow Instance { get; private set; }
 
+        private void ThemeSettings()
+        {
+            FullWindow.Background = Themes.MainMainWindow;
+
+            TeamName.Background = Themes.MainTeamName;
+
+            Algorimts_Window.Background = Themes.MainToolsButtons;
+            AddVertex.Background = Themes.MainToolsButtons;
+            MoveVertex.Background = Themes.MainToolsButtons;
+            DelVertex.Background = Themes.MainToolsButtons;
+            DelEdge.Background = Themes.MainToolsButtons;
+            Connect.Background = Themes.MainToolsButtons;
+
+            GraphCanvas.Background = Themes.MainCanvas;
+
+            MainMenu.Background = Themes.MainMenu;
+            save.Background = Themes.MainMenuItems;
+            open.Background = Themes.MainMenuItems;
+            exit.Background = Themes.MainMenuItems;
+            matrix.Background = Themes.MainMenuItems;
+            list.Background = Themes.MainMenuItems;
+
+            Exit_Dialog.Background = Themes.MainExitDialog;
+        }
+
         public MainWindow()
         {
             InitializeComponent();
-            AddVertex.Background = Brushes.CadetBlue;
+            ThemeSettings();
+
+            list.Background = Brushes.Gray;
+
             GraphCanvas.Children.Add(graphHost);
             Instance = this;
+
+            ButtonGeneration.ColorButtonGeneration();
         }
         public void Invalidate()
         {
@@ -132,7 +163,7 @@ namespace Graph_Editor
 
         public void InvalidateAlgo(Edge edge)
         {
-            GraphCanvas.Children.Remove(AnimationEdge.AnimationEllipse);
+            GraphCanvas.Children.Remove(Globals.AnimationEllipse);
             var drawingVisual = new DrawingVisual();
             var drawingContext = drawingVisual.RenderOpen();
             
@@ -196,7 +227,7 @@ namespace Graph_Editor
             algoritms.Show();
         }
 
-        Brush baseButtonColor = (Brush)new BrushConverter().ConvertFrom("#345160");
+        Brush baseButtonColor = Themes.MainToolsButtons;
 
         private void Change_Tool_Button(object sender, RoutedEventArgs e)
         {
@@ -259,7 +290,7 @@ namespace Graph_Editor
         {
             if (string.Compare((sender as Button).Background.ToString(), "#FF5F9EA0") != 0)
             {
-                (sender as Button).Background = (Brush)new BrushConverter().ConvertFrom("#4c7184");
+                (sender as Button).Background = Themes.MainToolsButtonsHover;
             }
         }
 
@@ -267,7 +298,7 @@ namespace Graph_Editor
         {
             if (string.Compare((sender as Button).Background.ToString(), "#FF5F9EA0") != 0)
             {
-                (sender as Button).Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                (sender as Button).Background = Themes.MainToolsButtons;
             }
         }
 
@@ -293,19 +324,26 @@ namespace Graph_Editor
             }
         }
 
-        private void ClearAll_Click(object sender, RoutedEventArgs e)
+        public void ClearAll_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < Globals.GlobalIndex; i++)
+            List<Vertex> vertices = new List<Vertex>();
+            foreach(var vertex in Globals.VertexData)
             {
-                for (int j = 0; j < Globals.GlobalIndex; j++)
-                {
-                    Globals.Matrix[i, j] = 0;
-                }
+                vertices.Add(new Vertex(vertex));
             }
+
+            List<Edge> edges = new List<Edge>();
+            foreach(var edge in Globals.EdgesData)
+            {
+                edges.Add(new Edge(edge));
+            }
+
+            History.Add(vertices, edges);
 
             Globals.VertexData.Clear();
             Globals.EdgesData.Clear();
             Globals.GlobalIndex = 0;
+            Globals.RestoreMatrix();
             Invalidate();
         }
 
@@ -345,12 +383,14 @@ namespace Graph_Editor
 
         private void ViewDocumentation(object sender, RoutedEventArgs e)
         {
+            viewDoc.IsEnabled = false;
             Documentation documentation = new Documentation();
             documentation.Show();
         }
 
         private void GoToOptions(object sender, RoutedEventArgs e)
         {
+            Settings.IsEnabled = false;
             OptionsWindow optionsWindow = new OptionsWindow();
             optionsWindow.Show();
         }
@@ -367,6 +407,14 @@ namespace Graph_Editor
             {
                 History.UndoRedo(1);
                 Invalidate();
+            }
+        }
+
+        public void ChangeColor(object sender, RoutedEventArgs e)
+        {
+            if((sender as Button).Tag.ToString() == "0")
+            {
+                Themes.ColorInsideVertex = (sender as Button).Background;
             }
         }
     }
