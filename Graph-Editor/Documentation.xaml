@@ -36,7 +36,7 @@
                FontWeight="DemiBold" FontSize="25"/>
         <TextBox BorderThickness="0" x:Name="Instruct" IsReadOnly="True" FontSize="15" Text="" HorizontalAlignment="Left" Height="380" Margin="504,58,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="436"></TextBox>
         <Image Source="images/logo.png" HorizontalAlignment="Left" Height="227" Margin="10,338,0,0" VerticalAlignment="Top" Width="266"/>
-        <Button Background="Transparent" BorderBrush="Black" Content="Creators" FontSize="25" HorizontalAlignment="Left" Height="47" Margin="808,518,0,0" VerticalAlignment="Top" Width="148" Click="Button_Click"/>
+        <Button x:Name="CreatorsButton" Background="Transparent" BorderBrush="Black" Content="Creators" FontSize="25" HorizontalAlignment="Left" Height="47" Margin="808,518,0,0" VerticalAlignment="Top" Width="148" Click="Button_Click"/>
         <Grid x:Name="Creators" Width="250" Height="300" Background="White" Visibility="Hidden">
             <Border Width="250" Height="300" BorderBrush="Black" BorderThickness="2"></Border>
             <Label Content="Михайленко Александр" HorizontalAlignment="Center" Height="50" FontSize="18" FontWeight="DemiBold" Margin="10,10,12,240"/>

@@ -4,15 +4,26 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
 C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\
+=======
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\
+>>>>>>> Dmitry's_branch_reborn
 Graph_Editor
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\App.xaml
 7-1595192129
 
 31859788706
+=======
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\App.xaml
+7-1595192129
+
+32269211354
+>>>>>>> Dmitry's_branch_reborn
 151984215308
 AlgoritmsWindow.xaml;MainWindow.xaml;ConnectVertices.xaml;OptionsWindow.xaml;ShowData\CurrentMatrix.xaml;ShowData\CurrentList.xaml;Documentation.xaml;
 

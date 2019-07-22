@@ -22,7 +22,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid Background="#98B0B0">
+    <Grid x:Name="FullWindow" Background="#98B0B0">
         <Label Content="Start Vertex: " HorizontalAlignment="Left" Margin="20,26,0,0" VerticalAlignment="Top" Height="41" Width="123" FontSize="20"/>
         <Label Content="Final Vertex: " HorizontalAlignment="Left" Margin="319,26,0,0" VerticalAlignment="Top" Height="41" Width="133" FontSize="20"/>
         <TextBox x:Name="FirstVertex" Focusable="True"
@@ -50,13 +50,13 @@
             Height="37" Margin="450,104,0,0" Width="86"
             TextWrapping="Wrap" Text="1" TextChanged="TextBox_Weight_TextChanged"
         />
-        <Button
+        <Button x:Name="Create"
             IsDefault="True"
             FontSize="20" Content="Create" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
             Width="112" Height="42" Background="#B2B4B4"
             Click="Create_Click"
         />
-        <Button
+        <Button x:Name="Close"
             IsCancel="True" Background="#B2B4B4"
             FontSize="20" Content="Close"
             HorizontalAlignment="Left" Margin="117,0,0,10" VerticalAlignment="Bottom"

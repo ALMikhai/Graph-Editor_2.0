@@ -1,8 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
 using System.Windows.Media;
-using Graph_Editor.Algoritms;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Globalization;
 using Graph_Editor.Objects;
+using System.Drawing.Drawing2D;
+using System.Windows.Media.Animation;
+using System.Threading;
+using System.Diagnostics;
+using Graph_Editor.Algoritms;
 
 
 namespace Graph_Editor
@@ -12,6 +28,8 @@ namespace Graph_Editor
     {
         public static string baseVertex = "vBlack";
         public static string baseEdge = "eLightBlue";
+        public static string baseAnimationColor = "orbBlue";
+        public static string baseAnimationSpeed = "Medium";
 
         public static double animationTime = 1.5;
 
@@ -25,10 +43,14 @@ namespace Graph_Editor
         public static Pen AlgoPen = new Pen(Brushes.Red, 2);
         public static int VertRadius = 20;
         
-        public static Brush ColorInsideVertex = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
-        public static Brush ColorEdge = Brushes.Black;
         public static double ThicknessEdge = 1;
 
+        public static Ellipse AnimationEllipse = new Ellipse
+        {
+            Width = VertRadius,
+            Height = VertRadius,
+            Fill = Brushes.Blue
+        };
 
         public static Dictionary<int, Tool> ToolList = new Dictionary<int, Tool>
         {
