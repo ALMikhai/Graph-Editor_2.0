@@ -83,6 +83,8 @@ namespace Graph_Editor
             currentWindow = "ThemeGrid";
             currentButtonWindow = "ThemeButton";
 
+            TextBox_Speed.Text = (Settings.animationTime).ToString();
+
         }
 
         private void ChangeVertexColorButton_Click(object sender, RoutedEventArgs e)
@@ -255,6 +257,11 @@ namespace Graph_Editor
         }
 
         private void LightTheme_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DarkTheme_Click(object sender, RoutedEventArgs e)
         {
 
         }
