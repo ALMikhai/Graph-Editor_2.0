@@ -65,11 +65,22 @@
       <DependentUpon>AlgoritmsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Animation\AnimationEdge.cs" />
+    <Compile Include="ButtonGeneration.cs" />
     <Compile Include="Globals.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="Themes.cs" />
+    <Compile Include="PropertiesWindow\VertexProrerty.xaml.cs">
+      <DependentUpon>VertexProrerty.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UndoRedo\History.cs" />
+    <Compile Include="UndoRedo\Record.cs" />
     <Compile Include="Objects\Edge.cs" />
     <Compile Include="Objects\Vertex.cs" />
     <Compile Include="ConnectVertices.xaml.cs">
       <DependentUpon>ConnectVertices.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OptionsWindow.xaml.cs">
+      <DependentUpon>OptionsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SaveLoad\Exit.cs" />
     <Compile Include="SaveLoad\Load.cs" />
@@ -86,6 +97,9 @@
     <Compile Include="Tools\DelVertex.cs" />
     <Compile Include="Tools\MoveVertex.cs" />
     <Compile Include="Tools\Tool.cs" />
+    <Compile Include="Documentation.xaml.cs">
+      <DependentUpon>Documentation.xaml</DependentUpon>
+    </Compile>
     <Page Include="AlgoritmsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -107,11 +121,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="OptionsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PropertiesWindow\VertexProrerty.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ShowData\CurrentMatrix.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ShowData\CurrentList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Documentation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -164,6 +190,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\deleteEdgeIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Themes\LightTheme.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Themes\tmp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -21,6 +21,7 @@ using System.Diagnostics;
 using Graph_Editor.Algoritms;
 using System.ComponentModel;
 using Graph_Editor.ShowData;
+using Graph_Editor.UndoRedo;
 
 namespace Graph_Editor
 {
@@ -33,22 +34,52 @@ namespace Graph_Editor
     // 6) В назывниях функциий, переменных и даже в xaml'е не должно присутствовать знака подчеркивания '_' (только в тех случаях, когда это делает студия).
     // 7) Названия переменных и функций должны быть понятны всем, а не только тому кто это писал.
     // 8) Не использовать сокращения в названиях переменных и функций.
-
-    // TODO Сделать отдельный виртуальный класс Alogoritm и вынести туда общие методы по типу (старт). Нужно для удобного вызова Алгоритмов(Не DFS.Start() BFS.Start(), а AlgoritmNow.Start()для всех).
-    // TODO Плохо работает визуализация матрицы смежности(переделать).
     
+    // TODO База данных, через серилизацию.
+    // TODO Сделать генерацию цветов для быстрой смены.
+
     public partial class MainWindow : Window
     {
         private static FigureHost graphHost = new FigureHost();
         public static MainWindow Instance { get; private set; }
 
+        private void ThemeSettings()
+        {
+            FullWindow.Background = Themes.MainMainWindow;
+
+            TeamName.Background = Themes.MainTeamName;
+
+            Algorimts_Window.Background = Themes.MainToolsButtons;
+            AddVertex.Background = Themes.MainToolsButtons;
+            MoveVertex.Background = Themes.MainToolsButtons;
+            DelVertex.Background = Themes.MainToolsButtons;
+            DelEdge.Background = Themes.MainToolsButtons;
+            Connect.Background = Themes.MainToolsButtons;
+
+            GraphCanvas.Background = Themes.MainCanvas;
+
+            MainMenu.Background = Themes.MainMenu;
+            save.Background = Themes.MainMenuItems;
+            open.Background = Themes.MainMenuItems;
+            exit.Background = Themes.MainMenuItems;
+            matrix.Background = Themes.MainMenuItems;
+            list.Background = Themes.MainMenuItems;
+
+            Exit_Dialog.Background = Themes.MainExitDialog;
+        }
+
         public MainWindow()
         {
             InitializeComponent();
+            ThemeSettings();
+
+            list.Background = Brushes.Gray;
+
             GraphCanvas.Children.Add(graphHost);
             Instance = this;
-        }
 
+            ButtonGeneration.ColorButtonGeneration();
+        }
         public void Invalidate()
         {
             GraphCanvas.Children.Clear();
@@ -83,9 +114,7 @@ namespace Graph_Editor
 
                     var left = new Point((centerSecond.X + (Xp / d) * 6), (centerSecond.Y + (Yp / d) * 6));
                     var right = new Point((centerSecond.X - (Xp / d) * 6), (centerSecond.Y - (Yp / d) * 6));
-
-
-
+                    
                     drawingContext.DrawLine(pen, center, left);
                     drawingContext.DrawLine(pen, center, right);
                 }
@@ -132,7 +161,7 @@ namespace Graph_Editor
 
         public void InvalidateAlgo(Edge edge)
         {
-            GraphCanvas.Children.Remove(AnimationEdge.AnimationEllipse);
+            GraphCanvas.Children.Remove(Globals.AnimationEllipse);
             var drawingVisual = new DrawingVisual();
             var drawingContext = drawingVisual.RenderOpen();
             
@@ -185,7 +214,6 @@ namespace Graph_Editor
         {
             ConnectVertices connectVertices = new ConnectVertices();
             WaitPanel.Visibility = Visibility.Visible;
-            WaitPanel.Opacity = 0.4;
             connectVertices.Show();
         }
 
@@ -193,10 +221,11 @@ namespace Graph_Editor
         {
             AlgoritmsWindow algoritms = new AlgoritmsWindow();
             WaitPanel.Visibility = Visibility.Visible;
+            Algorimts_Window.IsEnabled = false;
             algoritms.Show();
         }
 
-        Brush baseButtonColor = (Brush)new BrushConverter().ConvertFrom("#345160");
+        Brush baseButtonColor = Themes.MainToolsButtons;
 
         private void Change_Tool_Button(object sender, RoutedEventArgs e)
         {
@@ -213,6 +242,7 @@ namespace Graph_Editor
                 if (string.Compare((sender as Button).Background.ToString(), "#FF5F9EA0") == 0)
                 {
                     Connect_Click(sender, e);
+                    Connect.IsEnabled = false;
                 }
             }
 
@@ -258,7 +288,7 @@ namespace Graph_Editor
         {
             if (string.Compare((sender as Button).Background.ToString(), "#FF5F9EA0") != 0)
             {
-                (sender as Button).Background = (Brush)new BrushConverter().ConvertFrom("#4c7184");
+                (sender as Button).Background = Themes.MainToolsButtonsHover;
             }
         }
 
@@ -266,7 +296,7 @@ namespace Graph_Editor
         {
             if (string.Compare((sender as Button).Background.ToString(), "#FF5F9EA0") != 0)
             {
-                (sender as Button).Background = (Brush)new BrushConverter().ConvertFrom("#345160");
+                (sender as Button).Background = Themes.MainToolsButtons;
             }
         }
 
@@ -292,19 +322,26 @@ namespace Graph_Editor
             }
         }
 
-        private void ClearAll_Click(object sender, RoutedEventArgs e)
+        public void ClearAll_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < Globals.GlobalIndex; i++)
+            List<Vertex> vertices = new List<Vertex>();
+            foreach(var vertex in Globals.VertexData)
             {
-                for (int j = 0; j < Globals.GlobalIndex; j++)
-                {
-                    Globals.Matrix[i, j] = 0;
-                }
+                vertices.Add(new Vertex(vertex));
             }
+
+            List<Edge> edges = new List<Edge>();
+            foreach(var edge in Globals.EdgesData)
+            {
+                edges.Add(new Edge(edge));
+            }
+
+            History.Add(vertices, edges);
 
             Globals.VertexData.Clear();
             Globals.EdgesData.Clear();
             Globals.GlobalIndex = 0;
+            Globals.RestoreMatrix();
             Invalidate();
         }
 
@@ -332,7 +369,6 @@ namespace Graph_Editor
         {
             CurrentMatrix currentMatrix = new CurrentMatrix();
             WaitPanel.Visibility = Visibility.Visible;
-            WaitPanel.Background = Brushes.Gray;
             currentMatrix.Show();
         }
 
@@ -340,18 +376,44 @@ namespace Graph_Editor
         {
             CurrentList currentList = new CurrentList();
             WaitPanel.Visibility = Visibility.Visible;
-            WaitPanel.Background = Brushes.Gray;
             currentList.Show();
         }
 
-        private void ChangeVertexColorButton_Click(object sender, RoutedEventArgs e)
+        private void ViewDocumentation(object sender, RoutedEventArgs e)
         {
-            Globals.ColorInsideVertex = (sender as Button).Background;
+            viewDoc.IsEnabled = false;
+            Documentation documentation = new Documentation();
+            documentation.Show();
         }
 
-        private void ChangeEdgeColorButton_Click(object sender, RoutedEventArgs e)
+        private void GoToOptions(object sender, RoutedEventArgs e)
         {
-            Globals.ColorEdge = (sender as Button).Background;
+            Settings.IsEnabled = false;
+            OptionsWindow optionsWindow = new OptionsWindow();
+            optionsWindow.Show();
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Z & Keyboard.Modifiers == ModifierKeys.Control)
+            {
+                History.UndoRedo(0);
+                Invalidate();
+            }
+
+            if (e.Key == Key.Y & Keyboard.Modifiers == ModifierKeys.Control)
+            {
+                History.UndoRedo(1);
+                Invalidate();
+            }
+        }
+
+        public void ChangeColor(object sender, RoutedEventArgs e)
+        {
+            if((sender as Button).Tag.ToString() == "0")
+            {
+                Themes.ColorInsideVertex = (sender as Button).Background;
+            }
         }
     }
 }
