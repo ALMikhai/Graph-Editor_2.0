@@ -103,6 +103,32 @@ namespace Graph_Editor.UndoRedo
                     return;
                 }
             }
+
+            if ((record.Befor is List < Vertex>) && (record.After is List<Edge>))
+            {
+                if (n == 1)
+                {
+                    Globals.VertexData.Clear();
+                    Globals.EdgesData.Clear();
+                    Globals.GlobalIndex = 0;
+                    Globals.RestoreMatrix();
+                }
+                else
+                {
+                    foreach (var vertex in (record.Befor as List<Vertex>))
+                    {
+                        Globals.VertexData.Add(vertex);
+                        Globals.GlobalIndex++;
+                    }
+
+                    foreach (var edge in (record.After as List<Edge>))
+                    {
+                        Globals.EdgesData.Add(new Edge(Globals.FindVertex(edge.From), Globals.FindVertex(edge.To), edge.Weight, edge.Directed, edge.Color, edge.Thickness));
+                    }
+
+                    Globals.RestoreMatrix();
+                }
+            }
         }
 
         // TODO Придумать другие названия для функций.
