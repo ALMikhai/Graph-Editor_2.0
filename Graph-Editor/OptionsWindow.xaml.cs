@@ -34,11 +34,11 @@ namespace Graph_Editor
         }
         private void RestartWindow()
         {
-            setNowEdge = Globals.baseEdge;
-            setNowVertex = Globals.baseVertex;
+            setNowEdge = Globals.BaseEdge;
+            setNowVertex = Globals.BaseVertex;
 
-            ((Button)this.FindName(Globals.baseEdge)).Height = 30;
-            ((Button)this.FindName(Globals.baseVertex)).Height = 30;
+            ((Button)this.FindName(Globals.BaseEdge)).Height = 30;
+            ((Button)this.FindName(Globals.BaseVertex)).Height = 30;
 
             currentWindow = "ThemeGrid";
             currentButtonWindow = "ThemeButton";
@@ -71,11 +71,11 @@ namespace Graph_Editor
             ((Button)this.FindName(setNowVertex)).Height = 25;
             ((Button)this.FindName(setNowEdge)).Height = 25;
 
-            ((Button)this.FindName(Globals.baseVertex)).Height = 30;
-            ((Button)this.FindName(Globals.baseEdge)).Height = 30;
+            ((Button)this.FindName(Globals.BaseVertex)).Height = 30;
+            ((Button)this.FindName(Globals.BaseEdge)).Height = 30;
 
-            setNowVertex = Globals.baseVertex;
-            setNowEdge = Globals.baseEdge;
+            setNowVertex = Globals.BaseVertex;
+            setNowEdge = Globals.BaseEdge;
 
         }
 
@@ -91,8 +91,8 @@ namespace Graph_Editor
 
         private void OK_Click(object sender, RoutedEventArgs e)
         {
-            Globals.baseVertex = setNowVertex;
-            Globals.baseEdge = setNowEdge;
+            Globals.BaseVertex = setNowVertex;
+            Globals.BaseEdge = setNowEdge;
             this.Close();
         }
         private void Rechoose(string name, object sender)

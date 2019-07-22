@@ -10,8 +10,8 @@ namespace Graph_Editor
     [Serializable]
     public static class Globals
     {
-        public static string baseVertex = "vBlack";
-        public static string baseEdge = "eLightBlue";
+        public static string BaseVertex = "vBlack";
+        public static string BaseEdge = "eLightBlue";
 
         public static double animationTime = 1.5;
 
