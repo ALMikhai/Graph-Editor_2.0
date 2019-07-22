@@ -22,7 +22,6 @@ namespace Graph_Editor.Algoritms
     public class Dfs : Algoritm
     {
         static bool[] visited = new bool[Globals.Size];
-        int c = 2;
         static List<Edge> edgesUsed = new List<Edge>();
 
         public override void Start(int v)

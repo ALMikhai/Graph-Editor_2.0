@@ -34,10 +34,9 @@ namespace Graph_Editor
     // 6) В назывниях функциий, переменных и даже в xaml'е не должно присутствовать знака подчеркивания '_' (только в тех случаях, когда это делает студия).
     // 7) Названия переменных и функций должны быть понятны всем, а не только тому кто это писал.
     // 8) Не использовать сокращения в названиях переменных и функций.
-
-    // TODO Плохо работает визуализация матрицы смежности(переделать).
+    
     // TODO База данных, через серилизацию.
-    // TODO Сдвиг индексов по удалению.
+    // TODO Сделать генерацию цветов для быстрой смены.
 
     public partial class MainWindow : Window
     {
@@ -78,6 +77,8 @@ namespace Graph_Editor
 
             GraphCanvas.Children.Add(graphHost);
             Instance = this;
+
+            ButtonGeneration.ColorButtonGeneration();
         }
         public void Invalidate()
         {
@@ -113,9 +114,7 @@ namespace Graph_Editor
 
                     var left = new Point((centerSecond.X + (Xp / d) * 6), (centerSecond.Y + (Yp / d) * 6));
                     var right = new Point((centerSecond.X - (Xp / d) * 6), (centerSecond.Y - (Yp / d) * 6));
-
-
-
+                    
                     drawingContext.DrawLine(pen, center, left);
                     drawingContext.DrawLine(pen, center, right);
                 }
@@ -323,19 +322,26 @@ namespace Graph_Editor
             }
         }
 
-        private void ClearAll_Click(object sender, RoutedEventArgs e)
+        public void ClearAll_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < Globals.GlobalIndex; i++)
+            List<Vertex> vertices = new List<Vertex>();
+            foreach(var vertex in Globals.VertexData)
             {
-                for (int j = 0; j < Globals.GlobalIndex; j++)
-                {
-                    Globals.Matrix[i, j] = 0;
-                }
+                vertices.Add(new Vertex(vertex));
             }
+
+            List<Edge> edges = new List<Edge>();
+            foreach(var edge in Globals.EdgesData)
+            {
+                edges.Add(new Edge(edge));
+            }
+
+            History.Add(vertices, edges);
 
             Globals.VertexData.Clear();
             Globals.EdgesData.Clear();
             Globals.GlobalIndex = 0;
+            Globals.RestoreMatrix();
             Invalidate();
         }
 
@@ -391,8 +397,22 @@ namespace Graph_Editor
         {
             if (e.Key == Key.Z & Keyboard.Modifiers == ModifierKeys.Control)
             {
-                History.Undo();
+                History.UndoRedo(0);
                 Invalidate();
+            }
+
+            if (e.Key == Key.Y & Keyboard.Modifiers == ModifierKeys.Control)
+            {
+                History.UndoRedo(1);
+                Invalidate();
+            }
+        }
+
+        public void ChangeColor(object sender, RoutedEventArgs e)
+        {
+            if((sender as Button).Tag.ToString() == "0")
+            {
+                Themes.ColorInsideVertex = (sender as Button).Background;
             }
         }
     }
