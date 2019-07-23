@@ -115,7 +115,12 @@ namespace Graph_Editor.UndoRedo
                 UndoClearAll(record, n);
             }
 
-            if((record.Befor is List<Point>) && (record.After is List<Point>))
+            if ((record.Befor is List<Edge>) && (record.After is List<Vertex>))
+            {
+                UndoLoadFile(record, n);
+            }
+
+            if ((record.Befor is List<Point>) && (record.After is List<Point>))
             {
                 UndoMoveAllVertex(record, n);
             }
@@ -164,7 +169,6 @@ namespace Graph_Editor.UndoRedo
             }
         }
 
-        
 
         private static void UndoDeleteVertex(Record record, int n)
         {
@@ -269,7 +273,7 @@ namespace Graph_Editor.UndoRedo
             {
                 foreach (var vertex in (record.Befor as List<Vertex>))
                 {
-                    Globals.VertexData.Add(vertex);
+                    Globals.VertexData.Add(new Vertex(vertex));
                     Globals.GlobalIndex++;
                 }
 
@@ -348,9 +352,40 @@ namespace Graph_Editor.UndoRedo
                 vertex.Coordinates = Point.Add(vertex.Coordinates, vector);
             }
 
-            object temp = record.After;
-            record.After = record.Befor;
-            record.Befor = temp;
+            List<Point> startPoints = new List<Point>();
+            startPoints.Add(finishPoint);
+
+            List<Point> finishPoints = new List<Point>();
+            finishPoints.Add(startPoint);
+
+            record.Befor = startPoints;
+            record.After = finishPoints;
+        }
+
+        private static void UndoLoadFile(Record record, int n)
+        {
+            if (n == 0)
+            {
+                Globals.VertexData.Clear();
+                Globals.EdgesData.Clear();
+                Globals.GlobalIndex = 0;
+                Globals.RestoreMatrix();
+            }
+            else
+            {
+                foreach (var vertex in (record.After as List<Vertex>))
+                {
+                    Globals.VertexData.Add(new Vertex(vertex));
+                    Globals.GlobalIndex++;
+                }
+
+                foreach (var edge in (record.Befor as List<Edge>))
+                {
+                    Globals.EdgesData.Add(new Edge(Globals.FindVertex(edge.From), Globals.FindVertex(edge.To), edge.Weight, edge.Directed, edge.Color, edge.Thickness));
+                }
+
+                Globals.RestoreMatrix();
+            }
         }
     }
 }
