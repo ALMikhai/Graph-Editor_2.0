@@ -60,6 +60,7 @@ namespace Graph_Editor
             {0, new Bfs()},
             {1, new Dfs()},
             {2, new Dijkstra()},
+            {6, new Floyd()},
             {7, new Kruskal()}
         };
 

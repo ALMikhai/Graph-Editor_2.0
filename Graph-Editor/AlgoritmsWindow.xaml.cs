@@ -84,7 +84,7 @@ namespace Graph_Editor
                 // Здесь нет никаких стартовых вершин, сами номера алгоритмов хранятся в переменной chooseAlg
                 // Я так понимаю, ты хотел сделать так: 
                 // AlgoList[chooseAlg].Start();
-
+                AlgoList[chooseAlg].Start();
                 LockPanel.Visibility = Visibility.Hidden;
             }
         }
