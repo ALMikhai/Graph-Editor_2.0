@@ -36,7 +36,6 @@ namespace Graph_Editor
     // 8) �� ������������ ���������� � ��������� ���������� � �������.
     
     // TODO ���� ������, ����� �����������.
-    // TODO ������� ��������� ������ ��� ������� �����.
 
     public partial class MainWindow : Window
     {
@@ -80,6 +79,7 @@ namespace Graph_Editor
 
             ButtonGeneration.ColorButtonGeneration();
         }
+
         public void Invalidate()
         {
             GraphCanvas.Children.Clear();
@@ -127,7 +127,7 @@ namespace Graph_Editor
                     {
                         drawingContext.DrawText(new FormattedText(edge.Weight.ToString(),
                                                 CultureInfo.GetCultureInfo("en-us"),
-                                                FlowDirection.LeftToRight,
+                                                ((from.X < to.X && from.Y < to.Y) || (from.X > to.X && from.Y > to.Y)) ? FlowDirection.RightToLeft : FlowDirection.LeftToRight,
                                                 new Typeface("Romanic"),
                                                 30, Brushes.Red), new Point((from.X + center.X) / 2, (from.Y + center.Y) / 2));
                     }
@@ -135,9 +135,10 @@ namespace Graph_Editor
                     {
                         drawingContext.DrawText(new FormattedText(edge.Weight.ToString(),
                                                 CultureInfo.GetCultureInfo("en-us"),
-                                                FlowDirection.LeftToRight,
+                                                ((from.X < to.X && from.Y < to.Y) || (from.X > to.X && from.Y > to.Y)) ? FlowDirection.RightToLeft : FlowDirection.LeftToRight,
                                                 new Typeface("Romanic"),
-                                                30, Brushes.Red), center);
+                                                30, Brushes.Red), 
+                                                center);
                     }
                 }
             }
@@ -146,15 +147,15 @@ namespace Graph_Editor
             {
                 drawingContext.DrawEllipse(vertex.Color, Globals.BasePen, vertex.Coordinates, Globals.VertRadius, Globals.VertRadius);
 
-                FormattedText txt = new FormattedText(vertex.Index.ToString(),
+                FormattedText txt = new FormattedText((vertex.Text == "") ? vertex.Index.ToString() : vertex.Text,
                                     CultureInfo.GetCultureInfo("en-us"),
                                     FlowDirection.LeftToRight,
                                     new Typeface("Romanic"),
                                     20, (Brush)new BrushConverter().ConvertFrom("#305F5F"));
 
-                drawingContext.DrawText(txt, new Point(vertex.Coordinates.X + (vertex.Index.ToString().Length * (-5)), vertex.Coordinates.Y - 10));
+                drawingContext.DrawText(txt, new Point(vertex.Coordinates.X + ((vertex.Text == "") ? vertex.Index.ToString().Length * (-5) : vertex.Text.Length * (-5)), vertex.Coordinates.Y - 10));
             }
-
+            
             drawingContext.Close();
             graphHost.Children.Add(drawingVisual);
         }
@@ -197,13 +198,13 @@ namespace Graph_Editor
             {
                 drawingContext.DrawEllipse(vertex.Color, Globals.BasePen, vertex.Coordinates, Globals.VertRadius, Globals.VertRadius);
 
-                FormattedText txt = new FormattedText(vertex.Index.ToString(),
+                FormattedText txt = new FormattedText((vertex.Text == "") ? vertex.Index.ToString() : vertex.Text,
                                     CultureInfo.GetCultureInfo("en-us"),
                                     FlowDirection.LeftToRight,
                                     new Typeface("Romanic"),
                                     20, (Brush)new BrushConverter().ConvertFrom("#305F5F"));
 
-                drawingContext.DrawText(txt, new Point(vertex.Coordinates.X + (vertex.Index.ToString().Length * (-5)), vertex.Coordinates.Y - 10));
+                drawingContext.DrawText(txt, new Point(vertex.Coordinates.X + ((vertex.Text == "") ? vertex.Index.ToString().Length * (-5) : vertex.Text.Length * (-5)), vertex.Coordinates.Y - 10));
             }
 
             drawingContext.Close();
@@ -251,6 +252,9 @@ namespace Graph_Editor
             DelVertex.Background = baseButtonColor;
             Connect.Background = baseButtonColor;
             DelEdge.Background = baseButtonColor;
+            MoveAllVertex.Background = baseButtonColor;
+            PropertyEdge.Background = baseButtonColor;
+            PropertyVertex.Background = baseButtonColor;
             (sender as Button).Background = Brushes.CadetBlue;
         }
 
