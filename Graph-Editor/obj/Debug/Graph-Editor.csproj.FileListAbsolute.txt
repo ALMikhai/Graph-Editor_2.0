@@ -50,3 +50,9 @@ C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Gra
 C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.csproj.CoreCompileInputs.cache
 C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.exe
 C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.pdb
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\OptionsWindow.g.cs
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\PropertiesWindow\VertexProrerty.g.cs
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Documentation.g.cs
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\OptionsWindow.baml
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\PropertiesWindow\VertexProrerty.baml
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Documentation.baml

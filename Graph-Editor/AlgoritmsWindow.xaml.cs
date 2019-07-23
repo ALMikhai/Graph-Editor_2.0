@@ -97,7 +97,7 @@ namespace Graph_Editor
                 Dijkstra.Visibility = Visibility.Hidden;
                 this.Close();
 
-                // Вызывай дейкстру свою
+                AlgoList[chooseAlg].Start(Convert.ToInt32(DijkstrastartVertex.Text), Convert.ToInt32(DijkstrafinalVertex.Text));
             }
             else
                 MessageBox.Show("Invalid input data");
