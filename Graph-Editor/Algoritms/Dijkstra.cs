@@ -133,9 +133,12 @@ namespace Graph_Editor.Algoritms
         public override void Start(int s, int e)
         {
             MainWindow.Instance.Invalidate();
-            if (!CheckIn(s) || !CheckIn(e) /*|| !IsWay(s, e)*/)
+            if (!CheckIn(s) || !CheckIn(e) || !IsWay(s, e))
+            {
+                visited = new bool[Size];
                 return;
-
+            }
+            visited = new bool[Size];
             dijkstra(s, e);
             AnimationEdge.NextAnimation(path[0], path);
         }
@@ -171,7 +174,6 @@ namespace Graph_Editor.Algoritms
                     }
                 }
             }
-            visited = new bool[Size];
             int j;
             for (j = end; j != start; j = p[j])
             {
