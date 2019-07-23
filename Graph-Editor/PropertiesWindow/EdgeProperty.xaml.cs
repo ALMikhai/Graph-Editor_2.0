@@ -44,7 +44,7 @@ namespace Graph_Editor.PropertiesWindow
                     Margin = new Thickness(2.5)
                 };
 
-                newButton.Click += ChangeColorEdge;
+                newButton.Click += changeColorEdge;
 
                 propertyWindow.colorBar.Items.Add(newButton);
             }
@@ -54,25 +54,32 @@ namespace Graph_Editor.PropertiesWindow
 
         private static void weightEdge_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Edge edgeBefor = new Edge(((sender as TextBox).Tag as Edge));
-
-            Edge edgeAfterDirected = ((sender as TextBox).Tag as Edge);
-
-            if (!edgeAfterDirected.Directed)
+            try
             {
-                Edge edgeAfterUnDirected = Globals.FindReversEdge(edgeAfterDirected);
-                edgeAfterUnDirected.Weight = Convert.ToInt32((sender as TextBox).Text);
+                Edge edgeBefor = new Edge(((sender as TextBox).Tag as Edge));
+
+                Edge edgeAfterDirected = ((sender as TextBox).Tag as Edge);
+
+                if (!edgeAfterDirected.Directed)
+                {
+                    Edge edgeAfterUnDirected = Globals.FindReversEdge(edgeAfterDirected);
+                    edgeAfterUnDirected.Weight = ((sender as TextBox).Text != "") ? Convert.ToInt32((sender as TextBox).Text) : 1;
+                }
+
+                edgeAfterDirected.Weight = ((sender as TextBox).Text != "") ? Convert.ToInt32((sender as TextBox).Text) : 1;
+
+                Globals.RestoreMatrix();
+
+                History.Add(edgeBefor, new Edge(edgeAfterDirected));
+                MainWindow.Instance.Invalidate();
             }
+            catch
+            {
 
-            edgeAfterDirected.Weight = Convert.ToInt32((sender as TextBox).Text);
-
-            Globals.RestoreMatrix();
-
-            History.Add(edgeBefor, new Edge(edgeAfterDirected));
-            MainWindow.Instance.Invalidate();
+            }
         }
 
-        private static void ChangeColorEdge(object sender, EventArgs e)
+        private static void changeColorEdge(object sender, EventArgs e)
         {   
             Edge edgeBefor = new Edge(((sender as Button).Tag as Edge));
 
@@ -90,9 +97,33 @@ namespace Graph_Editor.PropertiesWindow
             MainWindow.Instance.Invalidate();
         }
 
-        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        private void buttonClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void weightEdge_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(isDigit(e))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private bool isDigit(KeyEventArgs e)
+        {
+            if(e.Key == Key.D1 || e.Key == Key.D2 || e.Key == Key.D3 || e.Key == Key.D4 || e.Key == Key.D5 || e.Key == Key.D6 || e.Key == Key.D7 || e.Key == Key.D8 || e.Key == Key.D9 || e.Key == Key.D0 || e.Key == Key.NumPad0 || e.Key == Key.NumPad1 || e.Key == Key.NumPad2 || e.Key == Key.NumPad3 || e.Key == Key.NumPad4 || e.Key == Key.NumPad5 || e.Key == Key.NumPad6 || e.Key == Key.NumPad7 || e.Key == Key.NumPad8 || e.Key == Key.NumPad9)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

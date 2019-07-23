@@ -127,7 +127,7 @@ namespace Graph_Editor
                     {
                         drawingContext.DrawText(new FormattedText(edge.Weight.ToString(),
                                                 CultureInfo.GetCultureInfo("en-us"),
-                                                FlowDirection.LeftToRight,
+                                                ((from.X < to.X && from.Y < to.Y) || (from.X > to.X && from.Y > to.Y)) ? FlowDirection.RightToLeft : FlowDirection.LeftToRight,
                                                 new Typeface("Romanic"),
                                                 30, Brushes.Red), new Point((from.X + center.X) / 2, (from.Y + center.Y) / 2));
                     }
@@ -135,9 +135,10 @@ namespace Graph_Editor
                     {
                         drawingContext.DrawText(new FormattedText(edge.Weight.ToString(),
                                                 CultureInfo.GetCultureInfo("en-us"),
-                                                FlowDirection.LeftToRight,
+                                                ((from.X < to.X && from.Y < to.Y) || (from.X > to.X && from.Y > to.Y)) ? FlowDirection.RightToLeft : FlowDirection.LeftToRight,
                                                 new Typeface("Romanic"),
-                                                30, Brushes.Red), center);
+                                                30, Brushes.Red), 
+                                                center);
                     }
                 }
             }
@@ -154,7 +155,7 @@ namespace Graph_Editor
 
                 drawingContext.DrawText(txt, new Point(vertex.Coordinates.X + ((vertex.Text == "") ? vertex.Index.ToString().Length * (-5) : vertex.Text.Length * (-5)), vertex.Coordinates.Y - 10));
             }
-
+            
             drawingContext.Close();
             graphHost.Children.Add(drawingVisual);
         }
