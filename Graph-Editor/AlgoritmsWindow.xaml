@@ -23,7 +23,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Grid Background="{TemplateBinding Background}" Margin="0,26,78,0">
+                        <Grid Background="{TemplateBinding Background}" Margin="0">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
                     </ControlTemplate>
@@ -34,54 +34,54 @@
     <Grid x:Name="MainWindow" Background="PaleTurquoise" Margin="0,0,-6,0">
         <Button x:Name="BFSButton" Style="{StaticResource MyButtonStyle}" Content="Breadth First Search"
                 HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"
+                FontSize="23" FontFamily="Agency FB" FontWeight="DemiBold" Click="Button_Alg_Click"
                 Tag="0" Background="CadetBlue" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove">
         </Button>
         <Button x:Name="DFSButton" Style="{StaticResource MyButtonStyle}" Content="Depth-first search" BorderThickness="0"
                 HorizontalAlignment="Left" Margin="224,127,0,0" VerticalAlignment="Top"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
+                FontSize="23" FontFamily="Agency FB" FontWeight="DemiBold" Click="Button_Alg_Click"  
                 Tag="1" Background="CadetBlue" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove"
         />
         <Button x:Name="DijkstraButton" Style="{StaticResource MyButtonStyle}" Content="Dijkstra's Algorithm" BorderThickness="0"
                 HorizontalAlignment="Left" Margin="440,127,0,0" VerticalAlignment="Top"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
-                Tag="2" Background="#afcecf"
+                FontSize="23" FontFamily="Agency FB" FontWeight="DemiBold" Click="Button_Alg_Click"  
+                Tag="2" Background="CadetBlue" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove"
         />
         <Button x:Name="EulerButton" Style="{StaticResource MyButtonStyle}" Content="Euler cycle" BorderThickness="0"
                 HorizontalAlignment="Left" Margin="440,201,0,0" VerticalAlignment="Top"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
-                Tag="5" Background="#afcecf"
+                FontSize="23" FontFamily="Agency FB" FontWeight="DemiBold" Click="Button_Alg_Click"  
+                Tag="5" Background="CadetBlue" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove"
         />
         <Button x:Name="HamiltonianButton" Style="{StaticResource MyButtonStyle}" Content="Hamiltonian cycle" BorderThickness="0"
                 HorizontalAlignment="Left" Margin="224,201,0,0" VerticalAlignment="Top"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
-                Tag="4" Background="#afcecf"
+                FontSize="23" FontFamily="Agency FB" FontWeight="DemiBold" Click="Button_Alg_Click"  
+                Tag="4" Background="CadetBlue" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove"
         />
         <Button x:Name="ColorButton" Style="{StaticResource MyButtonStyle}" Content="Color the graph" BorderThickness="0"
                 HorizontalAlignment="Left" Margin="10,201,0,0" VerticalAlignment="Top"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
-                Tag="3" Background="#afcecf"
+                FontSize="23" FontFamily="Agency FB" FontWeight="DemiBold" Click="Button_Alg_Click"  
+                Tag="3" Background="CadetBlue" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove"
         />
         <Button x:Name="KruskalButton" Style="{StaticResource MyButtonStyle}" Content="Kruskal's Algorithm" BorderThickness="0"
                 HorizontalAlignment="Left" Margin="224,285,0,0" VerticalAlignment="Top"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
+                FontSize="23" FontFamily="Agency FB" FontWeight="DemiBold" Click="Button_Alg_Click"  
                 Tag="7" Background="CadetBlue" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove"
         />
         <Button x:Name="MaximumButton" Style="{StaticResource MyButtonStyle}" Content="Maximum flow"  BorderThickness="0"
                 HorizontalAlignment="Left" Margin="440,285,0,0" VerticalAlignment="Top"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
-                Tag="8" Background="#afcecf"       
+                FontSize="23" FontFamily="Agency FB" FontWeight="DemiBold" Click="Button_Alg_Click"  
+                Tag="8" Background="CadetBlue" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove"
         />
         <Button x:Name="FloydButton" Style="{StaticResource MyButtonStyle}" Content="Floyd-Worshel Algorithm" BorderThickness="0"
                 HorizontalAlignment="Left" Margin="10,285,0,0" VerticalAlignment="Top"
-                FontSize="17" FontFamily="serif" FontWeight="DemiBold" Click="Button_Alg_Click"  
-                Tag="6" Background="#afcecf"
+                FontSize="23" FontFamily="Agency FB" FontWeight="DemiBold" Click="Button_Alg_Click"  
+                Tag="6" Background="CadetBlue" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove"
         />
         <Button x:Name="CancelButton" Style="{StaticResource CancelButton}"
             IsCancel="True" Background="#B9C2C2" BorderThickness="0"
-            FontSize="20" Content="Cancel" Tag="Cancel"
+            FontSize="30" FontFamily="Agency FB" Content="Cancel" Tag="Cancel"
             HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
-            Width="180" Height="70" Click="main_Cancel_Click" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove"
+            Width="122" Height="38" Click="main_Cancel_Click" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove"
         />
 
         <Grid x:Name="LockPanel" Opacity="0.4" Background="Gray" Visibility="Hidden"/>
@@ -89,7 +89,7 @@
         <TextBlock Text="Select the algorithm you want to use or demonstrate." TextWrapping = "Wrap"
                HorizontalAlignment="Left" Margin="128,26,0,0" VerticalAlignment="Top"
                Height="69" Width="371" TextAlignment="Center"
-               FontSize="25" FontStyle="Italic" FontWeight="DemiBold"
+               FontSize="25" FontWeight="DemiBold" FontFamily="Agency FB"
         />
         <Grid
             x:Name="BFS_DFS"
@@ -135,7 +135,7 @@
             <Button x:Name="Dijkstra_Ready"
             IsDefault="True"
             FontSize="20" Content="Run" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
-            Width="127" Height="42" Click="Button_ReadyExitAlgoritm_Click"
+            Width="127" Height="42" Click="DijkstraReadyExitAlgoritm_Click"
             />
             <Button x:Name="Dijkstra_Cancel"
             IsCancel="True"
