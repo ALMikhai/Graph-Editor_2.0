@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Graph_Editor.Objects;
+using System.Windows;
 
 namespace Graph_Editor.UndoRedo
 {
@@ -109,9 +110,14 @@ namespace Graph_Editor.UndoRedo
                 }
             }
 
-            if ((record.Befor is List < Vertex>) && (record.After is List<Edge>))
+            if((record.Befor is List <Vertex>) && (record.After is List<Edge>))
             {
                 UndoClearAll(record, n);
+            }
+
+            if((record.Befor is List<Point>) && (record.After is List<Point>))
+            {
+                UndoMoveAllVertex(record, n);
             }
         }
 
@@ -328,6 +334,23 @@ namespace Graph_Editor.UndoRedo
                 record.After = new Edge(edgeBefor);
                 record.Befor = new Edge(edgeAfter);
             }
+        }
+
+        private static void UndoMoveAllVertex(Record record, int n)
+        {
+            Point startPoint = (record.Befor as List<Point>)[0];
+            Point finishPoint = (record.After as List<Point>)[0];
+
+            Vector vector = Point.Subtract(startPoint, finishPoint);
+
+            foreach(var vertex in Globals.VertexData)
+            {
+                vertex.Coordinates = Point.Add(vertex.Coordinates, vector);
+            }
+
+            object temp = record.After;
+            record.After = record.Befor;
+            record.Befor = temp;
         }
     }
 }
