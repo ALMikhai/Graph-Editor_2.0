@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\App.xaml
-8-1515734242
+9-410247837
 
-40412245348
+431758370521
 151984215308
-AlgoritmsWindow.xaml;MainWindow.xaml;ConnectVertices.xaml;OptionsWindow.xaml;PropertiesWindow\VertexProrerty.xaml;ShowData\CurrentMatrix.xaml;ShowData\CurrentList.xaml;Documentation.xaml;
+AlgoritmsWindow.xaml;MainWindow.xaml;ConnectVertices.xaml;OptionsWindow.xaml;PropertiesWindow\EdgeProperty.xaml;PropertiesWindow\VertexProperty.xaml;ShowData\CurrentMatrix.xaml;ShowData\CurrentList.xaml;Documentation.xaml;
 
 True
 

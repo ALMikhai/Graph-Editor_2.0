@@ -67,12 +67,17 @@
     <Compile Include="Animation\AnimationEdge.cs" />
     <Compile Include="ButtonGeneration.cs" />
     <Compile Include="Globals.cs" />
+    <Compile Include="PropertiesWindow\EdgeProperty.xaml.cs">
+      <DependentUpon>EdgeProperty.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="Themes.cs" />
-    <Compile Include="PropertiesWindow\VertexProrerty.xaml.cs">
-      <DependentUpon>VertexProrerty.xaml</DependentUpon>
+    <Compile Include="PropertiesWindow\VertexProperty.xaml.cs">
+      <DependentUpon>VertexProperty.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Tools\EditVertexEdge.cs" />
+    <Compile Include="Tools\EditEdge.cs" />
+    <Compile Include="Tools\EditVertex.cs" />
+    <Compile Include="Tools\MoveAllVertex.cs" />
     <Compile Include="UndoRedo\History.cs" />
     <Compile Include="UndoRedo\Record.cs" />
     <Compile Include="Objects\Edge.cs" />
@@ -126,7 +131,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PropertiesWindow\VertexProrerty.xaml">
+    <Page Include="PropertiesWindow\EdgeProperty.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PropertiesWindow\VertexProperty.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -176,9 +185,6 @@
     <Resource Include="Images\edgeIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\handTool.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\list.png" />
     <Resource Include="Images\logo.png" />
   </ItemGroup>
@@ -197,6 +203,14 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Themes\tmp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\propertiesEdgeTool.png" />
+    <Resource Include="Images\propertiesVertexTool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\handForCanvasTool.png" />
+    <Resource Include="Images\handTool.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

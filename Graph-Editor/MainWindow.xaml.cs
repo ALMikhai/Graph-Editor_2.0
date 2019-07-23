@@ -252,6 +252,9 @@ namespace Graph_Editor
             DelVertex.Background = baseButtonColor;
             Connect.Background = baseButtonColor;
             DelEdge.Background = baseButtonColor;
+            MoveAllVertex.Background = baseButtonColor;
+            PropertyEdge.Background = baseButtonColor;
+            PropertyVertex.Background = baseButtonColor;
             (sender as Button).Background = Brushes.CadetBlue;
         }
 

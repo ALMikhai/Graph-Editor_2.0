@@ -10,7 +10,7 @@ using System.Windows;
 
 namespace Graph_Editor
 {
-    class EditVertexEdge : Tool
+    class EditVertex : Tool
     {
         public override void Mouse_Down(Point pointNow)
         {
@@ -21,7 +21,7 @@ namespace Graph_Editor
                     vertex.Coordinates.Y - (Globals.VertRadius) <= pointNow.Y &&
                     pointNow.Y <= vertex.Coordinates.Y + (Globals.VertRadius))
                 {
-                    VertexProrerty.PropertiesVertexWindow(vertex);
+                    VertexProperty.PropertiesVertexWindow(vertex);
                     return;
                 }
             }

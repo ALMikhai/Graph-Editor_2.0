@@ -16,16 +16,16 @@ using Graph_Editor.UndoRedo;
 
 namespace Graph_Editor.PropertiesWindow
 {
-    public partial class VertexProrerty : Window
+    public partial class VertexProperty : Window
     {
-        public VertexProrerty()
+        public VertexProperty()
         {
             InitializeComponent();
         }
 
         public static void PropertiesVertexWindow(Vertex vertex)
         {
-            VertexProrerty propertyWindow = new VertexProrerty();
+            VertexProperty propertyWindow = new VertexProperty();
 
             propertyWindow.nameVertex.Tag = vertex;
 
@@ -44,12 +44,12 @@ namespace Graph_Editor.PropertiesWindow
                     Margin = new Thickness(2.5)
                 };
 
-                newButton.Click += ChengeColorVertex;
+                newButton.Click += ChangeColorVertex;
 
                 propertyWindow.colorBar.Items.Add(newButton);
             }
 
-            propertyWindow.Show();
+            propertyWindow.ShowDialog();
         }
 
         private static void NameVertex_TextChanged(object sender, TextChangedEventArgs e)
@@ -62,7 +62,7 @@ namespace Graph_Editor.PropertiesWindow
             MainWindow.Instance.Invalidate();
         }
 
-        private static void ChengeColorVertex(object sender, EventArgs e)
+        private static void ChangeColorVertex(object sender, EventArgs e)
         {
             Vertex vertexBefor = new Vertex(((sender as Button).Tag as Vertex));
 
