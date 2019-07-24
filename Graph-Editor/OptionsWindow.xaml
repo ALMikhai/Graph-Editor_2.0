@@ -70,17 +70,18 @@
         <Grid x:Name="VertexEdgeGrid" Margin="173,0,0,0" Visibility="Hidden">
             <Label Content="Style:" FontSize="70" FontFamily="Agency FB" Margin="10,95,475,448" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
-            <Label Content="Vertex: "   FontSize="50" FontFamily="Agency FB" Margin="0,307,600,285"/>
-            <Button x:Name="vBlack"     Background="Black"  HorizontalAlignment="Left" Height="26" Margin="133,246,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
-            <Button x:Name="vYellow"    Background="Yellow" HorizontalAlignment="Left" Height="25" Margin="175,246,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
-            <Button x:Name="vGreen"     Background="Green"  HorizontalAlignment="Left" Height="25" Margin="220,246,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
-            <Button x:Name="vBlue"      Background="Blue"   HorizontalAlignment="Left" Height="25" Margin="266,246,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
+            <Label Content="Vertex: "   FontSize="50" FontFamily="Agency FB" Margin="0,212,600,380"/>
+            <Button x:Name="vBlack"     Background="Black"  HorizontalAlignment="Left" Height="26" Margin="133,240,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
+            <Button x:Name="vYellow"    Background="Yellow" HorizontalAlignment="Left" Height="25" Margin="175,241,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
+            <Button x:Name="vGreen"     Background="Green"  HorizontalAlignment="Left" Height="25" Margin="220,241,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
+            <Button x:Name="vBlue"      Background="Blue"   HorizontalAlignment="Left" Height="25" Margin="266,241,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
 
-            <Label Content="Edge: "     FontSize="50" FontFamily="Agency FB" Margin="0,229,600,363"/>
-            <Button x:Name="eLightBlue" Background="#80FFFF" HorizontalAlignment="Left" Height="25" Margin="133,325,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
-            <Button x:Name="eYellow"    Background="Yellow"  HorizontalAlignment="Left" Height="25" Margin="175,325,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
-            <Button x:Name="eGreen"     Background="Green"   HorizontalAlignment="Left" Height="25" Margin="220,325,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
-            <Button x:Name="eBlue"      Background="Blue"    HorizontalAlignment="Left" Height="25" Margin="266,325,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
+            <Label Content="Edge: "     FontSize="50" FontFamily="Agency FB" Margin="0,308,600,262"/>
+            <Button x:Name="eLightBlue" Background="#80FFFF" HorizontalAlignment="Left" Height="25" Margin="133,336,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
+            <Button x:Name="eYellow"    Background="Yellow"  HorizontalAlignment="Left" Height="25" Margin="175,336,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
+            <Button x:Name="eGreen"     Background="Green"   HorizontalAlignment="Left" Height="25" Margin="220,336,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
+            <Button x:Name="eBlue"      Background="Blue"    HorizontalAlignment="Left" Height="25" Margin="266,336,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
+            <Button x:Name="eGray"      Background="Blue"    HorizontalAlignment="Left" Height="25" Margin="266,336,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
 
             <Button x:Name="VEReset" Background="Gray"         BorderThickness="0" Content="Reset" FontSize="32" FontFamily="Agency FB" Margin="84,381,545,228" Click="Reset_Click"/>
             <Button x:Name="VECheck" Background="DarkSeaGreen" BorderThickness="0" Content="Check"  FontSize="32" FontFamily="Agency FB" Margin="175,381,453,228" Click="Check_Click"/>
@@ -88,7 +89,7 @@
             <Button x:Name="VEOkButton"    Background="#CBDFDF" Style="{StaticResource Exit_Buttons}" Content="OK"    FontSize="40" FontFamily="Agency FB" Margin="190,592,395,10" Click="OK_Click"/>
             <Button x:Name="VECloseButton" Background="#CBDFDF" Style="{StaticResource Exit_Buttons}" Content="Close" FontSize="40" FontFamily="Agency FB" Margin="10,592,563,10"  Click="Exit"/>
 
-            <Image Source="images/Themes/tmp.png" Margin="398,0,0,0"/>
+            <Canvas x:Name="exampleCanvas" Background="Azure" Margin="368,95,49,116"/>
         </Grid>
         <Grid x:Name="AnimationGrid" Margin="173,0,0,0" Visibility="Hidden">
             <Label Content="Animation Speed" FontSize="60" FontFamily="Agency FB" FontWeight="DemiBold" HorizontalContentAlignment="Center" Margin="139,10,144,567"/>
