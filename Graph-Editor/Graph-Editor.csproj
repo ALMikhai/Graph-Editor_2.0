@@ -63,6 +63,7 @@
     <Compile Include="Algoritms\Dijkstra.cs" />
     <Compile Include="Algoritms\Euler.cs" />
     <Compile Include="Algoritms\Floyd.cs" />
+    <Compile Include="Algoritms\Hamilton.cs" />
     <Compile Include="Algoritms\Kruskal.cs" />
     <Compile Include="AlgoritmsWindow.xaml.cs">
       <DependentUpon>AlgoritmsWindow.xaml</DependentUpon>
