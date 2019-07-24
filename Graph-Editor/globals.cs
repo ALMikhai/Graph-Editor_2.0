@@ -53,12 +53,18 @@ namespace Graph_Editor
             {1, new  MoveVertex()},
             {2, new  DelVertex()},
             {3, new CntVert()},
-            {4, new DelEdge()}
+            {4, new DelEdge()},
+            {5, new EditVertex()},
+            {6, new EditEdge()},
+            {7, new MoveAllVertex()}
         };
         public static Dictionary<int, Algoritm> AlgoList = new Dictionary<int, Algoritm>
         {
             {0, new Bfs()},
             {1, new Dfs()},
+            {2, new Dijkstra()},
+            {5, new Euler()},
+            {6, new Floyd()},
             {7, new Kruskal()}
         };
 

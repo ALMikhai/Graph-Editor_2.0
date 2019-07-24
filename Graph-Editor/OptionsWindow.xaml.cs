@@ -64,7 +64,6 @@ namespace Graph_Editor
 
             VEReset.Background           = Themes.OptionsVEResetButton;
             VECheck.Background           = Themes.OptionsVECheckButton;
-
         }
 
         public OptionsWindow()
@@ -72,7 +71,6 @@ namespace Graph_Editor
             InitializeComponent();
             RestartWindow();
         }
-
         private void RestartWindow()
         {
             ThemeSettings();
@@ -93,7 +91,9 @@ namespace Graph_Editor
             currentWindow = "ThemeGrid";
             currentButtonWindow = "ThemeButton";
 
-            TextBox_Speed.Text = (Settings.AnimationTime).ToString();
+            TextBox_Speed.Text = (-1 * (MaxSpeed + 175 * MaxSpeed)).ToString();
+
+            TextBox_Speed.Text = (Settings.animationTime).ToString();
 
         }
 
@@ -214,7 +214,7 @@ namespace Graph_Editor
 
         private void TextBox_Speed_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (TextBox_Speed.Text != "")
+            if (TextBox_Speed.Text != "" && TextBox_Speed.Text != null)
             {
                 double point = Convert.ToDouble(TextBox_Speed.Text);
                 SpeedSlider.SelectionEnd = point;

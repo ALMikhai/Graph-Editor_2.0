@@ -8,6 +8,7 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
+using Graph_Editor.UndoRedo;
 
 namespace Graph_Editor
 {
@@ -27,6 +28,8 @@ namespace Graph_Editor
             {
                 try
                 {
+                    MainWindow.Instance.ClearAll_Click(new object(), new System.Windows.RoutedEventArgs());
+
                     Stream file = (FileStream)fileDialog.OpenFile();
                     BinaryFormatter deserializer = new BinaryFormatter();
 
@@ -41,6 +44,19 @@ namespace Graph_Editor
 
                     MainWindow.Instance.Invalidate();
 
+                    List<Vertex> vertices = new List<Vertex>();
+                    foreach (var vertex in Globals.VertexData)
+                    {
+                        vertices.Add(new Vertex(vertex));
+                    }
+
+                    List<Edge> edges = new List<Edge>();
+                    foreach (var edge in Globals.EdgesData)
+                    {
+                        edges.Add(new Edge(edge));
+                    }
+
+                    History.Add(edges, vertices);
                     Globals.RestoreMatrix();
                 }
                 catch

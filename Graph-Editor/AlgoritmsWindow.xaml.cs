@@ -104,7 +104,7 @@ namespace Graph_Editor
                 // Здесь нет никаких стартовых вершин, сами номера алгоритмов хранятся в переменной chooseAlg
                 // Я так понимаю, ты хотел сделать так: 
                 // AlgoList[chooseAlg].Start();
-
+                AlgoList[chooseAlg].Start();
                 LockPanel.Visibility = Visibility.Hidden;
             }
         }
@@ -184,3 +184,16 @@ namespace Graph_Editor
         }
     }
 }
+
+        private void DijkstraReadyExitAlgoritm_Click(object sender, RoutedEventArgs e)
+        {
+            if (DijkstrastartVertex.Text != "" && Globals.IsBe(Convert.ToInt32(DijkstrastartVertex.Text)) && DijkstrastartVertex.Text != DijkstrafinalVertex.Text && 
+                DijkstrafinalVertex.Text != "" && Globals.IsBe(Convert.ToInt32(DijkstrafinalVertex.Text)))
+            {
+                Dijkstra.Visibility = Visibility.Hidden;
+                this.Close();
+
+                AlgoList[chooseAlg].Start(Convert.ToInt32(DijkstrastartVertex.Text), Convert.ToInt32(DijkstrafinalVertex.Text));
+            }
+            else
+                MessageBox.Show("Invalid input data");

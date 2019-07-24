@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using Graph_Editor.Objects;
+using Graph_Editor.PropertiesWindow;
 
 namespace Graph_Editor
 {
@@ -25,7 +27,7 @@ namespace Graph_Editor
 
                 newButton.Click += MainWindow.Instance.ChangeColor;
 
-                MainWindow.Instance.colorbarPanel.Children.Add(newButton);
+                MainWindow.Instance.colorbarPanel.Items.Add(newButton);
             }
         }
     }
