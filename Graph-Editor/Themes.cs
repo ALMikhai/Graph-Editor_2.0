@@ -24,48 +24,168 @@ namespace Graph_Editor
 {
     public static class Themes
     {
+
         public static Brush ColorEdge = Brushes.Black;
-        public static Brush ColorInsideVertex = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
-        // Options Window
-        public static Brush OptionsMainWindowOptionsColor = (Brush)new BrushConverter().ConvertFrom("#DCF5F5");
-        public static Brush OptionsActiveToolBarButton = (Brush)new BrushConverter().ConvertFrom("#C6DCDC");
-        public static Brush OptionsPassiveToolBarButton = (Brush)new BrushConverter().ConvertFrom("#B0C4C4");
-        public static Brush OptionsWindowExitButtons = (Brush)new BrushConverter().ConvertFrom("#CBDFDF");
-        public static Brush OptionsPassiveAnimationSpeedButtons = (Brush)new BrushConverter().ConvertFrom("#C6DCDC");
-        public static Brush OptionsActiveAnimationSpeedButtons = (Brush)new BrushConverter().ConvertFrom("#849393");
-        public static Brush OptionsVEResetButton = Brushes.Gray;
-        public static Brush OptionsVECheckButton = Brushes.DarkSeaGreen;
+        public static int ChooseTheme = 1;
 
-        // Algoritms Window
-        public static Brush AlgoMainWindowColor = Brushes.PaleTurquoise;
-        public static Brush AlgoIsAlgoReady = Brushes.CadetBlue;
-        public static Brush AlgoIsAlgoFailed = (Brush)new BrushConverter().ConvertFrom("#AFCECF");
-        public static Brush AlgoCancelButton = (Brush)new BrushConverter().ConvertFrom("#B9C2C2");
+        public static string logoPath;
 
-        // Main Window
-        public static Brush MainMainWindow = (Brush)new BrushConverter().ConvertFrom("#0A3F4C");
-        public static Brush MainTeamName = (Brush)new BrushConverter().ConvertFrom("#B7E1E1");
-        public static Brush MainToolsButtons = (Brush)new BrushConverter().ConvertFrom("#345160");
-        public static Brush MainToolsButtonsHover = (Brush)new BrushConverter().ConvertFrom("#4c7184");
-        public static Brush MainCanvas = (Brush)new BrushConverter().ConvertFrom("#B7E1E1");
-        public static Brush MainMenu = Brushes.Black;
-        public static Brush MainExitDialog = Brushes.White;
-        public static Brush MainMenuItems = Brushes.Black;
+        public static Brush ColorInsideVertex;
+        public static Brush ColorOfTheTextOfVertex;
 
-        // Documentation Window
-        public static Brush DocCreatorsButton = Brushes.Transparent;
-        public static Brush DocCreatorsWindow = Brushes.White;
-        public static Brush DocExitButton = Brushes.Transparent;
-        public static Brush DocExitButtonHover = Brushes.WhiteSmoke;
+        public static Brush OptionsMainWindowOptionsColor;
+        public static Brush OptionsActiveToolBarButton;
+        public static Brush OptionsPassiveToolBarButton;
+        public static Brush OptionsWindowExitButtons;
+        public static Brush OptionsPassiveAnimationSpeedButtons;
+        public static Brush OptionsActiveAnimationSpeedButtons;
+        public static Brush OptionsVEResetButton;
+        public static Brush OptionsVECheckButton;
 
-        // Connect Window
-        public static Brush ConnectMainWindow = (Brush)new BrushConverter().ConvertFrom("#98B0B0");
-        public static Brush ConnectWindowForVertex = (Brush)new BrushConverter().ConvertFrom("#728484");
-        public static Brush ConnectSlider = (Brush)new BrushConverter().ConvertFrom("#98B0B0");
-        public static Brush ConnectSliderWindow = (Brush)new BrushConverter().ConvertFrom("#728484");
-        public static Brush ConnectResultButtons = (Brush)new BrushConverter().ConvertFrom("#B2B4B4");
-        public static Brush ConnectUnactiveOrientation = (Brush)new BrushConverter().ConvertFrom("#98B0B0");
-        public static Brush ConnectActiveOrientation = (Brush)new BrushConverter().ConvertFrom("#789778");
-        public static Brush ConnectUnactiveOrientationHover = (Brush)new BrushConverter().ConvertFrom("#BCCBBC");
+        public static Brush AlgoMainWindowColor;
+        public static Brush AlgoIsAlgoReady;
+        public static Brush AlgoIsAlgoFailed;
+        public static Brush AlgoIsAlgoReadyHover;
+
+        public static Brush MainMainWindow;
+        public static Brush MainTeamName;
+        public static Brush MainToolsButtons;
+        public static Brush MainToolsButtonsHover;
+        public static Brush MainChooseToolButton;
+        public static Brush MainCanvas;
+        public static Brush MainMenu;
+        public static Brush MainExitDialog;
+        public static Brush MainMenuItems;
+        public static Brush MainMenuItemsBorder;
+
+        public static Brush DocMainWindow;
+        public static Brush DocCreatorsButton;
+        public static Brush DocCreatorsWindow;
+        public static double DocCreatorsWindowOpacity;
+        public static Brush DocExitButton;
+        public static Brush DocExitButtonHover;
+
+        public static Brush ConnectMainWindow;
+        public static Brush ConnectWindowForVertex;
+        public static Brush ConnectSlider;
+        public static Brush ConnectSliderWindow;
+        public static Brush ConnectResultButtons;
+        public static Brush ConnectUnactiveOrientation;
+        public static Brush ConnectActiveOrientation;
+        public static Brush ConnectUnactiveOrientationHover;
+
+        // Ice Theme
+        public static void IceTheme()
+        {
+            ChooseTheme = 1;
+
+            logoPath = "../../images/Icelogo.png";
+
+            ColorInsideVertex = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
+            ColorOfTheTextOfVertex = (Brush)new BrushConverter().ConvertFrom("#305F5F");
+
+            // Options Window
+            OptionsMainWindowOptionsColor = (Brush)new BrushConverter().ConvertFrom("#DCF5F5");
+            OptionsActiveToolBarButton = (Brush)new BrushConverter().ConvertFrom("#C6DCDC");
+            OptionsPassiveToolBarButton = (Brush)new BrushConverter().ConvertFrom("#B0C4C4");
+            OptionsWindowExitButtons = (Brush)new BrushConverter().ConvertFrom("#CBDFDF");
+            OptionsPassiveAnimationSpeedButtons = (Brush)new BrushConverter().ConvertFrom("#C6DCDC");
+            OptionsActiveAnimationSpeedButtons = (Brush)new BrushConverter().ConvertFrom("#849393");
+            OptionsVEResetButton = Brushes.Gray;
+            OptionsVECheckButton = Brushes.DarkSeaGreen;
+
+            // Algoritms Window
+            AlgoMainWindowColor = Brushes.PaleTurquoise;
+            AlgoIsAlgoReady = Brushes.CadetBlue;
+            AlgoIsAlgoFailed = (Brush)new BrushConverter().ConvertFrom("#7EB1B3");
+            AlgoIsAlgoReadyHover = (Brush)new BrushConverter().ConvertFrom("#7EB1B3");
+
+            // Main Window
+            MainMainWindow = (Brush)new BrushConverter().ConvertFrom("#0A3F4C");
+            MainTeamName = (Brush)new BrushConverter().ConvertFrom("#B7E1E1");
+            MainToolsButtons = (Brush)new BrushConverter().ConvertFrom("#345160");
+            MainToolsButtonsHover = (Brush)new BrushConverter().ConvertFrom("#4c7184");
+            MainChooseToolButton = Brushes.CadetBlue;
+            MainCanvas = (Brush)new BrushConverter().ConvertFrom("#B7E1E1");
+            MainMenu = Brushes.Black;
+            MainExitDialog = Brushes.White;
+            MainMenuItems = Brushes.Black;
+            MainMenuItemsBorder = Brushes.Black;
+
+            // Documentation Window
+            DocMainWindow = Brushes.White;
+            DocCreatorsButton = Brushes.Transparent;
+            DocCreatorsWindow = Brushes.White;
+            DocCreatorsWindowOpacity = 0.9;
+            DocExitButton = Brushes.Transparent;
+            DocExitButtonHover = Brushes.WhiteSmoke;
+
+            // Connect Window
+            ConnectMainWindow = (Brush)new BrushConverter().ConvertFrom("#98B0B0");
+            ConnectWindowForVertex = (Brush)new BrushConverter().ConvertFrom("#728484");
+            ConnectSlider = Brushes.Transparent;
+            ConnectSliderWindow = (Brush)new BrushConverter().ConvertFrom("#728484");
+            ConnectResultButtons = (Brush)new BrushConverter().ConvertFrom("#B2B4B4");
+            ConnectUnactiveOrientation = Brushes.Transparent;
+            ConnectActiveOrientation = (Brush)new BrushConverter().ConvertFrom("#789778");
+            ConnectUnactiveOrientationHover = (Brush)new BrushConverter().ConvertFrom("#BCCBBC");
+        }
+
+        // Vulcan Theme
+        public static void VolcanoTheme()
+        {
+            ChooseTheme = 2;
+
+            logoPath = "../../images/Vulcanlogo.png";
+
+            Brush ColorInsideVertex = (Brush)new BrushConverter().ConvertFrom("#F0854D");
+            Brush ColorOfTheTextOfVertex = (Brush)new BrushConverter().ConvertFrom("#BF1111");
+
+            // Main Window
+            MainMainWindow = (Brush)new BrushConverter().ConvertFrom("#763C4B");
+            MainTeamName = (Brush)new BrushConverter().ConvertFrom("#F8A376");
+            MainToolsButtons = (Brush)new BrushConverter().ConvertFrom("#5E303C");
+            MainToolsButtonsHover = (Brush)new BrushConverter().ConvertFrom("#522A34");
+            MainChooseToolButton = (Brush)new BrushConverter().ConvertFrom("#3F2030");
+            MainCanvas = (Brush)new BrushConverter().ConvertFrom("#F8A376");
+            MainMenu = (Brush)new BrushConverter().ConvertFrom("#3F2030");
+            MainExitDialog = (Brush)new BrushConverter().ConvertFrom("#3F2030");
+            MainMenuItems = (Brush)new BrushConverter().ConvertFrom("#3F2030");
+            MainMenuItemsBorder = (Brush)new BrushConverter().ConvertFrom("#3F2030");
+
+            // Documentation Window
+            DocMainWindow = (Brush)new BrushConverter().ConvertFrom("#FABE9F");
+            DocCreatorsButton = Brushes.Transparent;
+            DocCreatorsWindow = (Brush)new BrushConverter().ConvertFrom("#FABE9F");
+            DocCreatorsWindowOpacity = 0.9;
+            DocExitButton = Brushes.Transparent;
+            DocExitButtonHover = (Brush)new BrushConverter().ConvertFrom("#FBD1BA");
+
+            // Algoritms Window
+            AlgoMainWindowColor = (Brush)new BrushConverter().ConvertFrom("#DF926A");
+            AlgoIsAlgoReady = (Brush)new BrushConverter().ConvertFrom("#91626E");
+            AlgoIsAlgoFailed = (Brush)new BrushConverter().ConvertFrom("#F8A376");
+            AlgoIsAlgoReadyHover = (Brush)new BrushConverter().ConvertFrom("#B29199");
+
+            // Options Window
+            OptionsMainWindowOptionsColor = (Brush)new BrushConverter().ConvertFrom("#F8AC83");
+            OptionsActiveToolBarButton = (Brush)new BrushConverter().ConvertFrom("#FD926A");
+            OptionsPassiveToolBarButton = (Brush)new BrushConverter().ConvertFrom("#B29199");
+            OptionsWindowExitButtons = (Brush)new BrushConverter().ConvertFrom("#F8A376");
+            OptionsPassiveAnimationSpeedButtons = (Brush)new BrushConverter().ConvertFrom("#F8A376");
+            OptionsActiveAnimationSpeedButtons = (Brush)new BrushConverter().ConvertFrom("#C6825E");
+            OptionsVEResetButton = Brushes.Gray;
+            OptionsVECheckButton = (Brush)new BrushConverter().ConvertFrom("#763C4B");
+
+            // Connect Window
+            ConnectMainWindow = (Brush)new BrushConverter().ConvertFrom("#834F5D");
+            ConnectWindowForVertex = (Brush)new BrushConverter().ConvertFrom("#6A3643");
+            ConnectSlider = Brushes.Transparent;
+            ConnectSliderWindow = (Brush)new BrushConverter().ConvertFrom("#6A3643");
+            ConnectResultButtons = (Brush)new BrushConverter().ConvertFrom("#cdb8be");
+            ConnectUnactiveOrientation = Brushes.Transparent;
+            ConnectActiveOrientation = (Brush)new BrushConverter().ConvertFrom("#FD926A");
+            ConnectUnactiveOrientationHover = (Brush)new BrushConverter().ConvertFrom("#a8838d");
+        }
     }
 }

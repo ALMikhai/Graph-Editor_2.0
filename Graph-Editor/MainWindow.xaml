@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Graph_Editor"
-        mc:Ignorable="d" Icon="images/logo.png"
+        mc:Ignorable="d" x:Name="myWindow"
         Closing="DataWindow_Closing"
         Title="GraphON" MinHeight="776.5" MinWidth="1080" Height="776.5" Width="1080" ResizeMode="CanResize" KeyDown="Window_KeyDown">
     <Window.Resources>
@@ -12,7 +12,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Grid Background="{TemplateBinding Background}" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Grid Background="{TemplateBinding Background}" Width="160" HorizontalAlignment="Center" VerticalAlignment="Center" Height="48">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             <Border BorderThickness="0"/>
                         </Grid>
@@ -35,7 +35,7 @@
     </Window.Resources>
     <Grid x:Name="FullWindow" Background="#0a3f4c">
         <Canvas x:Name="GraphCanvas" 
-                Margin="182,22,8,10" 
+                Margin="182,27,8,10" 
                 Background="#b7e1e1"
                 MouseDown="GraphCanvas_MouseDown"
                 MouseMove="GraphCanvas_MouseMove"
@@ -47,7 +47,7 @@
             Content="Algoritms" BorderThickness="0"
             HorizontalAlignment="Left" Margin="10,140,0,0" VerticalAlignment="Top"
             Width="160" Height="48" Background="#345160"
-            FontSize="35" FontWeight="DemiBold" Click="AlgoritmButton_Click" FontFamily="Gabriola"
+            FontSize="35" FontFamily="Agency FB" FontWeight="DemiBold" Click="AlgoritmButton_Click"
         />
         <Button Style="{StaticResource MyButtonStyle}" x:Name="AddVertex"
                 Tag="0" Background="#345160"
@@ -115,36 +115,36 @@
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                    FontSize="30" BorderBrush="black" BorderThickness="1" 
         />
-        <Image Source="images/logo.png" Margin="0,673,561,0" Height="62" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="64"/>
-        <Menu x:Name="MainMenu" Height="22" VerticalAlignment="Top" Background="Black" Foreground="White" BorderBrush="Black">
-            <MenuItem Header="File" FontFamily="sans-serif" FontSize="15" Foreground="White" BorderBrush="Black">
-                <MenuItem x:Name="save" Header="Save as" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black" Click="Save_Click"></MenuItem>
-                <MenuItem x:Name="open" Header="Open with" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black" Click="Load_Click"></MenuItem>
+        <Image x:Name="logo" Margin="0,673,561,0" Height="62" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="64"/>
+        <Menu x:Name="MainMenu" Height="22" VerticalAlignment="Top" Background="Black" Foreground="White">
+            <MenuItem Header="File" FontSize="18" FontFamily="Agency FB" Foreground="White">
+                <MenuItem x:Name="save" Header="Save as" FontSize="18" FontFamily="Agency FB" Background="Black" Foreground="White" Click="Save_Click"></MenuItem>
+                <MenuItem x:Name="open" Header="Open with" FontSize="18" FontFamily="Agency FB" Background="Black" Foreground="White" Click="Load_Click"></MenuItem>
                 <Separator Background="Black"/>
-                <MenuItem x:Name="exit" Header="Exit" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black" Click="Exit_Click"></MenuItem>
+                <MenuItem x:Name="exit" Header="Exit" FontSize="18" FontFamily="Agency FB" Background="Black" Foreground="White" Click="Exit_Click"></MenuItem>
             </MenuItem>
-            <MenuItem BorderBrush="Black" Width="24" Click="ClearAll_Click">
+            <MenuItem Width="24" Click="ClearAll_Click">
                 <MenuItem.Icon>
                     <Image Source="images/clearAll.png" Width="15"/>
                 </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Header="Representation" FontFamily="sans-serif" FontSize="15" Foreground="White" BorderBrush="Black">
-                <MenuItem x:Name="matrix" Header="Matrix" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black" Click="ShowMatrix">
+            <MenuItem Header="Representation" FontSize="18" FontFamily="Agency FB" Foreground="White">
+                <MenuItem x:Name="matrix" Header="Matrix" FontSize="18" FontFamily="Agency FB" Background="Black" Foreground="White" Click="ShowMatrix">
                     <MenuItem.Icon>
                         <Image Source="images/matrix.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem x:Name="list" Header="List" FontFamily="sans-serif" FontSize="15" Background="Gray" Foreground="White" BorderBrush="Black">
+                <MenuItem x:Name="list" Header="List" FontFamily="sans-serif" FontSize="15" Background="Gray" Foreground="White">
                     <MenuItem.Icon>
                         <Image Source="images/list.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem x:Name="viewDoc" Header="Documentation" FontFamily="sans-serif" FontSize="15" BorderBrush="Black" Foreground="White" Click="ViewDocumentation">
+            <MenuItem x:Name="viewDoc" Header="Documentation" FontSize="18" FontFamily="Agency FB" Foreground="White" Click="ViewDocumentation">
             </MenuItem>
-            <MenuItem x:Name="Settings" Header="Options" FontFamily="sans-serif" FontSize="15" BorderBrush="Black" Foreground="White" Click="GoToOptions">
+            <MenuItem x:Name="Settings" Header="Options" FontSize="18" FontFamily="Agency FB" Foreground="White" Click="GoToOptions">
             </MenuItem>
-            <MenuItem Header="Colors" FontFamily="sans-serid" FontSize="15" BorderBrush="Black" Foreground="White">
+            <MenuItem Header="Colors" FontSize="18" FontFamily="Agency FB" Foreground="White">
                 <ToolBarPanel Name="colorbarPanel" Height="35" HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
                 </ToolBarPanel>
             </MenuItem>

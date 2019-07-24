@@ -1,10 +1,20 @@
-﻿using Graph_Editor.Algoritms;
-using System;
-using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Globalization;
+using Graph_Editor.Objects;
+using System.ComponentModel;
 using static Graph_Editor.Globals;
 
 namespace Graph_Editor
@@ -13,12 +23,24 @@ namespace Graph_Editor
     {
         // Баг - при нажатии на не готовый алгоритм, появляется messagebox после которого всё блочится.
 
+        // Ne bag a ficha ))0)
+
         int chooseAlg;
 
         MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
         
         private void ThemeSettings()
         {
+            myWindow.Icon = new BitmapImage(new Uri(Themes.logoPath, UriKind.Relative));
+
+            BitmapImage bitmap = new BitmapImage();
+
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(Themes.logoPath, UriKind.Relative);
+            bitmap.EndInit();
+
+            logo.Source = bitmap;
+
             MainWindow.Background           = Themes.AlgoMainWindowColor;
 
             BFSButton.Background            = Themes.AlgoIsAlgoReady;
@@ -30,8 +52,6 @@ namespace Graph_Editor
             FloydButton.Background          = Themes.AlgoIsAlgoReady;
             KruskalButton.Background        = Themes.AlgoIsAlgoReady;
             MaximumButton.Background        = Themes.AlgoIsAlgoReady;
-
-            CancelButton.Background         = Themes.AlgoCancelButton;
         }
 
         public AlgoritmsWindow()
@@ -137,19 +157,12 @@ namespace Graph_Editor
 
         private void Button_MouseMove(object sender, MouseEventArgs e)
         {
-            (sender as Button).Background = Brushes.SkyBlue;
+            (sender as Button).Background = Themes.AlgoIsAlgoReadyHover;
         }
 
         private void Button_MouseLeave(object sender, MouseEventArgs e)
         {
-            if (String.Compare((sender as Button).Tag.ToString(), "Cancel") == 0)
-            {
-                (sender as Button).Background = (Brush)new BrushConverter().ConvertFrom("#B9C2C2");
-            }
-            else
-            {
-                (sender as Button).Background = Brushes.CadetBlue;
-            }
+            (sender as Button).Background = Themes.AlgoIsAlgoReady;
         }
 
         private void FSstartVertex_TextChanged(object sender, TextChangedEventArgs e)

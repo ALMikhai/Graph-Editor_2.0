@@ -22,10 +22,26 @@ namespace Graph_Editor
 
         private void ThemeSettings()
         {
-            CreatorsButton.Background = Themes.DocCreatorsButton;
-            Creators.Background = Themes.DocCreatorsWindow;
+            myWindow.Icon = new BitmapImage(new Uri(Themes.logoPath, UriKind.Relative));
 
-            end.Background = Themes.DocExitButton;
+            BitmapImage bitmap = new BitmapImage();
+
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(Themes.logoPath, UriKind.Relative);
+            bitmap.EndInit();
+
+            logo.Source = bitmap;
+
+            CreatorsButton.Background   = Themes.DocCreatorsButton;
+            Creators.Opacity            = Themes.DocCreatorsWindowOpacity;
+            Creators.Background         = Themes.DocCreatorsWindow;
+            WindowMain.Background       = Themes.DocMainWindow;
+
+            forWhatAndWho.Background    = Themes.DocMainWindow;
+            Instruct.Background         = Themes.DocMainWindow;
+            useOfIt.Background          = Themes.DocMainWindow;
+
+            end.Background              = Themes.DocExitButton;
         }
 
         public Documentation()

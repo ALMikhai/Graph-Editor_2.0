@@ -34,6 +34,16 @@ namespace Graph_Editor
 
         private void ThemeSettings()
         {
+            myWindow.Icon = new BitmapImage(new Uri(Themes.logoPath, UriKind.Relative));
+
+            BitmapImage bitmap = new BitmapImage();
+
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(Themes.logoPath, UriKind.Relative);
+            bitmap.EndInit();
+
+            logo.Source = bitmap;
+
             MainWindow.Background        = Themes.OptionsMainWindowOptionsColor;
             ThemeButton.Background       = Themes.OptionsActiveToolBarButton;
             VertexEdgeButton.Background  = Themes.OptionsPassiveToolBarButton;
@@ -67,23 +77,23 @@ namespace Graph_Editor
         {
             ThemeSettings();
 
-            setNowEdge = Settings.baseEdge;
-            setNowVertex = Settings.baseVertex;
+            setNowEdge = Settings.BaseEdge;
+            setNowVertex = Settings.BaseVertex;
             animateColor = Globals.AnimationEllipse.Fill;
 
-            setNowAnimationColor = Settings.baseAnimationColor;
-            setNowAnimationSpeed = Settings.baseAnimationSpeed;
-            setNowSpeed = Settings.animationTime;
+            setNowAnimationColor = Settings.BaseAnimationColor;
+            setNowAnimationSpeed = Settings.BaseAnimationSpeed;
+            setNowSpeed = Settings.AnimationTime;
 
-            ((Button)this.FindName(Settings.baseEdge)).Height = 30;
-            ((Button)this.FindName(Settings.baseVertex)).Height = 30;
-            ((Button)this.FindName(Settings.baseAnimationColor)).Height = 30;
-            ((Button)this.FindName(Settings.baseAnimationSpeed)).Background = Themes.OptionsActiveAnimationSpeedButtons;
+            ((Button)this.FindName(Settings.BaseEdge)).Height = 30;
+            ((Button)this.FindName(Settings.BaseVertex)).Height = 30;
+            ((Button)this.FindName(Settings.BaseAnimationColor)).Height = 30;
+            ((Button)this.FindName(Settings.BaseAnimationSpeed)).Background = Themes.OptionsActiveAnimationSpeedButtons;
 
             currentWindow = "ThemeGrid";
             currentButtonWindow = "ThemeButton";
 
-            TextBox_Speed.Text = (Settings.animationTime).ToString();
+            TextBox_Speed.Text = (Settings.AnimationTime).ToString();
 
         }
 
@@ -115,11 +125,11 @@ namespace Graph_Editor
             ((Button)this.FindName(setNowVertex)).Height = 25;
             ((Button)this.FindName(setNowEdge)).Height = 25;
 
-            ((Button)this.FindName(Settings.baseVertex)).Height = 30;
-            ((Button)this.FindName(Settings.baseEdge)).Height = 30;
+            ((Button)this.FindName(Settings.BaseVertex)).Height = 30;
+            ((Button)this.FindName(Settings.BaseEdge)).Height = 30;
 
-            setNowVertex = Settings.baseVertex;
-            setNowEdge = Settings.baseEdge;
+            setNowVertex = Settings.BaseVertex;
+            setNowEdge = Settings.BaseEdge;
 
         }
 
@@ -135,8 +145,8 @@ namespace Graph_Editor
 
         private void OK_Click(object sender, RoutedEventArgs e)
         {
-            Settings.baseVertex = setNowVertex;
-            Settings.baseEdge = setNowEdge;
+            Settings.BaseVertex = setNowVertex;
+            Settings.BaseEdge = setNowEdge;
             this.Close();
         }
         private void Rechoose(string name, object sender)
@@ -206,7 +216,7 @@ namespace Graph_Editor
         {
             if (TextBox_Speed.Text != "")
             {
-                int point = Convert.ToInt32(TextBox_Speed.Text);
+                double point = Convert.ToDouble(TextBox_Speed.Text);
                 SpeedSlider.SelectionEnd = point;
                 SpeedSlider.Value = point;
                 setNowSpeed = (MaxSpeed - Convert.ToDouble(TextBox_Speed.Text)) / 175;
@@ -216,10 +226,10 @@ namespace Graph_Editor
         private void animationOK_Click(object sender, RoutedEventArgs e)
         {
             Globals.AnimationEllipse.Fill = animateColor;
-            Settings.baseAnimationColor = setNowAnimationColor;
+            Settings.BaseAnimationColor = setNowAnimationColor;
 
-            Settings.animationTime = setNowSpeed;
-            Settings.baseAnimationSpeed = setNowAnimationSpeed;
+            Settings.AnimationTime = setNowSpeed;
+            Settings.BaseAnimationSpeed = setNowAnimationSpeed;
 
             Settings.AnimationEllipseColor = animateColor;
             this.Close();
@@ -239,9 +249,9 @@ namespace Graph_Editor
         {
             ((Button)this.FindName(setNowAnimationColor)).Height = 25;
 
-            ((Button)this.FindName(Settings.baseAnimationColor)).Height = 30;
+            ((Button)this.FindName(Settings.BaseAnimationColor)).Height = 30;
 
-            setNowAnimationColor = Settings.baseAnimationColor;
+            setNowAnimationColor = Settings.BaseAnimationColor;
             animateColor = Globals.AnimationEllipse.Fill;
         }
 
@@ -253,17 +263,27 @@ namespace Graph_Editor
 
         private void ThemeOK_Click(object sender, RoutedEventArgs e)
         {
-
+            switch (Themes.ChooseTheme)
+            {
+                case 1:
+                    Themes.IceTheme();
+                    break;
+                case 2:
+                    Themes.VolcanoTheme();
+                    break;
+            }
+            Graph_Editor.MainWindow.Instance.ThemeSettings();
+            this.ThemeSettings();
         }
 
         private void LightTheme_Click(object sender, RoutedEventArgs e)
         {
-
+            Themes.ChooseTheme = 1;
         }
 
         private void DarkTheme_Click(object sender, RoutedEventArgs e)
         {
-
+            Themes.ChooseTheme = 2;
         }
     }
 }
