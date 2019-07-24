@@ -19,7 +19,7 @@ namespace Graph_Editor
         private static FigureHost graphHost = new FigureHost();
 
         private double setNowSpeed;
-        private int MaxSpeed = 200;
+        private readonly int MaxSpeed = 50;
 
         private int Theme = Themes.ChooseTheme;
 
@@ -65,6 +65,8 @@ namespace Graph_Editor
 
             VEReset.Background           = Themes.OptionsVEResetButton;
             VECheck.Background           = Themes.OptionsVECheckButton;
+
+            exampleCanvas.Background     = Themes.OprionsVEDemonstrationHolst;
         }
 
         public OptionsWindow()
@@ -86,23 +88,24 @@ namespace Graph_Editor
             edgeColor = Themes.ColorEdge;
             vertexColor = Themes.ColorInsideVertex;
 
-            setNowAnimationColor = Settings.baseAnimationColor;
-            setNowAnimationSpeed = Settings.baseAnimationSpeed;
-            setNowSpeed = Settings.animationTime;
+            setNowAnimationColor = Settings.BaseAnimationColor;
+            setNowAnimationSpeed = Settings.BaseAnimationSpeed;
+            setNowSpeed = Settings.AnimationTime;
 
             ((Button)this.FindName(Settings.BaseEdge)).Height = 30;
             ((Button)this.FindName(Settings.BaseVertex)).Height = 30;
             ((Button)this.FindName(Settings.BaseAnimationColor)).Height = 30;
             ((Button)this.FindName(Settings.BaseAnimationSpeed)).Background = Themes.OptionsActiveAnimationSpeedButtons;
+
             ((Button)this.FindName(Settings.currentTheme)).Background = Themes.OptionsVECheckButton;
+            ((Image)this.FindName(Themes.ChooseImageTheme)).Width = 310;
+            ((Image)this.FindName(Themes.ChooseImageTheme)).Height = 315;
+
 
             currentWindow = "ThemeGrid";
             currentButtonWindow = "ThemeButton";
 
-            TextBox_Speed.Text = (-1 * (MaxSpeed + 175 * MaxSpeed)).ToString();
-
-            TextBox_Speed.Text = (Settings.AnimationTime).ToString();
-
+            TextBox_Speed.Text = (MaxSpeed / Settings.AnimationTime).ToString();
         }
 
         private void DrawExample()
@@ -185,8 +188,8 @@ namespace Graph_Editor
             graphHost = new FigureHost();
             exampleCanvas.Children.Clear();
 
-            Settings.baseVertex = setNowVertex;
-            Settings.baseEdge = setNowEdge;
+            Settings.BaseVertex = setNowVertex;
+            Settings.BaseEdge = setNowEdge;
 
             Themes.ColorEdge = edgeColor;
             Themes.ColorInsideVertex = vertexColor;
@@ -238,6 +241,8 @@ namespace Graph_Editor
             ((Button)this.FindName(setNowAnimationSpeed)).Background = Themes.OptionsPassiveAnimationSpeedButtons;
             setNowAnimationSpeed = (sender as Button).Name;
             (sender as Button).Background = Themes.OptionsActiveAnimationSpeedButtons;
+
+            TextBox_Speed.Text = (MaxSpeed / setNowSpeed).ToString();
         }
 
         private void ChooseSlowAnimation(object sender, RoutedEventArgs e)
@@ -275,7 +280,7 @@ namespace Graph_Editor
                 double point = Convert.ToDouble(TextBox_Speed.Text);
                 SpeedSlider.SelectionEnd = point;
                 SpeedSlider.Value = point;
-                setNowSpeed = (MaxSpeed - Convert.ToDouble(TextBox_Speed.Text)) / 175;
+                setNowSpeed = point / MaxSpeed;
             }
         }
 
@@ -344,6 +349,10 @@ namespace Graph_Editor
         {
             if (Theme != 1)
             {
+                VolcanoImage.Width = 200;
+                VolcanoImage.Height = 240;
+                IceImage.Height = 315;
+                IceImage.Width = 310;
                 VulcanTheme.Background = Brushes.Transparent;
                 IceTheme.Background = Themes.OptionsVECheckButton;
                 Theme = 1;
@@ -354,6 +363,10 @@ namespace Graph_Editor
         {
             if (Theme != 2)
             {
+                IceImage.Width = 200;
+                IceImage.Height = 240;
+                VolcanoImage.Height = 315;
+                VolcanoImage.Width = 310;
                 IceTheme.Background = Brushes.Transparent;
                 VulcanTheme.Background = Themes.OptionsVECheckButton;
                 Theme = 2;

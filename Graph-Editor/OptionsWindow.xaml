@@ -61,9 +61,13 @@
 
         <Grid x:Name="ThemeGrid" Margin="173,0,0,0" Visibility="Visible">
             <Label Content="Choose Theme:" Margin="129,76,165,484" FontSize="75" FontFamily="Agency FB" FontWeight="SemiBold"/>
-            <Button x:Name="IceTheme" Background="Transparent" FontSize="46" FontFamily="Agency FB" Content="Ice Theme" Margin="18,258,395,86" Click="LightTheme_Click"/>
+            <Button x:Name="IceTheme" Background="Transparent" FontSize="46" FontFamily="Agency FB" Margin="18,258,395,86" Click="LightTheme_Click">
+                <Image x:Name="IceImage" Source="Images/IceLogo.png" Height="240" Width="200"/>
+            </Button>
 
-            <Button x:Name="VulcanTheme"  Background="Transparent" FontSize="46" FontFamily="Agency FB" Content="Vulcan Theme"  Margin="379,258,33,86" Click="DarkTheme_Click" />
+            <Button x:Name="VulcanTheme"  Background="Transparent" FontSize="46" FontFamily="Agency FB" Margin="379,258,33,86" Click="DarkTheme_Click" >
+                <Image x:Name="VolcanoImage" Source="Images/Vulcanlogo.png" Height="240" Width="200"/>
+            </Button>
 
             <Button x:Name="ThemeOkButton"    Background="#CBDFDF" Style="{StaticResource Exit_Buttons}" Content="OK"       FontSize="40" FontFamily="Agency FB" Margin="190,592,395,10" Click="ThemeOK_Click"/>
             <Button x:Name="ThemeCloseButton" Background="#CBDFDF" Style="{StaticResource Exit_Buttons}" Content="Close"    FontSize="40" FontFamily="Agency FB" Margin="10,592,563,10" Click="Exit"/>
@@ -77,7 +81,7 @@
             <Button x:Name="vGreen"     Background="Green"  HorizontalAlignment="Left" Height="25" Margin="220,241,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
             <Button x:Name="vBlue"      Background="Blue"   HorizontalAlignment="Left" Height="25" Margin="266,241,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
 
-            <Label Content="Edge: "     FontSize="50" FontFamily="Agency FB" Margin="0,217,600,358"/>
+            <Label Content="Edge: "     FontSize="50" FontFamily="Agency FB" Margin="0,296,600,279"/>
             <Button x:Name="eLightBlue" Background="#80FFFF" HorizontalAlignment="Left" Height="25" Margin="133,325,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
             <Button x:Name="eYellow"    Background="Yellow"  HorizontalAlignment="Left" Height="25" Margin="175,325,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
             <Button x:Name="eGreen"     Background="Green"   HorizontalAlignment="Left" Height="25" Margin="220,325,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>

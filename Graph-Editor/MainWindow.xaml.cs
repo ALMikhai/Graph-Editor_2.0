@@ -59,6 +59,7 @@ namespace Graph_Editor
             MoveAllVertex.Background = Themes.MainToolsButtons;
             PropertyVertex.Background = Themes.MainToolsButtons;
             PropertyEdge.Background = Themes.MainToolsButtons;
+            CenterTheGraph.Background = Themes.MainToolsButtons;
 
             GraphCanvas.Background = Themes.MainCanvas;
 

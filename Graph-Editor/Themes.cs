@@ -26,7 +26,8 @@ namespace Graph_Editor
     {
 
         public static Brush ColorEdge = Brushes.Black;
-        public static int ChooseTheme = 1;
+        public static int ChooseTheme = 2;
+        public static string ChooseImageTheme;
 
         public static string logoPath;
 
@@ -41,6 +42,7 @@ namespace Graph_Editor
         public static Brush OptionsActiveAnimationSpeedButtons;
         public static Brush OptionsVEResetButton;
         public static Brush OptionsVECheckButton;
+        public static Brush OprionsVEDemonstrationHolst;
 
         public static Brush AlgoMainWindowColor;
         public static Brush AlgoIsAlgoReady;
@@ -93,6 +95,7 @@ namespace Graph_Editor
         public static void IceTheme()
         {
             ChooseTheme = 1;
+            ChooseImageTheme = "IceImage";
 
             logoPath = "../../images/Icelogo.png";
 
@@ -120,6 +123,7 @@ namespace Graph_Editor
             OptionsActiveAnimationSpeedButtons = (Brush)new BrushConverter().ConvertFrom("#849393");
             OptionsVEResetButton = Brushes.Gray;
             OptionsVECheckButton = Brushes.DarkSeaGreen;
+            OprionsVEDemonstrationHolst = (Brush)new BrushConverter().ConvertFrom("#E6F8F8");
 
             // Algoritms Window
             AlgoMainWindowColor = Brushes.PaleTurquoise;
@@ -168,6 +172,7 @@ namespace Graph_Editor
         public static void VolcanoTheme()
         {
             ChooseTheme = 2;
+            ChooseImageTheme = "VolcanoImage";
 
             logoPath = "../../images/Vulcanlogo.png";
 
@@ -215,9 +220,10 @@ namespace Graph_Editor
             OptionsActiveAnimationSpeedButtons = (Brush)new BrushConverter().ConvertFrom("#C6825E");
             OptionsVEResetButton = Brushes.Gray;
             OptionsVECheckButton = (Brush)new BrushConverter().ConvertFrom("#763C4B");
+            OprionsVEDemonstrationHolst = (Brush)new BrushConverter().ConvertFrom("#FACDB4");
 
-            // Connect Window
-            ConnectMainWindow = (Brush)new BrushConverter().ConvertFrom("#834F5D");
+             // Connect Window
+             ConnectMainWindow = (Brush)new BrushConverter().ConvertFrom("#834F5D");
             ConnectWindowForVertex = (Brush)new BrushConverter().ConvertFrom("#6A3643");
             ConnectSlider = Brushes.Transparent;
             ConnectSliderWindow = (Brush)new BrushConverter().ConvertFrom("#6A3643");
