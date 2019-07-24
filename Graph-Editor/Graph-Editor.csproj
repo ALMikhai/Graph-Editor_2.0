@@ -78,6 +78,7 @@
     <Compile Include="PropertiesWindow\VertexProperty.xaml.cs">
       <DependentUpon>VertexProperty.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tools\CenterGraph.cs" />
     <Compile Include="Tools\EditEdge.cs" />
     <Compile Include="Tools\EditVertex.cs" />
     <Compile Include="Tools\MoveAllVertex.cs" />
@@ -214,6 +215,9 @@
   <ItemGroup>
     <Resource Include="Images\handForCanvasTool.png" />
     <Resource Include="Images\handTool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\centerGraphIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

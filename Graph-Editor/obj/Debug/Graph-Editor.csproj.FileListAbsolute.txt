@@ -91,7 +91,6 @@ C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\P
 C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\PropertiesWindow\EdgeProperty.baml
 C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\PropertiesWindow\VertexProperty.baml
 >>>>>>> Alexander_Mikhailenko
-=======
 C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\bin\Debug\Graph-Editor.pdb
 C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\bin\Debug\Graph-Editor.exe.config
 C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\bin\Debug\Graph-Editor.exe
@@ -122,3 +121,7 @@ C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Grap
 C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.exe
 C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.pdb
 >>>>>>> Stashed changes
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\PropertiesWindow\EdgeProperty.g.cs
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\PropertiesWindow\VertexProperty.g.cs
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\PropertiesWindow\EdgeProperty.baml
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\PropertiesWindow\VertexProperty.baml
