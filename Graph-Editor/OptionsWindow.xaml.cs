@@ -93,7 +93,7 @@ namespace Graph_Editor
 
             TextBox_Speed.Text = (-1 * (MaxSpeed + 175 * MaxSpeed)).ToString();
 
-            TextBox_Speed.Text = (Settings.animationTime).ToString();
+            TextBox_Speed.Text = (Settings.AnimationTime).ToString();
 
         }
 

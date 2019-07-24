@@ -138,8 +138,8 @@ namespace Graph_Editor
 
             logoPath = "../../images/Vulcanlogo.png";
 
-            Brush ColorInsideVertex = (Brush)new BrushConverter().ConvertFrom("#F0854D");
-            Brush ColorOfTheTextOfVertex = (Brush)new BrushConverter().ConvertFrom("#BF1111");
+            ColorInsideVertex = (Brush)new BrushConverter().ConvertFrom("#F0854D");
+            ColorOfTheTextOfVertex = (Brush)new BrushConverter().ConvertFrom("#BF1111");
 
             // Main Window
             MainMainWindow = (Brush)new BrushConverter().ConvertFrom("#763C4B");

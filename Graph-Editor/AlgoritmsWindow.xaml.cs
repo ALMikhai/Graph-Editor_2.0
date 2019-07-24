@@ -111,13 +111,14 @@ namespace Graph_Editor
 
         private void DijkstraReadyExitAlgoritm_Click(object sender, RoutedEventArgs e)
         {
-            if (DijkstrastartVertex.Text != "" && Globals.IsBe(Convert.ToInt32(DijkstrastartVertex.Text)) && DijkstrastartVertex.Text != DijkstrafinalVertex.Text && 
+            if (DijkstrastartVertex.Text != "" && Globals.IsBe(Convert.ToInt32(DijkstrastartVertex.Text)) && DijkstrastartVertex.Text != DijkstrafinalVertex.Text &&
                 DijkstrafinalVertex.Text != "" && Globals.IsBe(Convert.ToInt32(DijkstrafinalVertex.Text)))
             {
+
                 Dijkstra.Visibility = Visibility.Hidden;
                 this.Close();
 
-                // Вызывай дейкстру свою
+                AlgoList[chooseAlg].Start(Convert.ToInt32(DijkstrastartVertex.Text), Convert.ToInt32(DijkstrafinalVertex.Text));
             }
             else
                 MessageBox.Show("Invalid input data");
@@ -184,16 +185,3 @@ namespace Graph_Editor
         }
     }
 }
-
-        private void DijkstraReadyExitAlgoritm_Click(object sender, RoutedEventArgs e)
-        {
-            if (DijkstrastartVertex.Text != "" && Globals.IsBe(Convert.ToInt32(DijkstrastartVertex.Text)) && DijkstrastartVertex.Text != DijkstrafinalVertex.Text && 
-                DijkstrafinalVertex.Text != "" && Globals.IsBe(Convert.ToInt32(DijkstrafinalVertex.Text)))
-            {
-                Dijkstra.Visibility = Visibility.Hidden;
-                this.Close();
-
-                AlgoList[chooseAlg].Start(Convert.ToInt32(DijkstrastartVertex.Text), Convert.ToInt32(DijkstrafinalVertex.Text));
-            }
-            else
-                MessageBox.Show("Invalid input data");
