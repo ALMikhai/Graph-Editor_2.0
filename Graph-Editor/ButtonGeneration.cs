@@ -27,7 +27,7 @@ namespace Graph_Editor
 
                 newButton.Click += MainWindow.Instance.ChangeColor;
 
-                MainWindow.Instance.colorbarPanel.Children.Add(newButton);
+                MainWindow.Instance.colorbarPanel.Items.Add(newButton);
             }
         }
     }

@@ -23,13 +23,13 @@ namespace Graph_Editor
 
             BFSButton.Background            = Themes.AlgoIsAlgoReady;
             DFSButton.Background            = Themes.AlgoIsAlgoReady;
-            DijkstraButton.Background       = Themes.AlgoIsAlgoFailed;
-            ColorButton.Background          = Themes.AlgoIsAlgoFailed;
-            HamiltonianButton.Background    = Themes.AlgoIsAlgoFailed;
-            EulerButton.Background          = Themes.AlgoIsAlgoFailed;
-            FloydButton.Background          = Themes.AlgoIsAlgoFailed;
+            DijkstraButton.Background       = Themes.AlgoIsAlgoReady;
+            ColorButton.Background          = Themes.AlgoIsAlgoReady;
+            HamiltonianButton.Background    = Themes.AlgoIsAlgoReady;
+            EulerButton.Background          = Themes.AlgoIsAlgoReady;
+            FloydButton.Background          = Themes.AlgoIsAlgoReady;
             KruskalButton.Background        = Themes.AlgoIsAlgoReady;
-            MaximumButton.Background        = Themes.AlgoIsAlgoFailed;
+            MaximumButton.Background        = Themes.AlgoIsAlgoReady;
 
             CancelButton.Background         = Themes.AlgoCancelButton;
         }
@@ -63,46 +63,46 @@ namespace Graph_Editor
                 FSstartVertex.Text = "0";
                 BFS_DFS_label.Content = chooseAlg == 0 ? "BFS" : chooseAlg == 1 ? "DFS" : "Kruskall";
             }
-            
-            /*else if (chooseAlg == 2)
+
+            else if (chooseAlg == 2)
             {
-                *//*Dijkstra.Visibility = Visibility.Visible;
+                Dijkstra.Visibility = Visibility.Visible;
                 DijkstrastartVertex.Text = "0";
                 DijkstrafinalVertex.Text = "0";
-                Dijkstra_Label.Content = "Dijkstra";*//*
-                MessageBox.Show("Sorry, algoritm is not ready now :(");
-            }*/
+                Dijkstra_Label.Content = "Dijkstra";
+            }
+
             else
             {
-                switch (chooseAlg)
-                {
-                    case 2:
-                        MessageBox.Show("Sorry, algoritm is not ready now :(");
-                        break;
-                    case 3:
-                        // Раскрашиваем граф ();
-                        MessageBox.Show("Sorry, algoritm is not ready now :(");
-                        break;
-                    case 4:
-                        // Гамильтонов цикл();
-                        MessageBox.Show("Sorry, algoritm is not ready now :(");
-                        break;
-                    case 5:
-                        // Эйлеров цикл();
-                        MessageBox.Show("Sorry, algoritm is not ready now :(");
-                        break;
-                    case 6:
-                        // Флойд-Уоршелл();
-                        MessageBox.Show("Sorry, algoritm is not ready now :(");
-                        break;
-                    case 8:
-                        // Максимальный поток();
-                        MessageBox.Show("Sorry, algoritm is not ready now :(");
-                        break;
-                }
+                // Вот здесь просто ебани вон ту хуйню, ибо я не шарю как там всё происходит
+                // Вот тебе теги и их алгоритмы:
+                // 3 - Раскараска графа
+                // 4 - Гамильтонов цикл
+                // 5 - Эйлеров цикл
+                // 6 - Флойд-Уоршелл
+                // 8 - Максимальный поток
+                // Здесь нет никаких стартовых вершин, сами номера алгоритмов хранятся в переменной chooseAlg
+                // Я так понимаю, ты хотел сделать так: 
+                // AlgoList[chooseAlg].Start();
+                AlgoList[chooseAlg].Start();
                 LockPanel.Visibility = Visibility.Hidden;
             }
         }
+
+        private void DijkstraReadyExitAlgoritm_Click(object sender, RoutedEventArgs e)
+        {
+            if (DijkstrastartVertex.Text != "" && Globals.IsBe(Convert.ToInt32(DijkstrastartVertex.Text)) && DijkstrastartVertex.Text != DijkstrafinalVertex.Text && 
+                DijkstrafinalVertex.Text != "" && Globals.IsBe(Convert.ToInt32(DijkstrafinalVertex.Text)))
+            {
+                Dijkstra.Visibility = Visibility.Hidden;
+                this.Close();
+
+                AlgoList[chooseAlg].Start(Convert.ToInt32(DijkstrastartVertex.Text), Convert.ToInt32(DijkstrafinalVertex.Text));
+            }
+            else
+                MessageBox.Show("Invalid input data");
+        }
+
 
         private void Button_ReadyExitAlgoritm_Click(object sender, RoutedEventArgs e)
         {
