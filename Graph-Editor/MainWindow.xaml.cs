@@ -92,6 +92,8 @@ namespace Graph_Editor
             Instance = this;
 
             ButtonGeneration.ColorButtonGeneration();
+
+            CenterTheGraph.Click += CenterGraph.MoveGraph;
         }
 
         public void Invalidate()
@@ -429,6 +431,20 @@ namespace Graph_Editor
             if((sender as Button).Tag.ToString() == "0")
             {
                 Themes.ColorInsideVertex = (sender as Button).Background;
+            }
+        }
+
+        private void GraphCanvas_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            if(e.Delta > 0)
+            {
+                ResizeGraph.IncreaseCanvas(GraphCanvas.ActualHeight, GraphCanvas.ActualWidth);
+                Invalidate();
+            }
+            else
+            {
+                ResizeGraph.DecreaseCanvas(GraphCanvas.ActualHeight, GraphCanvas.ActualWidth);
+                Invalidate();
             }
         }
     }

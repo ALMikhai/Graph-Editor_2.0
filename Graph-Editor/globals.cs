@@ -145,7 +145,8 @@ namespace Graph_Editor
         public static Vertex FindVertex(Vertex vertex)
         {
             return VertexData.Find(match => (match.Index == vertex.Index
-                                                  && match.Coordinates == vertex.Coordinates
+                                                  //&& match.Coordinates == vertex.Coordinates
+                                                  // TODO Обдумать(не безопасно).
                                                   && match.Color == vertex.Color));
         }
 

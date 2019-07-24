@@ -16,6 +16,8 @@ namespace Graph_Editor
 {
     public partial class OptionsWindow : Window
     {
+        private static FigureHost graphHost = new FigureHost();
+
         private double setNowSpeed;
         private int MaxSpeed = 200;
 
@@ -24,9 +26,6 @@ namespace Graph_Editor
         private Brush vertexColor = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
         private Brush edgeColor = Brushes.Black;
         private Brush animateColor;
-
-        private string setNowVertex;
-        private string setNowEdge;
         
         private string currentWindow;
         private string currentButtonWindow;
@@ -72,7 +71,10 @@ namespace Graph_Editor
         {
             InitializeComponent();
             RestartWindow();
+
+            DrawExample();
         }
+
         private void RestartWindow()
         {
             ThemeSettings();
@@ -81,9 +83,12 @@ namespace Graph_Editor
             setNowVertex = Settings.BaseVertex;
             animateColor = Globals.AnimationEllipse.Fill;
 
-            setNowAnimationColor = Settings.BaseAnimationColor;
-            setNowAnimationSpeed = Settings.BaseAnimationSpeed;
-            setNowSpeed = Settings.AnimationTime;
+            edgeColor = Themes.ColorEdge;
+            vertexColor = Themes.ColorInsideVertex;
+
+            setNowAnimationColor = Settings.baseAnimationColor;
+            setNowAnimationSpeed = Settings.baseAnimationSpeed;
+            setNowSpeed = Settings.animationTime;
 
             ((Button)this.FindName(Settings.BaseEdge)).Height = 30;
             ((Button)this.FindName(Settings.BaseVertex)).Height = 30;
@@ -100,6 +105,32 @@ namespace Graph_Editor
 
         }
 
+        private void DrawExample()
+        {
+            exampleCanvas.Children.Clear();
+            exampleCanvas.Children.Add(graphHost);
+
+            graphHost.Children.Clear();
+            var drawingVisual = new DrawingVisual();
+            var drawingContext = drawingVisual.RenderOpen();
+
+            Point firstVertex = new Point(100, 100);
+            Point secondVertex = new Point(200, 300);
+
+            Pen pen = new Pen(edgeColor, Globals.ThicknessEdge);
+
+            drawingContext.DrawLine(pen, firstVertex, secondVertex);
+
+            drawingContext.DrawEllipse(vertexColor, Globals.BasePen, firstVertex, Globals.VertRadius, Globals.VertRadius);
+            drawingContext.DrawEllipse(vertexColor, Globals.BasePen, secondVertex, Globals.VertRadius, Globals.VertRadius);
+
+            drawingContext.Close();
+            graphHost.Children.Add(drawingVisual);
+        }
+
+        private string setNowVertex;
+        private string setNowEdge;
+
         private void ChangeVertexColorButton_Click(object sender, RoutedEventArgs e)
         {
             ((Button)this.FindName(setNowVertex)).Height = 25;
@@ -108,9 +139,8 @@ namespace Graph_Editor
 
             setNowVertex = (sender as Button).Name;
             (sender as Button).Height = 30;
-
-            /*Globals.ColorInsideVertex = (sender as Button).Background;*/
         }
+
         private void ChangeEdgeColorButton_Click(object sender, RoutedEventArgs e)
         {
             ((Button)this.FindName(setNowEdge)).Height = 25;
@@ -119,8 +149,6 @@ namespace Graph_Editor
 
             setNowEdge = (sender as Button).Name;
             (sender as Button).Height = 30;
-
-            /*Globals.ColorEdge = (sender as Button).Background;*/
         }
 
         private void Reset_Click(object sender, RoutedEventArgs e)
@@ -134,24 +162,49 @@ namespace Graph_Editor
             setNowVertex = Settings.BaseVertex;
             setNowEdge = Settings.BaseEdge;
 
+            vertexColor = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
+            edgeColor = Brushes.Black;
+
+            DrawExample();
         }
 
         private void Check_Click(object sender, RoutedEventArgs e)
         {
-            // Меняем на картинку: "Images/Themes/{setNowVertex} + {setNowEdge}"
+            DrawExample();
         }
 
         private void Exit(object sender, RoutedEventArgs e)
         {
+            graphHost = new FigureHost();
+            exampleCanvas.Children.Clear();
             this.Close();
         }
 
         private void OK_Click(object sender, RoutedEventArgs e)
         {
-            Settings.BaseVertex = setNowVertex;
-            Settings.BaseEdge = setNowEdge;
+            graphHost = new FigureHost();
+            exampleCanvas.Children.Clear();
+
+            Settings.baseVertex = setNowVertex;
+            Settings.baseEdge = setNowEdge;
+
+            Themes.ColorEdge = edgeColor;
+            Themes.ColorInsideVertex = vertexColor;
+
+            foreach(var vertex in Globals.VertexData)
+            {
+                vertex.Color = Themes.ColorInsideVertex;
+            }
+
+            foreach(var edge in Globals.EdgesData)
+            {
+                edge.Color = Themes.ColorEdge;
+            }
+
+            Graph_Editor.MainWindow.Instance.Invalidate();
             this.Close();
         }
+
         private void Rechoose(string name, object sender)
         {
             ((Grid)FindName(currentWindow)).Visibility = Visibility.Hidden;
@@ -260,6 +313,8 @@ namespace Graph_Editor
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            graphHost = new FigureHost();
+            exampleCanvas.Children.Clear();
             MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
             mainWindow.Settings.IsEnabled = true;
         }

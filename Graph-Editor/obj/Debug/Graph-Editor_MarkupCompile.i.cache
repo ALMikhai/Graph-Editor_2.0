@@ -1,25 +1,3 @@
-<<<<<<< HEAD
-﻿Graph-Editor
-
-
-winexe
-C#
-.cs
-C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\
-Graph_Editor
-none
-false
-DEBUG;TRACE
-C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\App.xaml
-9-410247837
-
-42169659007
-151984215308
-AlgoritmsWindow.xaml;MainWindow.xaml;ConnectVertices.xaml;OptionsWindow.xaml;PropertiesWindow\EdgeProperty.xaml;PropertiesWindow\VertexProperty.xaml;ShowData\CurrentMatrix.xaml;ShowData\CurrentList.xaml;Documentation.xaml;
-
-False
-
-=======
 ﻿Graph-Editor
 
 
@@ -39,16 +17,15 @@ DEBUG;TRACE
 C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\App.xaml
 9-410247837
 
-43-1720065268
+471527560475
 =======
 C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\App.xaml
 9-410247837
 
-43-1143635198
+44984685785
 >>>>>>> VladKostenkov
 151984215308
 AlgoritmsWindow.xaml;MainWindow.xaml;ConnectVertices.xaml;OptionsWindow.xaml;PropertiesWindow\EdgeProperty.xaml;PropertiesWindow\VertexProperty.xaml;ShowData\CurrentMatrix.xaml;ShowData\CurrentList.xaml;Documentation.xaml;
 
 False
 
->>>>>>> master

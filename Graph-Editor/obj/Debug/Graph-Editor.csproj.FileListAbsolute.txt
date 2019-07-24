@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.csprojAssemblyReference.cache
 C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\AlgoritmsWindow.g.cs
 C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\MainWindow.g.cs
@@ -29,3 +30,166 @@ C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Gra
 C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.csproj.CoreCompileInputs.cache
 C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.exe
 C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.pdb
+=======
+<<<<<<< HEAD
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\bin\Debug\Graph-Editor.exe.config
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\bin\Debug\Graph-Editor.exe
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\bin\Debug\Graph-Editor.pdb
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.csprojAssemblyReference.cache
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\AlgoritmsWindow.g.cs
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\MainWindow.g.cs
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\ConnectVertices.g.cs
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\OptionsWindow.g.cs
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\PropertiesWindow\EdgeProperty.g.cs
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\PropertiesWindow\VertexProperty.g.cs
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentMatrix.g.cs
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentList.g.cs
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\Documentation.g.cs
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\App.g.cs
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor_MarkupCompile.cache
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor_MarkupCompile.lref
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\AlgoritmsWindow.baml
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\MainWindow.baml
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\ConnectVertices.baml
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\OptionsWindow.baml
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\PropertiesWindow\EdgeProperty.baml
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\PropertiesWindow\VertexProperty.baml
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentMatrix.baml
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentList.baml
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\Documentation.baml
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.g.resources
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph_Editor.Properties.Resources.resources
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.csproj.GenerateResource.cache
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.csproj.CoreCompileInputs.cache
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.exe
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.pdb
+=======
+<<<<<<< Updated upstream
+<<<<<<< HEAD
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\bin\Debug\Graph-Editor.exe.config
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\bin\Debug\Graph-Editor.exe
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\bin\Debug\Graph-Editor.pdb
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.csprojAssemblyReference.cache
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\AlgoritmsWindow.g.cs
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\MainWindow.g.cs
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ConnectVertices.g.cs
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentMatrix.g.cs
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentList.g.cs
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\App.g.cs
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor_MarkupCompile.cache
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor_MarkupCompile.lref
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\AlgoritmsWindow.baml
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\MainWindow.baml
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ConnectVertices.baml
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentMatrix.baml
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentList.baml
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.g.resources
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph_Editor.Properties.Resources.resources
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.csproj.GenerateResource.cache
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.csproj.CoreCompileInputs.cache
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.exe
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.pdb
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\bin\Debug\Graph-Editor.exe.config
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\bin\Debug\Graph-Editor.exe
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\bin\Debug\Graph-Editor.pdb
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.csprojAssemblyReference.cache
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\AlgoritmsWindow.g.cs
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\MainWindow.g.cs
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ConnectVertices.g.cs
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\OptionsWindow.g.cs
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\PropertiesWindow\VertexProrerty.g.cs
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentMatrix.g.cs
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentList.g.cs
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Documentation.g.cs
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\App.g.cs
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor_MarkupCompile.cache
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor_MarkupCompile.lref
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\AlgoritmsWindow.baml
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\MainWindow.baml
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ConnectVertices.baml
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\OptionsWindow.baml
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\PropertiesWindow\VertexProrerty.baml
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentMatrix.baml
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentList.baml
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Documentation.baml
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.g.resources
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph_Editor.Properties.Resources.resources
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.csproj.GenerateResource.cache
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.csproj.CoreCompileInputs.cache
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.exe
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.pdb
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\OptionsWindow.g.cs
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\PropertiesWindow\VertexProrerty.g.cs
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Documentation.g.cs
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\OptionsWindow.baml
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\PropertiesWindow\VertexProrerty.baml
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Documentation.baml
+=======
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\bin\Debug\Graph-Editor.exe.config
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\bin\Debug\Graph-Editor.exe
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\bin\Debug\Graph-Editor.pdb
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\Graph-Editor.csprojAssemblyReference.cache
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\AlgoritmsWindow.g.cs
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\MainWindow.g.cs
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\ConnectVertices.g.cs
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\OptionsWindow.g.cs
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\ShowData\CurrentMatrix.g.cs
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\ShowData\CurrentList.g.cs
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\Documentation.g.cs
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\App.g.cs
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\Graph-Editor_MarkupCompile.cache
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\Graph-Editor_MarkupCompile.lref
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\AlgoritmsWindow.baml
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\MainWindow.baml
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\ConnectVertices.baml
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\OptionsWindow.baml
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\ShowData\CurrentMatrix.baml
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\ShowData\CurrentList.baml
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\Documentation.baml
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\Graph-Editor.g.resources
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\Graph_Editor.Properties.Resources.resources
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\Graph-Editor.csproj.GenerateResource.cache
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\Graph-Editor.csproj.CoreCompileInputs.cache
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\Graph-Editor.exe
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\Graph-Editor.pdb
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\PropertiesWindow\EdgeProperty.g.cs
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\PropertiesWindow\VertexProperty.g.cs
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\PropertiesWindow\EdgeProperty.baml
+C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\obj\Debug\PropertiesWindow\VertexProperty.baml
+>>>>>>> Alexander_Mikhailenko
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\bin\Debug\Graph-Editor.pdb
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\bin\Debug\Graph-Editor.exe.config
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\bin\Debug\Graph-Editor.exe
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.csprojAssemblyReference.cache
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\AlgoritmsWindow.g.cs
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\MainWindow.g.cs
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\ConnectVertices.g.cs
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\OptionsWindow.g.cs
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\PropertiesWindow\VertexProrerty.g.cs
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentMatrix.g.cs
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentList.g.cs
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\Documentation.g.cs
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\App.g.cs
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor_MarkupCompile.cache
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor_MarkupCompile.lref
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\AlgoritmsWindow.baml
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\MainWindow.baml
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\ConnectVertices.baml
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\OptionsWindow.baml
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\PropertiesWindow\VertexProrerty.baml
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentMatrix.baml
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\ShowData\CurrentList.baml
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\Documentation.baml
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.g.resources
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph_Editor.Properties.Resources.resources
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.csproj.GenerateResource.cache
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.csproj.CoreCompileInputs.cache
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.exe
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.pdb
+>>>>>>> Stashed changes
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\PropertiesWindow\EdgeProperty.g.cs
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\PropertiesWindow\VertexProperty.g.cs
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\PropertiesWindow\EdgeProperty.baml
+C:\Users\odmen\OneDrive\Рабочий стол\GraphON2.0\Graph-Editor_2.0\Graph-Editor\obj\Debug\PropertiesWindow\VertexProperty.baml
+>>>>>>> VladKostenkov
+>>>>>>> master
