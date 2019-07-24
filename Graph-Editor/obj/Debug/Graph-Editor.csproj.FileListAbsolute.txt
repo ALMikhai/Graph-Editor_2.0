@@ -32,7 +32,6 @@ C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-
 C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.pdb
 =======
 <<<<<<< Updated upstream
-<<<<<<< HEAD
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\bin\Debug\Graph-Editor.exe.config
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\bin\Debug\Graph-Editor.exe
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\bin\Debug\Graph-Editor.pdb
@@ -91,7 +90,6 @@ C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\o
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\OptionsWindow.baml
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\PropertiesWindow\VertexProrerty.baml
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Documentation.baml
-=======
 C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\bin\Debug\Graph-Editor.exe.config
 C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\bin\Debug\Graph-Editor.exe
 C:\Users\90-STICK\Source\Repos\Graph-Editor_2.0(reborn)\Graph-Editor\bin\Debug\Graph-Editor.pdb

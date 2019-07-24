@@ -34,6 +34,10 @@
         </Style>
     </Window.Resources>
     <Grid x:Name="FullWindow" Background="#0a3f4c">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="551*"/>
+            <RowDefinition Height="195*"/>
+        </Grid.RowDefinitions>
         <Canvas x:Name="GraphCanvas" 
                 Margin="182,22,8,10" 
                 Background="#B7E1E1"
@@ -42,7 +46,7 @@
                 MouseLeave="GraphCanvas_MouseLeave"
                 MouseUp="GraphCanvas_MouseUp"
                 ClipToBounds="True"
-                MouseWheel="GraphCanvas_MouseWheel"/>
+                MouseWheel="GraphCanvas_MouseWheel" Grid.RowSpan="2"/>
         <Button Style="{StaticResource LockHover}" x:Name="Algorimts_Window" Foreground="WhiteSmoke"
             MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove"
             Content="Algoritms" BorderThickness="0"
@@ -79,7 +83,7 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Margin="97,312,0,0"
-                Click="Change_Tool_Button" MouseEnter="ToolButton_MouseMove" MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove" ToolTip="Move vertex">
+                Click="Change_Tool_Button" MouseEnter="ToolButton_MouseMove" MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove" ToolTip="Move all vertices">
             <Image Source="images\handForCanvasTool.png" Width="64" Height="64">
                 <Image.Effect>
                     <DropShadowEffect/>
@@ -91,7 +95,7 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Margin="10,402,0,0"
-                Click="Change_Tool_Button"  MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove" ToolTip="Move vertex">
+                Click="Change_Tool_Button"  MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove" ToolTip="Vertex properties">
             <Image Source="images\propertiesVertexTool.png" Width="64" Height="64">
                 <Image.Effect>
                     <DropShadowEffect/>
@@ -103,7 +107,7 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Margin="97,402,0,0"
-                Click="Change_Tool_Button"  MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove" ToolTip="Move vertex">
+                Click="Change_Tool_Button"  MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove" ToolTip="Edge properties">
             <Image Source="images\propertiesEdgeTool.png" Width="64" Height="64">
                 <Image.Effect>
                     <DropShadowEffect/>
@@ -115,7 +119,7 @@
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Top"
                 Margin="10,492,0,0"
-                Click="Change_Tool_Button" MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove" ToolTip="Delete vertex">
+                Click="Change_Tool_Button" MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove" ToolTip="Delete vertex" Grid.RowSpan="2">
             <Image Source="images/deleteVertexIcon.png" Width="64" Height="64">
                 <Image.Effect>
                     <DropShadowEffect/>
@@ -127,7 +131,7 @@
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Top"
                 Margin="97,492,0,0"
-                Click="Change_Tool_Button" MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove" ToolTip="Delete vertex">
+                Click="Change_Tool_Button" MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove" ToolTip="Delete edge" Grid.RowSpan="2">
             <Image Source="images/deleteEdgeIcon.png" Width="64" Height="64">
                 <Image.Effect>
                     <DropShadowEffect/>
@@ -145,14 +149,14 @@
             </Image>
         </Button>
 
-        <Grid x:Name="WaitPanel" Opacity="0.4" Background="Gray" Visibility="Hidden"/>
+        <Grid x:Name="WaitPanel" Opacity="0.4" Background="Gray" Visibility="Hidden" Grid.RowSpan="2"/>
         <Label x:Name="TeamName" Content=".TXT" Background="#b7e1e1"
                    HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top"       
                    Width="80" Height="42" FontFamily="Ink Free"
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                    FontSize="30" BorderBrush="black" BorderThickness="1" 
         />
-        <Image Source="images/logo.png" Margin="0,673,561,0" Height="62" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="64"/>
+        <Image Source="images/logo.png" Height="62" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="64" Grid.Row="1"/>
         <Menu x:Name="MainMenu" Height="22" VerticalAlignment="Top" Background="Black" Foreground="White" BorderBrush="Black">
             <MenuItem Header="File" FontFamily="sans-serif" FontSize="15" Foreground="White" BorderBrush="Black">
                 <MenuItem x:Name="save" Header="Save as" FontFamily="sans-serif" FontSize="15" Background="Black" Foreground="White" BorderBrush="Black" Click="Save_Click"></MenuItem>
@@ -186,7 +190,7 @@
                 </ToolBar>
             </MenuItem>
         </Menu>
-        <Grid x:Name="Exit_Dialog" Background="White" Margin="366,253,208,313" Visibility="Hidden" Grid.ColumnSpan="2">
+        <Grid x:Name="Exit_Dialog" Background="White" Margin="366,253,208,118.5" Visibility="Hidden">
             <Label HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="35" Margin="30,10,33,0">
                 <Label.Content>
                     Would you like to save it?
@@ -201,8 +205,8 @@
             Tag="4" Background="#345160"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Margin="53,582,0,0"
-            MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove" ToolTip="Center the graph">
+            Margin="53,31.5,0,0"
+            MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove" ToolTip="Center the graph" Grid.Row="1">
             <Image Source="Images/centerGraphIcon.png" Width="64" Height="64">
                 <Image.Effect>
                     <DropShadowEffect/>
