@@ -419,5 +419,19 @@ namespace Graph_Editor
                 Themes.ColorInsideVertex = (sender as Button).Background;
             }
         }
+
+        private void GraphCanvas_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            if(e.Delta > 0)
+            {
+                ResizeGraph.IncreaseCanvas(GraphCanvas.ActualHeight, GraphCanvas.ActualWidth);
+                Invalidate();
+            }
+            else
+            {
+                ResizeGraph.DecreaseCanvas(GraphCanvas.ActualHeight, GraphCanvas.ActualWidth);
+                Invalidate();
+            }
+        }
     }
 }
