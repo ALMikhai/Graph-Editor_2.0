@@ -78,6 +78,8 @@ namespace Graph_Editor
             Instance = this;
 
             ButtonGeneration.ColorButtonGeneration();
+
+            CenterTheGraph.Click += CenterGraph.MoveGraph;
         }
 
         public void Invalidate()
