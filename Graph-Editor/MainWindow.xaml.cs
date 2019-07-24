@@ -26,17 +26,16 @@ using Graph_Editor.UndoRedo;
 namespace Graph_Editor
 {
     // CodeStyle.
-    // 1) Переменный - локальные(Camel casing), глобальные(Pascal casing).
-    // 2) Приватные, защищённые поля(Camel casing) публичные поля, свойства(Pascal casing).
-    // 3) Аргументы функций(Camel casing).
-    // 4) В объявлении foreach использовать var, в объявлении переменных где будет понятен тип переменной использовать var.
-    // 5) Названия функций(Camel casing).
-    // 6) В назывниях функциий, переменных и даже в xaml'е не должно присутствовать знака подчеркивания '_' (только в тех случаях, когда это делает студия).
-    // 7) Названия переменных и функций должны быть понятны всем, а не только тому кто это писал.
-    // 8) Не использовать сокращения в названиях переменных и функций.
+    // 1) пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ(Camel casing), пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ(Pascal casing).
+    // 2) пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ(Camel casing) пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ(Pascal casing).
+    // 3) пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ(Camel casing).
+    // 4) пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ foreach пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ var, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ var.
+    // 5) пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ(Camel casing).
+    // 6) пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅ xaml'пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ '_' (пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ).
+    // 7) пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ.
+    // 8) пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
     
-    // TODO База данных, через серилизацию.
-    // TODO Сделать генерацию цветов для быстрой смены.
+    // TODO пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 
     public partial class MainWindow : Window
     {
@@ -80,6 +79,7 @@ namespace Graph_Editor
 
             ButtonGeneration.ColorButtonGeneration();
         }
+
         public void Invalidate()
         {
             GraphCanvas.Children.Clear();
@@ -127,7 +127,7 @@ namespace Graph_Editor
                     {
                         drawingContext.DrawText(new FormattedText(edge.Weight.ToString(),
                                                 CultureInfo.GetCultureInfo("en-us"),
-                                                FlowDirection.LeftToRight,
+                                                ((from.X < to.X && from.Y < to.Y) || (from.X > to.X && from.Y > to.Y)) ? FlowDirection.RightToLeft : FlowDirection.LeftToRight,
                                                 new Typeface("Romanic"),
                                                 30, Brushes.Red), new Point((from.X + center.X) / 2, (from.Y + center.Y) / 2));
                     }
@@ -135,9 +135,10 @@ namespace Graph_Editor
                     {
                         drawingContext.DrawText(new FormattedText(edge.Weight.ToString(),
                                                 CultureInfo.GetCultureInfo("en-us"),
-                                                FlowDirection.LeftToRight,
+                                                ((from.X < to.X && from.Y < to.Y) || (from.X > to.X && from.Y > to.Y)) ? FlowDirection.RightToLeft : FlowDirection.LeftToRight,
                                                 new Typeface("Romanic"),
-                                                30, Brushes.Red), center);
+                                                30, Brushes.Red), 
+                                                center);
                     }
                 }
             }
@@ -146,15 +147,15 @@ namespace Graph_Editor
             {
                 drawingContext.DrawEllipse(vertex.Color, Globals.BasePen, vertex.Coordinates, Globals.VertRadius, Globals.VertRadius);
 
-                FormattedText txt = new FormattedText(vertex.Index.ToString(),
+                FormattedText txt = new FormattedText((vertex.Text == "") ? vertex.Index.ToString() : vertex.Text,
                                     CultureInfo.GetCultureInfo("en-us"),
                                     FlowDirection.LeftToRight,
                                     new Typeface("Romanic"),
                                     20, (Brush)new BrushConverter().ConvertFrom("#305F5F"));
 
-                drawingContext.DrawText(txt, new Point(vertex.Coordinates.X + (vertex.Index.ToString().Length * (-5)), vertex.Coordinates.Y - 10));
+                drawingContext.DrawText(txt, new Point(vertex.Coordinates.X + ((vertex.Text == "") ? vertex.Index.ToString().Length * (-5) : vertex.Text.Length * (-5)), vertex.Coordinates.Y - 10));
             }
-
+            
             drawingContext.Close();
             graphHost.Children.Add(drawingVisual);
         }
@@ -197,13 +198,13 @@ namespace Graph_Editor
             {
                 drawingContext.DrawEllipse(vertex.Color, Globals.BasePen, vertex.Coordinates, Globals.VertRadius, Globals.VertRadius);
 
-                FormattedText txt = new FormattedText(vertex.Index.ToString(),
+                FormattedText txt = new FormattedText((vertex.Text == "") ? vertex.Index.ToString() : vertex.Text,
                                     CultureInfo.GetCultureInfo("en-us"),
                                     FlowDirection.LeftToRight,
                                     new Typeface("Romanic"),
                                     20, (Brush)new BrushConverter().ConvertFrom("#305F5F"));
 
-                drawingContext.DrawText(txt, new Point(vertex.Coordinates.X + (vertex.Index.ToString().Length * (-5)), vertex.Coordinates.Y - 10));
+                drawingContext.DrawText(txt, new Point(vertex.Coordinates.X + ((vertex.Text == "") ? vertex.Index.ToString().Length * (-5) : vertex.Text.Length * (-5)), vertex.Coordinates.Y - 10));
             }
 
             drawingContext.Close();
@@ -251,6 +252,9 @@ namespace Graph_Editor
             DelVertex.Background = baseButtonColor;
             Connect.Background = baseButtonColor;
             DelEdge.Background = baseButtonColor;
+            MoveAllVertex.Background = baseButtonColor;
+            PropertyEdge.Background = baseButtonColor;
+            PropertyVertex.Background = baseButtonColor;
             (sender as Button).Background = Brushes.CadetBlue;
         }
 

@@ -23,8 +23,8 @@
         </Style>
     </Window.Resources>
     <Grid x:Name="FullWindow" Background="#98B0B0">
-        <Label Content="Start Vertex: " HorizontalAlignment="Left" Margin="20,26,0,0" VerticalAlignment="Top" Height="41" Width="123" FontSize="20"/>
-        <Label Content="Final Vertex: " HorizontalAlignment="Left" Margin="319,26,0,0" VerticalAlignment="Top" Height="41" Width="133" FontSize="20"/>
+        <Label Content="Start Vertex: " HorizontalAlignment="Left" Margin="20,26,0,0" VerticalAlignment="Top" Height="41" Width="123" FontSize="26" FontFamily="Agency FB"/>
+        <Label Content="Final Vertex: " HorizontalAlignment="Left" Margin="319,26,0,0" VerticalAlignment="Top" Height="41" Width="133" FontSize="26" FontFamily="Agency FB"/>
         <TextBox x:Name="FirstVertex" Focusable="True"
             FontSize="20" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"
             Height="38" Margin="143,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
@@ -35,7 +35,7 @@
             Height="38" Margin="0,26,56,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
             Background="#728484" BorderThickness="1" BorderBrush="black"
         />
-        <Label Content="Edge weight: " FontSize="20" HorizontalAlignment="Left" Margin="0,104,0,0" VerticalAlignment="Top"/>
+        <Label Content="Edge weight: " FontSize="26" FontFamily="Agency FB" HorizontalAlignment="Left" Margin="0,104,0,0" VerticalAlignment="Top"/>
         <Slider x:Name="WeightSlider" Foreground="#98B0B0" Background="#98B0B0"
             Maximum="100" Minimum="1" SmallChange="1" LargeChange="10"
             TickPlacement="BottomRight" TickFrequency="10"
@@ -44,7 +44,7 @@
             Margin="122,116,0,0" VerticalAlignment="Top" Width="315" Height="25"
         />
         <TextBox x:Name="TextBox_Weight" 
-            FontSize="25"
+            FontSize="30" FontFamily="Agency FB"
             Background="#728484" Foreground="#CCD8D8"
             TextAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top"
             Height="37" Margin="450,104,0,0" Width="86"
@@ -52,25 +52,25 @@
         />
         <Button x:Name="Create"
             IsDefault="True"
-            FontSize="20" Content="Create" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
+            FontSize="30" FontFamily="Agency FB" Content="Create" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
             Width="112" Height="42" Background="#B2B4B4"
             Click="Create_Click"
         />
         <Button x:Name="Close"
             IsCancel="True" Background="#B2B4B4"
-            FontSize="20" Content="Close"
+            FontSize="30" FontFamily="Agency FB" Content="Close"
             HorizontalAlignment="Left" Margin="117,0,0,10" VerticalAlignment="Bottom"
             Width="112" Height="42" Click="Cancel_Click"
         />
         <Button Style="{StaticResource MyButtonStyle}" x:Name="Directed" Background="#98B0B0"
             HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-            FontSize="22" BorderThickness="1"
+            FontSize="34" FontFamily="Agency FB" BorderThickness="1"
             Content="Directed" HorizontalAlignment="Left" Margin="35,175,0,0" VerticalAlignment="Top"
             Height="52" Width="258" Click="Directed_Button_Choose" MouseMove="DirecteMouseMove" MouseLeave="DirecteMouseLeave">
         </Button>
         <Button Style="{StaticResource MyButtonStyle}" x:Name="Undirected" Content="Undirected" Background="#789778"
             HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-            FontSize="22" BorderThickness="1"
+            FontSize="34" FontFamily="Agency FB" BorderThickness="1"
             HorizontalAlignment="Left" Margin="298,175,0,0" VerticalAlignment="Top"
             Height="52" Width="258" Click="Undirected_Button_Choose" MouseMove="DirecteMouseMove" MouseLeave="DirecteMouseLeave">
         </Button>

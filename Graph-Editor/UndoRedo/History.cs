@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Graph_Editor.Objects;
+using System.Windows;
 
 namespace Graph_Editor.UndoRedo
 {
@@ -102,32 +103,26 @@ namespace Graph_Editor.UndoRedo
                     UndoDeleteEgde(record, n);
                     return;
                 }
+
+                if((record.After is Edge) && (record.Befor is Edge))
+                {
+                    UndoChangeEdge(record, n);
+                }
             }
 
-            if ((record.Befor is List < Vertex>) && (record.After is List<Edge>))
+            if((record.Befor is List <Vertex>) && (record.After is List<Edge>))
             {
-                if (n == 1)
-                {
-                    Globals.VertexData.Clear();
-                    Globals.EdgesData.Clear();
-                    Globals.GlobalIndex = 0;
-                    Globals.RestoreMatrix();
-                }
-                else
-                {
-                    foreach (var vertex in (record.Befor as List<Vertex>))
-                    {
-                        Globals.VertexData.Add(vertex);
-                        Globals.GlobalIndex++;
-                    }
+                UndoClearAll(record, n);
+            }
 
-                    foreach (var edge in (record.After as List<Edge>))
-                    {
-                        Globals.EdgesData.Add(new Edge(Globals.FindVertex(edge.From), Globals.FindVertex(edge.To), edge.Weight, edge.Directed, edge.Color, edge.Thickness));
-                    }
+            if ((record.Befor is List<Edge>) && (record.After is List<Vertex>))
+            {
+                UndoLoadFile(record, n);
+            }
 
-                    Globals.RestoreMatrix();
-                }
+            if ((record.Befor is List<Point>) && (record.After is List<Point>))
+            {
+                UndoMoveAllVertex(record, n);
             }
         }
 
@@ -174,30 +169,6 @@ namespace Graph_Editor.UndoRedo
             }
         }
 
-        private static void UndoMoveVertex(Record record, int n)
-        {
-            Vertex rollback = Globals.FindVertex(record.After as Vertex);
-
-            Globals.VertexData.Add((Vertex)record.Befor);
-
-            foreach (var edge in Globals.EdgesData.ToArray())
-            {
-                if (edge.From == rollback)
-                {
-                    edge.From = (Vertex)record.Befor;
-                }
-
-                if (edge.To == rollback)
-                {
-                    edge.To = (Vertex)record.Befor;
-                }
-            }
-
-            record.After = new Vertex((Vertex)record.Befor);
-            record.Befor = new Vertex(rollback);
-
-            Globals.VertexData.Remove(rollback);
-        }
 
         private static void UndoDeleteVertex(Record record, int n)
         {
@@ -287,6 +258,134 @@ namespace Graph_Editor.UndoRedo
 
             record.Befor = null;
             record.After = new Edge(directedEdge);
+        }
+
+        private static void UndoClearAll(Record record, int n)
+        {
+            if (n == 1)
+            {
+                Globals.VertexData.Clear();
+                Globals.EdgesData.Clear();
+                Globals.GlobalIndex = 0;
+                Globals.RestoreMatrix();
+            }
+            else
+            {
+                foreach (var vertex in (record.Befor as List<Vertex>))
+                {
+                    Globals.VertexData.Add(new Vertex(vertex));
+                    Globals.GlobalIndex++;
+                }
+
+                foreach (var edge in (record.After as List<Edge>))
+                {
+                    Globals.EdgesData.Add(new Edge(Globals.FindVertex(edge.From), Globals.FindVertex(edge.To), edge.Weight, edge.Directed, edge.Color, edge.Thickness));
+                }
+
+                Globals.RestoreMatrix();
+            }
+        }
+
+        private static void UndoMoveVertex(Record record, int n)
+        {
+            Vertex rollback = Globals.FindVertex(record.After as Vertex);
+
+            Globals.VertexData.Add((Vertex)record.Befor);
+
+            foreach (var edge in Globals.EdgesData.ToArray())
+            {
+                if (edge.From == rollback)
+                {
+                    edge.From = (Vertex)record.Befor;
+                }
+
+                if (edge.To == rollback)
+                {
+                    edge.To = (Vertex)record.Befor;
+                }
+            }
+
+            record.After = new Vertex((Vertex)record.Befor);
+            record.Befor = new Vertex(rollback);
+
+            Globals.VertexData.Remove(rollback);
+        }
+
+        private static void UndoChangeEdge(Record record, int n)
+        {
+            Edge edgeBefor = (record.Befor as Edge);
+            Edge edgeAfter = (record.After as Edge);
+
+            Edge rollbackDirected = Globals.FindEdge(edgeAfter);
+
+            if (rollbackDirected != null)
+            {
+                Edge directedEdge = new Edge(Globals.FindVertex(rollbackDirected.From), Globals.FindVertex(rollbackDirected.To), edgeBefor.Weight, edgeBefor.Directed, edgeBefor.Color, edgeBefor.Thickness);
+
+                if (!rollbackDirected.Directed)
+                {
+                    Edge rollbackUnDirected = Globals.FindReversEdge(edgeAfter);
+                    Edge unDirectedEdge = new Edge(Globals.FindVertex(rollbackUnDirected.From), Globals.FindVertex(rollbackUnDirected.To), edgeBefor.Weight, edgeBefor.Directed, edgeBefor.Color, edgeBefor.Thickness);
+                    Globals.EdgesData.Remove(rollbackUnDirected);
+                    Globals.EdgesData.Add(unDirectedEdge);
+                }
+
+                Globals.EdgesData.Remove(rollbackDirected);
+                Globals.EdgesData.Add(directedEdge);
+
+                Globals.RestoreMatrix();
+
+                record.After = new Edge(edgeBefor);
+                record.Befor = new Edge(edgeAfter);
+            }
+        }
+
+        private static void UndoMoveAllVertex(Record record, int n)
+        {
+            Point startPoint = (record.Befor as List<Point>)[0];
+            Point finishPoint = (record.After as List<Point>)[0];
+
+            Vector vector = Point.Subtract(startPoint, finishPoint);
+
+            foreach(var vertex in Globals.VertexData)
+            {
+                vertex.Coordinates = Point.Add(vertex.Coordinates, vector);
+            }
+
+            List<Point> startPoints = new List<Point>();
+            startPoints.Add(finishPoint);
+
+            List<Point> finishPoints = new List<Point>();
+            finishPoints.Add(startPoint);
+
+            record.Befor = startPoints;
+            record.After = finishPoints;
+        }
+
+        private static void UndoLoadFile(Record record, int n)
+        {
+            if (n == 0)
+            {
+                Globals.VertexData.Clear();
+                Globals.EdgesData.Clear();
+                Globals.GlobalIndex = 0;
+                Globals.RestoreMatrix();
+            }
+            else
+            {
+                foreach (var vertex in (record.After as List<Vertex>))
+                {
+                    Globals.VertexData.Add(new Vertex(vertex));
+                    Globals.GlobalIndex++;
+                }
+
+                foreach (var edge in (record.Befor as List<Edge>))
+                {
+                    Globals.EdgesData.Add(new Edge(Globals.FindVertex(edge.From), Globals.FindVertex(edge.To), edge.Weight, edge.Directed, edge.Color, edge.Thickness));
+                }
+
+                Globals.RestoreMatrix();
+            }
         }
     }
 }
