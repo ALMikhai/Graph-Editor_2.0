@@ -105,6 +105,10 @@ namespace Graph_Editor
                 DijkstrafinalVertex.Text = "0";
                 Dijkstra_Label.Content = "Dijkstra";
             }
+            else
+            {
+                AlgoList[chooseAlg].Start();
+            }
         }
 
         private void DijkstraReadyExitAlgoritm_Click(object sender, RoutedEventArgs e)

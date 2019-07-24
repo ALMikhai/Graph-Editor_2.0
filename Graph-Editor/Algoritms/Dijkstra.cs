@@ -114,8 +114,8 @@ namespace Graph_Editor.Algoritms
         static List<Edge> path = new List<Edge>();
         static int[] destinations = new int[Size];
         static int[] p = new int[Size];
-        static List<Edge> edgeUsed= new List<Edge>();
-
+        static List<Edge> edgesUsed= new List<Edge>();
+        
         static bool IsWay(int v, int end)
         {
             if (v == end)
@@ -142,9 +142,18 @@ namespace Graph_Editor.Algoritms
             }
             visited = new bool[Size];
             dijkstra(s, e);
-            /* important: последовательный вызов анимаций */
+            DegforDij = new int[Size];
+            for (int i = 0; i < Size; i++)
+                for(int j = 0; j < Size; j++)
+                    if (Matrix[i, j] != 0)
+                        DegforDij[i]++;
 
-            AnimationEdge.NextAnimation(edgeUsed[0], edgeUsed, path);
+            
+            for (int i = 0; i < DegforDij[s]; i++)
+            {
+                AnimationEdge a = new AnimationEdge();
+                a.NextAnimation(edgesUsed[i], edgesUsed, path);
+            }
         }
 
         static void dijkstra(int start, int end)
@@ -174,7 +183,7 @@ namespace Graph_Editor.Algoritms
                             {
                                 if (edge.From.Index == v && edge.To.Index == i)
                                 {
-                                    edgeUsed.Add(edge);
+                                    edgesUsed.Add(edge);
                                     break;
                                 }
                             }
