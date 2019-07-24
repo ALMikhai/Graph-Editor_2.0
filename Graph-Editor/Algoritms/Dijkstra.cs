@@ -144,9 +144,7 @@ namespace Graph_Editor.Algoritms
             dijkstra(s, e);
             /* important: последовательный вызов анимаций */
 
-            AnimationEdge.NextAnimation(edgeUsed[0], edgeUsed); // коммент для показа пути
-            //MainWindow.Instance.Invalidate();
-            //AnimationEdge.NextAnimation(path[0], path); // коммент для показа прохода
+            AnimationEdge.NextAnimation(edgeUsed[0], edgeUsed, path);
         }
 
         static void dijkstra(int start, int end)

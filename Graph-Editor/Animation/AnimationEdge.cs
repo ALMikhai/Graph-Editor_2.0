@@ -26,6 +26,10 @@ namespace Graph_Editor
     {
         private static Edge animatedEdge;
 
+        /* ATTENTION! KOSTIL' */
+        static bool IsInvalidateForDijkstra = false;
+        /* ATTENTION! KOSTIL' */
+
         private static Storyboard storyboard = new Storyboard
         {
             RepeatBehavior = new RepeatBehavior(1)
@@ -79,8 +83,9 @@ namespace Graph_Editor
             
         }
 
-        public static void NextAnimation(Edge edge, List<Edge> edgesUsed)
+        public static void NextAnimation(Edge edge, List<Edge> edgesUsed, List<Edge> path = null)
         {
+            
             animatedEdge = edge;
             RefreshStoryboard();
             StartAnimation();
@@ -93,8 +98,26 @@ namespace Graph_Editor
                 if (edgesUsed.Count > 0)
                 {
                     storyboard.Children.Clear();
-                    NextAnimation(edgesUsed[0], edgesUsed);
+                    NextAnimation(edgesUsed[0], edgesUsed, path);
                 }
+                else if(path != null && edgesUsed.Count == 0)
+                {
+                    /* ATTENTION! KOSTIL' */
+                    if(!IsInvalidateForDijkstra)
+                    {
+                        MainWindow.Instance.Invalidate();
+                        IsInvalidateForDijkstra = true;
+                    }
+                    /* ATTENTION! KOSTIL' */
+                    storyboard.Children.Clear();
+                    NextAnimation(path[0], path);
+                }
+                /* ATTENTION! KOSTIL' */
+                else
+                {
+                    IsInvalidateForDijkstra = false;
+                }
+                /* ATTENTION! KOSTIL' */
             };
 
             storyboard.Completed += callback;
