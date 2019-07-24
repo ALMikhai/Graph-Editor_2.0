@@ -105,6 +105,22 @@ namespace Graph_Editor
                 DijkstrafinalVertex.Text = "0";
                 Dijkstra_Label.Content = "Dijkstra";
             }
+            else
+            {
+                // Вот здесь просто ебани вон ту хуйню, ибо я не шарю как там всё происходит
+                // Вот тебе теги и их алгоритмы:
+                // 3 - Раскараска графа
+                // 4 - Гамильтонов цикл
+                // 5 - Эйлеров цикл
+                // 6 - Флойд-Уоршелл
+                // 8 - Максимальный поток
+                // Здесь нет никаких стартовых вершин, сами номера алгоритмов хранятся в переменной chooseAlg
+                // Я так понимаю, ты хотел сделать так: 
+                // AlgoList[chooseAlg].Start();
+                AlgoList[chooseAlg].Start();
+                LockPanel.Visibility = Visibility.Hidden;
+                this.Close();
+            }
         }
 
         private void DijkstraReadyExitAlgoritm_Click(object sender, RoutedEventArgs e)

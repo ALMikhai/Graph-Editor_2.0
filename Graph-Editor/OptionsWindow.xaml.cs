@@ -18,7 +18,7 @@ namespace Graph_Editor
     {
         private static FigureHost graphHost = new FigureHost();
 
-        private double setNowSpeed;
+        private double setNowAnimationTime;
         private readonly int MaxSpeed = 50;
 
         private int Theme = Themes.ChooseTheme;
@@ -90,7 +90,7 @@ namespace Graph_Editor
 
             setNowAnimationColor = Settings.BaseAnimationColor;
             setNowAnimationSpeed = Settings.BaseAnimationSpeed;
-            setNowSpeed = Settings.AnimationTime;
+            setNowAnimationTime = Settings.AnimationTime;
 
             ((Button)this.FindName(Settings.BaseEdge)).Height = 30;
             ((Button)this.FindName(Settings.BaseVertex)).Height = 30;
@@ -235,14 +235,14 @@ namespace Graph_Editor
             Rechoose("AnimationGrid", sender);
         }
 
-        private void ChooseAnimationSpeed(object sender, double speed)
+        private void ChooseAnimationSpeed(object sender, double time)
         {
-            setNowSpeed = speed;
+            setNowAnimationTime = time;
             ((Button)this.FindName(setNowAnimationSpeed)).Background = Themes.OptionsPassiveAnimationSpeedButtons;
             setNowAnimationSpeed = (sender as Button).Name;
             (sender as Button).Background = Themes.OptionsActiveAnimationSpeedButtons;
 
-            TextBox_Speed.Text = (MaxSpeed / setNowSpeed).ToString();
+            TextBox_Speed.Text = (MaxSpeed / setNowAnimationTime).ToString();
         }
 
         private void ChooseSlowAnimation(object sender, RoutedEventArgs e)
@@ -280,7 +280,7 @@ namespace Graph_Editor
                 double point = Convert.ToDouble(TextBox_Speed.Text);
                 SpeedSlider.SelectionEnd = point;
                 SpeedSlider.Value = point;
-                setNowSpeed = point / MaxSpeed;
+                setNowAnimationTime = MaxSpeed / point;
             }
         }
 
@@ -289,7 +289,7 @@ namespace Graph_Editor
             Globals.AnimationEllipse.Fill = animateColor;
             Settings.BaseAnimationColor = setNowAnimationColor;
 
-            Settings.AnimationTime = setNowSpeed;
+            Settings.AnimationTime = setNowAnimationTime;
             Settings.BaseAnimationSpeed = setNowAnimationSpeed;
 
             Settings.AnimationEllipseColor = animateColor;
