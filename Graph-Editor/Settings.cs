@@ -24,13 +24,15 @@ namespace Graph_Editor
 {
     public static class Settings
     {
-        public static string baseVertex = "vBlack";
-        public static string baseEdge = "eLightBlue";
-        public static string baseAnimationColor = "orbBlue";
-        public static string baseAnimationSpeed = "Medium";
+        public static string BaseVertex = "vBlack";
+        public static string BaseEdge = "eLightBlue";
+        public static string BaseAnimationColor = "orbBlue";
+        public static string BaseAnimationSpeed = "Medium";
 
-        public static double animationTime = 1.5;
+        public static double AnimationTime = 1.5;
         public static Brush AnimationEllipseColor = Brushes.Blue;
+
+        public static string currentTheme = "VulcanTheme";
 
     }
 }
