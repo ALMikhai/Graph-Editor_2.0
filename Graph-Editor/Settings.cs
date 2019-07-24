@@ -32,5 +32,7 @@ namespace Graph_Editor
         public static double AnimationTime = 1.5;
         public static Brush AnimationEllipseColor = Brushes.Blue;
 
+        public static string currentTheme = "VulcanTheme";
+
     }
 }

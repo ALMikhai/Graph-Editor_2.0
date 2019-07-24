@@ -46,6 +46,11 @@ namespace Graph_Editor
         public static Brush AlgoIsAlgoReady;
         public static Brush AlgoIsAlgoFailed;
         public static Brush AlgoIsAlgoReadyHover;
+        public static Brush AlgoIsAlgoReadyExitButton;
+        public static Brush AlgoChosenAlgoMainWindow;
+        public static Brush AlgoChosenAlgoButtons;
+        public static Brush AlgoChosenAlgoVertexWindows;
+        public static Brush AlgoChosenAlgoNameLabel;
 
         public static Brush MainMainWindow;
         public static Brush MainTeamName;
@@ -74,6 +79,16 @@ namespace Graph_Editor
         public static Brush ConnectActiveOrientation;
         public static Brush ConnectUnactiveOrientationHover;
 
+        public static Brush VPMainWindow;
+        public static Brush VPVertexName;
+        public static Brush VPColorBar;
+        public static Brush VPCloseButton;
+
+        public static Brush EPMainWindow;
+        public static Brush EPVertexName;
+        public static Brush EPColorBar;
+        public static Brush EPCloseButton;
+
         // Ice Theme
         public static void IceTheme()
         {
@@ -83,6 +98,18 @@ namespace Graph_Editor
 
             ColorInsideVertex = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
             ColorOfTheTextOfVertex = (Brush)new BrushConverter().ConvertFrom("#305F5F");
+
+            // Vertex Property
+            VPMainWindow = (Brush)new BrushConverter().ConvertFrom("#98B0B0");
+            VPVertexName = Brushes.White;
+            VPColorBar = Brushes.Azure;
+            VPCloseButton = Brushes.LightGray;
+
+            // Edge Property
+            EPMainWindow = (Brush)new BrushConverter().ConvertFrom("#98B0B0");
+            EPVertexName = Brushes.White;
+            EPColorBar = Brushes.Azure;
+            EPCloseButton = Brushes.LightGray;
 
             // Options Window
             OptionsMainWindowOptionsColor = (Brush)new BrushConverter().ConvertFrom("#DCF5F5");
@@ -99,6 +126,12 @@ namespace Graph_Editor
             AlgoIsAlgoReady = Brushes.CadetBlue;
             AlgoIsAlgoFailed = (Brush)new BrushConverter().ConvertFrom("#7EB1B3");
             AlgoIsAlgoReadyHover = (Brush)new BrushConverter().ConvertFrom("#7EB1B3");
+            AlgoIsAlgoReadyExitButton = (Brush)new BrushConverter().ConvertFrom("#8CBEBE");
+
+            AlgoChosenAlgoMainWindow = (Brush)new BrushConverter().ConvertFrom("#B0C4C4");
+            AlgoChosenAlgoButtons = (Brush)new BrushConverter().ConvertFrom("#BFCFCF");
+            AlgoChosenAlgoVertexWindows = (Brush)new BrushConverter().ConvertFrom("#8C9C9C");
+            AlgoChosenAlgoNameLabel = (Brush)new BrushConverter().ConvertFrom("#BFCFCF");
 
             // Main Window
             MainMainWindow = (Brush)new BrushConverter().ConvertFrom("#0A3F4C");
@@ -166,6 +199,12 @@ namespace Graph_Editor
             AlgoIsAlgoReady = (Brush)new BrushConverter().ConvertFrom("#91626E");
             AlgoIsAlgoFailed = (Brush)new BrushConverter().ConvertFrom("#F8A376");
             AlgoIsAlgoReadyHover = (Brush)new BrushConverter().ConvertFrom("#B29199");
+            AlgoIsAlgoReadyExitButton = (Brush)new BrushConverter().ConvertFrom("#F9B591");
+
+            AlgoChosenAlgoMainWindow = (Brush)new BrushConverter().ConvertFrom("#F8A376");
+            AlgoChosenAlgoButtons = (Brush)new BrushConverter().ConvertFrom("#F9B591");
+            AlgoChosenAlgoVertexWindows = (Brush)new BrushConverter().ConvertFrom("#C6825E");
+            AlgoChosenAlgoNameLabel = (Brush)new BrushConverter().ConvertFrom("#F9B591");
 
             // Options Window
             OptionsMainWindowOptionsColor = (Brush)new BrushConverter().ConvertFrom("#F8AC83");
@@ -182,10 +221,22 @@ namespace Graph_Editor
             ConnectWindowForVertex = (Brush)new BrushConverter().ConvertFrom("#6A3643");
             ConnectSlider = Brushes.Transparent;
             ConnectSliderWindow = (Brush)new BrushConverter().ConvertFrom("#6A3643");
-            ConnectResultButtons = (Brush)new BrushConverter().ConvertFrom("#cdb8be");
+            ConnectResultButtons = (Brush)new BrushConverter().ConvertFrom("#CDB8bE");
             ConnectUnactiveOrientation = Brushes.Transparent;
             ConnectActiveOrientation = (Brush)new BrushConverter().ConvertFrom("#FD926A");
-            ConnectUnactiveOrientationHover = (Brush)new BrushConverter().ConvertFrom("#a8838d");
+            ConnectUnactiveOrientationHover = (Brush)new BrushConverter().ConvertFrom("#A8838D");
+
+            // Vertex Property
+            VPMainWindow = (Brush)new BrushConverter().ConvertFrom("#834F5D");
+            VPVertexName = (Brush)new BrushConverter().ConvertFrom("#F8A376");
+            VPColorBar = (Brush)new BrushConverter().ConvertFrom("#FD926A");
+            VPCloseButton = (Brush)new BrushConverter().ConvertFrom("#F8A376");
+
+            // Edge Property
+            EPMainWindow = (Brush)new BrushConverter().ConvertFrom("#834F5D");
+            EPVertexName = (Brush)new BrushConverter().ConvertFrom("#F8A376");
+            EPColorBar = (Brush)new BrushConverter().ConvertFrom("#FD926A");
+            EPCloseButton = (Brush)new BrushConverter().ConvertFrom("#F8A376");
         }
     }
 }

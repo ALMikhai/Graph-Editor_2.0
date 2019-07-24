@@ -19,6 +19,8 @@ namespace Graph_Editor
         private double setNowSpeed;
         private int MaxSpeed = 200;
 
+        private int Theme = Themes.ChooseTheme;
+
         private Brush vertexColor = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
         private Brush edgeColor = Brushes.Black;
         private Brush animateColor;
@@ -87,6 +89,7 @@ namespace Graph_Editor
             ((Button)this.FindName(Settings.BaseVertex)).Height = 30;
             ((Button)this.FindName(Settings.BaseAnimationColor)).Height = 30;
             ((Button)this.FindName(Settings.BaseAnimationSpeed)).Background = Themes.OptionsActiveAnimationSpeedButtons;
+            ((Button)this.FindName(Settings.currentTheme)).Background = Themes.OptionsVECheckButton;
 
             currentWindow = "ThemeGrid";
             currentButtonWindow = "ThemeButton";
@@ -263,27 +266,43 @@ namespace Graph_Editor
 
         private void ThemeOK_Click(object sender, RoutedEventArgs e)
         {
-            switch (Themes.ChooseTheme)
+            if (Themes.ChooseTheme != Theme)
             {
-                case 1:
-                    Themes.IceTheme();
-                    break;
-                case 2:
-                    Themes.VolcanoTheme();
-                    break;
+                switch (Theme)
+                {
+                    case 1:
+                        Themes.IceTheme();
+                        Settings.currentTheme = "IceTheme";
+                        break;
+                    case 2:
+                        Themes.VolcanoTheme();
+                        Settings.currentTheme = "VulcanTheme";
+                        break;
+                }
             }
             Graph_Editor.MainWindow.Instance.ThemeSettings();
             this.ThemeSettings();
+            this.Close();
         }
 
         private void LightTheme_Click(object sender, RoutedEventArgs e)
         {
-            Themes.ChooseTheme = 1;
+            if (Theme != 1)
+            {
+                VulcanTheme.Background = Brushes.Transparent;
+                IceTheme.Background = Themes.OptionsVECheckButton;
+                Theme = 1;
+            }
         }
 
         private void DarkTheme_Click(object sender, RoutedEventArgs e)
         {
-            Themes.ChooseTheme = 2;
+            if (Theme != 2)
+            {
+                IceTheme.Background = Brushes.Transparent;
+                VulcanTheme.Background = Themes.OptionsVECheckButton;
+                Theme = 2;
+            }
         }
     }
 }

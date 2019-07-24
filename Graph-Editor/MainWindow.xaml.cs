@@ -56,6 +56,9 @@ namespace Graph_Editor
             DelVertex.Background = Themes.MainToolsButtons;
             DelEdge.Background = Themes.MainToolsButtons;
             Connect.Background = Themes.MainToolsButtons;
+            MoveAllVertex.Background = Themes.MainToolsButtons;
+            PropertyVertex.Background = Themes.MainToolsButtons;
+            PropertyEdge.Background = Themes.MainToolsButtons;
 
             GraphCanvas.Background = Themes.MainCanvas;
 
@@ -226,7 +229,7 @@ namespace Graph_Editor
         {
             ConnectVertices connectVertices = new ConnectVertices();
             WaitPanel.Visibility = Visibility.Visible;
-            connectVertices.Show();
+            connectVertices.ShowDialog();
         }
 
         private void AlgoritmButton_Click(object sender, RoutedEventArgs e)
@@ -234,7 +237,7 @@ namespace Graph_Editor
             AlgoritmsWindow algoritms = new AlgoritmsWindow();
             WaitPanel.Visibility = Visibility.Visible;
             Algorimts_Window.IsEnabled = false;
-            algoritms.Show();
+            algoritms.ShowDialog();
         }
 
         private void Change_Tool_Button(object sender, RoutedEventArgs e)
@@ -251,8 +254,8 @@ namespace Graph_Editor
             {
                 if (string.Compare((sender as Button).Background.ToString(), "#FF5F9EA0") == 0 || string.Compare((sender as Button).Background.ToString(), "#FF3F2030") == 0) 
                 {
-                    Connect_Click(sender, e);
                     Connect.IsEnabled = false;
+                    Connect_Click(sender, e);
                 }
             }
 
@@ -382,21 +385,21 @@ namespace Graph_Editor
         {
             CurrentMatrix currentMatrix = new CurrentMatrix();
             WaitPanel.Visibility = Visibility.Visible;
-            currentMatrix.Show();
+            currentMatrix.ShowDialog();
         }
 
         private void ShowList(object sender, RoutedEventArgs e)
         {
             CurrentList currentList = new CurrentList();
             WaitPanel.Visibility = Visibility.Visible;
-            currentList.Show();
+            currentList.ShowDialog();
         }
 
         private void ViewDocumentation(object sender, RoutedEventArgs e)
         {
             viewDoc.IsEnabled = false;
             Documentation documentation = new Documentation();
-            documentation.Show();
+            documentation.ShowDialog();
         }
 
         private void GoToOptions(object sender, RoutedEventArgs e)

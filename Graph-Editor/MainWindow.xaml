@@ -35,7 +35,7 @@
     </Window.Resources>
     <Grid x:Name="FullWindow" Background="#0a3f4c">
         <Canvas x:Name="GraphCanvas" 
-                Margin="182,22,8,10" 
+                Margin="182,27,8,10" 
                 Background="#f8a376"
                 MouseDown="GraphCanvas_MouseDown"
                 MouseMove="GraphCanvas_MouseMove"
@@ -44,7 +44,7 @@
                 ClipToBounds="True"/>
         <Button Style="{StaticResource LockHover}" x:Name="Algorimts_Window" Foreground="WhiteSmoke"
             MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove"
-            Content="Algoritms" BorderThickness="0"
+            Content="Algorithms" BorderThickness="0"
             HorizontalAlignment="Left" Margin="10,140,0,0" VerticalAlignment="Top"
             Width="160" Height="48" Background="#345160"
             FontSize="35" FontFamily="Agency FB" FontWeight="DemiBold" Click="AlgoritmButton_Click"

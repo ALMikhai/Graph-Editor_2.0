@@ -38,7 +38,6 @@ namespace Graph_Editor
             bitmap.BeginInit();
             bitmap.UriSource = new Uri(Themes.logoPath, UriKind.Relative);
             bitmap.EndInit();
-
             logo.Source = bitmap;
 
             MainWindow.Background           = Themes.AlgoMainWindowColor;
@@ -52,6 +51,21 @@ namespace Graph_Editor
             FloydButton.Background          = Themes.AlgoIsAlgoReady;
             KruskalButton.Background        = Themes.AlgoIsAlgoReady;
             MaximumButton.Background        = Themes.AlgoIsAlgoReady;
+
+            CancelButton.Background         = Themes.AlgoIsAlgoReadyExitButton;
+
+            Dijkstra.Background             = Themes.AlgoChosenAlgoMainWindow;
+            Dijkstra_Label.Background       = Themes.AlgoChosenAlgoNameLabel;
+            Dijkstra_Ready.Background       = Themes.AlgoChosenAlgoButtons;
+            Dijkstra_Cancel.Background      = Themes.AlgoChosenAlgoButtons;
+            DijkstrastartVertex.Background  = Themes.AlgoChosenAlgoVertexWindows;
+            DijkstrafinalVertex.Background  = Themes.AlgoChosenAlgoVertexWindows;
+
+            BFS_DFS.Background              = Themes.AlgoChosenAlgoMainWindow;
+            FS_Ready.Background             = Themes.AlgoChosenAlgoButtons;
+            FS_Cancel.Background            = Themes.AlgoChosenAlgoButtons;
+            FSstartVertex.Background        = Themes.AlgoChosenAlgoVertexWindows;
+            BFS_DFS_label.Background        = Themes.AlgoChosenAlgoNameLabel;
         }
 
         public AlgoritmsWindow()
@@ -90,22 +104,6 @@ namespace Graph_Editor
                 DijkstrastartVertex.Text = "0";
                 DijkstrafinalVertex.Text = "0";
                 Dijkstra_Label.Content = "Dijkstra";
-            }
-
-            else
-            {
-                // Вот здесь просто ебани вон ту хуйню, ибо я не шарю как там всё происходит
-                // Вот тебе теги и их алгоритмы:
-                // 3 - Раскараска графа
-                // 4 - Гамильтонов цикл
-                // 5 - Эйлеров цикл
-                // 6 - Флойд-Уоршелл
-                // 8 - Максимальный поток
-                // Здесь нет никаких стартовых вершин, сами номера алгоритмов хранятся в переменной chooseAlg
-                // Я так понимаю, ты хотел сделать так: 
-                // AlgoList[chooseAlg].Start();
-                AlgoList[chooseAlg].Start();
-                LockPanel.Visibility = Visibility.Hidden;
             }
         }
 
