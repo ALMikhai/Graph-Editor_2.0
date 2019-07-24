@@ -12,6 +12,7 @@ namespace Graph_Editor.Algoritms
         static int[,] matrix = new int[Size, Size];
         public override void Start()
         {
+            MainWindow.Instance.Invalidate();
             floyd();
         }
 
