@@ -81,6 +81,7 @@
     <Compile Include="Tools\EditEdge.cs" />
     <Compile Include="Tools\EditVertex.cs" />
     <Compile Include="Tools\MoveAllVertex.cs" />
+    <Compile Include="Tools\ResizeGraph.cs" />
     <Compile Include="UndoRedo\History.cs" />
     <Compile Include="UndoRedo\Record.cs" />
     <Compile Include="Objects\Edge.cs" />

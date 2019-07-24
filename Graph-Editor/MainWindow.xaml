@@ -41,7 +41,8 @@
                 MouseMove="GraphCanvas_MouseMove"
                 MouseLeave="GraphCanvas_MouseLeave"
                 MouseUp="GraphCanvas_MouseUp"
-                ClipToBounds="True"/>
+                ClipToBounds="True"
+                MouseWheel="GraphCanvas_MouseWheel"/>
         <Button Style="{StaticResource LockHover}" x:Name="Algorimts_Window" Foreground="WhiteSmoke"
             MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove"
             Content="Algoritms" BorderThickness="0"
