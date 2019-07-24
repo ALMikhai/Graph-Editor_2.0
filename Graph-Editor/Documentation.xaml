@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Graph_Editor"
-        mc:Ignorable="d" Icon="images/logo.png"
+        mc:Ignorable="d" x:Name="myWindow"
         Closing="Window_Closing"
         Title="Documentation" Height="604.137" Width="972.327" ResizeMode="NoResize">
     <Window.Resources>
@@ -20,30 +20,34 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid>
+    <Grid x:Name="WindowMain">
         <Label Content="For What and Who?" HorizontalAlignment="Left" Height="48"
                Margin="100,5,0,0" VerticalAlignment="Top" Width="252"
                FontWeight="DemiBold" FontSize="30" FontFamily="Agency FB"/>
-
         <TextBox BorderThickness="0" x:Name="forWhatAndWho" IsReadOnly="True" Text="" FontSize="20" FontFamily="Agency FB" HorizontalAlignment="Left" Height="92" Margin="10,58,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="432"></TextBox>
+
         <Label Content="What's the use of it" HorizontalAlignment="Left" Height="48"
                Margin="100,155,0,0" VerticalAlignment="Top" Width="252"
                FontWeight="DemiBold" FontSize="30" FontFamily="Agency FB"/>
-
         <TextBox BorderThickness="0" x:Name="useOfIt" IsReadOnly="True" FontSize="20" FontFamily="Agency FB" Text="" HorizontalAlignment="Left" Height="153" Margin="10,203,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="392"></TextBox>
+
         <Label Content="Instruction" HorizontalAlignment="Left" Height="48"
                Margin="669,10,0,0" VerticalAlignment="Top" Width="135"
                FontWeight="DemiBold" FontSize="30" FontFamily="Agency FB"/>
         <TextBox BorderThickness="0" x:Name="Instruct" IsReadOnly="True" FontSize="20" FontFamily="Agency FB" Text="" HorizontalAlignment="Left" Height="380" Margin="504,58,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="436"></TextBox>
-        <Image Source="images/logo.png" HorizontalAlignment="Left" Height="177" Margin="10,361,0,0" VerticalAlignment="Top" Width="200"/>
-        <Button x:Name="CreatorsButton" Background="Transparent" BorderBrush="Black" Content="Creators" FontSize="30" FontFamily="Agency FB" HorizontalAlignment="Left" Height="47" Margin="808,518,0,0" VerticalAlignment="Top" Width="148" Click="Button_Click"/>
+
+        <Image x:Name="logo" HorizontalAlignment="Left" Height="177" Margin="10,361,0,0" VerticalAlignment="Top" Width="200"/>
+
+        <Button x:Name="CreatorsButton" Background="Transparent" BorderBrush="Black"
+                Content="Creators" FontSize="30" FontFamily="Agency FB" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Button_Click" Margin="0,0,5,5"/>
+
         <Grid x:Name="Creators" Width="250" Height="300" Background="White" Visibility="Hidden">
-            <Border Width="250" Height="300" BorderBrush="Black" BorderThickness="2"></Border>
+            <Border Width="250" Height="300" BorderBrush="Black" BorderThickness="2"/>
             <Label Content="Mikhailenko Alexander" HorizontalAlignment="Center" Height="50" FontSize="25" FontFamily="Agency FB" FontWeight="DemiBold" Margin="10,10,12,240"/>
-            <Label Content="Kakurin Vladislav" HorizontalAlignment="Center" Height="50" FontSize="25" FontFamily="Agency FB" FontWeight="DemiBold" Margin="39,115,35,135"/>
-            <Label Content="Salushkin Dmitry" HorizontalAlignment="Center" Height="50" FontSize="25" FontFamily="Agency FB" FontWeight="DemiBold" Margin="39,165,33,85"/>
-            <Label Content="Kostenkov Vladislav" HorizontalAlignment="Center" Height="50" FontSize="25" FontFamily="Agency FB" FontWeight="DemiBold" Margin="30,60,28,190"/>
-            <Label Content="Yachmenev Ivan" HorizontalAlignment="Center" Height="50" FontSize="25" FontFamily="Agency FB" FontWeight="DemiBold" Margin="4,220,0,30"/>
+            <Label Content="Kakurin Vladislav"     HorizontalAlignment="Center" Height="50" FontSize="25" FontFamily="Agency FB" FontWeight="DemiBold" Margin="39,115,35,135"/>
+            <Label Content="Salushkin Dmitry"      HorizontalAlignment="Center" Height="50" FontSize="25" FontFamily="Agency FB" FontWeight="DemiBold" Margin="39,165,33,85"/>
+            <Label Content="Kostenkov Vladislav"   HorizontalAlignment="Center" Height="50" FontSize="25" FontFamily="Agency FB" FontWeight="DemiBold" Margin="30,60,28,190"/>
+            <Label Content="Yachmenev Ivan"        HorizontalAlignment="Center" Height="50" FontSize="25" FontFamily="Agency FB" FontWeight="DemiBold" Margin="4,220,0,30"/>
             <Image Source="images/logo.png" Margin="212,266,0,0" />
             <Button Style="{StaticResource MyButtonStyle}"
                     BorderThickness="0" x:Name="end"

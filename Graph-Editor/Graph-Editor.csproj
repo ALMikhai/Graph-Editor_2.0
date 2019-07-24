@@ -191,7 +191,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\list.png" />
-    <Resource Include="Images\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\matrix.png" />
@@ -208,6 +207,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Themes\tmp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icelogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Vulcanlogo.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\propertiesEdgeTool.png" />

@@ -1,10 +1,20 @@
-﻿using Graph_Editor.Algoritms;
-using System;
-using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Globalization;
+using Graph_Editor.Objects;
+using System.ComponentModel;
 using static Graph_Editor.Globals;
 
 namespace Graph_Editor
@@ -13,12 +23,23 @@ namespace Graph_Editor
     {
         // Баг - при нажатии на не готовый алгоритм, появляется messagebox после которого всё блочится.
 
+        // Ne bag a ficha ))0)
+
         int chooseAlg;
 
         MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
         
         private void ThemeSettings()
         {
+            myWindow.Icon = new BitmapImage(new Uri(Themes.logoPath, UriKind.Relative));
+
+            BitmapImage bitmap = new BitmapImage();
+
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(Themes.logoPath, UriKind.Relative);
+            bitmap.EndInit();
+            logo.Source = bitmap;
+
             MainWindow.Background           = Themes.AlgoMainWindowColor;
 
             BFSButton.Background            = Themes.AlgoIsAlgoReady;
@@ -31,7 +52,20 @@ namespace Graph_Editor
             KruskalButton.Background        = Themes.AlgoIsAlgoReady;
             MaximumButton.Background        = Themes.AlgoIsAlgoReady;
 
-            CancelButton.Background         = Themes.AlgoCancelButton;
+            CancelButton.Background         = Themes.AlgoIsAlgoReadyExitButton;
+
+            Dijkstra.Background             = Themes.AlgoChosenAlgoMainWindow;
+            Dijkstra_Label.Background       = Themes.AlgoChosenAlgoNameLabel;
+            Dijkstra_Ready.Background       = Themes.AlgoChosenAlgoButtons;
+            Dijkstra_Cancel.Background      = Themes.AlgoChosenAlgoButtons;
+            DijkstrastartVertex.Background  = Themes.AlgoChosenAlgoVertexWindows;
+            DijkstrafinalVertex.Background  = Themes.AlgoChosenAlgoVertexWindows;
+
+            BFS_DFS.Background              = Themes.AlgoChosenAlgoMainWindow;
+            FS_Ready.Background             = Themes.AlgoChosenAlgoButtons;
+            FS_Cancel.Background            = Themes.AlgoChosenAlgoButtons;
+            FSstartVertex.Background        = Themes.AlgoChosenAlgoVertexWindows;
+            BFS_DFS_label.Background        = Themes.AlgoChosenAlgoNameLabel;
         }
 
         public AlgoritmsWindow()
@@ -71,29 +105,14 @@ namespace Graph_Editor
                 DijkstrafinalVertex.Text = "0";
                 Dijkstra_Label.Content = "Dijkstra";
             }
-
-            else
-            {
-                // Вот здесь просто ебани вон ту хуйню, ибо я не шарю как там всё происходит
-                // Вот тебе теги и их алгоритмы:
-                // 3 - Раскараска графа
-                // 4 - Гамильтонов цикл
-                // 5 - Эйлеров цикл
-                // 6 - Флойд-Уоршелл
-                // 8 - Максимальный поток
-                // Здесь нет никаких стартовых вершин, сами номера алгоритмов хранятся в переменной chooseAlg
-                // Я так понимаю, ты хотел сделать так: 
-                // AlgoList[chooseAlg].Start();
-                AlgoList[chooseAlg].Start();
-                LockPanel.Visibility = Visibility.Hidden;
-            }
         }
 
         private void DijkstraReadyExitAlgoritm_Click(object sender, RoutedEventArgs e)
         {
-            if (DijkstrastartVertex.Text != "" && Globals.IsBe(Convert.ToInt32(DijkstrastartVertex.Text)) && DijkstrastartVertex.Text != DijkstrafinalVertex.Text && 
+            if (DijkstrastartVertex.Text != "" && Globals.IsBe(Convert.ToInt32(DijkstrastartVertex.Text)) && DijkstrastartVertex.Text != DijkstrafinalVertex.Text &&
                 DijkstrafinalVertex.Text != "" && Globals.IsBe(Convert.ToInt32(DijkstrafinalVertex.Text)))
             {
+
                 Dijkstra.Visibility = Visibility.Hidden;
                 this.Close();
 
@@ -137,19 +156,12 @@ namespace Graph_Editor
 
         private void Button_MouseMove(object sender, MouseEventArgs e)
         {
-            (sender as Button).Background = Brushes.SkyBlue;
+            (sender as Button).Background = Themes.AlgoIsAlgoReadyHover;
         }
 
         private void Button_MouseLeave(object sender, MouseEventArgs e)
         {
-            if (String.Compare((sender as Button).Tag.ToString(), "Cancel") == 0)
-            {
-                (sender as Button).Background = (Brush)new BrushConverter().ConvertFrom("#B9C2C2");
-            }
-            else
-            {
-                (sender as Button).Background = Brushes.CadetBlue;
-            }
+            (sender as Button).Background = Themes.AlgoIsAlgoReady;
         }
 
         private void FSstartVertex_TextChanged(object sender, TextChangedEventArgs e)
