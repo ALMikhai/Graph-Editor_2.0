@@ -74,9 +74,13 @@
     <Compile Include="PropertiesWindow\EdgeProperty.xaml.cs">
       <DependentUpon>EdgeProperty.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SaveLoad\Export.cs" />
     <Compile Include="SaveLoad\LoadOptions.cs" />
     <Compile Include="SaveLoad\SaveGraphTextFormat.cs" />
     <Compile Include="SaveLoad\SaveOptions.cs" />
+    <Compile Include="SetGraph.xaml.cs">
+      <DependentUpon>SetGraph.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="Themes.cs" />
     <Compile Include="PropertiesWindow\VertexProperty.xaml.cs">
@@ -145,6 +149,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PropertiesWindow\VertexProperty.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SetGraph.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
