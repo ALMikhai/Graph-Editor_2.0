@@ -78,6 +78,7 @@ namespace Graph_Editor
             open.Background             = Themes.MainMenuItems;
             export.Background           = Themes.MainMenuItems;
             exit.Background             = Themes.MainMenuItems;
+            saveTxtGraph.Background     = Themes.MainMenuItems;
             matrix.Background           = Themes.MainMenuItems;
             list.Background             = Themes.MainMenuItems;
 
@@ -94,6 +95,7 @@ namespace Graph_Editor
         public MainWindow()
         {
             SaveLoad.LoadOptions.Load();
+
             InitializeComponent();
 
             ThemeSettings();
@@ -102,11 +104,13 @@ namespace Graph_Editor
             list.Background = Brushes.Gray;
 
             GraphCanvas.Children.Add(graphHost);
+
             Instance = this;
 
             ButtonGeneration.ColorButtonGeneration();
 
             CenterTheGraph.Click += CenterGraph.MoveGraph;
+            saveTxtGraph.Click += SaveLoad.SaveGraphTextFormat.Save;
         }
 
         public void Invalidate()

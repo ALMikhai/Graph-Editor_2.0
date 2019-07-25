@@ -39,9 +39,7 @@ namespace Graph_Editor
         public static Pen BasePen = new Pen(Brushes.Black, 1);
         public static Pen AlgoPen = new Pen(Brushes.Red, 2);
         public static int VertRadius = 20;
-
-        //public static Brush ColorInsideVertex = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
-        //public static Brush ColorEdge = Brushes.Black;
+        
         public static double ThicknessEdge = 1;
 
         public static AnimationEdge gAnim = new AnimationEdge();

@@ -166,6 +166,7 @@
                 <MenuItem x:Name="save"     Header="Save as"        FontSize="18" FontFamily="Agency FB" Background="Black" Foreground="White" Click="Save_Click"></MenuItem>
                 <MenuItem x:Name="open"     Header="Open with"      FontSize="18" FontFamily="Agency FB" Background="Black" Foreground="White" Click="Load_Click"></MenuItem>
                 <MenuItem x:Name="export"   Header="Export to PNG"  FontSize="18" FontFamily="Agency FB" Background="Black" Foreground="White" Click="Export_Click"></MenuItem>
+                <MenuItem x:Name="saveTxtGraph"   Header="Save graph in TxT"  FontSize="18" FontFamily="Agency FB" Background="Black" Foreground="White"></MenuItem>
                 <Separator Background="Black"/>
                 <MenuItem x:Name="exit" Header="Exit" FontSize="18" FontFamily="Agency FB" Background="Black" Foreground="White" Click="Exit_Click"></MenuItem>
             </MenuItem>
