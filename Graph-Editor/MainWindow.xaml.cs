@@ -85,6 +85,7 @@ namespace Graph_Editor
             open.BorderBrush            = Themes.MainMenuItemsBorder;
             export.BorderBrush          = Themes.MainMenuItemsBorder;
             exit.BorderBrush            = Themes.MainMenuItemsBorder;
+            saveTxtGraph.BorderBrush    = Themes.MainMenuItemsBorder;
             matrix.BorderBrush          = Themes.MainMenuItemsBorder;
 
             Exit_Dialog.Background      = Themes.MainExitDialog;
