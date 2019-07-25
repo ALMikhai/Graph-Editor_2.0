@@ -75,6 +75,7 @@
       <DependentUpon>EdgeProperty.xaml</DependentUpon>
     </Compile>
     <Compile Include="SaveLoad\LoadOptions.cs" />
+    <Compile Include="SaveLoad\SaveGraphTextFormat.cs" />
     <Compile Include="SaveLoad\SaveOptions.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Themes.cs" />
