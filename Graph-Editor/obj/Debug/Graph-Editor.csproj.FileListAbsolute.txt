@@ -33,6 +33,7 @@ C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Gra
 C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.csproj.CoreCompileInputs.cache
 C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.exe
 C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.pdb
+<<<<<<< Updated upstream
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\bin\Debug\Graph-Editor.exe.config
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\bin\Debug\Graph-Editor.exe
 C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\bin\Debug\Graph-Editor.pdb
@@ -134,3 +135,7 @@ C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-
 C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.exe
 C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\Graph-Editor.pdb
 >>>>>>> Alexander_Mikhailenko
+=======
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\FloydWindow.g.cs
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\FloydWindow.baml
+>>>>>>> Stashed changes

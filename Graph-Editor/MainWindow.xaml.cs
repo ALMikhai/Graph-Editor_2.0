@@ -80,14 +80,12 @@ namespace Graph_Editor
             exit.Background             = Themes.MainMenuItems;
             saveTxtGraph.Background     = Themes.MainMenuItems;
             matrix.Background           = Themes.MainMenuItems;
-            list.Background             = Themes.MainMenuItems;
 
             save.BorderBrush            = Themes.MainMenuItemsBorder;
             open.BorderBrush            = Themes.MainMenuItemsBorder;
             export.BorderBrush          = Themes.MainMenuItemsBorder;
             exit.BorderBrush            = Themes.MainMenuItemsBorder;
             matrix.BorderBrush          = Themes.MainMenuItemsBorder;
-            list.BorderBrush            = Themes.MainMenuItemsBorder;
 
             Exit_Dialog.Background      = Themes.MainExitDialog;
         }
@@ -101,7 +99,6 @@ namespace Graph_Editor
             ThemeSettings();
 
             AddVertex.Background = Themes.MainChooseToolButton;
-            list.Background = Brushes.Gray;
 
             GraphCanvas.Children.Add(graphHost);
 

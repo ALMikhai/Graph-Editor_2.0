@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Graph_Editor.FloydWindow;
 using static Graph_Editor.Globals;
 
 namespace Graph_Editor.Algoritms
@@ -43,7 +44,7 @@ namespace Graph_Editor.Algoritms
                     }
                 }
             }
-
+            FloydWindow.matrix = matrix;
         }
     }
 }
