@@ -110,6 +110,8 @@ namespace Graph_Editor
                     return;
                 }
 
+                Globals.GlobalIndex = numberVertices;
+
                 MainWindow.Instance.ClearAll_Click(new object(), new RoutedEventArgs());
 
                 Random random = new Random(DateTime.Now.Millisecond * DateTime.Now.Minute);
@@ -166,6 +168,7 @@ namespace Graph_Editor
             {
                 Globals.VertexData.Clear();
                 Globals.EdgesData.Clear();
+                Globals.GlobalIndex = 0;
                 reader.Close();
                 System.Windows.MessageBox.Show("Invalid input graph format.");
             }
