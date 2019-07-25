@@ -20,13 +20,15 @@ using System.Threading;
 using System.Diagnostics;
 using Graph_Editor.Algoritms;
 
-
 namespace Graph_Editor
 {
     [Serializable]
     public static class Globals
     {
         public static int[] DegforDij = new int[Size];
+
+
+        public static string ChosenTool = "AddVertex";
 
         public static int GlobalIndex = 0;
         public static int Size = 100;
@@ -48,7 +50,7 @@ namespace Graph_Editor
         {
             Width = VertRadius,
             Height = VertRadius,
-            Fill = Settings.AnimationEllipseColor
+            Fill = OptionsWindow.settings.AnimationEllipseColor
         };
         
         public static Dictionary<int, Tool> ToolList = new Dictionary<int, Tool>

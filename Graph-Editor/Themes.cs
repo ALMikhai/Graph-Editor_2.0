@@ -24,14 +24,10 @@ namespace Graph_Editor
 {
     public static class Themes
     {
-
-        public static Brush ColorEdge = Brushes.Black;
-        public static int ChooseTheme = 2;
         public static string ChooseImageTheme;
 
         public static string logoPath;
 
-        public static Brush ColorInsideVertex;
         public static Brush ColorOfTheTextOfVertex;
 
         public static Brush OptionsMainWindowOptionsColor;
@@ -94,12 +90,14 @@ namespace Graph_Editor
         // Ice Theme
         public static void IceTheme()
         {
-            ChooseTheme = 1;
+            OptionsWindow.settings.ChooseTheme = 1;
             ChooseImageTheme = "IceImage";
 
             logoPath = "../../images/Icelogo.png";
 
-            ColorInsideVertex = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
+            OptionsWindow.settings.BaseVertex = "vLightBlue";
+            OptionsWindow.settings.BaseEdge = "eBlack";
+
             ColorOfTheTextOfVertex = (Brush)new BrushConverter().ConvertFrom("#305F5F");
 
             // Vertex Property
@@ -171,12 +169,14 @@ namespace Graph_Editor
         // Vulcan Theme
         public static void VolcanoTheme()
         {
-            ChooseTheme = 2;
+            OptionsWindow.settings.ChooseTheme = 2;
             ChooseImageTheme = "VolcanoImage";
 
             logoPath = "../../images/Vulcanlogo.png";
 
-            ColorInsideVertex = (Brush)new BrushConverter().ConvertFrom("#F0854D");
+            OptionsWindow.settings.BaseVertex = "vVolcano";
+            OptionsWindow.settings.BaseEdge = "eBlack";
+
             ColorOfTheTextOfVertex = (Brush)new BrushConverter().ConvertFrom("#BF1111");
 
             // Main Window
