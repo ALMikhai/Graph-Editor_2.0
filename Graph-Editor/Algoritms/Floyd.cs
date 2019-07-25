@@ -14,6 +14,7 @@ namespace Graph_Editor.Algoritms
 
         public override void Start()
         {
+            MainWindow.Instance.Invalidate();
             Array.Copy(Matrix, matrix, Size * Size);
             for (int i = 0; i < VertexData.Count; i++)
             {
