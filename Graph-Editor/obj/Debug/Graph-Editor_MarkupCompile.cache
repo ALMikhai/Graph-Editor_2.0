@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿Graph-Editor
 
 
@@ -11,33 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\App.xaml
-9-410247837
-
-481063305289
-151984215308
-AlgoritmsWindow.xaml;MainWindow.xaml;ConnectVertices.xaml;OptionsWindow.xaml;PropertiesWindow\EdgeProperty.xaml;PropertiesWindow\VertexProperty.xaml;ShowData\CurrentMatrix.xaml;ShowData\CurrentList.xaml;Documentation.xaml;
-
-False
-
-=======
-﻿Graph-Editor
-
-
-winexe
-C#
-.cs
-C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\obj\Debug\
-Graph_Editor
-none
-false
-DEBUG;TRACE
-C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\App.xaml
 101599125823
 
-49-35076296
+50-479262439
 151984215308
 AlgoritmsWindow.xaml;MainWindow.xaml;ConnectVertices.xaml;OptionsWindow.xaml;PropertiesWindow\EdgeProperty.xaml;PropertiesWindow\VertexProperty.xaml;SetGraph.xaml;ShowData\CurrentMatrix.xaml;ShowData\CurrentList.xaml;Documentation.xaml;
 
 False
 
->>>>>>> master
