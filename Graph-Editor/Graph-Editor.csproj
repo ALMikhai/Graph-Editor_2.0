@@ -74,6 +74,8 @@
     <Compile Include="PropertiesWindow\EdgeProperty.xaml.cs">
       <DependentUpon>EdgeProperty.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SaveLoad\LoadOptions.cs" />
+    <Compile Include="SaveLoad\SaveOptions.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Themes.cs" />
     <Compile Include="PropertiesWindow\VertexProperty.xaml.cs">
@@ -180,6 +182,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="SaveLoad\settings.bin" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -21,7 +21,7 @@ namespace Graph_Editor
         private double setNowAnimationTime;
         private readonly int MaxSpeed = 50;
 
-        private int Theme = Themes.ChooseTheme;
+        private int Theme = settings.ChooseTheme;
 
         private Brush vertexColor = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
         private Brush edgeColor = Brushes.Black;
@@ -32,6 +32,8 @@ namespace Graph_Editor
 
         private string setNowAnimationColor;
         private string setNowAnimationSpeed;
+
+        public static Settings settings = new Settings();
 
         private void ThemeSettings()
         {
@@ -81,23 +83,23 @@ namespace Graph_Editor
         {
             ThemeSettings();
 
-            setNowEdge = Settings.BaseEdge;
-            setNowVertex = Settings.BaseVertex;
+            setNowEdge = settings.BaseEdge;
+            setNowVertex = settings.BaseVertex;
             animateColor = Globals.AnimationEllipse.Fill;
 
-            edgeColor = Themes.ColorEdge;
-            vertexColor = Themes.ColorInsideVertex;
+            edgeColor = OptionsWindow.settings.ColorEdge;
+            vertexColor = OptionsWindow.settings.ColorInsideVertex;
 
-            setNowAnimationColor = Settings.BaseAnimationColor;
-            setNowAnimationSpeed = Settings.BaseAnimationSpeed;
-            setNowAnimationTime = Settings.AnimationTime;
+            setNowAnimationColor = settings.BaseAnimationColor;
+            setNowAnimationSpeed = settings.BaseAnimationSpeed;
+            setNowAnimationTime = settings.AnimationTime;
 
-            ((Button)this.FindName(Settings.BaseEdge)).Height = 30;
-            ((Button)this.FindName(Settings.BaseVertex)).Height = 30;
-            ((Button)this.FindName(Settings.BaseAnimationColor)).Height = 30;
-            ((Button)this.FindName(Settings.BaseAnimationSpeed)).Background = Themes.OptionsActiveAnimationSpeedButtons;
+            ((Button)this.FindName(settings.BaseEdge)).Height = 30;
+            ((Button)this.FindName(settings.BaseVertex)).Height = 30;
+            ((Button)this.FindName(settings.BaseAnimationColor)).Height = 30;
+            ((Button)this.FindName(settings.BaseAnimationSpeed)).Background = Themes.OptionsActiveAnimationSpeedButtons;
 
-            ((Button)this.FindName(Settings.currentTheme)).Background = Themes.OptionsVECheckButton;
+            ((Button)this.FindName(settings.currentTheme)).Background = Themes.OptionsVECheckButton;
             ((Image)this.FindName(Themes.ChooseImageTheme)).Width = 310;
             ((Image)this.FindName(Themes.ChooseImageTheme)).Height = 315;
 
@@ -105,7 +107,7 @@ namespace Graph_Editor
             currentWindow = "ThemeGrid";
             currentButtonWindow = "ThemeButton";
 
-            TextBox_Speed.Text = (MaxSpeed / Settings.AnimationTime).ToString();
+            TextBox_Speed.Text = (MaxSpeed / settings.AnimationTime).ToString();
         }
 
         private void DrawExample()
@@ -159,14 +161,14 @@ namespace Graph_Editor
             ((Button)this.FindName(setNowVertex)).Height = 25;
             ((Button)this.FindName(setNowEdge)).Height = 25;
 
-            ((Button)this.FindName(Settings.BaseVertex)).Height = 30;
-            ((Button)this.FindName(Settings.BaseEdge)).Height = 30;
+            ((Button)this.FindName(settings.BaseVertex)).Height = 30;
+            ((Button)this.FindName(settings.BaseEdge)).Height = 30;
 
-            setNowVertex = Settings.BaseVertex;
-            setNowEdge = Settings.BaseEdge;
+            setNowVertex = OptionsWindow.settings.BaseVertex;
+            setNowEdge = OptionsWindow.settings.BaseEdge;
 
-            vertexColor = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
-            edgeColor = Brushes.Black;
+            vertexColor = ((Button)this.FindName(setNowVertex)).Background;
+            edgeColor = ((Button)this.FindName(setNowEdge)).Background;
 
             DrawExample();
         }
@@ -188,20 +190,20 @@ namespace Graph_Editor
             graphHost = new FigureHost();
             exampleCanvas.Children.Clear();
 
-            Settings.BaseVertex = setNowVertex;
-            Settings.BaseEdge = setNowEdge;
+            OptionsWindow.settings.BaseVertex = setNowVertex;
+            OptionsWindow.settings.BaseEdge = setNowEdge;
 
-            Themes.ColorEdge = edgeColor;
-            Themes.ColorInsideVertex = vertexColor;
+            OptionsWindow.settings.ColorEdge = edgeColor;
+            OptionsWindow.settings.ColorInsideVertex = vertexColor;
 
             foreach(var vertex in Globals.VertexData)
             {
-                vertex.Color = Themes.ColorInsideVertex;
+                vertex.Color = OptionsWindow.settings.ColorInsideVertex;
             }
 
             foreach(var edge in Globals.EdgesData)
             {
-                edge.Color = Themes.ColorEdge;
+                edge.Color = OptionsWindow.settings.ColorEdge;
             }
 
             Graph_Editor.MainWindow.Instance.Invalidate();
@@ -287,12 +289,12 @@ namespace Graph_Editor
         private void animationOK_Click(object sender, RoutedEventArgs e)
         {
             Globals.AnimationEllipse.Fill = animateColor;
-            Settings.BaseAnimationColor = setNowAnimationColor;
+            settings.BaseAnimationColor = setNowAnimationColor;
 
-            Settings.AnimationTime = setNowAnimationTime;
-            Settings.BaseAnimationSpeed = setNowAnimationSpeed;
+            settings.AnimationTime = setNowAnimationTime;
+            settings.BaseAnimationSpeed = setNowAnimationSpeed;
 
-            Settings.AnimationEllipseColor = animateColor;
+            settings.AnimationEllipseColor = animateColor;
             this.Close();
         }
 
@@ -310,9 +312,9 @@ namespace Graph_Editor
         {
             ((Button)this.FindName(setNowAnimationColor)).Height = 25;
 
-            ((Button)this.FindName(Settings.BaseAnimationColor)).Height = 30;
+            ((Button)this.FindName(settings.BaseAnimationColor)).Height = 30;
 
-            setNowAnimationColor = Settings.BaseAnimationColor;
+            setNowAnimationColor = settings.BaseAnimationColor;
             animateColor = Globals.AnimationEllipse.Fill;
         }
 
@@ -326,22 +328,43 @@ namespace Graph_Editor
 
         private void ThemeOK_Click(object sender, RoutedEventArgs e)
         {
-            if (Themes.ChooseTheme != Theme)
+            if (OptionsWindow.settings.ChooseTheme != Theme)
             {
                 switch (Theme)
                 {
                     case 1:
                         Themes.IceTheme();
-                        Settings.currentTheme = "IceTheme";
+                        OptionsWindow.settings.currentTheme = "IceTheme";
+                        OptionsWindow.settings.ColorInsideVertex = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
+                        OptionsWindow.settings.ColorEdge = Brushes.Black;
                         break;
                     case 2:
                         Themes.VolcanoTheme();
-                        Settings.currentTheme = "VulcanTheme";
+                        settings.currentTheme = "VulcanTheme";
+                        OptionsWindow.settings.ColorInsideVertex = (Brush)new BrushConverter().ConvertFrom("#F0854D");
+                        OptionsWindow.settings.ColorEdge = Brushes.Black;
                         break;
                 }
             }
+
+            foreach (var vertex in Globals.VertexData)
+            {
+                vertex.Color = OptionsWindow.settings.ColorInsideVertex;
+            }
+
+            foreach (var edge in Globals.EdgesData)
+            {
+                edge.Color = OptionsWindow.settings.ColorEdge;
+            }
+
             Graph_Editor.MainWindow.Instance.ThemeSettings();
             this.ThemeSettings();
+
+            MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
+
+            ((Button)mainWindow.FindName(Globals.ChosenTool)).Background = Themes.MainChooseToolButton;
+
+            Graph_Editor.MainWindow.Instance.Invalidate();
             this.Close();
         }
 

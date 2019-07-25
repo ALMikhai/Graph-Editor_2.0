@@ -34,6 +34,16 @@ namespace Graph_Editor
 
         public void ThemeSettings()
         {
+
+            if(OptionsWindow.settings.ChooseTheme == 1)
+            {
+                Themes.IceTheme();
+            }
+            else
+            {
+                Themes.VolcanoTheme();
+            }
+
             baseButtonColor = Themes.MainToolsButtons;
 
             myWindow.Icon = new BitmapImage(new Uri(Themes.logoPath, UriKind.Relative));
@@ -81,8 +91,8 @@ namespace Graph_Editor
 
         public MainWindow()
         {
+            SaveLoad.LoadOptions.Load();
             InitializeComponent();
-            Themes.VolcanoTheme();
 
             ThemeSettings();
 
@@ -247,6 +257,8 @@ namespace Graph_Editor
         {
             Globals.ToolNow.Change_Tool();
 
+            Globals.ChosenTool = (sender as Button).Name;
+
             Invalidate();
 
             Globals.ToolNow = Globals.ToolList[Convert.ToInt32((sender as Button).Tag)];
@@ -381,6 +393,7 @@ namespace Graph_Editor
 
         private void DataWindow_Closing(object sender, CancelEventArgs e)
         {
+            SaveLoad.SaveOptions.Save();
             Exit_Dialog.Visibility = Visibility.Visible;
         }
 
@@ -431,7 +444,7 @@ namespace Graph_Editor
         {
             if((sender as Button).Tag.ToString() == "0")
             {
-                Themes.ColorInsideVertex = (sender as Button).Background;
+                OptionsWindow.settings.ColorInsideVertex = (sender as Button).Background;
             }
         }
 

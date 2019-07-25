@@ -34,10 +34,6 @@
         </Style>
     </Window.Resources>
     <Grid x:Name="FullWindow" Background="#0a3f4c">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="551*"/>
-            <RowDefinition Height="195*"/>
-        </Grid.RowDefinitions>
         <Canvas x:Name="GraphCanvas" 
                 Margin="182,27,8,10" 
                 Background="#f8a376"
@@ -205,8 +201,8 @@
             Tag="4" Background="#345160"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Margin="53,31.5,0,0"
-            MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove" ToolTip="Center the graph" Grid.Row="1">
+            Margin="52,598,0,0"
+            MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove" ToolTip="Center the graph">
             <Image Source="Images/centerGraphIcon.png" Width="64" Height="64">
                 <Image.Effect>
                     <DropShadowEffect/>
