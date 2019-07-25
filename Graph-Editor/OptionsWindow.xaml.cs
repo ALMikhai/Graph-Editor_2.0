@@ -288,7 +288,7 @@ namespace Graph_Editor
 
         private void animationOK_Click(object sender, RoutedEventArgs e)
         {
-            Globals.AnimationEllipse.Fill = animateColor;
+            Globals.gAnim.AnimationEllipse.Fill = animateColor;
             settings.BaseAnimationColor = setNowAnimationColor;
 
             settings.AnimationTime = setNowAnimationTime;
