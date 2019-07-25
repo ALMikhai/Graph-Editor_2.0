@@ -87,6 +87,9 @@ namespace Graph_Editor
         public static Brush EPColorBar;
         public static Brush EPCloseButton;
 
+        public static Brush FloydMainWindow;
+        public static Brush FloydTextBlocks;
+
         // Ice Theme
         public static void IceTheme()
         {
@@ -164,6 +167,10 @@ namespace Graph_Editor
             ConnectUnactiveOrientation = Brushes.Transparent;
             ConnectActiveOrientation = (Brush)new BrushConverter().ConvertFrom("#789778");
             ConnectUnactiveOrientationHover = (Brush)new BrushConverter().ConvertFrom("#BCCBBC");
+
+            // Floyd Window
+            FloydMainWindow = (Brush)new BrushConverter().ConvertFrom("#98B0B0");
+            FloydTextBlocks = Brushes.Azure;
         }
 
         // Vulcan Theme
@@ -243,6 +250,10 @@ namespace Graph_Editor
             EPVertexName = (Brush)new BrushConverter().ConvertFrom("#F8A376");
             EPColorBar = (Brush)new BrushConverter().ConvertFrom("#FD926A");
             EPCloseButton = (Brush)new BrushConverter().ConvertFrom("#F8A376");
+
+            // Floyd Window
+            FloydMainWindow = (Brush)new BrushConverter().ConvertFrom("#834F5D");
+            FloydTextBlocks = (Brush)new BrushConverter().ConvertFrom("#F8A376");
         }
     }
 }

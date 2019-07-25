@@ -20,9 +20,30 @@ namespace Graph_Editor.ShowData
 {
     public partial class CurrentMatrix : Window
     {
+        private void ThemeSetting()
+        {
+            myWindow.Icon = new BitmapImage(new Uri(Themes.logoPath, UriKind.Relative));
+
+            BitmapImage bitmap = new BitmapImage();
+
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(Themes.logoPath, UriKind.Relative);
+            bitmap.EndInit();
+
+            logo.Source = bitmap;
+
+            fullWindow.Background = Themes.FloydMainWindow;
+            mainBlock.Background = Themes.FloydTextBlocks;
+            topBlock.Background = Themes.FloydTextBlocks;
+            sideBlock.Background = Themes.FloydTextBlocks;
+
+        }
+
         public CurrentMatrix()
         {
             InitializeComponent();
+
+            ThemeSetting();
 
             for (int i = 0; i < Globals.GlobalIndex; i++)
             {
@@ -38,8 +59,24 @@ namespace Graph_Editor.ShowData
             {
                 for (int j = 0; j < Globals.GlobalIndex; j++)
                 {
-                    mainBlock.Text += Globals.Matrix[i, j].ToString();
-                    mainBlock.Text += " ";
+                    int k = j.ToString().Length;
+                    if (k > 1)
+                    {
+                        mainBlock.Text += Globals.Matrix[i, j].ToString();
+                        while (k > 0)
+                        {
+                            mainBlock.Text += " ";
+                            k--;
+                        }
+                        mainBlock.Text += " ";
+                    }
+                    else
+                    {
+                        mainBlock.Text += Globals.Matrix[i, j].ToString();
+                        mainBlock.Text += " ";
+                    }
+                    
+                    
                 }
                 mainBlock.Text += "\n";
             }
