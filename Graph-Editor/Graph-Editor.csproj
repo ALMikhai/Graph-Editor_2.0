@@ -71,12 +71,16 @@
     </Compile>
     <Compile Include="Animation\AnimationEdge.cs" />
     <Compile Include="ButtonGeneration.cs" />
+    <Compile Include="FloydWindow.xaml.cs">
+      <DependentUpon>FloydWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Globals.cs" />
     <Compile Include="PropertiesWindow\EdgeProperty.xaml.cs">
       <DependentUpon>EdgeProperty.xaml</DependentUpon>
     </Compile>
     <Compile Include="SaveLoad\Export.cs" />
     <Compile Include="SaveLoad\LoadOptions.cs" />
+    <Compile Include="SaveLoad\SaveGraphTextFormat.cs" />
     <Compile Include="SaveLoad\SaveOptions.cs" />
     <Compile Include="SetGraph.xaml.cs">
       <DependentUpon>SetGraph.xaml</DependentUpon>
@@ -120,6 +124,10 @@
       <DependentUpon>Documentation.xaml</DependentUpon>
     </Compile>
     <Page Include="AlgoritmsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FloydWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

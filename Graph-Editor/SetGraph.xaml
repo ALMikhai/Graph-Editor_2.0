@@ -12,7 +12,7 @@
         <Label Content="Instruction: " FontSize="18" FontFamily="Agency FB" Margin="10,10,393,287"/>
         <TextBox x:Name="Instructions" FontSize="14" FontFamily="Agency FB" BorderThickness="0" IsReadOnly="True" Text="" Margin="89,10,0,236"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="1" VerticalAlignment="Top" Width="490" Margin="0,108,-8,0"/>
-        <TextBox x:Name="Parametrs" KeyDown="Parametrs_KeyDown" FontSize="18" FontFamily="Agency FB" HorizontalAlignment="Left" Height="208" Margin="10,114,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" TextChanged="Parametrs_TextChanged"/>
+        <TextBox x:Name="Parametrs" KeyDown="Parametrs_KeyDown" FontSize="18" FontFamily="Agency FB" HorizontalAlignment="Left" Height="208" Margin="10,114,0,0" VerticalAlignment="Top" Width="187" Text="" AcceptsReturn="True"/>
 
         <Button Content="Clear" FontSize="25" FontFamily="Agency FB" HorizontalAlignment="Left" Margin="216,134,0,0" VerticalAlignment="Top" Width="90" Height="37" Click="Button_Click"/>
 
