@@ -18,9 +18,27 @@ namespace Graph_Editor.PropertiesWindow
 {
     public partial class VertexProperty : Window
     {
+        private void ThemeSetting()
+        {
+            myWindow.Icon = new BitmapImage(new Uri(Themes.logoPath, UriKind.Relative));
+
+            BitmapImage bitmap = new BitmapImage();
+
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(Themes.logoPath, UriKind.Relative);
+            bitmap.EndInit();
+
+            logo.Source = bitmap;
+
+            FullWindow.Background = Themes.VPMainWindow;
+            colorBar.Background = Themes.VPColorBar;
+            nameVertex.Background = Themes.VPVertexName;
+            buttonClose.Background = Themes.VPCloseButton;
+        }
         public VertexProperty()
         {
             InitializeComponent();
+            ThemeSetting();
         }
 
         public static void PropertiesVertexWindow(Vertex vertex)

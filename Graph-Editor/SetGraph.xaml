@@ -1,0 +1,22 @@
+﻿<Window x:Class="Graph_Editor.SetGraph"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Graph_Editor"
+        mc:Ignorable="d" x:Name="myWindow" ResizeMode="NoResize"
+        Title="Set Graph" Height="370" Width="490">
+    <Grid>
+        <Image x:Name="logo" HorizontalAlignment="Left" Height="46" Margin="10,57,0,0" VerticalAlignment="Top" Width="46"/>
+
+        <Label Content="Instruction: " FontSize="18" FontFamily="Agency FB" Margin="10,10,393,287"/>
+        <TextBox x:Name="Instructions" FontSize="14" FontFamily="Agency FB" BorderThickness="0" IsReadOnly="True" Text="" Margin="89,10,0,236"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="1" VerticalAlignment="Top" Width="490" Margin="0,108,-8,0"/>
+        <TextBox x:Name="Parametrs" KeyDown="Parametrs_KeyDown" FontSize="18" FontFamily="Agency FB" HorizontalAlignment="Left" Height="208" Margin="10,114,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="187" TextChanged="Parametrs_TextChanged"/>
+
+        <Button Content="Clear" FontSize="25" FontFamily="Agency FB" HorizontalAlignment="Left" Margin="216,134,0,0" VerticalAlignment="Top" Width="90" Height="37" Click="Button_Click"/>
+
+        <Button x:Name="Cancel" Content="Cancel" FontSize="20" FontFamily="Agency FB" HorizontalAlignment="Left" Margin="399,292,0,0" VerticalAlignment="Top" Width="70" Height="30" Click="Cancel_Click"/>
+        <Button x:Name="Save" Content="Save" FontSize="20" FontFamily="Agency FB" HorizontalAlignment="Left" Margin="329,292,0,0" VerticalAlignment="Top" Width="70" Height="30" Click="Save_Click"/>
+    </Grid>
+</Window>

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using static Graph_Editor.Globals;
 using System.Threading.Tasks;
 
 namespace Graph_Editor.Algoritms
@@ -39,7 +40,7 @@ namespace Graph_Editor.Algoritms
             if (!Globals.CheckIn(v) || Globals.CheckDirected())
                 return;
             kru();
-            AnimationEdge.NextAnimation(edgesUsed[0], edgesUsed);
+            gAnim.NextAnimation(edgesUsed[0], edgesUsed);
         }
 
         static void kru()

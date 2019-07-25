@@ -23,7 +23,7 @@ namespace Graph_Editor.Algoritms
             if (!CheckIn(v))
                 return;
             bfs(v);
-            AnimationEdge.NextAnimation(edgesUsed[0], edgesUsed);
+            gAnim.NextAnimation(edgesUsed[0], edgesUsed);
             visited = new bool[Size];
         }
 

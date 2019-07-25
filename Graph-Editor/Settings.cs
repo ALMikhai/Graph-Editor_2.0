@@ -19,18 +19,59 @@ using System.Windows.Media.Animation;
 using System.Threading;
 using System.Diagnostics;
 using Graph_Editor.Algoritms;
+using System.Runtime.Serialization;
+
 
 namespace Graph_Editor
 {
-    public static class Settings
+
+    [Serializable]
+    public class Settings : ISerializable
     {
-        public static string baseVertex = "vBlack";
-        public static string baseEdge = "eLightBlue";
-        public static string baseAnimationColor = "orbBlue";
-        public static string baseAnimationSpeed = "Medium";
+        public string BaseVertex = "vBlack";
+        public string BaseEdge = "eLightBlue";
+        public string BaseAnimationColor = "orbBlue";
+        public string BaseAnimationSpeed = "Medium";
 
-        public static double animationTime = 1.5;
-        public static Brush AnimationEllipseColor = Brushes.Blue;
+        public int ChooseTheme = 2;
+        public double AnimationTime = 1.5;
+        public Brush AnimationEllipseColor = Brushes.Blue;
+        public Brush ColorEdge = Brushes.Black;
+        public Brush ColorInsideVertex;
 
+        public string currentTheme = "VulcanTheme";
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("BaseVertex", BaseVertex);
+            info.AddValue("BaseEdge", BaseEdge);
+            info.AddValue("BaseAnimationColor", BaseAnimationColor);
+            info.AddValue("BaseAnimationSpeed", BaseAnimationSpeed);
+            info.AddValue("ChooseTheme", ChooseTheme);
+            info.AddValue("AnimationTime", AnimationTime);
+            info.AddValue("AnimationEllipseColor", AnimationEllipseColor.ToString());
+            info.AddValue("currentTheme", currentTheme);
+            info.AddValue("ColorEdge", ColorEdge.ToString());
+            info.AddValue("ColorInsideVertex", ColorInsideVertex.ToString());
+        }
+
+        public Settings(SerializationInfo info, StreamingContext context)
+        {
+            BaseVertex              = (string)info.GetValue("BaseVertex", typeof(string));
+            BaseEdge                = (string)info.GetValue("BaseEdge", typeof(string));
+            BaseAnimationColor      = (string)info.GetValue("BaseAnimationColor", typeof(string));
+            BaseAnimationSpeed      = (string)info.GetValue("BaseAnimationSpeed", typeof(string));
+            ChooseTheme             = (int)info.GetValue("ChooseTheme", typeof(int));
+            AnimationTime           = (double)info.GetValue("AnimationTime", typeof(double));
+            AnimationEllipseColor   = (Brush)new BrushConverter().ConvertFromString((string)info.GetValue("AnimationEllipseColor", typeof(string)));
+            currentTheme            = (string)info.GetValue("currentTheme", typeof(string));
+            ColorEdge               = (Brush)new BrushConverter().ConvertFromString((string)info.GetValue("ColorEdge", typeof(string)));
+            ColorInsideVertex       = (Brush)new BrushConverter().ConvertFromString((string)info.GetValue("ColorInsideVertex", typeof(string)));
+        }
+
+        public Settings()
+        {
+
+        }
     }
 }

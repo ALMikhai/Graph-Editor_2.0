@@ -16,15 +16,16 @@ namespace Graph_Editor
 {
     public partial class OptionsWindow : Window
     {
-        private double setNowSpeed;
-        private int MaxSpeed = 200;
+        private static FigureHost graphHost = new FigureHost();
+
+        private double setNowAnimationTime;
+        private readonly int MaxSpeed = 50;
+
+        private int Theme = settings.ChooseTheme;
 
         private Brush vertexColor = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
         private Brush edgeColor = Brushes.Black;
         private Brush animateColor;
-
-        private string setNowVertex;
-        private string setNowEdge;
         
         private string currentWindow;
         private string currentButtonWindow;
@@ -32,8 +33,20 @@ namespace Graph_Editor
         private string setNowAnimationColor;
         private string setNowAnimationSpeed;
 
+        public static Settings settings = new Settings();
+
         private void ThemeSettings()
         {
+            myWindow.Icon = new BitmapImage(new Uri(Themes.logoPath, UriKind.Relative));
+
+            BitmapImage bitmap = new BitmapImage();
+
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(Themes.logoPath, UriKind.Relative);
+            bitmap.EndInit();
+
+            logo.Source = bitmap;
+
             MainWindow.Background        = Themes.OptionsMainWindowOptionsColor;
             ThemeButton.Background       = Themes.OptionsActiveToolBarButton;
             VertexEdgeButton.Background  = Themes.OptionsPassiveToolBarButton;
@@ -54,38 +67,74 @@ namespace Graph_Editor
 
             VEReset.Background           = Themes.OptionsVEResetButton;
             VECheck.Background           = Themes.OptionsVECheckButton;
+
+            exampleCanvas.Background     = Themes.OprionsVEDemonstrationHolst;
         }
 
         public OptionsWindow()
         {
             InitializeComponent();
             RestartWindow();
+
+            DrawExample();
         }
+
         private void RestartWindow()
         {
             ThemeSettings();
 
-            setNowEdge = Settings.baseEdge;
-            setNowVertex = Settings.baseVertex;
+            setNowEdge = settings.BaseEdge;
+            setNowVertex = settings.BaseVertex;
             animateColor = Globals.AnimationEllipse.Fill;
 
-            setNowAnimationColor = Settings.baseAnimationColor;
-            setNowAnimationSpeed = Settings.baseAnimationSpeed;
-            setNowSpeed = Settings.animationTime;
+            edgeColor = OptionsWindow.settings.ColorEdge;
+            vertexColor = OptionsWindow.settings.ColorInsideVertex;
 
-            ((Button)this.FindName(Settings.baseEdge)).Height = 30;
-            ((Button)this.FindName(Settings.baseVertex)).Height = 30;
-            ((Button)this.FindName(Settings.baseAnimationColor)).Height = 30;
-            ((Button)this.FindName(Settings.baseAnimationSpeed)).Background = Themes.OptionsActiveAnimationSpeedButtons;
+            setNowAnimationColor = settings.BaseAnimationColor;
+            setNowAnimationSpeed = settings.BaseAnimationSpeed;
+            setNowAnimationTime = settings.AnimationTime;
+
+            ((Button)this.FindName(settings.BaseEdge)).Height = 30;
+            ((Button)this.FindName(settings.BaseVertex)).Height = 30;
+            ((Button)this.FindName(settings.BaseAnimationColor)).Height = 30;
+            ((Button)this.FindName(settings.BaseAnimationSpeed)).Background = Themes.OptionsActiveAnimationSpeedButtons;
+
+            ((Button)this.FindName(settings.currentTheme)).Background = Themes.OptionsVECheckButton;
+            ((Image)this.FindName(Themes.ChooseImageTheme)).Width = 310;
+            ((Image)this.FindName(Themes.ChooseImageTheme)).Height = 315;
+
 
             currentWindow = "ThemeGrid";
             currentButtonWindow = "ThemeButton";
 
-            TextBox_Speed.Text = (-1 * (MaxSpeed + 175 * MaxSpeed)).ToString();
-
-            TextBox_Speed.Text = (Settings.animationTime).ToString();
-
+            TextBox_Speed.Text = (MaxSpeed / settings.AnimationTime).ToString();
         }
+
+        private void DrawExample()
+        {
+            exampleCanvas.Children.Clear();
+            exampleCanvas.Children.Add(graphHost);
+
+            graphHost.Children.Clear();
+            var drawingVisual = new DrawingVisual();
+            var drawingContext = drawingVisual.RenderOpen();
+
+            Point firstVertex = new Point(100, 100);
+            Point secondVertex = new Point(200, 300);
+
+            Pen pen = new Pen(edgeColor, Globals.ThicknessEdge);
+
+            drawingContext.DrawLine(pen, firstVertex, secondVertex);
+
+            drawingContext.DrawEllipse(vertexColor, Globals.BasePen, firstVertex, Globals.VertRadius, Globals.VertRadius);
+            drawingContext.DrawEllipse(vertexColor, Globals.BasePen, secondVertex, Globals.VertRadius, Globals.VertRadius);
+
+            drawingContext.Close();
+            graphHost.Children.Add(drawingVisual);
+        }
+
+        private string setNowVertex;
+        private string setNowEdge;
 
         private void ChangeVertexColorButton_Click(object sender, RoutedEventArgs e)
         {
@@ -95,9 +144,8 @@ namespace Graph_Editor
 
             setNowVertex = (sender as Button).Name;
             (sender as Button).Height = 30;
-
-            /*Globals.ColorInsideVertex = (sender as Button).Background;*/
         }
+
         private void ChangeEdgeColorButton_Click(object sender, RoutedEventArgs e)
         {
             ((Button)this.FindName(setNowEdge)).Height = 25;
@@ -106,8 +154,6 @@ namespace Graph_Editor
 
             setNowEdge = (sender as Button).Name;
             (sender as Button).Height = 30;
-
-            /*Globals.ColorEdge = (sender as Button).Background;*/
         }
 
         private void Reset_Click(object sender, RoutedEventArgs e)
@@ -115,30 +161,55 @@ namespace Graph_Editor
             ((Button)this.FindName(setNowVertex)).Height = 25;
             ((Button)this.FindName(setNowEdge)).Height = 25;
 
-            ((Button)this.FindName(Settings.baseVertex)).Height = 30;
-            ((Button)this.FindName(Settings.baseEdge)).Height = 30;
+            ((Button)this.FindName(settings.BaseVertex)).Height = 30;
+            ((Button)this.FindName(settings.BaseEdge)).Height = 30;
 
-            setNowVertex = Settings.baseVertex;
-            setNowEdge = Settings.baseEdge;
+            setNowVertex = OptionsWindow.settings.BaseVertex;
+            setNowEdge = OptionsWindow.settings.BaseEdge;
 
+            vertexColor = ((Button)this.FindName(setNowVertex)).Background;
+            edgeColor = ((Button)this.FindName(setNowEdge)).Background;
+
+            DrawExample();
         }
 
         private void Check_Click(object sender, RoutedEventArgs e)
         {
-            // Меняем на картинку: "Images/Themes/{setNowVertex} + {setNowEdge}"
+            DrawExample();
         }
 
         private void Exit(object sender, RoutedEventArgs e)
         {
+            graphHost = new FigureHost();
+            exampleCanvas.Children.Clear();
             this.Close();
         }
 
         private void OK_Click(object sender, RoutedEventArgs e)
         {
-            Settings.baseVertex = setNowVertex;
-            Settings.baseEdge = setNowEdge;
+            graphHost = new FigureHost();
+            exampleCanvas.Children.Clear();
+
+            OptionsWindow.settings.BaseVertex = setNowVertex;
+            OptionsWindow.settings.BaseEdge = setNowEdge;
+
+            OptionsWindow.settings.ColorEdge = edgeColor;
+            OptionsWindow.settings.ColorInsideVertex = vertexColor;
+
+            foreach(var vertex in Globals.VertexData)
+            {
+                vertex.Color = OptionsWindow.settings.ColorInsideVertex;
+            }
+
+            foreach(var edge in Globals.EdgesData)
+            {
+                edge.Color = OptionsWindow.settings.ColorEdge;
+            }
+
+            Graph_Editor.MainWindow.Instance.Invalidate();
             this.Close();
         }
+
         private void Rechoose(string name, object sender)
         {
             ((Grid)FindName(currentWindow)).Visibility = Visibility.Hidden;
@@ -166,12 +237,14 @@ namespace Graph_Editor
             Rechoose("AnimationGrid", sender);
         }
 
-        private void ChooseAnimationSpeed(object sender, double speed)
+        private void ChooseAnimationSpeed(object sender, double time)
         {
-            setNowSpeed = speed;
+            setNowAnimationTime = time;
             ((Button)this.FindName(setNowAnimationSpeed)).Background = Themes.OptionsPassiveAnimationSpeedButtons;
             setNowAnimationSpeed = (sender as Button).Name;
             (sender as Button).Background = Themes.OptionsActiveAnimationSpeedButtons;
+
+            TextBox_Speed.Text = (MaxSpeed / setNowAnimationTime).ToString();
         }
 
         private void ChooseSlowAnimation(object sender, RoutedEventArgs e)
@@ -209,19 +282,19 @@ namespace Graph_Editor
                 double point = Convert.ToDouble(TextBox_Speed.Text);
                 SpeedSlider.SelectionEnd = point;
                 SpeedSlider.Value = point;
-                setNowSpeed = (MaxSpeed - Convert.ToDouble(TextBox_Speed.Text)) / 175;
+                setNowAnimationTime = MaxSpeed / point;
             }
         }
 
         private void animationOK_Click(object sender, RoutedEventArgs e)
         {
             Globals.AnimationEllipse.Fill = animateColor;
-            Settings.baseAnimationColor = setNowAnimationColor;
+            settings.BaseAnimationColor = setNowAnimationColor;
 
-            Settings.animationTime = setNowSpeed;
-            Settings.baseAnimationSpeed = setNowAnimationSpeed;
+            settings.AnimationTime = setNowAnimationTime;
+            settings.BaseAnimationSpeed = setNowAnimationSpeed;
 
-            Settings.AnimationEllipseColor = animateColor;
+            settings.AnimationEllipseColor = animateColor;
             this.Close();
         }
 
@@ -239,31 +312,88 @@ namespace Graph_Editor
         {
             ((Button)this.FindName(setNowAnimationColor)).Height = 25;
 
-            ((Button)this.FindName(Settings.baseAnimationColor)).Height = 30;
+            ((Button)this.FindName(settings.BaseAnimationColor)).Height = 30;
 
-            setNowAnimationColor = Settings.baseAnimationColor;
+            setNowAnimationColor = settings.BaseAnimationColor;
             animateColor = Globals.AnimationEllipse.Fill;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            graphHost = new FigureHost();
+            exampleCanvas.Children.Clear();
             MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
             mainWindow.Settings.IsEnabled = true;
         }
 
         private void ThemeOK_Click(object sender, RoutedEventArgs e)
         {
+            if (OptionsWindow.settings.ChooseTheme != Theme)
+            {
+                switch (Theme)
+                {
+                    case 1:
+                        Themes.IceTheme();
+                        OptionsWindow.settings.currentTheme = "IceTheme";
+                        OptionsWindow.settings.ColorInsideVertex = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
+                        OptionsWindow.settings.ColorEdge = Brushes.Black;
+                        break;
+                    case 2:
+                        Themes.VolcanoTheme();
+                        settings.currentTheme = "VulcanTheme";
+                        OptionsWindow.settings.ColorInsideVertex = (Brush)new BrushConverter().ConvertFrom("#F0854D");
+                        OptionsWindow.settings.ColorEdge = Brushes.Black;
+                        break;
+                }
+            }
 
+            foreach (var vertex in Globals.VertexData)
+            {
+                vertex.Color = OptionsWindow.settings.ColorInsideVertex;
+            }
+
+            foreach (var edge in Globals.EdgesData)
+            {
+                edge.Color = OptionsWindow.settings.ColorEdge;
+            }
+
+            Graph_Editor.MainWindow.Instance.ThemeSettings();
+            this.ThemeSettings();
+
+            MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
+
+            ((Button)mainWindow.FindName(Globals.ChosenTool)).Background = Themes.MainChooseToolButton;
+
+            Graph_Editor.MainWindow.Instance.Invalidate();
+            this.Close();
         }
 
         private void LightTheme_Click(object sender, RoutedEventArgs e)
         {
-
+            if (Theme != 1)
+            {
+                VolcanoImage.Width = 200;
+                VolcanoImage.Height = 240;
+                IceImage.Height = 315;
+                IceImage.Width = 310;
+                VulcanTheme.Background = Brushes.Transparent;
+                IceTheme.Background = Themes.OptionsVECheckButton;
+                Theme = 1;
+            }
         }
 
         private void DarkTheme_Click(object sender, RoutedEventArgs e)
         {
-
+            if (Theme != 2)
+            {
+                IceImage.Width = 200;
+                IceImage.Height = 240;
+                VolcanoImage.Height = 315;
+                VolcanoImage.Width = 310;
+                IceTheme.Background = Brushes.Transparent;
+                VulcanTheme.Background = Themes.OptionsVECheckButton;
+                Theme = 2;
+            }
         }
     }
 }

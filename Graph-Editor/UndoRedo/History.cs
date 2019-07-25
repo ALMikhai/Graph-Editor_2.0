@@ -12,7 +12,7 @@ namespace Graph_Editor.UndoRedo
     {
         public static List<Record> records = new List<Record>();
 
-        private static int numberRecords = 0;
+        public static int numberRecords = 0;
 
         private static bool canUndo
         {
@@ -39,6 +39,18 @@ namespace Graph_Editor.UndoRedo
             }
 
             Record newRecord = new Record(befor, after);
+            records.Add(newRecord);
+            numberRecords++;
+        }
+
+        public static void Add(object befor, object after, int checker)
+        {
+            if (numberRecords != records.Count)
+            {
+                records.RemoveRange(numberRecords, records.Count - numberRecords);
+            }
+
+            Record newRecord = new Record(befor, after, checker);
             records.Add(newRecord);
             numberRecords++;
         }
@@ -123,6 +135,11 @@ namespace Graph_Editor.UndoRedo
             if ((record.Befor is List<Point>) && (record.After is List<Point>))
             {
                 UndoMoveAllVertex(record, n);
+            }
+
+            if((record.Checker == 1))
+            {
+                UndoResize(record, n);
             }
         }
 
@@ -386,6 +403,24 @@ namespace Graph_Editor.UndoRedo
 
                 Globals.RestoreMatrix();
             }
+        }
+
+        private static void UndoResize(Record record, int n)
+        {
+            Globals.VertexData.Clear();
+            Globals.EdgesData.Clear();
+
+            foreach (var vertex in (record.Befor as List<Vertex>))
+            {
+                Globals.VertexData.Add(vertex);
+            }
+
+            foreach(var edge in (record.After as List<Edge>))
+            {
+                Globals.EdgesData.Add(new Edge(Globals.FindVertex(edge.From), Globals.FindVertex(edge.To), edge.Weight, edge.Directed, edge.Color, edge.Thickness));
+            }
+
+            records.Remove(record);
         }
     }
 }
