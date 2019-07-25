@@ -39,9 +39,7 @@ namespace Graph_Editor
         public static Pen BasePen = new Pen(Brushes.Black, 1);
         public static Pen AlgoPen = new Pen(Brushes.Red, 2);
         public static int VertRadius = 20;
-
-        //public static Brush ColorInsideVertex = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
-        //public static Brush ColorEdge = Brushes.Black;
+        
         public static double ThicknessEdge = 1;
 
         public static AnimationEdge gAnim = new AnimationEdge();
@@ -71,7 +69,8 @@ namespace Graph_Editor
             {2, new Dijkstra()},
             {5, new Euler()},
             {6, new Floyd()},
-            {7, new Kruskal()}
+            {7, new Kruskal()},
+            {8, new CheckAndColor()}
         };
 
         public static List<Brush> Colors = new List<Brush>
@@ -80,7 +79,17 @@ namespace Graph_Editor
             {(Brush)new BrushConverter().ConvertFrom("#A0ECFF")},
             {(Brush)new BrushConverter().ConvertFrom("#FBCD6B")},
             {(Brush)new BrushConverter().ConvertFrom("#BE88DC")},
-            {(Brush)new BrushConverter().ConvertFrom("#EA6461")}
+            {(Brush)new BrushConverter().ConvertFrom("#EA6461")},
+            {(Brush)new BrushConverter().ConvertFrom("#80AF3F")},
+            {(Brush)new BrushConverter().ConvertFrom("#C0E63F")},
+            {(Brush)new BrushConverter().ConvertFrom("#F5C26F")},
+            {(Brush)new BrushConverter().ConvertFrom("#CC821C")},
+            {(Brush)new BrushConverter().ConvertFrom("#EA4561")},
+            {(Brush)new BrushConverter().ConvertFrom("#80DA1F")},
+            {(Brush)new BrushConverter().ConvertFrom("#75E4CF")},
+            {(Brush)new BrushConverter().ConvertFrom("#FBC10B")},
+            {(Brush)new BrushConverter().ConvertFrom("#BEDA2C")},
+            {(Brush)new BrushConverter().ConvertFrom("#ECAD21")}
         };
 
         public static Tool ToolNow = ToolList[0];

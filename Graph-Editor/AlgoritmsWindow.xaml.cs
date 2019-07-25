@@ -120,6 +120,11 @@ namespace Graph_Editor
                 AlgoList[chooseAlg].Start();
                 LockPanel.Visibility = Visibility.Hidden;
                 this.Close();
+                if (chooseAlg == 6)
+                {
+                    Graph_Editor.FloydWindow floydWindow = new FloydWindow();
+                    floydWindow.ShowDialog();
+                }
             }
         }
 
