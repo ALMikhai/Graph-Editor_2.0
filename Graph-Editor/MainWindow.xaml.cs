@@ -34,6 +34,16 @@ namespace Graph_Editor
 
         public void ThemeSettings()
         {
+
+            if(OptionsWindow.settings.ChooseTheme == 1)
+            {
+                Themes.IceTheme();
+            }
+            else
+            {
+                Themes.VolcanoTheme();
+            }
+
             baseButtonColor = Themes.MainToolsButtons;
 
             myWindow.Icon = new BitmapImage(new Uri(Themes.logoPath, UriKind.Relative));
@@ -46,43 +56,45 @@ namespace Graph_Editor
 
             logo.Source = bitmap;
 
-            FullWindow.Background = Themes.MainMainWindow;
+            FullWindow.Background       = Themes.MainMainWindow;
 
-            TeamName.Background = Themes.MainTeamName;
+            TeamName.Background         = Themes.MainTeamName;
 
             Algorimts_Window.Background = Themes.MainToolsButtons;
-            AddVertex.Background = Themes.MainToolsButtons;
-            MoveVertex.Background = Themes.MainToolsButtons;
-            DelVertex.Background = Themes.MainToolsButtons;
-            DelEdge.Background = Themes.MainToolsButtons;
-            Connect.Background = Themes.MainToolsButtons;
-            MoveAllVertex.Background = Themes.MainToolsButtons;
-            PropertyVertex.Background = Themes.MainToolsButtons;
-            PropertyEdge.Background = Themes.MainToolsButtons;
-            CenterTheGraph.Background = Themes.MainToolsButtons;
+            AddVertex.Background        = Themes.MainToolsButtons;
+            MoveVertex.Background       = Themes.MainToolsButtons;
+            DelVertex.Background        = Themes.MainToolsButtons;
+            DelEdge.Background          = Themes.MainToolsButtons;
+            Connect.Background          = Themes.MainToolsButtons;
+            MoveAllVertex.Background    = Themes.MainToolsButtons;
+            PropertyVertex.Background   = Themes.MainToolsButtons;
+            PropertyEdge.Background     = Themes.MainToolsButtons;
+            CenterTheGraph.Background   = Themes.MainToolsButtons;
 
-            GraphCanvas.Background = Themes.MainCanvas;
+            GraphCanvas.Background      = Themes.MainCanvas;
 
-            MainMenu.Background = Themes.MainMenu;
-            save.Background = Themes.MainMenuItems;
-            open.Background = Themes.MainMenuItems;
-            exit.Background = Themes.MainMenuItems;
-            matrix.Background = Themes.MainMenuItems;
-            list.Background = Themes.MainMenuItems;
+            MainMenu.Background         = Themes.MainMenu;
+            save.Background             = Themes.MainMenuItems;
+            open.Background             = Themes.MainMenuItems;
+            export.Background           = Themes.MainMenuItems;
+            exit.Background             = Themes.MainMenuItems;
+            matrix.Background           = Themes.MainMenuItems;
+            list.Background             = Themes.MainMenuItems;
 
-            save.BorderBrush = Themes.MainMenuItemsBorder;
-            open.BorderBrush = Themes.MainMenuItemsBorder;
-            exit.BorderBrush = Themes.MainMenuItemsBorder;
-            matrix.BorderBrush = Themes.MainMenuItemsBorder;
-            list.BorderBrush = Themes.MainMenuItemsBorder;
+            save.BorderBrush            = Themes.MainMenuItemsBorder;
+            open.BorderBrush            = Themes.MainMenuItemsBorder;
+            export.BorderBrush          = Themes.MainMenuItemsBorder;
+            exit.BorderBrush            = Themes.MainMenuItemsBorder;
+            matrix.BorderBrush          = Themes.MainMenuItemsBorder;
+            list.BorderBrush            = Themes.MainMenuItemsBorder;
 
-            Exit_Dialog.Background = Themes.MainExitDialog;
+            Exit_Dialog.Background      = Themes.MainExitDialog;
         }
 
         public MainWindow()
         {
+            SaveLoad.LoadOptions.Load();
             InitializeComponent();
-            Themes.VolcanoTheme();
 
             ThemeSettings();
 
@@ -247,6 +259,8 @@ namespace Graph_Editor
         {
             Globals.ToolNow.Change_Tool();
 
+            Globals.ChosenTool = (sender as Button).Name;
+
             Invalidate();
 
             Globals.ToolNow = Globals.ToolList[Convert.ToInt32((sender as Button).Tag)];
@@ -381,6 +395,7 @@ namespace Graph_Editor
 
         private void DataWindow_Closing(object sender, CancelEventArgs e)
         {
+            SaveLoad.SaveOptions.Save();
             Exit_Dialog.Visibility = Visibility.Visible;
         }
 
@@ -431,7 +446,7 @@ namespace Graph_Editor
         {
             if((sender as Button).Tag.ToString() == "0")
             {
-                Themes.ColorInsideVertex = (sender as Button).Background;
+                OptionsWindow.settings.ColorInsideVertex = (sender as Button).Background;
             }
         }
 
@@ -447,6 +462,16 @@ namespace Graph_Editor
                 ResizeGraph.DecreaseCanvas(GraphCanvas.ActualHeight, GraphCanvas.ActualWidth);
                 Invalidate();
             }
+        }
+
+        private void Export_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

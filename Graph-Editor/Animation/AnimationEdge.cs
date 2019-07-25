@@ -31,7 +31,7 @@ namespace Graph_Editor
         {
             Width = Globals.VertRadius,
             Height = Globals.VertRadius,
-            Fill = Settings.AnimationEllipseColor
+            Fill = OptionsWindow.settings.AnimationEllipseColor
         };
 
         private Storyboard storyboard = new Storyboard
@@ -60,7 +60,7 @@ namespace Graph_Editor
             {
                 PathGeometry = pathGeom,
                 Source = PathAnimationSource.X,
-                Duration = TimeSpan.FromSeconds(Settings.AnimationTime)
+                Duration = TimeSpan.FromSeconds(OptionsWindow.settings.AnimationTime)
             };
 
             Storyboard.SetTarget(moveCircleAnimation, AnimationEllipse);
@@ -70,7 +70,7 @@ namespace Graph_Editor
             {
                 PathGeometry = pathGeom,
                 Source = PathAnimationSource.Y,
-                Duration = TimeSpan.FromSeconds(Settings.AnimationTime)
+                Duration = TimeSpan.FromSeconds(OptionsWindow.settings.AnimationTime)
             };
 
             Storyboard.SetTarget(moveCircleAnimation2, AnimationEllipse);

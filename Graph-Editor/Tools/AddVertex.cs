@@ -2,7 +2,6 @@
 using Graph_Editor.UndoRedo;
 using System.Windows;
 
-
 namespace Graph_Editor
 {
     class AddVertex : Tool
