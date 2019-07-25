@@ -23,7 +23,7 @@ namespace Graph_Editor.Algoritms
         {
             MainWindow.Instance.Invalidate();
             if(euler())
-                AnimationEdge.NextAnimation(edgesUsed[0], edgesUsed);
+                gAnim.NextAnimation(edgesUsed[0], edgesUsed);
 
             st = new Stack<int>();
             res = new List<int>();

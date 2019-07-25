@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using static Graph_Editor.Globals;
 using Graph_Editor.Objects;
 
 namespace Graph_Editor.Algoritms
@@ -15,7 +16,7 @@ namespace Graph_Editor.Algoritms
             if (!Globals.CheckIn(v))
                 return;
             dfs(v);
-            AnimationEdge.NextAnimation(edgesUsed[0],edgesUsed);
+            gAnim.NextAnimation(edgesUsed[0], edgesUsed);
             visited = new bool[Globals.Size];
         }
 
