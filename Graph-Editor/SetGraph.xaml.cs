@@ -35,6 +35,14 @@ namespace Graph_Editor
 
             logo.Source = bitmap;
 
+            fullWindow.Background = Themes.SetGraphMainWindow;
+
+            Clear.Background = Themes.SetGraphButtons;
+            Cancel.Background = Themes.SetGraphButtons;
+            Save.Background = Themes.SetGraphButtons;
+
+            Parametrs.Background = Themes.SetGraphTextBox;
+
         }
 
         public SetGraph()
