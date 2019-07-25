@@ -20,12 +20,16 @@ using System.Threading;
 using System.Diagnostics;
 using Graph_Editor.Algoritms;
 
-
 namespace Graph_Editor
 {
     [Serializable]
     public static class Globals
     {
+        public static int[] DegforDij = new int[Size];
+
+
+        public static string ChosenTool = "AddVertex";
+
         public static int GlobalIndex = 0;
         public static int Size = 100;
         public static int[,] Matrix = new int[Size, Size];
@@ -35,18 +39,18 @@ namespace Graph_Editor
         public static Pen BasePen = new Pen(Brushes.Black, 1);
         public static Pen AlgoPen = new Pen(Brushes.Red, 2);
         public static int VertRadius = 20;
-
-        //public static Brush ColorInsideVertex = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
-        //public static Brush ColorEdge = Brushes.Black;
+        
         public static double ThicknessEdge = 1;
 
+        public static AnimationEdge gAnim = new AnimationEdge();
+        
         public static Ellipse AnimationEllipse = new Ellipse
         {
             Width = VertRadius,
             Height = VertRadius,
-            Fill = Settings.AnimationEllipseColor
+            Fill = OptionsWindow.settings.AnimationEllipseColor
         };
-
+        
         public static Dictionary<int, Tool> ToolList = new Dictionary<int, Tool>
         {
             {0, new  AddVertex()},
@@ -65,7 +69,8 @@ namespace Graph_Editor
             {2, new Dijkstra()},
             {5, new Euler()},
             {6, new Floyd()},
-            {7, new Kruskal()}
+            {7, new Kruskal()},
+            {8, new CheckAndColor()}
         };
 
         public static List<Brush> Colors = new List<Brush>
@@ -74,7 +79,17 @@ namespace Graph_Editor
             {(Brush)new BrushConverter().ConvertFrom("#A0ECFF")},
             {(Brush)new BrushConverter().ConvertFrom("#FBCD6B")},
             {(Brush)new BrushConverter().ConvertFrom("#BE88DC")},
-            {(Brush)new BrushConverter().ConvertFrom("#EA6461")}
+            {(Brush)new BrushConverter().ConvertFrom("#EA6461")},
+            {(Brush)new BrushConverter().ConvertFrom("#80AF3F")},
+            {(Brush)new BrushConverter().ConvertFrom("#C0E63F")},
+            {(Brush)new BrushConverter().ConvertFrom("#F5C26F")},
+            {(Brush)new BrushConverter().ConvertFrom("#CC821C")},
+            {(Brush)new BrushConverter().ConvertFrom("#EA4561")},
+            {(Brush)new BrushConverter().ConvertFrom("#80DA1F")},
+            {(Brush)new BrushConverter().ConvertFrom("#75E4CF")},
+            {(Brush)new BrushConverter().ConvertFrom("#FBC10B")},
+            {(Brush)new BrushConverter().ConvertFrom("#BEDA2C")},
+            {(Brush)new BrushConverter().ConvertFrom("#ECAD21")}
         };
 
         public static Tool ToolNow = ToolList[0];
@@ -145,7 +160,8 @@ namespace Graph_Editor
         public static Vertex FindVertex(Vertex vertex)
         {
             return VertexData.Find(match => (match.Index == vertex.Index
-                                                  && match.Coordinates == vertex.Coordinates
+                                                  //&& match.Coordinates == vertex.Coordinates
+                                                  // TODO Обдумать(не безопасно).
                                                   && match.Color == vertex.Color));
         }
 

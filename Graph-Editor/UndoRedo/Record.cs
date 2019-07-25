@@ -8,6 +8,8 @@ namespace Graph_Editor.UndoRedo
 {
     public class Record
     {
+        private int checker = 0;
+
         public object Befor
         {
             get;
@@ -20,10 +22,29 @@ namespace Graph_Editor.UndoRedo
             set;
         }
 
+        public int Checker
+        {
+            get
+            {
+                return checker;
+            }
+            set
+            {
+                checker = value;
+            }
+        }
+
         public Record(object befor, object after)
         {
             Befor = befor;
             After = after;
+        }
+
+        public Record(object befor, object after, int checker)
+        {
+            Befor = befor;
+            After = after;
+            Checker = checker;
         }
     }
 }

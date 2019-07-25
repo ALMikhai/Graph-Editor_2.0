@@ -18,9 +18,27 @@ namespace Graph_Editor.PropertiesWindow
 {
     public partial class EdgeProperty : Window
     {
+        private void ThemeSetting()
+        {
+            myWindow.Icon = new BitmapImage(new Uri(Themes.logoPath, UriKind.Relative));
+
+            BitmapImage bitmap = new BitmapImage();
+
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(Themes.logoPath, UriKind.Relative);
+            bitmap.EndInit();
+
+            logo.Source = bitmap;
+
+            fullWindow.Background = Themes.EPMainWindow;
+            colorBar.Background = Themes.EPColorBar;
+            weightEdge.Background = Themes.EPVertexName;
+            buttonClose.Background = Themes.EPCloseButton;
+        }
         public EdgeProperty()
         {
             InitializeComponent();
+            ThemeSetting();
         }
 
         public static void PropertiesEdgeWindow(Edge edge)
@@ -114,7 +132,7 @@ namespace Graph_Editor.PropertiesWindow
             }
         }
 
-        private bool isDigit(KeyEventArgs e)
+        public static bool isDigit(KeyEventArgs e)
         {
             if(e.Key == Key.D1 || e.Key == Key.D2 || e.Key == Key.D3 || e.Key == Key.D4 || e.Key == Key.D5 || e.Key == Key.D6 || e.Key == Key.D7 || e.Key == Key.D8 || e.Key == Key.D9 || e.Key == Key.D0 || e.Key == Key.NumPad0 || e.Key == Key.NumPad1 || e.Key == Key.NumPad2 || e.Key == Key.NumPad3 || e.Key == Key.NumPad4 || e.Key == Key.NumPad5 || e.Key == Key.NumPad6 || e.Key == Key.NumPad7 || e.Key == Key.NumPad8 || e.Key == Key.NumPad9)
             {

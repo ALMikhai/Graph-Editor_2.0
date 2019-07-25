@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Graph_Editor"
-        mc:Ignorable="d" Icon="images/logo.png"
+        mc:Ignorable="d" x:Name="myWindow"
         Closing="DataWindow_Closing"
         Title="Choose the algoritm" Height="460.939" Width="673.819" ResizeMode="NoResize">
     <Window.Resources>
@@ -81,7 +81,7 @@
             IsCancel="True" Background="#B9C2C2" BorderThickness="0"
             FontSize="30" FontFamily="Agency FB" Content="Cancel" Tag="Cancel"
             HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
-            Width="122" Height="38" Click="main_Cancel_Click" MouseLeave="Button_MouseLeave" MouseMove="Button_MouseMove"
+            Width="122" Height="38" Click="main_Cancel_Click"
         />
 
         <Grid x:Name="LockPanel" Opacity="0.4" Background="Gray" Visibility="Hidden"/>
@@ -91,9 +91,12 @@
                Height="69" Width="371" TextAlignment="Center"
                FontSize="25" FontWeight="DemiBold" FontFamily="Agency FB"
         />
-        <Grid
-            x:Name="BFS_DFS"
-            Background="WhiteSmoke" Margin="225,160,33.2,86.2" Visibility="Hidden">
+        <Grid x:Name="BFS_DFS" Background="WhiteSmoke" Margin="225,138,33,86" Visibility="Hidden">
+            <Label x:Name="BFS_DFS_label"
+                   Content="null"
+                   HorizontalAlignment="Left" VerticalAlignment="Top"
+                   Width="415"
+                   FontSize="20" FontWeight="Light" FontFamily="sans-serif" FontStyle="Italic" Height="42"/>
             <Border BorderBrush="Black" BorderThickness="2"/>
             <Button x:Name="FS_Ready"
             IsDefault="True"
@@ -101,36 +104,30 @@
             Width="127" Height="42" Click="Button_ReadyExitAlgoritm_Click"
         />
             <Button x:Name="FS_Cancel"
-            IsCancel="True"
             FontSize="20" Content="Cancel"
             HorizontalAlignment="Left" Margin="137,0,0,10" VerticalAlignment="Bottom"
             Width="112" Height="42"
             Click="Button_ExitAlgoritm_Click"
         />
             <Label Content="Start vertex:" 
-               HorizontalAlignment="Left" Height="38" Margin="53,42,0,0" 
+               HorizontalAlignment="Left" Height="38" Margin="45,67,0,0" 
                VerticalAlignment="Top" Width="247" 
                FontSize="25"
         />
             <TextBox x:Name="FSstartVertex"
             FontSize="20" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"
-            Height="38" Margin="246,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
+            Height="38" Margin="246,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86"
             Background="WhiteSmoke" BorderThickness="1" BorderBrush="black" RenderTransformOrigin="0.494,-0.553" TextChanged="FSstartVertex_TextChanged"
             
         />
-            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="2" Margin="0,116,0,0" VerticalAlignment="Top" Width="415"/>
-            <Label x:Name="BFS_DFS_label"
-                   Content="null"
-                   HorizontalAlignment="Left" Margin="0,3,0,0" VerticalAlignment="Top"
-                   Width="64"
-                   FontSize="20" FontWeight="Light" FontFamily="sans-serif" FontStyle="Italic"/>
+            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="2" Margin="0,139,0,0" VerticalAlignment="Top" Width="415"/>
         </Grid>
         <Grid x:Name="Dijkstra" Background="WhiteSmoke" Margin="224,78,62,108" Visibility="Hidden">
             <Label x:Name="Dijkstra_Label"
                    Content="null"
-                   HorizontalAlignment="Left" Margin="0,3,0,0" VerticalAlignment="Top"
-                   Width="91"
-                   FontSize="20" FontWeight="Light" FontFamily="sans-serif" FontStyle="Italic"/>
+                   HorizontalAlignment="Left" VerticalAlignment="Top"
+                   Width="388"
+                   FontSize="20" FontWeight="Light" FontFamily="sans-serif" FontStyle="Italic" Height="37"/>
             <Border BorderBrush="Black" BorderThickness="2"/>
             <Button x:Name="Dijkstra_Ready"
             IsDefault="True"
@@ -138,7 +135,6 @@
             Width="127" Height="42" Click="DijkstraReadyExitAlgoritm_Click"
             />
             <Button x:Name="Dijkstra_Cancel"
-            IsCancel="True"
             FontSize="20" Content="Cancel"
             HorizontalAlignment="Left" Margin="137,0,0,10" VerticalAlignment="Bottom"
             Width="112" Height="42"
@@ -166,6 +162,6 @@
             />
             <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="1" Margin="0,174,0,0" VerticalAlignment="Top" Width="391" RenderTransformOrigin="0.5,0.5"/>
         </Grid>
-        <Image Source="images/logo.png" Width="48" Height="48" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+        <Image x:Name="logo" Width="48" Height="48" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
     </Grid>
 </Window>

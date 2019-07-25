@@ -27,8 +27,27 @@ namespace Graph_Editor
 
                 newButton.Click += MainWindow.Instance.ChangeColor;
 
-                MainWindow.Instance.colorbarPanel.Items.Add(newButton);
+                MainWindow.Instance.colorbarPanel.Children.Add(newButton);
             }
         }
+
+        //public static void PresentationButtonGeneration(ToolBar toolBar, System.Windows.RoutedEventHandler action)
+        //{
+        //    foreach (var color in Globals.Colors)
+        //    {
+        //        Button newButton = new Button
+        //        {
+        //            Height = 18,
+        //            Width = 18,
+        //            Background = color,
+        //            Tag = "0",
+        //            Margin = new Thickness(2.5)
+        //        };
+
+        //        newButton.Click += action;
+
+        //        toolBar.Items.Add(newButton);
+        //    }
+        //}
     }
 }

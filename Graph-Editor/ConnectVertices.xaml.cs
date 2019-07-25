@@ -28,6 +28,16 @@ namespace Graph_Editor
 
         private void ThemeSettings()
         {
+            myWindow.Icon = new BitmapImage(new Uri(Themes.logoPath, UriKind.Relative));
+
+            BitmapImage bitmap = new BitmapImage();
+
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(Themes.logoPath, UriKind.Relative);
+            bitmap.EndInit();
+
+            logo.Source = bitmap;
+
             FullWindow.Background = Themes.ConnectMainWindow;
 
             FirstVertex.Background = Themes.ConnectWindowForVertex;
@@ -61,8 +71,8 @@ namespace Graph_Editor
             if (mainWindow != null && mainWindow.WaitPanel != null)
             {
                 mainWindow.WaitPanel.Visibility = Visibility.Hidden;
+                mainWindow.Connect.IsEnabled = true;
             }
-            mainWindow.Connect.IsEnabled = true;
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)
@@ -167,7 +177,7 @@ namespace Graph_Editor
 
         private void DirecteMouseMove(object sender, MouseEventArgs e)
         {
-            if (String.Compare("#FF789778", (sender as Button).Background.ToString()) != 0)
+            if (String.Compare("#FF789778", (sender as Button).Background.ToString()) != 0 && String.Compare("#FFFD926A", (sender as Button).Background.ToString()) != 0)
             {
                 (sender as Button).Background = Themes.ConnectUnactiveOrientationHover;
             }
@@ -175,7 +185,7 @@ namespace Graph_Editor
 
         private void DirecteMouseLeave(object sender, MouseEventArgs e)
         {
-            if (String.Compare("#FF789778", (sender as Button).Background.ToString()) != 0)
+            if (String.Compare("#FF789778", (sender as Button).Background.ToString()) != 0 && String.Compare("#FFFD926A", (sender as Button).Background.ToString()) != 0)
             {
                 (sender as Button).Background = Themes.ConnectUnactiveOrientation;
             }
