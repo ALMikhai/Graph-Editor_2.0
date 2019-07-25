@@ -163,8 +163,9 @@
         <Image x:Name="logo" Height="62" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="64" Margin="10,0,0,10" Grid.Row="1"/>
         <Menu x:Name="MainMenu" Height="22" VerticalAlignment="Top" Background="Black" Foreground="White">
             <MenuItem Header="File" FontSize="18" FontFamily="Agency FB" Foreground="White">
-                <MenuItem x:Name="save" Header="Save as" FontSize="18" FontFamily="Agency FB" Background="Black" Foreground="White" Click="Save_Click"></MenuItem>
-                <MenuItem x:Name="open" Header="Open with" FontSize="18" FontFamily="Agency FB" Background="Black" Foreground="White" Click="Load_Click"></MenuItem>
+                <MenuItem x:Name="save"     Header="Save as"        FontSize="18" FontFamily="Agency FB" Background="Black" Foreground="White" Click="Save_Click"></MenuItem>
+                <MenuItem x:Name="open"     Header="Open with"      FontSize="18" FontFamily="Agency FB" Background="Black" Foreground="White" Click="Load_Click"></MenuItem>
+                <MenuItem x:Name="export"   Header="Export to PNG"  FontSize="18" FontFamily="Agency FB" Background="Black" Foreground="White" Click="Export_Click"></MenuItem>
                 <Separator Background="Black"/>
                 <MenuItem x:Name="exit" Header="Exit" FontSize="18" FontFamily="Agency FB" Background="Black" Foreground="White" Click="Exit_Click"></MenuItem>
             </MenuItem>
@@ -193,6 +194,7 @@
                 <ToolBarPanel Name="colorbarPanel" Height="35" HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
                 </ToolBarPanel>
             </MenuItem>
+            <MenuItem Header="Set graph from table" FontSize="18" FontFamily="Agency FB" Foreground="White" Click="MenuItem_Click"></MenuItem>
         </Menu>
         <Grid x:Name="Exit_Dialog" Background="White" Margin="366,253,208,119" Visibility="Hidden">
             <Label HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="35" Margin="30,10,33,0">
@@ -205,5 +207,17 @@
             <Button VerticalAlignment="Bottom" Content="Exit" FontSize="30" Height="55" Margin="170,0,174,10" Click="Exit_Exit_Click"/>
             <Button VerticalAlignment="Bottom" Content="Cancel" FontSize="30" Height="55" Width="150" Margin="330,0,10,10" Click="Cancel_Exit_Click"/>
         </Grid>
+        <Button Style="{StaticResource MyButtonStyle}" 
+            Tag="4" Background="#345160"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="52,598,0,0"
+            MouseLeave="ToolButton_MouseLeave" MouseMove="ToolButton_MouseMove" ToolTip="Center the graph">
+            <Image Source="Images/centerGraphIcon.png" Width="64" Height="64">
+                <Image.Effect>
+                    <DropShadowEffect/>
+                </Image.Effect>
+            </Image>
+        </Button>
     </Grid>
 </Window>

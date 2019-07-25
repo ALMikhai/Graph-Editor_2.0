@@ -76,17 +76,19 @@
             <Label Content="Style:" FontSize="70" FontFamily="Agency FB" Margin="10,95,475,448" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
             <Label Content="Vertex: "   FontSize="50" FontFamily="Agency FB" Margin="0,212,600,380"/>
-            <Button x:Name="vBlack"     Background="Black"  HorizontalAlignment="Left" Height="26" Margin="133,240,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
-            <Button x:Name="vYellow"    Background="Yellow" HorizontalAlignment="Left" Height="25" Margin="175,241,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
-            <Button x:Name="vGreen"     Background="Green"  HorizontalAlignment="Left" Height="25" Margin="220,241,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
-            <Button x:Name="vBlue"      Background="Blue"   HorizontalAlignment="Left" Height="25" Margin="266,241,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
-
+            <Button x:Name="vLightBlue" Background="#80FFFF"  HorizontalAlignment="Left" Height="26" Margin="133,240,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
+            <Button x:Name="vYellow"    Background="Yellow"   HorizontalAlignment="Left" Height="25" Margin="175,241,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
+            <Button x:Name="vGreen"     Background="Green"    HorizontalAlignment="Left" Height="25" Margin="220,241,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
+            <Button x:Name="vBlue"      Background="Blue"     HorizontalAlignment="Left" Height="25" Margin="266,241,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
+            <Button x:Name="vVolcano"   Background="#F0854D"  HorizontalAlignment="Left" Height="25" Margin="308,241,0,0" VerticalAlignment="Top" Width="30" Click="ChangeVertexColorButton_Click"/>
+            
             <Label Content="Edge: "     FontSize="50" FontFamily="Agency FB" Margin="0,296,600,279"/>
-            <Button x:Name="eLightBlue" Background="#80FFFF" HorizontalAlignment="Left" Height="25" Margin="133,325,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
+            <Button x:Name="eBlack"     Background="Black"   HorizontalAlignment="Left" Height="25" Margin="133,325,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
             <Button x:Name="eYellow"    Background="Yellow"  HorizontalAlignment="Left" Height="25" Margin="175,325,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
             <Button x:Name="eGreen"     Background="Green"   HorizontalAlignment="Left" Height="25" Margin="220,325,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
             <Button x:Name="eBlue"      Background="Blue"    HorizontalAlignment="Left" Height="25" Margin="266,325,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
-
+            <Button x:Name="eVolcano"   Background="#F0854D" HorizontalAlignment="Left" Height="25" Margin="308,325,0,0" VerticalAlignment="Top" Width="30" Click="ChangeEdgeColorButton_Click"/>
+            
             <Button x:Name="VEReset" Background="Gray"         Style="{StaticResource Exit_Buttons}" BorderThickness="0" Content="Reset" FontSize="32" FontFamily="Agency FB" Margin="84,381,545,228" Click="Reset_Click"/>
             <Button x:Name="VECheck" Background="DarkSeaGreen" Style="{StaticResource Exit_Buttons}" BorderThickness="0" Content="Check"  FontSize="32" FontFamily="Agency FB" Margin="175,381,453,228" Click="Check_Click"/>
 
