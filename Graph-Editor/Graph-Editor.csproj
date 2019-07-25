@@ -63,6 +63,7 @@
     <Compile Include="Algoritms\Dijkstra.cs" />
     <Compile Include="Algoritms\Euler.cs" />
     <Compile Include="Algoritms\Floyd.cs" />
+    <Compile Include="Algoritms\Hamilton.cs" />
     <Compile Include="Algoritms\Kruskal.cs" />
     <Compile Include="AlgoritmsWindow.xaml.cs">
       <DependentUpon>AlgoritmsWindow.xaml</DependentUpon>
@@ -78,6 +79,7 @@
     <Compile Include="PropertiesWindow\VertexProperty.xaml.cs">
       <DependentUpon>VertexProperty.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tools\CenterGraph.cs" />
     <Compile Include="Tools\EditEdge.cs" />
     <Compile Include="Tools\EditVertex.cs" />
     <Compile Include="Tools\MoveAllVertex.cs" />
@@ -190,7 +192,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\list.png" />
-    <Resource Include="Images\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\matrix.png" />
@@ -209,12 +210,21 @@
     <Resource Include="Images\Themes\tmp.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\Icelogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Vulcanlogo.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\propertiesEdgeTool.png" />
     <Resource Include="Images\propertiesVertexTool.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\handForCanvasTool.png" />
     <Resource Include="Images\handTool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\centerGraphIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

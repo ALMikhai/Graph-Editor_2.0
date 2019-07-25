@@ -18,9 +18,27 @@ namespace Graph_Editor.PropertiesWindow
 {
     public partial class EdgeProperty : Window
     {
+        private void ThemeSetting()
+        {
+            myWindow.Icon = new BitmapImage(new Uri(Themes.logoPath, UriKind.Relative));
+
+            BitmapImage bitmap = new BitmapImage();
+
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(Themes.logoPath, UriKind.Relative);
+            bitmap.EndInit();
+
+            logo.Source = bitmap;
+
+            fullWindow.Background = Themes.EPMainWindow;
+            colorBar.Background = Themes.EPColorBar;
+            weightEdge.Background = Themes.EPVertexName;
+            buttonClose.Background = Themes.EPCloseButton;
+        }
         public EdgeProperty()
         {
             InitializeComponent();
+            ThemeSetting();
         }
 
         public static void PropertiesEdgeWindow(Edge edge)

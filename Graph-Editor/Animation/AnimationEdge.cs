@@ -18,22 +18,30 @@ using System.Drawing.Drawing2D;
 using System.Windows.Media.Animation;
 using System.Threading;
 using System.Diagnostics;
+using static Graph_Editor.Globals;
 using Graph_Editor.Algoritms;
 
 namespace Graph_Editor
 {
-    static class AnimationEdge
+    public class AnimationEdge
     {
-        private static Edge animatedEdge;
+        private Edge animatedEdge;
 
-        private static Storyboard storyboard = new Storyboard
+        public Ellipse AnimationEllipse = new Ellipse
+        {
+            Width = Globals.VertRadius,
+            Height = Globals.VertRadius,
+            Fill = Settings.AnimationEllipseColor
+        };
+
+        private Storyboard storyboard = new Storyboard
         {
             RepeatBehavior = new RepeatBehavior(1)
         };
 
-        public static void RefreshStoryboard()
+        public void RefreshStoryboard()
         {
-            MainWindow.Instance.GraphCanvas.Children.Add(Globals.AnimationEllipse);
+            MainWindow.Instance.GraphCanvas.Children.Add(AnimationEllipse);
 
             var pathGeom = new PathGeometry();
             var vertPF = new PathFigure();
@@ -52,20 +60,20 @@ namespace Graph_Editor
             {
                 PathGeometry = pathGeom,
                 Source = PathAnimationSource.X,
-                Duration = TimeSpan.FromSeconds(Settings.animationTime)
+                Duration = TimeSpan.FromSeconds(Settings.AnimationTime)
             };
 
-            Storyboard.SetTarget(moveCircleAnimation, Globals.AnimationEllipse);
+            Storyboard.SetTarget(moveCircleAnimation, AnimationEllipse);
             Storyboard.SetTargetProperty(moveCircleAnimation, new PropertyPath("(Canvas.Left)"));
 
             var moveCircleAnimation2 = new DoubleAnimationUsingPath
             {
                 PathGeometry = pathGeom,
                 Source = PathAnimationSource.Y,
-                Duration = TimeSpan.FromSeconds(Settings.animationTime)
+                Duration = TimeSpan.FromSeconds(Settings.AnimationTime)
             };
 
-            Storyboard.SetTarget(moveCircleAnimation2, Globals.AnimationEllipse);
+            Storyboard.SetTarget(moveCircleAnimation2, AnimationEllipse);
             Storyboard.SetTargetProperty(moveCircleAnimation2, new PropertyPath("(Canvas.Top)"));
 
             storyboard.Children.Add(moveCircleAnimation);
@@ -74,33 +82,50 @@ namespace Graph_Editor
             storyboard.Completed += Storyboard_Completed;
         }
 
-        public static void Storyboard_Completed(object sender, EventArgs e)
+        public void Storyboard_Completed(object sender, EventArgs e)
         {
             
         }
 
-        public static void NextAnimation(Edge edge, List<Edge> edgesUsed)
+        public void NextAnimation(Edge edge, List<Edge> edgesUsed, List<Edge> path = null)
         {
+            
             animatedEdge = edge;
             RefreshStoryboard();
             StartAnimation();
+            
             EventHandler callback = null;
 
             callback = (o, args) => {
+
                 MainWindow.Instance.InvalidateAlgo(edge);
-                edgesUsed.Remove(edgesUsed[0]);
-                storyboard.Completed -= callback;
                 if (edgesUsed.Count > 0)
+                    edgesUsed.Remove(edgesUsed[0]);
+
+                storyboard.Completed -= callback;
+
+
+                MainWindow.Instance.GraphCanvas.Children.Remove(AnimationEllipse);
+
+                if (edgesUsed.Count > 0 )
                 {
                     storyboard.Children.Clear();
-                    NextAnimation(edgesUsed[0], edgesUsed);
+                    NextAnimation(edgesUsed[0], edgesUsed, path);
                 }
+
+                else if (path != null)
+                {
+                    storyboard.Children.Clear();
+                    MainWindow.Instance.Invalidate();
+                    NextAnimation(path[0], path);
+                }
+                
             };
 
             storyboard.Completed += callback;
         }
 
-        public static void StartAnimation()
+        public void StartAnimation()
         {   
             storyboard.Begin();
         }

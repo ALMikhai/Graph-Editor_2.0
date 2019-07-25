@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Graph_Editor"
         Loaded="Window_Loaded"
         Closing="DataWindow_Closing"
-        mc:Ignorable="d" Icon="images/logo.png"
+        mc:Ignorable="d" x:Name="myWindow"
         Title="Сonnect vertices" Height="350" Width="600" ResizeMode="NoResize">
     <Window.Resources>
         <Style x:Key="MyButtonStyle" TargetType="Button">
@@ -43,24 +43,24 @@
             HorizontalAlignment="Left"
             Margin="122,116,0,0" VerticalAlignment="Top" Width="315" Height="25"
         />
-        <TextBox x:Name="TextBox_Weight" 
+        <TextBox x:Name="TextBox_Weight"  BorderBrush="Black"
             FontSize="30" FontFamily="Agency FB"
             Background="#728484" Foreground="#CCD8D8"
             TextAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top"
             Height="37" Margin="450,104,0,0" Width="86"
             TextWrapping="Wrap" Text="1" TextChanged="TextBox_Weight_TextChanged"
         />
+
         <Button x:Name="Create"
             IsDefault="True"
             FontSize="30" FontFamily="Agency FB" Content="Create" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"
-            Width="112" Height="42" Background="#B2B4B4"
-            Click="Create_Click"
-        />
+            Width="112" Height="42" Background="#B2B4B4" BorderThickness="0"
+            Click="Create_Click"/>
         <Button x:Name="Close"
             IsCancel="True" Background="#B2B4B4"
             FontSize="30" FontFamily="Agency FB" Content="Close"
             HorizontalAlignment="Left" Margin="117,0,0,10" VerticalAlignment="Bottom"
-            Width="112" Height="42" Click="Cancel_Click"
+            Width="112" Height="42" Click="Cancel_Click" BorderThickness="0"
         />
         <Button Style="{StaticResource MyButtonStyle}" x:Name="Directed" Background="#98B0B0"
             HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
@@ -74,9 +74,10 @@
             HorizontalAlignment="Left" Margin="298,175,0,0" VerticalAlignment="Top"
             Height="52" Width="258" Click="Undirected_Button_Choose" MouseMove="DirecteMouseMove" MouseLeave="DirecteMouseLeave">
         </Button>
-        
+
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="1" Margin="0,72,0,0" VerticalAlignment="Top" Width="594"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="1" Margin="0,247,0,0" VerticalAlignment="Top" Width="594"/>
-        <Image Source="images/logo.png" Width="32" Height="32" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+        <Image x:Name="logo" Width="32" Height="32" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="43" Margin="116,259,0,0" VerticalAlignment="Top" Width="1"/>
     </Grid>
 </Window>

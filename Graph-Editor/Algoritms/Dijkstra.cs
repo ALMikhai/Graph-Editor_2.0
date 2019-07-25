@@ -114,7 +114,8 @@ namespace Graph_Editor.Algoritms
         static List<Edge> path = new List<Edge>();
         static int[] destinations = new int[Size];
         static int[] p = new int[Size];
-
+        static List<Edge> edgesUsed= new List<Edge>();
+        
         static bool IsWay(int v, int end)
         {
             if (v == end)
@@ -133,6 +134,7 @@ namespace Graph_Editor.Algoritms
         public override void Start(int s, int e)
         {
             MainWindow.Instance.Invalidate();
+            visited = new bool[Size];
             if (!CheckIn(s) || !CheckIn(e) || !IsWay(s, e))
             {
                 visited = new bool[Size];
@@ -140,7 +142,18 @@ namespace Graph_Editor.Algoritms
             }
             visited = new bool[Size];
             dijkstra(s, e);
-            AnimationEdge.NextAnimation(path[0], path);
+            DegforDij = new int[Size];
+            for (int i = 0; i < Size; i++)
+                for(int j = 0; j < Size; j++)
+                    if (Matrix[i, j] != 0)
+                        DegforDij[i]++;
+
+            
+            for (int i = 0; i < DegforDij[s]; i++)
+            {
+                AnimationEdge a = new AnimationEdge();
+                a.NextAnimation(edgesUsed[i], edgesUsed, path);
+            }
         }
 
         static void dijkstra(int start, int end)
@@ -166,6 +179,14 @@ namespace Graph_Editor.Algoritms
                     {
                         if (destinations[v] + Matrix[v,i] < destinations[i])
                         {
+                            foreach(Edge edge in EdgesData)
+                            {
+                                if (edge.From.Index == v && edge.To.Index == i)
+                                {
+                                    edgesUsed.Add(edge);
+                                    break;
+                                }
+                            }
                             destinations[i] = destinations[v] + Matrix[v, i];
                             p[i] = v;
                             q.Add(Matrix[v, i], i);
@@ -174,6 +195,7 @@ namespace Graph_Editor.Algoritms
                     }
                 }
             }
+            
             int j;
             for (j = end; j != start; j = p[j])
             {
@@ -196,6 +218,7 @@ namespace Graph_Editor.Algoritms
             }
 
             path.Reverse();
+            
         }
     }
 }

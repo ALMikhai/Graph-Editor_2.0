@@ -25,25 +25,27 @@ using Graph_Editor.UndoRedo;
 
 namespace Graph_Editor
 {
-    // CodeStyle.
-    // 1) ���������� - ���������(Camel casing), ����������(Pascal casing).
-    // 2) ���������, ���������� ����(Camel casing) ��������� ����, ��������(Pascal casing).
-    // 3) ��������� �������(Camel casing).
-    // 4) � ���������� foreach ������������ var, � ���������� ���������� ��� ����� ������� ��� ���������� ������������ var.
-    // 5) �������� �������(Camel casing).
-    // 6) � ��������� ��������, ���������� � ���� � xaml'� �� ������ �������������� ����� ������������� '_' (������ � ��� �������, ����� ��� ������ ������).
-    // 7) �������� ���������� � ������� ������ ���� ������� ����, � �� ������ ���� ��� ��� �����.
-    // 8) �� ������������ ���������� � ��������� ���������� � �������.
-    
-    // TODO ���� ������, ����� �����������.
 
     public partial class MainWindow : Window
     {
+        private Brush baseButtonColor;
         private static FigureHost graphHost = new FigureHost();
         public static MainWindow Instance { get; private set; }
 
-        private void ThemeSettings()
+        public void ThemeSettings()
         {
+            baseButtonColor = Themes.MainToolsButtons;
+
+            myWindow.Icon = new BitmapImage(new Uri(Themes.logoPath, UriKind.Relative));
+
+            BitmapImage bitmap = new BitmapImage();
+
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(Themes.logoPath, UriKind.Relative);
+            bitmap.EndInit();
+
+            logo.Source = bitmap;
+
             FullWindow.Background = Themes.MainMainWindow;
 
             TeamName.Background = Themes.MainTeamName;
@@ -54,6 +56,10 @@ namespace Graph_Editor
             DelVertex.Background = Themes.MainToolsButtons;
             DelEdge.Background = Themes.MainToolsButtons;
             Connect.Background = Themes.MainToolsButtons;
+            MoveAllVertex.Background = Themes.MainToolsButtons;
+            PropertyVertex.Background = Themes.MainToolsButtons;
+            PropertyEdge.Background = Themes.MainToolsButtons;
+            CenterTheGraph.Background = Themes.MainToolsButtons;
 
             GraphCanvas.Background = Themes.MainCanvas;
 
@@ -64,20 +70,31 @@ namespace Graph_Editor
             matrix.Background = Themes.MainMenuItems;
             list.Background = Themes.MainMenuItems;
 
+            save.BorderBrush = Themes.MainMenuItemsBorder;
+            open.BorderBrush = Themes.MainMenuItemsBorder;
+            exit.BorderBrush = Themes.MainMenuItemsBorder;
+            matrix.BorderBrush = Themes.MainMenuItemsBorder;
+            list.BorderBrush = Themes.MainMenuItemsBorder;
+
             Exit_Dialog.Background = Themes.MainExitDialog;
         }
 
         public MainWindow()
         {
             InitializeComponent();
+            Themes.VolcanoTheme();
+
             ThemeSettings();
 
+            AddVertex.Background = Themes.MainChooseToolButton;
             list.Background = Brushes.Gray;
 
             GraphCanvas.Children.Add(graphHost);
             Instance = this;
 
             ButtonGeneration.ColorButtonGeneration();
+
+            CenterTheGraph.Click += CenterGraph.MoveGraph;
         }
 
         public void Invalidate()
@@ -151,7 +168,7 @@ namespace Graph_Editor
                                     CultureInfo.GetCultureInfo("en-us"),
                                     FlowDirection.LeftToRight,
                                     new Typeface("Romanic"),
-                                    20, (Brush)new BrushConverter().ConvertFrom("#305F5F"));
+                                    20, Themes.ColorOfTheTextOfVertex);
 
                 drawingContext.DrawText(txt, new Point(vertex.Coordinates.X + ((vertex.Text == "") ? vertex.Index.ToString().Length * (-5) : vertex.Text.Length * (-5)), vertex.Coordinates.Y - 10));
             }
@@ -215,7 +232,7 @@ namespace Graph_Editor
         {
             ConnectVertices connectVertices = new ConnectVertices();
             WaitPanel.Visibility = Visibility.Visible;
-            connectVertices.Show();
+            connectVertices.ShowDialog();
         }
 
         private void AlgoritmButton_Click(object sender, RoutedEventArgs e)
@@ -223,10 +240,8 @@ namespace Graph_Editor
             AlgoritmsWindow algoritms = new AlgoritmsWindow();
             WaitPanel.Visibility = Visibility.Visible;
             Algorimts_Window.IsEnabled = false;
-            algoritms.Show();
+            algoritms.ShowDialog();
         }
-
-        Brush baseButtonColor = Themes.MainToolsButtons;
 
         private void Change_Tool_Button(object sender, RoutedEventArgs e)
         {
@@ -240,10 +255,10 @@ namespace Graph_Editor
 
             if (SelectedToolIndex == 3)
             {
-                if (string.Compare((sender as Button).Background.ToString(), "#FF5F9EA0") == 0)
+                if (string.Compare((sender as Button).Background.ToString(), "#FF5F9EA0") == 0 || string.Compare((sender as Button).Background.ToString(), "#FF3F2030") == 0) 
                 {
-                    Connect_Click(sender, e);
                     Connect.IsEnabled = false;
+                    Connect_Click(sender, e);
                 }
             }
 
@@ -255,7 +270,7 @@ namespace Graph_Editor
             MoveAllVertex.Background = baseButtonColor;
             PropertyEdge.Background = baseButtonColor;
             PropertyVertex.Background = baseButtonColor;
-            (sender as Button).Background = Brushes.CadetBlue;
+            (sender as Button).Background = Themes.MainChooseToolButton;
         }
 
         private void GraphCanvas_MouseDown(object sender, MouseEventArgs e)
@@ -290,7 +305,7 @@ namespace Graph_Editor
 
         private void ToolButton_MouseMove(object sender, MouseEventArgs e)
         {
-            if (string.Compare((sender as Button).Background.ToString(), "#FF5F9EA0") != 0)
+            if (string.Compare((sender as Button).Background.ToString(), "#FF5F9EA0") != 0 && string.Compare((sender as Button).Background.ToString(), "#FF3F2030") != 0)
             {
                 (sender as Button).Background = Themes.MainToolsButtonsHover;
             }
@@ -298,7 +313,7 @@ namespace Graph_Editor
 
         private void ToolButton_MouseLeave(object sender, MouseEventArgs e)
         {
-            if (string.Compare((sender as Button).Background.ToString(), "#FF5F9EA0") != 0)
+            if (string.Compare((sender as Button).Background.ToString(), "#FF5F9EA0") != 0 && string.Compare((sender as Button).Background.ToString(), "#FF3F2030") != 0)
             {
                 (sender as Button).Background = Themes.MainToolsButtons;
             }
@@ -373,28 +388,28 @@ namespace Graph_Editor
         {
             CurrentMatrix currentMatrix = new CurrentMatrix();
             WaitPanel.Visibility = Visibility.Visible;
-            currentMatrix.Show();
+            currentMatrix.ShowDialog();
         }
 
         private void ShowList(object sender, RoutedEventArgs e)
         {
             CurrentList currentList = new CurrentList();
             WaitPanel.Visibility = Visibility.Visible;
-            currentList.Show();
+            currentList.ShowDialog();
         }
 
         private void ViewDocumentation(object sender, RoutedEventArgs e)
         {
             viewDoc.IsEnabled = false;
             Documentation documentation = new Documentation();
-            documentation.Show();
+            documentation.ShowDialog();
         }
 
         private void GoToOptions(object sender, RoutedEventArgs e)
         {
             Settings.IsEnabled = false;
             OptionsWindow optionsWindow = new OptionsWindow();
-            optionsWindow.Show();
+            optionsWindow.ShowDialog();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
