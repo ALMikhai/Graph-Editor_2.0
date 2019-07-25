@@ -45,8 +45,8 @@ namespace Graph_Editor
             BFSButton.Background            = Themes.AlgoIsAlgoReady;
             DFSButton.Background            = Themes.AlgoIsAlgoReady;
             DijkstraButton.Background       = Themes.AlgoIsAlgoReady;
-            ColorButton.Background          = Themes.AlgoIsAlgoReady;
-            HamiltonianButton.Background    = Themes.AlgoIsAlgoReady;
+            ColorButton.Background          = Themes.AlgoIsAlgoFailed;
+            HamiltonianButton.Background    = Themes.AlgoIsAlgoFailed;
             EulerButton.Background          = Themes.AlgoIsAlgoReady;
             FloydButton.Background          = Themes.AlgoIsAlgoReady;
             KruskalButton.Background        = Themes.AlgoIsAlgoReady;
@@ -91,11 +91,11 @@ namespace Graph_Editor
 
             LockPanel.Visibility = Visibility.Visible;
 
-            if (chooseAlg == 0 || chooseAlg == 1 || chooseAlg == 7)
+            if (chooseAlg == 0 || chooseAlg == 1)
             {
                 BFS_DFS.Visibility = Visibility.Visible;
                 FSstartVertex.Text = "0";
-                BFS_DFS_label.Content = chooseAlg == 0 ? "BFS" : chooseAlg == 1 ? "DFS" : "Kruskall";
+                BFS_DFS_label.Content = chooseAlg == 0 ? "BFS" : "DFS";
             }
 
             else if (chooseAlg == 2)
@@ -113,6 +113,7 @@ namespace Graph_Editor
                 // 4 - Гамильтонов цикл
                 // 5 - Эйлеров цикл
                 // 6 - Флойд-Уоршелл
+                // 7 - Клускалл
                 // 8 - Максимальный поток
                 // Здесь нет никаких стартовых вершин, сами номера алгоритмов хранятся в переменной chooseAlg
                 // Я так понимаю, ты хотел сделать так: 
