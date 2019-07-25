@@ -1,3 +1,25 @@
+<<<<<<< HEAD
+﻿Graph-Editor
+
+
+winexe
+C#
+.cs
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\
+Graph_Editor
+none
+false
+DEBUG;TRACE
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\App.xaml
+9-410247837
+
+462130292646
+151984215308
+AlgoritmsWindow.xaml;MainWindow.xaml;ConnectVertices.xaml;OptionsWindow.xaml;PropertiesWindow\EdgeProperty.xaml;PropertiesWindow\VertexProperty.xaml;ShowData\CurrentMatrix.xaml;ShowData\CurrentList.xaml;Documentation.xaml;
+
+False
+
+=======
 ﻿Graph-Editor
 
 
@@ -18,3 +40,4 @@ AlgoritmsWindow.xaml;MainWindow.xaml;ConnectVertices.xaml;OptionsWindow.xaml;Pro
 
 False
 
+>>>>>>> Dmitry's_branch
