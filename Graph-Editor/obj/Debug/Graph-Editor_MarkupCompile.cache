@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿Graph-Editor
 
 
@@ -18,3 +19,95 @@ AlgoritmsWindow.xaml;FloydWindow.xaml;MainWindow.xaml;ConnectVertices.xaml;Optio
 
 False
 
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Alexander_Mikhailenko
+﻿Graph-Editor
+
+
+winexe
+C#
+.cs
+<<<<<<< HEAD
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\
+=======
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\
+>>>>>>> Alexander_Mikhailenko
+Graph_Editor
+none
+false
+DEBUG;TRACE
+<<<<<<< Updated upstream
+<<<<<<< HEAD
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\App.xaml
+101599125823
+
+49-35076296
+=======
+C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\App.xaml
+101599125823
+
+50-479262439
+>>>>>>> Alexander_Mikhailenko
+=======
+C:\Users\salus\OneDrive\Рабочий стол\GraphEditor\Graph-Editor_2.0\Graph-Editor\App.xaml
+111392453959
+
+501192271390
+>>>>>>> Stashed changes
+151984215308
+AlgoritmsWindow.xaml;FloydWindow.xaml;MainWindow.xaml;ConnectVertices.xaml;OptionsWindow.xaml;PropertiesWindow\EdgeProperty.xaml;PropertiesWindow\VertexProperty.xaml;SetGraph.xaml;ShowData\CurrentMatrix.xaml;ShowData\CurrentList.xaml;Documentation.xaml;
+
+False
+
+<<<<<<< HEAD
+=======
+﻿Graph-Editor
+
+
+winexe
+C#
+.cs
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\
+Graph_Editor
+none
+false
+DEBUG;TRACE
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\App.xaml
+9-410247837
+
+461713703413
+151984215308
+AlgoritmsWindow.xaml;MainWindow.xaml;ConnectVertices.xaml;OptionsWindow.xaml;PropertiesWindow\EdgeProperty.xaml;PropertiesWindow\VertexProperty.xaml;ShowData\CurrentMatrix.xaml;ShowData\CurrentList.xaml;Documentation.xaml;
+
+False
+
+>>>>>>> Vlad's_brach
+=======
+>>>>>>> Alexander_Mikhailenko
+=======
+﻿Graph-Editor
+
+
+winexe
+C#
+.cs
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\
+Graph_Editor
+none
+false
+DEBUG;TRACE
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\App.xaml
+101599125823
+
+50-1032248068
+151984215308
+AlgoritmsWindow.xaml;MainWindow.xaml;ConnectVertices.xaml;OptionsWindow.xaml;PropertiesWindow\EdgeProperty.xaml;PropertiesWindow\VertexProperty.xaml;SetGraph.xaml;ShowData\CurrentMatrix.xaml;ShowData\CurrentList.xaml;Documentation.xaml;
+
+False
+
+>>>>>>> Vlad's_brach
+>>>>>>> master
