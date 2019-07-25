@@ -12,6 +12,7 @@ namespace Graph_Editor.Algoritms
     {
         static List<Edge> edgesUsed = new List<Edge>();
 
+        static Queue<int> q = new Queue<int>();
         public override void Start()
         {
             MainWindow.Instance.Invalidate();
@@ -21,6 +22,27 @@ namespace Graph_Editor.Algoritms
 
         static bool hamilton()
         {
+            if (VertexData.Count < 3)
+                return false;
+            for (int i = 0; i < VertexData.Count; i++)
+            {
+                int deg = 0;
+                for (int j = 0; j < VertexData.Count; j++)
+                {
+                    if (Matrix[i, j] > 0)
+                        deg++;
+                }
+                if (deg < VertexData.Count / 2)
+                    return false;
+            }
+
+
+            for (int i = 0; i < VertexData.Count; i++)
+                q.Enqueue(i);
+            for (int i = 0; i < 0; i++)
+            {
+
+            }
 
             return true;
         }

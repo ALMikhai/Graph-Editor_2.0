@@ -29,7 +29,7 @@ namespace Graph_Editor
     public partial class MainWindow : Window
     {
         private Brush baseButtonColor;
-        private static FigureHost graphHost = new FigureHost();
+        public static FigureHost graphHost = new FigureHost();
         public static MainWindow Instance { get; private set; }
 
         public void ThemeSettings()
