@@ -415,14 +415,12 @@ namespace Graph_Editor
 
         private void ViewDocumentation(object sender, RoutedEventArgs e)
         {
-            viewDoc.IsEnabled = false;
             Documentation documentation = new Documentation();
             documentation.ShowDialog();
         }
 
         private void GoToOptions(object sender, RoutedEventArgs e)
         {
-            Settings.IsEnabled = false;
             OptionsWindow optionsWindow = new OptionsWindow();
             optionsWindow.ShowDialog();
         }
@@ -466,12 +464,13 @@ namespace Graph_Editor
 
         private void Export_Click(object sender, RoutedEventArgs e)
         {
-
+            SaveLoad.Export.ExportPng(sender, e);
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-
+            SetGraph setGraph = new SetGraph();
+            setGraph.ShowDialog();
         }
     }
 }
