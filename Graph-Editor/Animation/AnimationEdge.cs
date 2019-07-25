@@ -31,7 +31,7 @@ namespace Graph_Editor
         {
             Width = Globals.VertRadius,
             Height = Globals.VertRadius,
-            Fill = Settings.AnimationEllipseColor
+            Fill = OptionsWindow.settings.AnimationEllipseColor
         };
 
         private Storyboard storyboard = new Storyboard
