@@ -20,6 +20,7 @@ namespace Graph_Editor
     public partial class FloydWindow : Window
     {
         public static int[,] matrix;
+        private readonly double coef = 2;
 
         private void ThemeSetting()
         {
@@ -41,6 +42,13 @@ namespace Graph_Editor
             {
                 sideTextBox.Text += i.ToString() + "\n";
             }
+            if (sideTextBox.Text.Length > 20)
+            {
+                sideTextBox.Height *= coef;
+                fullWindow.Height *= (coef - 0.1);
+                mainTextBox.Height *= coef;
+                myWindow.Height *= (coef - 0.1);
+            }
 
 
             for (int i = 0; i < Globals.GlobalIndex; i++)
@@ -56,11 +64,18 @@ namespace Graph_Editor
                     }
                 }
                 topTextBox.Text += " ";
-                for (; currentMaxLength > 1; currentMaxLength--)
+                for (; currentMaxLength - i.ToString().Length > 0; currentMaxLength--)
                 {
                     topTextBox.Text += " ";
                     topTextBox.Text += " ";
                 }
+            }
+            if (topTextBox.Text.Length > 30)
+            {
+                topTextBox.Width *= coef;
+                fullWindow.Width *= (coef - 0.1);
+                mainTextBox.Width *= coef;
+                myWindow.Width *= (coef - 0.1);
             }
 
             for (int i = 0; i < Globals.GlobalIndex; i++)
