@@ -74,6 +74,7 @@
     <Compile Include="PropertiesWindow\EdgeProperty.xaml.cs">
       <DependentUpon>EdgeProperty.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SaveLoad\Export.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Themes.cs" />
     <Compile Include="PropertiesWindow\VertexProperty.xaml.cs">
