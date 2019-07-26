@@ -29,7 +29,7 @@ namespace Graph_Editor
     public partial class MainWindow : Window
     {
         private Brush baseButtonColor;
-        private static FigureHost graphHost = new FigureHost();
+        public static FigureHost graphHost = new FigureHost();
         public static MainWindow Instance { get; private set; }
 
         public void ThemeSettings()
@@ -80,14 +80,13 @@ namespace Graph_Editor
             exit.Background             = Themes.MainMenuItems;
             saveTxtGraph.Background     = Themes.MainMenuItems;
             matrix.Background           = Themes.MainMenuItems;
-            list.Background             = Themes.MainMenuItems;
 
             save.BorderBrush            = Themes.MainMenuItemsBorder;
             open.BorderBrush            = Themes.MainMenuItemsBorder;
             export.BorderBrush          = Themes.MainMenuItemsBorder;
             exit.BorderBrush            = Themes.MainMenuItemsBorder;
+            saveTxtGraph.BorderBrush    = Themes.MainMenuItemsBorder;
             matrix.BorderBrush          = Themes.MainMenuItemsBorder;
-            list.BorderBrush            = Themes.MainMenuItemsBorder;
 
             Exit_Dialog.Background      = Themes.MainExitDialog;
         }
@@ -101,7 +100,6 @@ namespace Graph_Editor
             ThemeSettings();
 
             AddVertex.Background = Themes.MainChooseToolButton;
-            list.Background = Brushes.Gray;
 
             GraphCanvas.Children.Add(graphHost);
 

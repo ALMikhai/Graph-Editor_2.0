@@ -87,6 +87,13 @@ namespace Graph_Editor
         public static Brush EPColorBar;
         public static Brush EPCloseButton;
 
+        public static Brush FloydMainWindow;
+        public static Brush FloydTextBlocks;
+
+        public static Brush SetGraphMainWindow;
+        public static Brush SetGraphButtons;
+        public static Brush SetGraphTextBox;
+
         // Ice Theme
         public static void IceTheme()
         {
@@ -164,6 +171,15 @@ namespace Graph_Editor
             ConnectUnactiveOrientation = Brushes.Transparent;
             ConnectActiveOrientation = (Brush)new BrushConverter().ConvertFrom("#789778");
             ConnectUnactiveOrientationHover = (Brush)new BrushConverter().ConvertFrom("#BCCBBC");
+
+            // Floyd Window
+            FloydMainWindow = (Brush)new BrushConverter().ConvertFrom("#98B0B0");
+            FloydTextBlocks = Brushes.Azure;
+
+            // SetGraph Window
+            SetGraphMainWindow = (Brush)new BrushConverter().ConvertFrom("#728484");
+            SetGraphButtons = (Brush)new BrushConverter().ConvertFrom("#789778");
+            SetGraphTextBox = (Brush)new BrushConverter().ConvertFrom("#98B0B0");
         }
 
         // Vulcan Theme
@@ -223,7 +239,7 @@ namespace Graph_Editor
             OprionsVEDemonstrationHolst = (Brush)new BrushConverter().ConvertFrom("#FACDB4");
 
              // Connect Window
-             ConnectMainWindow = (Brush)new BrushConverter().ConvertFrom("#834F5D");
+            ConnectMainWindow = (Brush)new BrushConverter().ConvertFrom("#834F5D");
             ConnectWindowForVertex = (Brush)new BrushConverter().ConvertFrom("#6A3643");
             ConnectSlider = Brushes.Transparent;
             ConnectSliderWindow = (Brush)new BrushConverter().ConvertFrom("#6A3643");
@@ -243,6 +259,15 @@ namespace Graph_Editor
             EPVertexName = (Brush)new BrushConverter().ConvertFrom("#F8A376");
             EPColorBar = (Brush)new BrushConverter().ConvertFrom("#FD926A");
             EPCloseButton = (Brush)new BrushConverter().ConvertFrom("#F8A376");
+
+            // Floyd Window
+            FloydMainWindow = (Brush)new BrushConverter().ConvertFrom("#834F5D");
+            FloydTextBlocks = (Brush)new BrushConverter().ConvertFrom("#F8A376");
+
+            // SetGraph Window
+            SetGraphMainWindow = (Brush)new BrushConverter().ConvertFrom("#834F5D");
+            SetGraphButtons = (Brush)new BrushConverter().ConvertFrom("#FD926A");
+            SetGraphTextBox = (Brush)new BrushConverter().ConvertFrom("#6A3643");
         }
     }
 }

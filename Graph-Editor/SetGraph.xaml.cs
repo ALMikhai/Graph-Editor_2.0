@@ -35,6 +35,14 @@ namespace Graph_Editor
 
             logo.Source = bitmap;
 
+            fullWindow.Background = Themes.SetGraphMainWindow;
+
+            Clear.Background = Themes.SetGraphButtons;
+            Cancel.Background = Themes.SetGraphButtons;
+            Save.Background = Themes.SetGraphButtons;
+
+            Parametrs.Background = Themes.SetGraphTextBox;
+
         }
 
         public SetGraph()
@@ -78,21 +86,21 @@ namespace Graph_Editor
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (Parametrs.Text == "")
             {
-                if(Parametrs.Text == "")
-                {
-                    return;
-                }
+                return;
+            }
 
-                StreamWriter writer = new StreamWriter(path, false, Encoding.Default);
+            StreamWriter writer = new StreamWriter(path, false, Encoding.Default);
 
-                writer.Write(Parametrs.Text);
+            writer.Write(Parametrs.Text);
 
-                writer.Close();
+            writer.Close();
 
-                StreamReader reader = new StreamReader(path, Encoding.Default);
-                
+            StreamReader reader = new StreamReader(path, Encoding.Default);
+
+            try
+            {    
                 string number = reader.ReadLine();
 
                 int numberVertices = Convert.ToInt32(number);
@@ -101,6 +109,8 @@ namespace Graph_Editor
                 {
                     return;
                 }
+
+                Globals.GlobalIndex = numberVertices;
 
                 MainWindow.Instance.ClearAll_Click(new object(), new RoutedEventArgs());
 
@@ -156,6 +166,10 @@ namespace Graph_Editor
             }
             catch
             {
+                Globals.VertexData.Clear();
+                Globals.EdgesData.Clear();
+                Globals.GlobalIndex = 0;
+                reader.Close();
                 System.Windows.MessageBox.Show("Invalid input graph format.");
             }
         }

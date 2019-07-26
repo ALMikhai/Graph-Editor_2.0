@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\obj\Debug\
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\obj\Debug\
 Graph_Editor
 none
 false
 DEBUG;TRACE
-C:\Users\90-STICK\Desktop\Project\Graph-Editor_2.0\Graph-Editor\App.xaml
-101599125823
+C:\Users\Владислав\Desktop\Graph-editor\Graph-Editor_2.0\Graph-Editor\App.xaml
+111392453959
 
-50-479262439
+52-249086525
 151984215308
-AlgoritmsWindow.xaml;MainWindow.xaml;ConnectVertices.xaml;OptionsWindow.xaml;PropertiesWindow\EdgeProperty.xaml;PropertiesWindow\VertexProperty.xaml;SetGraph.xaml;ShowData\CurrentMatrix.xaml;ShowData\CurrentList.xaml;Documentation.xaml;
+AlgoritmsWindow.xaml;FloydWindow.xaml;MainWindow.xaml;ConnectVertices.xaml;OptionsWindow.xaml;PropertiesWindow\EdgeProperty.xaml;PropertiesWindow\VertexProperty.xaml;SetGraph.xaml;ShowData\CurrentMatrix.xaml;ShowData\CurrentList.xaml;Documentation.xaml;
 
 False
 

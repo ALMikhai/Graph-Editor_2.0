@@ -82,9 +82,10 @@ namespace Graph_Editor.Algoritms
                     st.Push(i);
                 }
             }
-            /*
+            
             if (v1 != -1)
             {
+                bad = true;
                 List<int> res2 = new List<int>();
                 for (int i = 0; i < res.Count - 1; ++i)
                 {
@@ -100,7 +101,7 @@ namespace Graph_Editor.Algoritms
                     }
                 }
             }
-            */
+            
             for (int i = 0; i < Size; ++i)
                 for (int j = 0; j < Size; ++j)
                     if (matrix[i, j] != 0)
