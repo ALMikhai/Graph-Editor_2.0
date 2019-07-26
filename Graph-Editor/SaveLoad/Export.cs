@@ -23,6 +23,8 @@ namespace Graph_Editor.SaveLoad
     {
         public static void ExportPng(object s, RoutedEventArgs e)
         {
+            MainWindow.Instance.Visibility = Visibility.Hidden;
+
             Thickness margin = MainWindow.Instance.GraphCanvas.Margin;
 
             MainWindow.Instance.GraphCanvas.Margin = new Thickness(0, 0, 0, 0);
@@ -57,6 +59,8 @@ namespace Graph_Editor.SaveLoad
             }
 
             MainWindow.Instance.GraphCanvas.Margin = margin;
+
+            MainWindow.Instance.Visibility = Visibility.Visible;
         }
     }
 }

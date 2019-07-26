@@ -76,7 +76,6 @@ namespace Graph_Editor
         public static List<Brush> Colors = new List<Brush>
         {
             {(Brush)new BrushConverter().ConvertFrom("#80FFFF")},
-            {(Brush)new BrushConverter().ConvertFrom("#A0ECFF")},
             {(Brush)new BrushConverter().ConvertFrom("#FBCD6B")},
             {(Brush)new BrushConverter().ConvertFrom("#BE88DC")},
             {(Brush)new BrushConverter().ConvertFrom("#EA6461")},
