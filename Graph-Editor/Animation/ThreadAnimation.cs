@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,25 +23,11 @@ using Graph_Editor.Algoritms;
 
 namespace Graph_Editor
 {
-    public class AnimationEdge
+    public class ThreadAnimation
     {
-        private Edge animatedEdge;
-
-        public readonly Ellipse AnimationEllipse = new Ellipse
+        public void SetStoryboard(Storyboard storyboard, Edge animatedEdge, Ellipse ellipseAnimation)
         {
-            Width = Globals.VertRadius,
-            Height = Globals.VertRadius,
-            Fill = OptionsWindow.settings.AnimationEllipseColor
-        };
-
-        private Storyboard storyboard = new Storyboard
-        {
-            RepeatBehavior = new RepeatBehavior(1)
-        };
-
-        public void RefreshStoryboard(Ellipse ellipseAnimation = null)
-        {
-            MainWindow.Instance.GraphCanvas.Children.Add((ellipseAnimation == null) ? AnimationEllipse : ellipseAnimation);
+            MainWindow.Instance.GraphCanvas.Children.Add(ellipseAnimation);
 
             var pathGeom = new PathGeometry();
             var vertPF = new PathFigure();
@@ -63,7 +49,7 @@ namespace Graph_Editor
                 Duration = TimeSpan.FromSeconds(OptionsWindow.settings.AnimationTime * animatedEdge.Weight)
             };
 
-            Storyboard.SetTarget(moveCircleAnimation, (ellipseAnimation == null) ? AnimationEllipse : ellipseAnimation);
+            Storyboard.SetTarget(moveCircleAnimation, ellipseAnimation);
             Storyboard.SetTargetProperty(moveCircleAnimation, new PropertyPath("(Canvas.Left)"));
 
             var moveCircleAnimation2 = new DoubleAnimationUsingPath
@@ -73,7 +59,7 @@ namespace Graph_Editor
                 Duration = TimeSpan.FromSeconds(OptionsWindow.settings.AnimationTime * animatedEdge.Weight)
             };
 
-            Storyboard.SetTarget(moveCircleAnimation2, (ellipseAnimation == null) ? AnimationEllipse : ellipseAnimation);
+            Storyboard.SetTarget(moveCircleAnimation2, ellipseAnimation);
             Storyboard.SetTargetProperty(moveCircleAnimation2, new PropertyPath("(Canvas.Top)"));
 
             storyboard.Children.Add(moveCircleAnimation);
@@ -87,47 +73,66 @@ namespace Graph_Editor
 
         }
 
-        public void NextAnimation(Edge edge, List<Edge> edgesUsed, List<Edge> path = null)
+        public bool[] CheckVertex
         {
-            
-            animatedEdge = edge;
-            RefreshStoryboard();
-            StartAnimation();
-            
-            EventHandler callback = null;
-
-            callback = (o, args) => {
-
-                MainWindow.Instance.InvalidateAlgo(edge);
-                if (edgesUsed.Count > 0)
-                    edgesUsed.Remove(edgesUsed[0]);
-
-                storyboard.Completed -= callback;
-
-                MainWindow.Instance.GraphCanvas.Children.Remove(AnimationEllipse);
-
-                if (edgesUsed.Count > 0 )
-                {
-                    storyboard.Children.Clear();
-                    NextAnimation(edgesUsed[0], edgesUsed, path);
-                }
-
-                else if (path != null)
-                {
-                    storyboard.Children.Clear();
-                    MainWindow.Instance.Invalidate();
-                    NextAnimation(path[0], path);
-                }
-                
-            };
-
-            storyboard.Completed += callback;
+            get;
+            set;
         }
-        
 
-        public void StartAnimation()
+        public void AnimationBypass(int startIndex)
         {
-            storyboard.Begin();
+            List<Edge> ways = new List<Edge>();
+
+            foreach(var edge in EdgesData)
+            {
+                if (edge.From.Index == startIndex)
+                {
+                    if (CheckVertex[edge.To.Index] != true)
+                    {
+                        ways.Add(edge);
+                    }
+                }
+            }
+
+            foreach(var edge in ways)
+            {
+                Ellipse ellipse = new Ellipse
+                {
+                    Width = Globals.VertRadius,
+                    Height = Globals.VertRadius,
+                    Fill = OptionsWindow.settings.AnimationEllipseColor
+                };
+
+                Storyboard newStoryboard = new Storyboard();
+
+                SetStoryboard(newStoryboard, edge, ellipse);
+
+                EventHandler callback = null;
+
+                callback = (o, args) => {
+
+                    CheckVertex[edge.To.Index] = true;
+
+                    MainWindow.Instance.InvalidateAlgo(edge);
+
+                    newStoryboard.Completed -= callback;
+
+                    MainWindow.Instance.GraphCanvas.Children.Remove(ellipse);
+
+                    AnimationBypass(edge.To.Index);
+                };
+
+                newStoryboard.Completed += callback;
+
+                newStoryboard.RepeatBehavior = new RepeatBehavior(1);
+
+                StartAnimation(newStoryboard);
+            }
+        }
+
+        public void StartAnimation(Storyboard newStoryboard)
+        {
+            newStoryboard.Begin();
         }
     }
 }

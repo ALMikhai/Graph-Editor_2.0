@@ -26,6 +26,12 @@ using Graph_Editor.UndoRedo;
 namespace Graph_Editor
 {
 
+    /// <summary>
+    ///  TODO Доделать историю для resize.
+    ///  TODO Отслеживать историю (если 100 записей, 50 первых сбросить).
+    ///  TODO Раскидать всё по папкам.
+    /// </summary>
+
     public partial class MainWindow : Window
     {
         private Brush baseButtonColor;
