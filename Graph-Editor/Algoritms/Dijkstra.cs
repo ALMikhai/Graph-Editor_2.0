@@ -131,6 +131,7 @@ namespace Graph_Editor.Algoritms
             }
             return false;
         }
+
         public override void Start(int s, int e)
         {
             MainWindow.Instance.Invalidate();

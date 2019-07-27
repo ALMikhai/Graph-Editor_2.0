@@ -21,24 +21,32 @@ namespace Graph_Editor
                     Title = "Выберете папку для сохранения",
                     OverwritePrompt = true,
                     CheckPathExists = true,
-                    Filter = "Files(*.bin)|*.bin1"
+                    Filter = "Files(*.bin)|*.bin"
                 };
 
                 fileDialog.ShowDialog();
 
                 if (fileDialog.FileName != "")
-                { 
+                {
                     FileStream fileVertex = (FileStream)fileDialog.OpenFile();
 
-                    fileDialog.FileName = fileDialog.FileName + '2';
-                    FileStream fileEdge = (FileStream)fileDialog.OpenFile();
+                    try
+                    {
+                        BinaryFormatter bin = new BinaryFormatter();
 
-                    BinaryFormatter bin = new BinaryFormatter();
-                    bin.Serialize(fileVertex, Globals.VertexData);
-                    bin.Serialize(fileEdge, Globals.EdgesData);
+                        List<object> toSave = new List<object>();
 
-                    fileVertex.Close();
-                    fileEdge.Close();
+                        toSave.Add(Globals.VertexData);
+                        toSave.Add(Globals.EdgesData);
+
+                        bin.Serialize(fileVertex, toSave);
+
+                        fileVertex.Close();
+                    }
+                    catch
+                    {
+                        fileVertex.Close();
+                    }
                 }
             }
         }

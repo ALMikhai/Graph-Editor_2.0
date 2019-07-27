@@ -64,7 +64,7 @@ namespace Graph_Editor
         };
         public static Dictionary<int, Algoritm> AlgoList = new Dictionary<int, Algoritm>
         {
-            {0, new Bfs()},
+            {0, new FullBypass()},
             {1, new Dfs()},
             {2, new Dijkstra()},
             {5, new Euler()},
@@ -162,6 +162,11 @@ namespace Graph_Editor
                                                   //&& match.Coordinates == vertex.Coordinates
                                                   // TODO Обдумать(не безопасно).
                                                   && match.Color == vertex.Color));
+        }
+
+        public static Vertex FindVertex(int index)
+        {
+            return VertexData.Find(match => (match.Index == index));
         }
 
         public static Edge FindEdge(Edge edge)
