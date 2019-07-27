@@ -41,6 +41,16 @@ namespace Graph_Editor.Objects
             get { return to; }
         }
 
+        public int FromIndex
+        {
+            get;
+        }
+
+        public int ToIndex
+        {
+            get;
+        }
+
         public int Weight
         {
             get { return weight; }
@@ -69,6 +79,8 @@ namespace Graph_Editor.Objects
         {
             From = from;
             To = to;
+            FromIndex = from.Index;
+            ToIndex = to.Index;
             Weight = weight;
             Directed = directed;
             Color = color;
@@ -79,6 +91,8 @@ namespace Graph_Editor.Objects
         {
             From = new Vertex(edge.From);
             To = new Vertex(edge.To);
+            FromIndex = edge.FromIndex;
+            ToIndex = edge.ToIndex;
             Weight = edge.Weight;
             Directed = edge.Directed;
             Color = edge.Color;
@@ -87,9 +101,8 @@ namespace Graph_Editor.Objects
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("index", Globals.GlobalIndex);
-            info.AddValue("from", from.Index);
-            info.AddValue("to", to.Index);
+            info.AddValue("from", FromIndex);
+            info.AddValue("to", ToIndex);
             info.AddValue("weight", weight);
             info.AddValue("directed", directed);
             info.AddValue("color", color.ToString());
@@ -98,30 +111,8 @@ namespace Graph_Editor.Objects
 
         public Edge(SerializationInfo info, StreamingContext context)
         {
-            Globals.GlobalIndex = (int)info.GetValue("index", typeof(int));
-
-            int index = (int)info.GetValue("from", typeof(int));
-            
-            foreach(var vertex in Globals.VertexData)
-            {
-                if(vertex.Index == index)
-                {
-                    from = vertex;
-                    break;
-                }
-            }
-
-            index = (int)info.GetValue("to", typeof(int));
-
-            foreach (var vertex in Globals.VertexData)
-            {
-                if (vertex.Index == index)
-                {
-                    to = vertex;
-                    break;
-                }
-            }
-
+            FromIndex = (int)info.GetValue("from", typeof(int));
+            ToIndex = (int)info.GetValue("to", typeof(int));
             weight = (int)info.GetValue("weight", typeof(int));
             directed = (bool)info.GetValue("directed", typeof(bool));
             color = (Brush)(new BrushConverter().ConvertFromString((string)info.GetValue("color", typeof(string))));
