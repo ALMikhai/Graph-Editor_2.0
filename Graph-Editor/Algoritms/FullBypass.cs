@@ -13,20 +13,9 @@ namespace Graph_Editor.Algoritms
         {
             MainWindow.Instance.Invalidate();
 
-            bool[] checkVertex = new bool[Globals.VertexData.Count];
-
-            for(var i = 0; i < Globals.VertexData.Count; ++i)
-            {
-                checkVertex[i] = false;
-            }
-
-            checkVertex[v] = true;
-
             ThreadAnimation animation = new ThreadAnimation();
 
-            animation.CheckVertex = checkVertex;
-
-            animation.AnimationBypass(v);
+            animation.SetAndStartDijkstra(v);
         }
     }
 }

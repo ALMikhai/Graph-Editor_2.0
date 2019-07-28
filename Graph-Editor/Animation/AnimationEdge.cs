@@ -39,6 +39,34 @@ namespace Graph_Editor
             RepeatBehavior = new RepeatBehavior(1)
         };
 
+        public void NextAnimation(Edge edge, List<Edge> edgesUsed)
+        {
+            animatedEdge = edge;
+            RefreshStoryboard();
+            StartAnimation();
+            
+            EventHandler callback = null;
+
+            callback = (o, args) => {
+
+                MainWindow.Instance.InvalidateAlgo(edge);
+                if (edgesUsed.Count > 0)
+                    edgesUsed.Remove(edgesUsed[0]);
+
+                storyboard.Completed -= callback;
+
+                MainWindow.Instance.GraphCanvas.Children.Remove(AnimationEllipse);
+
+                if (edgesUsed.Count > 0 )
+                {
+                    storyboard.Children.Clear();
+                    NextAnimation(edgesUsed[0], edgesUsed);
+                }
+            };
+
+            storyboard.Completed += callback;
+        }
+
         public void RefreshStoryboard()
         {
             MainWindow.Instance.GraphCanvas.Children.Add(AnimationEllipse);
@@ -85,43 +113,6 @@ namespace Graph_Editor
         public void Storyboard_Completed(object sender, EventArgs e)
         {
 
-        }
-
-        public void NextAnimation(Edge edge, List<Edge> edgesUsed, List<Edge> path = null)
-        {
-            
-            animatedEdge = edge;
-            RefreshStoryboard();
-            StartAnimation();
-            
-            EventHandler callback = null;
-
-            callback = (o, args) => {
-
-                MainWindow.Instance.InvalidateAlgo(edge);
-                if (edgesUsed.Count > 0)
-                    edgesUsed.Remove(edgesUsed[0]);
-
-                storyboard.Completed -= callback;
-
-                MainWindow.Instance.GraphCanvas.Children.Remove(AnimationEllipse);
-
-                if (edgesUsed.Count > 0 )
-                {
-                    storyboard.Children.Clear();
-                    NextAnimation(edgesUsed[0], edgesUsed, path);
-                }
-
-                else if (path != null)
-                {
-                    storyboard.Children.Clear();
-                    MainWindow.Instance.Invalidate();
-                    NextAnimation(path[0], path);
-                }
-                
-            };
-
-            storyboard.Completed += callback;
         }
 
         public void StartAnimation()

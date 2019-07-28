@@ -135,6 +135,7 @@ namespace Graph_Editor.Algoritms
         public override void Start(int s, int e)
         {
             MainWindow.Instance.Invalidate();
+
             visited = new bool[Size];
             if (!CheckIn(s) || !CheckIn(e) || !IsWay(s, e))
             {
@@ -149,10 +150,9 @@ namespace Graph_Editor.Algoritms
                     if (Matrix[i, j] != 0)
                         DegforDij[i]++;
 
-            
-            
-           //AnimationEdge a = new AnimationEdge();
-           gAnim.NextAnimation(edgesUsed[0], edgesUsed, path);
+            ThreadAnimation dijkstraAnimation = new ThreadAnimation();
+
+            dijkstraAnimation.SetAndStartDijkstra(s, path);
         }
 
         static void dijkstra(int start, int end)
@@ -217,7 +217,6 @@ namespace Graph_Editor.Algoritms
             }
 
             path.Reverse();
-            
         }
     }
 }
