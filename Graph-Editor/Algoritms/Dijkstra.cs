@@ -144,11 +144,6 @@ namespace Graph_Editor.Algoritms
             }
             visited = new bool[Size];
             dijkstra(s, e);
-            DegforDij = new int[Size];
-            for (int i = 0; i < Size; i++)
-                for(int j = 0; j < Size; j++)
-                    if (Matrix[i, j] != 0)
-                        DegforDij[i]++;
 
             ThreadAnimation dijkstraAnimation = new ThreadAnimation();
 
