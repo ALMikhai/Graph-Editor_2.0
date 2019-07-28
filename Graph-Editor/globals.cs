@@ -64,7 +64,7 @@ namespace Graph_Editor
         };
         public static Dictionary<int, Algoritm> AlgoList = new Dictionary<int, Algoritm>
         {
-            {0, new FullBypass()},
+            {0, new Bfs()},
             {1, new Dfs()},
             {2, new Dijkstra()},
             {5, new Euler()},

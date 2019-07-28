@@ -25,7 +25,90 @@ namespace Graph_Editor
 {
     public class ThreadAnimation
     {
-        public void SetStoryboard(Storyboard storyboard, Edge animatedEdge, Ellipse ellipseAnimation)
+        private bool[] CheckVertex
+        {
+            get;
+            set;
+        }
+
+        List<Storyboard> storyboards = new List<Storyboard>();
+
+        public void SetAndStartDijkstra(int startIndex, List<Edge> finalPath = null)
+        {
+            bool[] checkVertex = new bool[Globals.VertexData.Count];
+
+            checkVertex[startIndex] = true;
+
+            CheckVertex = checkVertex;
+
+            DijkstraAnimation(startIndex, finalPath);
+        }
+
+        private void DijkstraAnimation(int startIndex, List<Edge> finalPath = null)
+        {
+            List<Edge> ways = new List<Edge>();
+
+            foreach(var edge in EdgesData)
+            {
+                if (edge.From.Index == startIndex)
+                {
+                    if (CheckVertex[edge.To.Index] != true)
+                    {
+                        ways.Add(edge);
+                    }
+                }
+            }
+
+            foreach(var edge in ways)
+            {
+                Ellipse ellipse = new Ellipse
+                {
+                    Width = Globals.VertRadius,
+                    Height = Globals.VertRadius,
+                    Fill = OptionsWindow.settings.AnimationEllipseColor
+                };
+
+                Storyboard newStoryboard = new Storyboard();
+
+                SetStoryboard(newStoryboard, edge, ellipse);
+
+                EventHandler callback = null;
+
+                callback = (o, args) => {
+
+                    storyboards.Remove(newStoryboard);
+
+                    CheckVertex[edge.To.Index] = true;
+
+                    MainWindow.Instance.InvalidateAlgo(edge);
+
+                    newStoryboard.Completed -= callback;
+
+                    MainWindow.Instance.GraphCanvas.Children.Remove(ellipse);
+
+                    DijkstraAnimation(edge.To.Index, finalPath);
+                };
+
+                newStoryboard.Completed += callback;
+
+                newStoryboard.RepeatBehavior = new RepeatBehavior(1);
+
+                storyboards.Add(newStoryboard);
+
+                StartAnimation(newStoryboard);
+            }
+
+            if (storyboards.Count == 0 && finalPath != null)
+            {
+                MainWindow.Instance.Invalidate();
+
+                AnimationEdge animation = new AnimationEdge();
+                animation.NextAnimation(finalPath[0], finalPath);
+                return;
+            }
+        }
+
+        private void SetStoryboard(Storyboard storyboard, Edge animatedEdge, Ellipse ellipseAnimation)
         {
             MainWindow.Instance.GraphCanvas.Children.Add(ellipseAnimation);
 
@@ -68,69 +151,12 @@ namespace Graph_Editor
             storyboard.Completed += Storyboard_Completed;
         }
 
-        public void Storyboard_Completed(object sender, EventArgs e)
+        private void Storyboard_Completed(object sender, EventArgs e)
         {
 
         }
 
-        public bool[] CheckVertex
-        {
-            get;
-            set;
-        }
-
-        public void AnimationBypass(int startIndex)
-        {
-            List<Edge> ways = new List<Edge>();
-
-            foreach(var edge in EdgesData)
-            {
-                if (edge.From.Index == startIndex)
-                {
-                    if (CheckVertex[edge.To.Index] != true)
-                    {
-                        ways.Add(edge);
-                    }
-                }
-            }
-
-            foreach(var edge in ways)
-            {
-                Ellipse ellipse = new Ellipse
-                {
-                    Width = Globals.VertRadius,
-                    Height = Globals.VertRadius,
-                    Fill = OptionsWindow.settings.AnimationEllipseColor
-                };
-
-                Storyboard newStoryboard = new Storyboard();
-
-                SetStoryboard(newStoryboard, edge, ellipse);
-
-                EventHandler callback = null;
-
-                callback = (o, args) => {
-
-                    CheckVertex[edge.To.Index] = true;
-
-                    MainWindow.Instance.InvalidateAlgo(edge);
-
-                    newStoryboard.Completed -= callback;
-
-                    MainWindow.Instance.GraphCanvas.Children.Remove(ellipse);
-
-                    AnimationBypass(edge.To.Index);
-                };
-
-                newStoryboard.Completed += callback;
-
-                newStoryboard.RepeatBehavior = new RepeatBehavior(1);
-
-                StartAnimation(newStoryboard);
-            }
-        }
-
-        public void StartAnimation(Storyboard newStoryboard)
+        private void StartAnimation(Storyboard newStoryboard)
         {
             newStoryboard.Begin();
         }
