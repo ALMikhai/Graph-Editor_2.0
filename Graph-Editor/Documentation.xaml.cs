@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace Graph_Editor
 {
-    /// <summary>
-    /// Логика взаимодействия для Window1.xaml
-    /// </summary>
     public partial class Documentation : Window
     {
 

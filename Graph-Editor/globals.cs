@@ -25,7 +25,6 @@ namespace Graph_Editor
     [Serializable]
     public static class Globals
     {
-        public static int[] DegforDij = new int[Size];
 
 
         public static string ChosenTool = "AddVertex";
@@ -76,7 +75,6 @@ namespace Graph_Editor
         public static List<Brush> Colors = new List<Brush>
         {
             {(Brush)new BrushConverter().ConvertFrom("#80FFFF")},
-            {(Brush)new BrushConverter().ConvertFrom("#A0ECFF")},
             {(Brush)new BrushConverter().ConvertFrom("#FBCD6B")},
             {(Brush)new BrushConverter().ConvertFrom("#BE88DC")},
             {(Brush)new BrushConverter().ConvertFrom("#EA6461")},
@@ -163,6 +161,11 @@ namespace Graph_Editor
                                                   //&& match.Coordinates == vertex.Coordinates
                                                   // TODO Обдумать(не безопасно).
                                                   && match.Color == vertex.Color));
+        }
+
+        public static Vertex FindVertex(int index)
+        {
+            return VertexData.Find(match => (match.Index == index));
         }
 
         public static Edge FindEdge(Edge edge)

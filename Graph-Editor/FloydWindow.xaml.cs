@@ -20,52 +20,81 @@ namespace Graph_Editor
     public partial class FloydWindow : Window
     {
         public static int[,] matrix;
-        private int[] maxLength = new int[Globals.GlobalIndex];
+        private readonly double coef = 2;
+
+        private void ThemeSetting()
+        {
+            myWindow.Icon               = new BitmapImage(new Uri(Themes.logoPath, UriKind.Relative));
+
+            fullWindow.Background       = Themes.FloydMainWindow;
+            mainTextBox.Background      = Themes.FloydTextBlocks;
+            topTextBox.Background       = Themes.FloydTextBlocks;
+            sideTextBox.Background      = Themes.FloydTextBlocks;
+
+        }
         public FloydWindow()
         {
             InitializeComponent();
+
+            ThemeSetting();
 
             for (int i = 0; i < Globals.GlobalIndex; i++)
             {
                 sideTextBox.Text += i.ToString() + "\n";
             }
-            
-            for (int i = 0; i < Globals.GlobalIndex; i++)
+            if (sideTextBox.Text.Length > 20)
             {
-                for (int j = 0; j < Globals.GlobalIndex; j++)
-                {
-                    maxLength[i] = 1;
-                    if (maxLength[i] < matrix[i, j].ToString().Length)
-                    {
-
-                    }
-                }
+                sideTextBox.Height *= coef;
+                fullWindow.Height *= (coef - 0.1);
+                mainTextBox.Height *= coef;
+                myWindow.Height *= (coef - 0.1);
             }
 
 
             for (int i = 0; i < Globals.GlobalIndex; i++)
             {
                 topTextBox.Text += i.ToString();
-                /*while (maxLength != 0)
+                int currentMaxLength = 0;
+                for (int j = 0; j < Globals.GlobalIndex; j++)
+                {
+                    for (int k = 0; k < Globals.GlobalIndex; k++)
+                    {
+                        if (currentMaxLength < matrix[j, k].ToString().Length)
+                            currentMaxLength = matrix[j, k].ToString().Length;
+                    }
+                }
+                topTextBox.Text += " ";
+                for (; currentMaxLength - i.ToString().Length > 0; currentMaxLength--)
                 {
                     topTextBox.Text += " ";
-                    maxLength--;
-                }*/
+                    topTextBox.Text += " ";
+                }
+            }
+            if (topTextBox.Text.Length > 30)
+            {
+                topTextBox.Width *= coef;
+                fullWindow.Width *= (coef - 0.1);
+                mainTextBox.Width *= coef;
+                myWindow.Width *= (coef - 0.1);
             }
 
             for (int i = 0; i < Globals.GlobalIndex; i++)
             {
-                int currentLength = 1;
-                for (int j = 0; j < Globals.GlobalIndex; j++)
-                {
-                    if (currentLength < (int)Math.Log10(matrix[i, j]) + 1)
-                    {
-                        currentLength = (int)Math.Log10(matrix[i, j]) + 1;
-                    }
-                }
                 for (int j = 0; j < Globals.GlobalIndex; j++)
                 {
                     mainTextBox.Text += matrix[i, j].ToString();
+                    int currentMaxLength = 0;
+                    for (int k = 0; k < Globals.GlobalIndex; k++)
+                    {
+                        if (currentMaxLength < matrix[j, k].ToString().Length)
+                            currentMaxLength = matrix[j, k].ToString().Length;
+                    }
+                    mainTextBox.Text += " ";
+                    for (;currentMaxLength - (matrix[i, j].ToString().Length) != 0; currentMaxLength--)
+                    {
+                        mainTextBox.Text += " ";
+                        mainTextBox.Text += " ";
+                    }
                 }
                 mainTextBox.Text += "\n";
             }

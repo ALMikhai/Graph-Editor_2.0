@@ -18,8 +18,8 @@ namespace Graph_Editor
         {
             OpenFileDialog fileDialog = new OpenFileDialog
             {
-                Filter = "Files(*.bin1)|*.bin1",
-                Title = "Открыть файл .bin1"
+                Filter = "Files(*.bin)|*.bin",
+                Title = "Открыть файл .bin"
             };
 
             fileDialog.ShowDialog();
@@ -31,20 +31,35 @@ namespace Graph_Editor
                     MainWindow.Instance.ClearAll_Click(new object(), new System.Windows.RoutedEventArgs());
 
                     Stream file = (FileStream)fileDialog.OpenFile();
+
                     BinaryFormatter deserializer = new BinaryFormatter();
 
-                    Globals.VertexData = (List<Vertex>)deserializer.Deserialize(file);
-                    file.Close();
+                    List<object> toLoad = new List<object>();
 
-                    fileDialog.FileName = fileDialog.FileName + '2';
+                    toLoad = (List<object>)deserializer.Deserialize(file);
 
-                    file = (FileStream)fileDialog.OpenFile();
-                    Globals.EdgesData = (List<Edge>)deserializer.Deserialize(file);
+                    List<Vertex> toLoadVertexData = (List<Vertex>)toLoad[0];
+                    List<Edge> toLoadEdgesData = (List<Edge>)toLoad[1];
+
+                    foreach(var vertex in toLoadVertexData)
+                    {
+                        Globals.VertexData.Add(new Vertex(vertex));
+                        Globals.GlobalIndex++;
+                    }
+
+                    foreach(var edge in toLoadEdgesData)
+                    {
+                        Globals.EdgesData.Add(new Edge(Globals.FindVertex(edge.FromIndex), Globals.FindVertex(edge.ToIndex), edge.Weight, edge.Directed, edge.Color, edge.Thickness));
+                    }
+
+                    Globals.RestoreMatrix();
+
                     file.Close();
 
                     MainWindow.Instance.Invalidate();
 
                     List<Vertex> vertices = new List<Vertex>();
+
                     foreach (var vertex in Globals.VertexData)
                     {
                         vertices.Add(new Vertex(vertex));
@@ -57,7 +72,6 @@ namespace Graph_Editor
                     }
 
                     History.Add(edges, vertices);
-                    Globals.RestoreMatrix();
                 }
                 catch
                 {
