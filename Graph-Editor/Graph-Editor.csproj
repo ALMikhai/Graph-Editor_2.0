@@ -64,12 +64,14 @@
     <Compile Include="Algoritms\Dijkstra.cs" />
     <Compile Include="Algoritms\Euler.cs" />
     <Compile Include="Algoritms\Floyd.cs" />
+    <Compile Include="Algoritms\FullBypass.cs" />
     <Compile Include="Algoritms\Hamilton.cs" />
     <Compile Include="Algoritms\Kruskal.cs" />
     <Compile Include="AlgoritmsWindow.xaml.cs">
       <DependentUpon>AlgoritmsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Animation\AnimationEdge.cs" />
+    <Compile Include="Animation\ThreadAnimation.cs" />
     <Compile Include="ButtonGeneration.cs" />
     <Compile Include="FloydWindow.xaml.cs">
       <DependentUpon>FloydWindow.xaml</DependentUpon>
@@ -222,12 +224,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\deleteEdgeIcon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Themes\LightTheme.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Themes\tmp.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Icelogo.png" />

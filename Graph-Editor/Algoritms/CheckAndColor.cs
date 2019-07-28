@@ -23,6 +23,7 @@ namespace Graph_Editor.Algoritms
                 if(!visited[i])
                 {
                     j++;
+                    j = j % Colors.Count;
                     foreach (Vertex vertex in VertexData)
                     {
                         if (vertex.Index == i)

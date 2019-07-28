@@ -131,9 +131,11 @@ namespace Graph_Editor.Algoritms
             }
             return false;
         }
+
         public override void Start(int s, int e)
         {
             MainWindow.Instance.Invalidate();
+
             visited = new bool[Size];
             if (!CheckIn(s) || !CheckIn(e) || !IsWay(s, e))
             {
@@ -142,18 +144,10 @@ namespace Graph_Editor.Algoritms
             }
             visited = new bool[Size];
             dijkstra(s, e);
-            DegforDij = new int[Size];
-            for (int i = 0; i < Size; i++)
-                for(int j = 0; j < Size; j++)
-                    if (Matrix[i, j] != 0)
-                        DegforDij[i]++;
 
-            
-            for (int i = 0; i < DegforDij[s]; i++)
-            {
-                AnimationEdge a = new AnimationEdge();
-                a.NextAnimation(edgesUsed[i], edgesUsed, path);
-            }
+            ThreadAnimation dijkstraAnimation = new ThreadAnimation();
+
+            dijkstraAnimation.SetAndStartDijkstra(s, path);
         }
 
         static void dijkstra(int start, int end)
@@ -171,9 +165,9 @@ namespace Graph_Editor.Algoritms
             while(q.Count != 0)
             {
                 int v = q.Peek(), w = q.Weight(); q.RemoveMin();
-                if (w > destinations[v] || visited[v]) continue;
+                if (w > destinations[v] /*|| visited[v]*/) continue;
 
-                for (int i = 0; i < Size; i++)
+                for (int i = 0; i < VertexData.Count; i++)
                 {
                     if(Matrix[v,i] != 0)
                     {
@@ -218,7 +212,6 @@ namespace Graph_Editor.Algoritms
             }
 
             path.Reverse();
-            
         }
     }
 }
