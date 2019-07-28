@@ -120,6 +120,7 @@ namespace Graph_Editor
                 {
                     Point place = new Point(random.Next(0 + Globals.VertRadius, (int)MainWindow.Instance.GraphCanvas.ActualWidth - Globals.VertRadius), random.Next(0 + Globals.VertRadius, (int)MainWindow.Instance.GraphCanvas.ActualHeight - Globals.VertRadius));
                     Globals.VertexData.Add(new Vertex(i, place));
+                    Globals.GlobalIndex++;
                 }
 
                 number = reader.ReadLine();
@@ -137,7 +138,7 @@ namespace Graph_Editor
 
                 reader.Close();
 
-                Globals.RestoreMatrix();
+
 
                 foreach(var edge in Globals.EdgesData)
                 {
@@ -162,6 +163,8 @@ namespace Graph_Editor
                     edges.Add(new Edge(edge));
                 }
 
+            
+                Globals.RestoreMatrix();
                 History.Add(edges, vertices);
             }
             catch

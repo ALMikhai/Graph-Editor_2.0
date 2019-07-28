@@ -56,15 +56,22 @@ namespace Graph_Editor
                 storyboard.Completed -= callback;
 
                 MainWindow.Instance.GraphCanvas.Children.Remove(AnimationEllipse);
+                Globals.AnimationsNow.Remove(storyboard);
 
                 if (edgesUsed.Count > 0 )
                 {
                     storyboard.Children.Clear();
                     NextAnimation(edgesUsed[0], edgesUsed);
                 }
+                else
+                {
+                    Globals.RemoveControlButtons();
+                }
             };
 
             storyboard.Completed += callback;
+
+            Globals.AnimationsNow.Add(storyboard);
         }
 
         public void RefreshStoryboard()

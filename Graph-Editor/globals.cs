@@ -27,7 +27,6 @@ namespace Graph_Editor
     {
         public static int[] DegforDij = new int[Size];
 
-
         public static string ChosenTool = "AddVertex";
 
         public static int GlobalIndex = 0;
@@ -43,7 +42,9 @@ namespace Graph_Editor
         public static double ThicknessEdge = 1;
 
         public static AnimationEdge gAnim = new AnimationEdge();
-        
+
+        public static List<Storyboard> AnimationsNow = new List<Storyboard>();
+
         public static Ellipse AnimationEllipse = new Ellipse
         {
             Width = VertRadius,
@@ -62,6 +63,7 @@ namespace Graph_Editor
             {6, new EditEdge()},
             {7, new MoveAllVertex()}
         };
+
         public static Dictionary<int, Algoritm> AlgoList = new Dictionary<int, Algoritm>
         {
             {0, new Bfs()},
@@ -101,7 +103,7 @@ namespace Graph_Editor
                 {
                     return true;
                 }
-            }
+            } 
             return false;
         }
 
@@ -177,6 +179,14 @@ namespace Graph_Editor
         public static Edge FindReversEdge(Edge edge)
         {
             return EdgesData.Find(match => (match.From == FindVertex(edge.To) && match.To == FindVertex(edge.From)));
+        }
+
+        public static void RemoveControlButtons()
+        {
+            Menu menu = Graph_Editor.MainWindow.Instance.MainMenu;
+
+            menu.Items.Remove(menu.Items[menu.Items.Count - 1]);
+            menu.Items.Remove(menu.Items[menu.Items.Count - 1]);
         }
     }
 }

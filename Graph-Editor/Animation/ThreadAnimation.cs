@@ -31,8 +31,6 @@ namespace Graph_Editor
             set;
         }
 
-        List<Storyboard> storyboards = new List<Storyboard>();
-
         public void SetAndStartDijkstra(int startIndex, List<Edge> finalPath = null)
         {
             bool[] checkVertex = new bool[Globals.VertexData.Count];
@@ -76,7 +74,7 @@ namespace Graph_Editor
 
                 callback = (o, args) => {
 
-                    storyboards.Remove(newStoryboard);
+                    Globals.AnimationsNow.Remove(newStoryboard);
 
                     CheckVertex[edge.To.Index] = true;
 
@@ -93,12 +91,12 @@ namespace Graph_Editor
 
                 newStoryboard.RepeatBehavior = new RepeatBehavior(1);
 
-                storyboards.Add(newStoryboard);
+                Globals.AnimationsNow.Add(newStoryboard);
 
                 StartAnimation(newStoryboard);
             }
 
-            if (storyboards.Count == 0 && finalPath != null)
+            if (Globals.AnimationsNow.Count == 0 && finalPath != null)
             {
                 MainWindow.Instance.Invalidate();
 

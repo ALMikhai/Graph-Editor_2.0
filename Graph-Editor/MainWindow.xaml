@@ -162,7 +162,7 @@
         />
         <Image x:Name="logo" Height="62" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="64" Margin="10,0,0,10" Grid.Row="1"/>
         <Menu x:Name="MainMenu" Height="30" VerticalAlignment="Top" Background="Black" Foreground="White">
-            <MenuItem Header="File" FontSize="18" FontFamily="Agency FB" Foreground="White">
+            <MenuItem x:Name="File" Header="File" FontSize="18" FontFamily="Agency FB" Foreground="White">
                 <MenuItem x:Name="save"     Header="Save as"        FontSize="18" FontFamily="Agency FB" Background="Black" Foreground="White" Click="Save_Click"></MenuItem>
                 <MenuItem x:Name="open"     Header="Open with"      FontSize="18" FontFamily="Agency FB" Background="Black" Foreground="White" Click="Load_Click"></MenuItem>
                 <MenuItem x:Name="export"   Header="Export to PNG"  FontSize="18" FontFamily="Agency FB" Background="Black" Foreground="White" Click="Export_Click"></MenuItem>
