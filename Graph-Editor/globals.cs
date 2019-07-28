@@ -164,6 +164,11 @@ namespace Graph_Editor
                                                   && match.Color == vertex.Color));
         }
 
+        public static Vertex FindVertex(int index)
+        {
+            return VertexData.Find(match => (match.Index == index));
+        }
+
         public static Edge FindEdge(Edge edge)
         {
             return EdgesData.Find(match => (match.From == FindVertex(edge.From) && match.To == FindVertex(edge.To)));
