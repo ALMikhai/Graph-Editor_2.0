@@ -35,6 +35,8 @@ namespace Graph_Editor
     public partial class MainWindow : Window
     {
         private Brush baseButtonColor;
+        private string setNowTool = "AddVertex";
+
         public static FigureHost graphHost = new FigureHost();
         public static MainWindow Instance { get; private set; }
 
@@ -105,7 +107,7 @@ namespace Graph_Editor
 
             ThemeSettings();
 
-            AddVertex.Background = Themes.MainChooseToolButton;
+            ((Button)this.FindName(setNowTool)).Background = Themes.MainChooseToolButton;
 
             GraphCanvas.Children.Add(graphHost);
 
@@ -267,7 +269,10 @@ namespace Graph_Editor
         {
             Globals.ToolNow.Change_Tool();
 
-            Globals.ChosenTool = (sender as Button).Name;
+            ((Button)this.FindName(setNowTool)).Background = baseButtonColor;
+
+            setNowTool = (sender as Button).Name;
+            Globals.ChosenTool = setNowTool;
 
             Invalidate();
 
@@ -277,21 +282,13 @@ namespace Graph_Editor
 
             if (SelectedToolIndex == 3)
             {
-                if (string.Compare((sender as Button).Background.ToString(), "#FF5F9EA0") == 0 || string.Compare((sender as Button).Background.ToString(), "#FF3F2030") == 0) 
+                if (string.Compare((sender as Button).Background.ToString(), Themes.MainToolsButtons.ToString()) == 0)
                 {
                     Connect.IsEnabled = false;
                     Connect_Click(sender, e);
                 }
             }
 
-            AddVertex.Background = baseButtonColor;
-            MoveVertex.Background = baseButtonColor;
-            DelVertex.Background = baseButtonColor;
-            Connect.Background = baseButtonColor;
-            DelEdge.Background = baseButtonColor;
-            MoveAllVertex.Background = baseButtonColor;
-            PropertyEdge.Background = baseButtonColor;
-            PropertyVertex.Background = baseButtonColor;
             (sender as Button).Background = Themes.MainChooseToolButton;
         }
 
@@ -327,7 +324,7 @@ namespace Graph_Editor
 
         private void ToolButton_MouseMove(object sender, MouseEventArgs e)
         {
-            if (string.Compare((sender as Button).Background.ToString(), "#FF5F9EA0") != 0 && string.Compare((sender as Button).Background.ToString(), "#FF3F2030") != 0)
+            if (string.Compare((sender as Button).Background.ToString(), Themes.MainChooseToolButton.ToString()) != 0)
             {
                 (sender as Button).Background = Themes.MainToolsButtonsHover;
             }
@@ -335,7 +332,7 @@ namespace Graph_Editor
 
         private void ToolButton_MouseLeave(object sender, MouseEventArgs e)
         {
-            if (string.Compare((sender as Button).Background.ToString(), "#FF5F9EA0") != 0 && string.Compare((sender as Button).Background.ToString(), "#FF3F2030") != 0)
+            if (string.Compare((sender as Button).Background.ToString(), Themes.MainChooseToolButton.ToString()) != 0)
             {
                 (sender as Button).Background = Themes.MainToolsButtons;
             }

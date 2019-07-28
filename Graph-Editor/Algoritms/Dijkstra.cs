@@ -170,9 +170,9 @@ namespace Graph_Editor.Algoritms
             while(q.Count != 0)
             {
                 int v = q.Peek(), w = q.Weight(); q.RemoveMin();
-                if (w > destinations[v] || visited[v]) continue;
+                if (w > destinations[v] /*|| visited[v]*/) continue;
 
-                for (int i = 0; i < Size; i++)
+                for (int i = 0; i < VertexData.Count; i++)
                 {
                     if(Matrix[v,i] != 0)
                     {
