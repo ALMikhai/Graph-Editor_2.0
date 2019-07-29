@@ -25,7 +25,6 @@ namespace Graph_Editor
     [Serializable]
     public static class Globals
     {
-        public static int[] DegforDij = new int[Size];
 
 
         public static string ChosenTool = "AddVertex";
