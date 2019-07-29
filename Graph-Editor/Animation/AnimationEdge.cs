@@ -118,6 +118,7 @@ namespace Graph_Editor
         public void StartAnimation()
         {
             storyboard.Begin();
+            
         }
     }
 }

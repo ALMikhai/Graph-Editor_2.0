@@ -21,10 +21,6 @@ namespace Graph_Editor
 {
     public partial class AlgoritmsWindow : Window
     {
-        // Баг - при нажатии на не готовый алгоритм, появляется messagebox после которого всё блочится.
-
-        // Ne bag a ficha ))0)
-
         int chooseAlg;
 
         MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
