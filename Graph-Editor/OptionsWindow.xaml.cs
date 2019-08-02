@@ -74,6 +74,11 @@ namespace Graph_Editor
         public OptionsWindow()
         {
             InitializeComponent();
+
+            ButtonGeneration.ColorButtonGeneration(changeVertexColorToolBar, ChangeVertexColorButton_Click);
+
+            ButtonGeneration.ColorButtonGeneration(changeEdgeColorToolBar, ChangeEdgeColorButton_Click);
+
             RestartWindow();
 
             DrawExample();
@@ -83,8 +88,8 @@ namespace Graph_Editor
         {
             ThemeSettings();
 
-            setNowEdge = settings.BaseEdge;
-            setNowVertex = settings.BaseVertex;
+            setNowEdge = settings.ColorEdge;
+            setNowVertex = settings.ColorInsideVertex;
             animateColor = Globals.AnimationEllipse.Fill;
 
             edgeColor = OptionsWindow.settings.ColorEdge;
@@ -94,8 +99,8 @@ namespace Graph_Editor
             setNowAnimationSpeed = settings.BaseAnimationSpeed;
             setNowAnimationTime = settings.AnimationTime;
 
-            ((Button)this.FindName(settings.BaseEdge)).Height = 30;
-            ((Button)this.FindName(settings.BaseVertex)).Height = 30;
+            findButton(changeEdgeColorToolBar, settings.ColorEdge).Height = 30;
+            findButton(changeVertexColorToolBar, settings.ColorInsideVertex).Height = 30;
             ((Button)this.FindName(settings.BaseAnimationColor)).Height = 30;
             ((Button)this.FindName(settings.BaseAnimationSpeed)).Background = Themes.OptionsActiveAnimationSpeedButtons;
 
@@ -133,42 +138,44 @@ namespace Graph_Editor
             graphHost.Children.Add(drawingVisual);
         }
 
-        private string setNowVertex;
-        private string setNowEdge;
+        private Brush setNowVertex;
+        private Brush setNowEdge;
 
         private void ChangeVertexColorButton_Click(object sender, RoutedEventArgs e)
         {
-            ((Button)this.FindName(setNowVertex)).Height = 25;
+            findButton(changeVertexColorToolBar, setNowVertex).Height = 25;
+
+            setNowVertex = (sender as Button).Background;
 
             vertexColor = (sender as Button).Background;
 
-            setNowVertex = (sender as Button).Name;
             (sender as Button).Height = 30;
         }
 
         private void ChangeEdgeColorButton_Click(object sender, RoutedEventArgs e)
         {
-            ((Button)this.FindName(setNowEdge)).Height = 25;
+            findButton(changeEdgeColorToolBar, setNowEdge).Height = 25;
+
+            setNowEdge = (sender as Button).Background;
 
             edgeColor = (sender as Button).Background;
 
-            setNowEdge = (sender as Button).Name;
             (sender as Button).Height = 30;
         }
 
         private void Reset_Click(object sender, RoutedEventArgs e)
         {
-            ((Button)this.FindName(setNowVertex)).Height = 25;
-            ((Button)this.FindName(setNowEdge)).Height = 25;
+            findButton(changeVertexColorToolBar, vertexColor).Height = 25;
+            findButton(changeEdgeColorToolBar, setNowEdge).Height = 25;
 
-            ((Button)this.FindName(settings.BaseVertex)).Height = 30;
-            ((Button)this.FindName(settings.BaseEdge)).Height = 30;
+            findButton(changeVertexColorToolBar, settings.BaseVertex).Height = 30;
+            findButton(changeEdgeColorToolBar, settings.BaseEdge).Height = 30;
 
             setNowVertex = OptionsWindow.settings.BaseVertex;
             setNowEdge = OptionsWindow.settings.BaseEdge;
 
-            vertexColor = ((Button)this.FindName(setNowVertex)).Background;
-            edgeColor = ((Button)this.FindName(setNowEdge)).Background;
+            vertexColor = findButton(changeVertexColorToolBar, settings.BaseVertex).Background;
+            edgeColor = findButton(changeEdgeColorToolBar, settings.BaseEdge).Background;
 
             DrawExample();
         }
@@ -395,6 +402,19 @@ namespace Graph_Editor
                 VulcanTheme.Background = Themes.OptionsVECheckButton;
                 Theme = 2;
             }
+        }
+
+        private Button findButton(ToolBar toolBar, Brush color)
+        {
+            foreach (var button in toolBar.Items)
+            {
+                if ((button as Button).Background.ToString() == color.ToString())
+                {
+                    return (button as Button);
+                }
+            }
+
+            return null;
         }
     }
 }

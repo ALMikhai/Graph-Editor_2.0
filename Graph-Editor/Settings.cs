@@ -28,23 +28,23 @@ namespace Graph_Editor
     [Serializable]
     public class Settings : ISerializable
     {
-        public string BaseVertex = "vBlack";
-        public string BaseEdge = "eLightBlue";
+        public Brush BaseVertex = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
+        public Brush BaseEdge = Brushes.Black;
         public string BaseAnimationColor = "orbBlue";
         public string BaseAnimationSpeed = "Medium";
 
-        public int ChooseTheme = 2;
+        public int ChooseTheme = 1;
         public double AnimationTime = 1.5;
         public Brush AnimationEllipseColor = Brushes.Blue;
         public Brush ColorEdge = Brushes.Black;
-        public Brush ColorInsideVertex;
+        public Brush ColorInsideVertex = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
 
         public string currentTheme = "VulcanTheme";
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("BaseVertex", BaseVertex);
-            info.AddValue("BaseEdge", BaseEdge);
+            info.AddValue("BaseVertex", BaseVertex.ToString());
+            info.AddValue("BaseEdge", BaseEdge.ToString());
             info.AddValue("BaseAnimationColor", BaseAnimationColor);
             info.AddValue("BaseAnimationSpeed", BaseAnimationSpeed);
             info.AddValue("ChooseTheme", ChooseTheme);
@@ -57,8 +57,8 @@ namespace Graph_Editor
 
         public Settings(SerializationInfo info, StreamingContext context)
         {
-            BaseVertex              = (string)info.GetValue("BaseVertex", typeof(string));
-            BaseEdge                = (string)info.GetValue("BaseEdge", typeof(string));
+            BaseVertex              = (Brush)new BrushConverter().ConvertFrom((string)info.GetValue("BaseVertex", typeof(string)));
+            BaseEdge                = (Brush)new BrushConverter().ConvertFrom((string)info.GetValue("BaseEdge", typeof(string)));
             BaseAnimationColor      = (string)info.GetValue("BaseAnimationColor", typeof(string));
             BaseAnimationSpeed      = (string)info.GetValue("BaseAnimationSpeed", typeof(string));
             ChooseTheme             = (int)info.GetValue("ChooseTheme", typeof(int));

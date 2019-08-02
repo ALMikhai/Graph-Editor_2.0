@@ -83,6 +83,33 @@ namespace Graph_Editor
 
         private void Button_Alg_Click(object sender, RoutedEventArgs e)
         {
+            Menu menu = Graph_Editor.MainWindow.Instance.MainMenu;
+
+            MenuItem pauseButton = new MenuItem()
+            {
+                Name = "Pause",
+                Header = "Pause",
+                FontSize = 18,
+                FontFamily = new FontFamily("Agency FB"),
+                Foreground = Brushes.White,
+            };
+
+            pauseButton.Click += PauseClick;
+
+            MenuItem stopButton = new MenuItem()
+            {
+                Name = "Stop",
+                Header = "Stop",
+                FontSize = 18,
+                FontFamily = new FontFamily("Agency FB"),
+                Foreground = Brushes.White,
+            };
+
+            stopButton.Click += StopClick;
+
+            menu.Items.Add(pauseButton);
+            menu.Items.Add(stopButton);
+
             chooseAlg = Convert.ToInt32((sender as Button).Tag.ToString());
 
             LockPanel.Visibility = Visibility.Visible;
@@ -127,6 +154,11 @@ namespace Graph_Editor
                     floydWindow.ShowDialog();
                 }
             }
+        }
+
+        private void Item_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void DijkstraReadyExitAlgoritm_Click(object sender, RoutedEventArgs e)
@@ -202,6 +234,37 @@ namespace Graph_Editor
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(DijkstrafinalVertex.Text, "[^0-9]"))
                 DijkstrafinalVertex.Text = DijkstrafinalVertex.Text.Remove(DijkstrafinalVertex.Text.Length - 1);
+        }
+
+        private void PauseClick(object sender, RoutedEventArgs e)
+        {
+            if (Globals.AnimationsNow[0].GetIsPaused())
+            {
+                foreach (var animation in Globals.AnimationsNow)
+                {
+                    animation.Resume();
+                }
+            }
+            else
+            {
+                foreach(var animation in Globals.AnimationsNow)
+                {
+                    animation.Pause();
+                }
+            }
+        }
+
+        private void StopClick(object sender, RoutedEventArgs e)
+        {
+            foreach(var animation in Globals.AnimationsNow.ToArray())
+            {
+                animation.Stop();
+                Globals.AnimationsNow.Remove(animation);
+            }
+
+            Globals.RemoveControlButtons();
+
+            mainWindow.Invalidate();
         }
     }
 }

@@ -53,7 +53,7 @@ namespace Graph_Editor
 
                 Globals.RestoreMatrix();
 
-                Globals.GlobalIndex--;
+                //Globals.GlobalIndex--;
 
                 Globals.VertexData.Remove(findedVert);
 

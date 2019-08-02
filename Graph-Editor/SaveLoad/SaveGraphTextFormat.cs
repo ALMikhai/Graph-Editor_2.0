@@ -33,6 +33,10 @@ namespace Graph_Editor.SaveLoad
     {
         public static void Save(object s, RoutedEventArgs e)
         {
+            if (Globals.AnimationsNow.Count != 0)
+            {
+                return;
+            }
             if (Globals.VertexData.Count != 0)
             {
                 SaveFileDialog fileDialog = new SaveFileDialog()

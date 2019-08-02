@@ -12,22 +12,21 @@ namespace Graph_Editor
 {
     public static class ButtonGeneration
     {
-        public static void ColorButtonGeneration()
+        public static void ColorButtonGeneration(ToolBar toolBar, RoutedEventHandler action)
         {
             foreach (var color in Globals.Colors)
             {
                 Button newButton = new Button
                 {
-                    Height = 18,
-                    Width = 18,
+                    Height = 25,
+                    Width = 25,
                     Background = color,
-                    Tag = "0",
                     Margin = new Thickness(2.5)
                 };
 
-                newButton.Click += MainWindow.Instance.ChangeColor;
+                newButton.Click += action;
 
-                MainWindow.Instance.colorbarPanel.Children.Add(newButton);
+                toolBar.Items.Add(newButton);
             }
         }
 

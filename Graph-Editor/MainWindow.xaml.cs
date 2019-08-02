@@ -113,7 +113,7 @@ namespace Graph_Editor
 
             Instance = this;
 
-            ButtonGeneration.ColorButtonGeneration();
+            ButtonGeneration.ColorButtonGeneration(quickChangeColorPanel, ChangeColor);
 
             CenterTheGraph.Click += CenterGraph.MoveGraph;
             saveTxtGraph.Click += SaveLoad.SaveGraphTextFormat.Save;
@@ -252,6 +252,10 @@ namespace Graph_Editor
 
         private void Connect_Click(object sender, RoutedEventArgs e)
         {
+            if (Globals.AnimationsNow.Count != 0)
+            {
+                return;
+            }
             ConnectVertices connectVertices = new ConnectVertices();
             WaitPanel.Visibility = Visibility.Visible;
             connectVertices.ShowDialog();
@@ -259,6 +263,10 @@ namespace Graph_Editor
 
         private void AlgoritmButton_Click(object sender, RoutedEventArgs e)
         {
+            if (Globals.AnimationsNow.Count != 0)
+            {
+                return;
+            }
             AlgoritmsWindow algoritms = new AlgoritmsWindow();
             WaitPanel.Visibility = Visibility.Visible;
             Algorimts_Window.IsEnabled = false;
@@ -267,6 +275,10 @@ namespace Graph_Editor
 
         private void Change_Tool_Button(object sender, RoutedEventArgs e)
         {
+            if (Globals.AnimationsNow.Count != 0)
+            {
+                return;
+            }
             Globals.ToolNow.Change_Tool();
 
             ((Button)this.FindName(setNowTool)).Background = baseButtonColor;
@@ -292,15 +304,22 @@ namespace Graph_Editor
             (sender as Button).Background = Themes.MainChooseToolButton;
         }
 
+        private bool mouseDown = false;
+
         private void GraphCanvas_MouseDown(object sender, MouseEventArgs e)
         {
+            if(Globals.AnimationsNow.Count != 0)
+            {
+                return;
+            }
+            mouseDown = true;
             Globals.ToolNow.Mouse_Down(e.GetPosition(GraphCanvas));
             Invalidate();
         }
 
         private void GraphCanvas_MouseMove(object sender, MouseEventArgs e)
         {
-            if (Mouse.LeftButton == MouseButtonState.Pressed)
+            if (mouseDown)
             {
                 Globals.ToolNow.Mouse_Move(e.GetPosition(GraphCanvas));
                 Invalidate();
@@ -309,13 +328,17 @@ namespace Graph_Editor
 
         private void GraphCanvas_MouseUp(object sender, MouseEventArgs e)
         {
-            Globals.ToolNow.Mouse_Up();
-            Invalidate();
+            if (mouseDown)
+            {
+                mouseDown = false;
+                Globals.ToolNow.Mouse_Up();
+                Invalidate();
+            }
         }
 
         private void GraphCanvas_MouseLeave(object sender, MouseEventArgs e)
         {
-            if (Mouse.LeftButton == MouseButtonState.Pressed)
+            if (mouseDown)
             {
                 Globals.ToolNow.Mouse_Up();
                 Invalidate();
@@ -340,11 +363,19 @@ namespace Graph_Editor
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+            if (Globals.AnimationsNow.Count != 0)
+            {
+                return;
+            }
             Save.SaveAll();
         }
 
         private void Load_Click(object sender, RoutedEventArgs e)
         {
+            if (Globals.AnimationsNow.Count != 0)
+            {
+                return;
+            }
             Load.Loaded();
         }
 
@@ -362,6 +393,10 @@ namespace Graph_Editor
 
         public void ClearAll_Click(object sender, RoutedEventArgs e)
         {
+            if (Globals.AnimationsNow.Count != 0)
+            {
+                return;
+            }
             List<Vertex> vertices = new List<Vertex>();
             foreach(var vertex in Globals.VertexData)
             {
@@ -378,7 +413,7 @@ namespace Graph_Editor
 
             Globals.VertexData.Clear();
             Globals.EdgesData.Clear();
-            Globals.GlobalIndex = 0;
+            //Globals.GlobalIndex = 0;
             Globals.RestoreMatrix();
             Invalidate();
         }
@@ -400,38 +435,51 @@ namespace Graph_Editor
 
         private void DataWindow_Closing(object sender, CancelEventArgs e)
         {
+            if (Globals.AnimationsNow.Count != 0)
+            {
+                return;
+            }
             SaveLoad.SaveOptions.Save();
             Exit_Dialog.Visibility = Visibility.Visible;
         }
 
         private void ShowMatrix(object sender, RoutedEventArgs e)
         {
+            if (Globals.AnimationsNow.Count != 0)
+            {
+                return;
+            }
             CurrentMatrix currentMatrix = new CurrentMatrix();
             WaitPanel.Visibility = Visibility.Visible;
             currentMatrix.ShowDialog();
         }
 
-        private void ShowList(object sender, RoutedEventArgs e)
-        {
-            CurrentList currentList = new CurrentList();
-            WaitPanel.Visibility = Visibility.Visible;
-            currentList.ShowDialog();
-        }
-
         private void ViewDocumentation(object sender, RoutedEventArgs e)
         {
+            if (Globals.AnimationsNow.Count != 0)
+            {
+                return;
+            }
             Documentation documentation = new Documentation();
             documentation.ShowDialog();
         }
 
         private void GoToOptions(object sender, RoutedEventArgs e)
         {
+            if (Globals.AnimationsNow.Count != 0)
+            {
+                return;
+            }
             OptionsWindow optionsWindow = new OptionsWindow();
             optionsWindow.ShowDialog();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
+            if (Globals.AnimationsNow.Count != 0)
+            {
+                return;
+            }
             if (e.Key == Key.Z & Keyboard.Modifiers == ModifierKeys.Control)
             {
                 History.UndoRedo(0);
@@ -447,14 +495,15 @@ namespace Graph_Editor
 
         public void ChangeColor(object sender, RoutedEventArgs e)
         {
-            if((sender as Button).Tag.ToString() == "0")
-            {
-                OptionsWindow.settings.ColorInsideVertex = (sender as Button).Background;
-            }
+            OptionsWindow.settings.ColorInsideVertex = (sender as Button).Background;        
         }
 
         private void GraphCanvas_MouseWheel(object sender, MouseWheelEventArgs e)
         {
+            if(Globals.AnimationsNow.Count != 0)
+            {
+                return;
+            }
             if(e.Delta > 0)
             {
                 ResizeGraph.IncreaseCanvas(GraphCanvas.ActualHeight, GraphCanvas.ActualWidth);
@@ -474,6 +523,10 @@ namespace Graph_Editor
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
+            if (Globals.AnimationsNow.Count != 0)
+            {
+                return;
+            }
             SetGraph setGraph = new SetGraph();
             setGraph.ShowDialog();
         }

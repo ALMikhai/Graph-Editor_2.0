@@ -26,14 +26,20 @@ namespace Graph_Editor
     public static class Globals
     {
 
-
         public static string ChosenTool = "AddVertex";
 
-        public static int GlobalIndex = 0;
         public static int Size = 100;
         public static int[,] Matrix = new int[Size, Size];
         public static List<Vertex> VertexData = new List<Vertex>();
         public static List<Edge> EdgesData = new List<Edge>();
+
+        public static int GlobalIndex
+        {
+            get
+            {
+                return VertexData.Count;
+            }
+        }
 
         public static Pen BasePen = new Pen(Brushes.Black, 1);
         public static Pen AlgoPen = new Pen(Brushes.Red, 2);
@@ -42,7 +48,9 @@ namespace Graph_Editor
         public static double ThicknessEdge = 1;
 
         public static AnimationEdge gAnim = new AnimationEdge();
-        
+
+        public static List<Storyboard> AnimationsNow = new List<Storyboard>();
+
         public static Ellipse AnimationEllipse = new Ellipse
         {
             Width = VertRadius,
@@ -61,6 +69,7 @@ namespace Graph_Editor
             {6, new EditEdge()},
             {7, new MoveAllVertex()}
         };
+
         public static Dictionary<int, Algoritm> AlgoList = new Dictionary<int, Algoritm>
         {
             {0, new Bfs()},
@@ -74,7 +83,9 @@ namespace Graph_Editor
 
         public static List<Brush> Colors = new List<Brush>
         {
+            {(Brush)new BrushConverter().ConvertFrom("#F0854D")},
             {(Brush)new BrushConverter().ConvertFrom("#80FFFF")},
+            {Brushes.Black},
             {(Brush)new BrushConverter().ConvertFrom("#FBCD6B")},
             {(Brush)new BrushConverter().ConvertFrom("#BE88DC")},
             {(Brush)new BrushConverter().ConvertFrom("#EA6461")},
@@ -100,7 +111,7 @@ namespace Graph_Editor
                 {
                     return true;
                 }
-            }
+            } 
             return false;
         }
 
@@ -157,10 +168,7 @@ namespace Graph_Editor
 
         public static Vertex FindVertex(Vertex vertex)
         {
-            return VertexData.Find(match => (match.Index == vertex.Index
-                                                  //&& match.Coordinates == vertex.Coordinates
-                                                  // TODO Обдумать(не безопасно).
-                                                  && match.Color == vertex.Color));
+            return VertexData.Find(match => (match.Index == vertex.Index));
         }
 
         public static Vertex FindVertex(int index)
@@ -170,12 +178,20 @@ namespace Graph_Editor
 
         public static Edge FindEdge(Edge edge)
         {
-            return EdgesData.Find(match => (match.From == FindVertex(edge.From) && match.To == FindVertex(edge.To)));
+            return EdgesData.Find(match => (match.From.Index == FindVertex(edge.From).Index && match.To.Index == FindVertex(edge.To).Index));
         }
 
         public static Edge FindReversEdge(Edge edge)
         {
             return EdgesData.Find(match => (match.From == FindVertex(edge.To) && match.To == FindVertex(edge.From)));
+        }
+
+        public static void RemoveControlButtons()
+        {
+            Menu menu = Graph_Editor.MainWindow.Instance.MainMenu;
+
+            menu.Items.Remove(menu.Items[menu.Items.Count - 1]);
+            menu.Items.Remove(menu.Items[menu.Items.Count - 1]);
         }
     }
 }

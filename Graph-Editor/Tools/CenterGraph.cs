@@ -12,6 +12,10 @@ namespace Graph_Editor
     {
         public static void MoveGraph(object s, RoutedEventArgs e)
         {
+            if (Globals.AnimationsNow.Count != 0)
+            {
+                return;
+            }
             try
             {
                 double topBorder = Globals.VertexData[0].Coordinates.Y;

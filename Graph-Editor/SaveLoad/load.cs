@@ -44,7 +44,7 @@ namespace Graph_Editor
                     foreach(var vertex in toLoadVertexData)
                     {
                         Globals.VertexData.Add(new Vertex(vertex));
-                        Globals.GlobalIndex++;
+                        //Globals.GlobalIndex++;
                     }
 
                     foreach(var edge in toLoadEdgesData)
@@ -79,7 +79,7 @@ namespace Graph_Editor
                     Globals.EdgesData.Clear();
                     Globals.RestoreMatrix();
 
-                    Globals.GlobalIndex = 0;
+                    //Globals.GlobalIndex = 0;
 
                     MainWindow.Instance.Invalidate();
 

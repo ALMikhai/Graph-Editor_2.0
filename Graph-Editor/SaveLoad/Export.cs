@@ -23,6 +23,11 @@ namespace Graph_Editor.SaveLoad
     {
         public static void ExportPng(object s, RoutedEventArgs e)
         {
+            if (Globals.AnimationsNow.Count != 0)
+            {
+                return;
+            }
+
             MainWindow.Instance.Visibility = Visibility.Hidden;
 
             Thickness margin = MainWindow.Instance.GraphCanvas.Margin;

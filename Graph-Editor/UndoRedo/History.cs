@@ -148,7 +148,6 @@ namespace Graph_Editor.UndoRedo
         private static void UndoAddVertex(Record record, int n)
         {
             Vertex rollback = Globals.FindVertex(record.After as Vertex);
-            Globals.GlobalIndex--;
             Globals.VertexData.Remove(rollback);
 
 
@@ -219,9 +218,6 @@ namespace Graph_Editor.UndoRedo
 
             Globals.RestoreMatrix();
 
-            Globals.GlobalIndex++;
-
-
             if (n == 0)
             {
                 record.Befor = null;
@@ -283,7 +279,7 @@ namespace Graph_Editor.UndoRedo
             {
                 Globals.VertexData.Clear();
                 Globals.EdgesData.Clear();
-                Globals.GlobalIndex = 0;
+                //Globals.GlobalIndex = 0;
                 Globals.RestoreMatrix();
             }
             else
@@ -291,7 +287,7 @@ namespace Graph_Editor.UndoRedo
                 foreach (var vertex in (record.Befor as List<Vertex>))
                 {
                     Globals.VertexData.Add(new Vertex(vertex));
-                    Globals.GlobalIndex++;
+                    //Globals.GlobalIndex++;
                 }
 
                 foreach (var edge in (record.After as List<Edge>))
@@ -385,7 +381,7 @@ namespace Graph_Editor.UndoRedo
             {
                 Globals.VertexData.Clear();
                 Globals.EdgesData.Clear();
-                Globals.GlobalIndex = 0;
+                //Globals.GlobalIndex = 0;
                 Globals.RestoreMatrix();
             }
             else
@@ -393,7 +389,7 @@ namespace Graph_Editor.UndoRedo
                 foreach (var vertex in (record.After as List<Vertex>))
                 {
                     Globals.VertexData.Add(new Vertex(vertex));
-                    Globals.GlobalIndex++;
+                    //Globals.GlobalIndex++;
                 }
 
                 foreach (var edge in (record.Befor as List<Edge>))
@@ -409,10 +405,12 @@ namespace Graph_Editor.UndoRedo
         {
             Globals.VertexData.Clear();
             Globals.EdgesData.Clear();
+            //Globals.GlobalIndex = 0;
 
             foreach (var vertex in (record.Befor as List<Vertex>))
             {
                 Globals.VertexData.Add(vertex);
+                //Globals.GlobalIndex++;
             }
 
             foreach(var edge in (record.After as List<Edge>))

@@ -110,7 +110,7 @@ namespace Graph_Editor
                     return;
                 }
 
-                Globals.GlobalIndex = numberVertices;
+                //Globals.GlobalIndex = numberVertices;
 
                 MainWindow.Instance.ClearAll_Click(new object(), new RoutedEventArgs());
 
@@ -120,6 +120,7 @@ namespace Graph_Editor
                 {
                     Point place = new Point(random.Next(0 + Globals.VertRadius, (int)MainWindow.Instance.GraphCanvas.ActualWidth - Globals.VertRadius), random.Next(0 + Globals.VertRadius, (int)MainWindow.Instance.GraphCanvas.ActualHeight - Globals.VertRadius));
                     Globals.VertexData.Add(new Vertex(i, place));
+                    //Globals.GlobalIndex++;
                 }
 
                 number = reader.ReadLine();
@@ -137,7 +138,7 @@ namespace Graph_Editor
 
                 reader.Close();
 
-                Globals.RestoreMatrix();
+
 
                 foreach(var edge in Globals.EdgesData)
                 {
@@ -162,13 +163,15 @@ namespace Graph_Editor
                     edges.Add(new Edge(edge));
                 }
 
+            
+                Globals.RestoreMatrix();
                 History.Add(edges, vertices);
             }
             catch
             {
                 Globals.VertexData.Clear();
                 Globals.EdgesData.Clear();
-                Globals.GlobalIndex = 0;
+                //Globals.GlobalIndex = 0;
                 reader.Close();
                 System.Windows.MessageBox.Show("Invalid input graph format.");
             }
