@@ -24,7 +24,6 @@ namespace Graph_Editor.SaveLoad
 
             FileStream saveFile = (FileStream)fileDialog.OpenFile();
 
-
             BinaryFormatter bin = new BinaryFormatter();
             bin.Serialize(saveFile, OptionsWindow.settings);
 

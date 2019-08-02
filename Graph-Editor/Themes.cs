@@ -102,8 +102,8 @@ namespace Graph_Editor
 
             logoPath = "../../images/Icelogo.png";
 
-            OptionsWindow.settings.BaseVertex = "vLightBlue";
-            OptionsWindow.settings.BaseEdge = "eBlack";
+            OptionsWindow.settings.BaseVertex = (Brush)new BrushConverter().ConvertFrom("#80FFFF");
+            OptionsWindow.settings.BaseEdge = Brushes.Black;
 
             ColorOfTheTextOfVertex = (Brush)new BrushConverter().ConvertFrom("#305F5F");
 
@@ -190,8 +190,8 @@ namespace Graph_Editor
 
             logoPath = "../../images/Vulcanlogo.png";
 
-            OptionsWindow.settings.BaseVertex = "vVolcano";
-            OptionsWindow.settings.BaseEdge = "eBlack";
+            OptionsWindow.settings.BaseVertex = (Brush)new BrushConverter().ConvertFrom("#F0854D");
+            OptionsWindow.settings.BaseEdge = Brushes.Black;
 
             ColorOfTheTextOfVertex = (Brush)new BrushConverter().ConvertFrom("#BF1111");
 

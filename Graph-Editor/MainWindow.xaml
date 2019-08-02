@@ -187,8 +187,8 @@
             <MenuItem x:Name="Settings" Header="Options" FontSize="18" FontFamily="Agency FB" Foreground="White" Click="GoToOptions">
             </MenuItem>
             <MenuItem Header="Colors" FontSize="18" FontFamily="Agency FB" Foreground="White">
-                <ToolBarPanel Name="colorbarPanel" Height="35" HorizontalAlignment="Left" Orientation="Horizontal" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
-                </ToolBarPanel>
+                <ToolBar Name="quickChangeColorPanel" Height="35" HorizontalAlignment="Left" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5">
+                </ToolBar>
             </MenuItem>
             <MenuItem x:Name="setGraphButton" Header="Set graph from table" FontSize="18" FontFamily="Agency FB" Foreground="White" Click="MenuItem_Click" Height="30"></MenuItem>
         </Menu>

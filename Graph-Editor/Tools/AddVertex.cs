@@ -19,7 +19,7 @@ namespace Graph_Editor
                 }
             }
 
-            Vertex newVertex = new Vertex(Globals.GlobalIndex++, pointNow);
+            Vertex newVertex = new Vertex(Globals.GlobalIndex, pointNow);
             Globals.VertexData.Add(new Vertex(newVertex));
 
             History.Add(null, newVertex);

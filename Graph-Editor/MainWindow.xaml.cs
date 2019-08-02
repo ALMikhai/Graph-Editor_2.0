@@ -113,7 +113,7 @@ namespace Graph_Editor
 
             Instance = this;
 
-            ButtonGeneration.ColorButtonGeneration();
+            ButtonGeneration.ColorButtonGeneration(quickChangeColorPanel, ChangeColor);
 
             CenterTheGraph.Click += CenterGraph.MoveGraph;
             saveTxtGraph.Click += SaveLoad.SaveGraphTextFormat.Save;
@@ -413,7 +413,7 @@ namespace Graph_Editor
 
             Globals.VertexData.Clear();
             Globals.EdgesData.Clear();
-            Globals.GlobalIndex = 0;
+            //Globals.GlobalIndex = 0;
             Globals.RestoreMatrix();
             Invalidate();
         }
@@ -495,10 +495,7 @@ namespace Graph_Editor
 
         public void ChangeColor(object sender, RoutedEventArgs e)
         {
-            if((sender as Button).Tag.ToString() == "0")
-            {
-                OptionsWindow.settings.ColorInsideVertex = (sender as Button).Background;
-            }
+            OptionsWindow.settings.ColorInsideVertex = (sender as Button).Background;        
         }
 
         private void GraphCanvas_MouseWheel(object sender, MouseWheelEventArgs e)
